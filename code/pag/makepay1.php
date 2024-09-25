@@ -1,0 +1,125 @@
+<?php
+session_start();
+
+if(!isset($_SESSION['id_usu'])){
+    header("Location: ../../index.php");
+    exit();
+}
+
+$nombre = $_SESSION['nombre'];
+$tipo_usu = $_SESSION['tipo_usu'];
+header("Content-Type: text/html;charset=utf-8");
+
+include("../../conexion.php");
+
+// Verificar si el parámetro num_con está presente y válido
+if(!isset($_GET['num_con']) || empty($_GET['num_con'])) {
+    die("Número de contrato no especificado.");
+}
+
+$num_con = $_GET['num_con'];
+
+// Consulta a la base de datos
+$sql = mysqli_query($mysqli, "SELECT * FROM contratos WHERE num_con = '$num_con'");
+if(!$sql) {
+    die("Error en la consulta SQL: " . mysqli_error($mysqli));
+}
+$row = mysqli_fetch_array($sql);
+
+if (!$row) {
+    die("Contrato no encontrado para el número: $num_con");
+}
+
+$fec_inicio_con = new DateTime($row['fec_inicio_con']);
+$vigencia_duracion_con = $row['vigencia_duracion_con'];
+
+// Verificar si se recibieron los datos del formulario correctamente
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $pago_propietario           = $_POST['pago_propietario'] ?? '';
+    $transferencia_propietario  = $_POST['transferencia_propietario'] ?? 'N/A';
+    $factura_electronica0       = $_POST['factura_electronica0'] ?? '';
+    $factura_electronica1       = $_POST['factura_electronica1'] ?? 'N/A';
+    $factura_electronica2       = $_POST['factura_electronica2'] ?? 'N/A';
+    $canon_con                  = $row['canon_con'];
+    $iva_con                    = $row['iva_con'];
+    $renta_con                  = $row['renta_con'];
+    $admon_con                  = $row['admon_con'];
+    $perfil                     = $_POST['perfil'] ?? '';
+    $comision1                  = $_POST['comision1'] ?? 0;
+    $comision2                  = $_POST['comision2'] ?? 0;
+    $estado_pago                = 1;
+    $fecha_alta_pago            = date('Y-m-d h:i:s');
+    $id_usu_alta_pago           = $_SESSION['id_usu'];
+    $fecha_edit_pago            = ('0000-00-00 00:00:00');
+    $id_usu                     = $_SESSION['id_usu'];
+
+    if(empty($pago_propietario) || empty($factura_electronica0) || empty($perfil)) {
+        die("Por favor, completa todos los campos obligatorios del formulario.");
+    }
+
+    // Generar registros en la tabla PAGOS
+    for($i = 0; $i < $vigencia_duracion_con; $i++) {
+        $fecha_pago = $fec_inicio_con->format('Y-m-d');
+        $num_pago = $i + 1; // Número de pago secuencial
+
+        // Calcular comision_pago y total_consignar_pago
+        if($comision1 != 0) {
+            $comision_pago = $renta_con * ($comision1 / 100);
+        } else {
+            $comision_pago = $renta_con * ($comision2 / 100);
+        }
+        $total_consignar_pago = $canon_con - $comision_pago;
+
+        // Insertar registro en la tabla PAGOS
+        $insert_sql = "INSERT INTO pagos (num_con, fecha_pago, pago_propietario, transferencia_propietario, factura_electronica0, factura_electronica1, factura_electronica2, canon_con, iva_con, renta_con, admon_con, perfil, comision_pago, total_consignar_pago, estado_pago, fecha_alta_pago, id_usu_alta_pago, fecha_edit_pago, id_usu, num_pago)
+                       VALUES ('$num_con', '$fecha_pago', '$pago_propietario', '$transferencia_propietario', '$factura_electronica0', '$factura_electronica1', '$factura_electronica2', '$canon_con', '$iva_con', '$renta_con', '$admon_con', '$perfil', '$comision_pago', '$total_consignar_pago', '$estado_pago', '$fecha_alta_pago', '$id_usu_alta_pago', '$fecha_edit_pago', '$id_usu', '$num_pago')";
+        if(!mysqli_query($mysqli, $insert_sql)) {
+            die("Error al insertar en la tabla PAGOS: " . mysqli_error($mysqli));
+        }
+
+        // Sumar un mes a la fecha de inicio
+        $fec_inicio_con->modify('+1 month');
+    }
+    echo "
+        <!DOCTYPE html>
+            <html lang='es'>
+                <head>
+                    <meta charset='utf-8' />
+                    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+                    <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+                    <link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet'>
+                    <link href='https://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet'>
+                    <link rel='stylesheet' href='../../css/bootstrap.min.css'>
+                    <link href='../../fontawesome/css/all.css' rel='stylesheet'>
+                    <script src='https://kit.fontawesome.com/fed2435e21.js' crossorigin='anonymous'></script>
+                    <title>VISION | SOFT</title>
+                    <style>
+                        .responsive {
+                            max-width: 100%;
+                            height: auto;
+                        }
+                    </style>
+                </head>
+                <body>
+                    <center>
+                       <img src='../../img/logo.png' width=300 height=212 class='responsive'>
+                    <div class='container'>
+                        <br />
+                        <h3><b><i class='fa-solid fa-money-check-dollar'></i> SE GENERÓ LOS PAGOS DE FORMA EXITOSA</b></h3>";
+                        echo "<h5>Número de contrato recibido: $num_con</h5><br>
+                        <p align='center'><a href='showpay.php'><img src='../../img/atras.png' width=96 height=96></a></p>
+                    </div>
+                    </center>
+                </body>
+            </html>
+        ";
+    //echo "Registros generados exitosamente.";
+    //header("Location: ../cont/showcont.php");
+    exit();
+} else {
+    echo "No se recibieron datos del formulario.<br>"; // Mensaje de depuración
+    echo "<pre>";
+    print_r($_POST);
+    echo "</pre>";
+}
+?>

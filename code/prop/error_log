@@ -1,0 +1,70 @@
+[25-Jun-2024 16:24:41 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/prop/addprop.php:14) in /home2/visioni4/public_html/crm/code/prop/addprop.php on line 94
+[25-Jun-2024 16:24:41 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/prop/addprop.php:14) in /home2/visioni4/public_html/crm/code/prop/addprop.php on line 114
+[25-Jun-2024 16:25:51 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/prop/addprop.php:14) in /home2/visioni4/public_html/crm/code/prop/addprop.php on line 94
+[25-Jun-2024 16:25:51 America/Bogota] PHP Warning:  Undefined array key "nit_cc_pro" in /home2/visioni4/public_html/crm/code/prop/addprop.php on line 102
+[25-Jun-2024 16:25:51 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/prop/addprop.php:14) in /home2/visioni4/public_html/crm/code/prop/addprop.php on line 114
+[25-Jun-2024 16:25:57 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/prop/addprop.php:14) in /home2/visioni4/public_html/crm/code/prop/addprop.php on line 94
+[25-Jun-2024 16:25:57 America/Bogota] PHP Warning:  Undefined array key "nit_cc_pro" in /home2/visioni4/public_html/crm/code/prop/addprop.php on line 102
+[25-Jun-2024 16:25:57 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/prop/addprop.php:14) in /home2/visioni4/public_html/crm/code/prop/addprop.php on line 114
+[25-Jun-2024 16:26:39 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/prop/addprop.php:14) in /home2/visioni4/public_html/crm/code/prop/addprop.php on line 94
+[25-Jun-2024 16:26:39 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/prop/addprop.php:14) in /home2/visioni4/public_html/crm/code/prop/addprop.php on line 114
+[25-Jun-2024 16:26:57 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/prop/addprop.php:14) in /home2/visioni4/public_html/crm/code/prop/addprop.php on line 94
+[25-Jun-2024 16:26:57 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/prop/addprop.php:14) in /home2/visioni4/public_html/crm/code/prop/addprop.php on line 114
+[25-Jun-2024 16:31:30 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/prop/addprop.php:14) in /home2/visioni4/public_html/crm/code/prop/addprop.php on line 94
+[25-Jun-2024 16:31:30 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/prop/addprop.php:14) in /home2/visioni4/public_html/crm/code/prop/addprop.php on line 114
+[25-Jun-2024 16:31:36 America/Bogota] PHP Warning:  Undefined array key "id_prop " in /home2/visioni4/public_html/crm/code/prop/addprop1.php on line 16
+[25-Jun-2024 16:31:36 America/Bogota] PHP Warning:  Undefined array key "mat_inm " in /home2/visioni4/public_html/crm/code/prop/addprop1.php on line 17
+[25-Jun-2024 16:31:36 America/Bogota] PHP Warning:  Undefined array key "nit_cc_pro " in /home2/visioni4/public_html/crm/code/prop/addprop1.php on line 18
+[25-Jun-2024 16:31:36 America/Bogota] PHP Fatal error:  Uncaught mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`visioni4_crm`.`propiedades`, CONSTRAINT `fk_prop_inm` FOREIGN KEY (`mat_inm`) REFERENCES `inmuebles` (`mat_inm`)) in /home2/visioni4/public_html/crm/code/prop/addprop1.php:27
+Stack trace:
+#0 /home2/visioni4/public_html/crm/code/prop/addprop1.php(27): mysqli->query('INSERT INTO pro...')
+#1 {main}
+  thrown in /home2/visioni4/public_html/crm/code/prop/addprop1.php on line 27
+[25-Jun-2024 16:32:01 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/prop/addprop.php:14) in /home2/visioni4/public_html/crm/code/prop/addprop.php on line 94
+[25-Jun-2024 16:32:01 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/prop/addprop.php:14) in /home2/visioni4/public_html/crm/code/prop/addprop.php on line 114
+[25-Jun-2024 16:33:39 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/prop/addprop.php:14) in /home2/visioni4/public_html/crm/code/prop/addprop.php on line 89
+[25-Jun-2024 16:33:39 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/prop/addprop.php:14) in /home2/visioni4/public_html/crm/code/prop/addprop.php on line 109
+[25-Jun-2024 16:33:43 America/Bogota] PHP Warning:  Undefined array key "id_prop " in /home2/visioni4/public_html/crm/code/prop/addprop1.php on line 16
+[25-Jun-2024 16:33:43 America/Bogota] PHP Warning:  Undefined array key "mat_inm " in /home2/visioni4/public_html/crm/code/prop/addprop1.php on line 17
+[25-Jun-2024 16:33:43 America/Bogota] PHP Warning:  Undefined array key "nit_cc_pro " in /home2/visioni4/public_html/crm/code/prop/addprop1.php on line 18
+[25-Jun-2024 16:33:43 America/Bogota] PHP Fatal error:  Uncaught mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`visioni4_crm`.`propiedades`, CONSTRAINT `fk_prop_inm` FOREIGN KEY (`mat_inm`) REFERENCES `inmuebles` (`mat_inm`)) in /home2/visioni4/public_html/crm/code/prop/addprop1.php:27
+Stack trace:
+#0 /home2/visioni4/public_html/crm/code/prop/addprop1.php(27): mysqli->query('INSERT INTO pro...')
+#1 {main}
+  thrown in /home2/visioni4/public_html/crm/code/prop/addprop1.php on line 27
+[25-Jun-2024 16:35:05 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/prop/addprop.php:14) in /home2/visioni4/public_html/crm/code/prop/addprop.php on line 89
+[25-Jun-2024 16:35:05 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/prop/addprop.php:14) in /home2/visioni4/public_html/crm/code/prop/addprop.php on line 109
+[25-Jun-2024 16:35:07 America/Bogota] PHP Warning:  Undefined array key "id_prop " in /home2/visioni4/public_html/crm/code/prop/addprop1.php on line 16
+[25-Jun-2024 16:35:07 America/Bogota] PHP Warning:  Undefined array key "mat_inm " in /home2/visioni4/public_html/crm/code/prop/addprop1.php on line 17
+[25-Jun-2024 16:35:08 America/Bogota] PHP Fatal error:  Uncaught mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`visioni4_crm`.`propiedades`, CONSTRAINT `fk_prop_inm` FOREIGN KEY (`mat_inm`) REFERENCES `inmuebles` (`mat_inm`)) in /home2/visioni4/public_html/crm/code/prop/addprop1.php:27
+Stack trace:
+#0 /home2/visioni4/public_html/crm/code/prop/addprop1.php(27): mysqli->query('INSERT INTO pro...')
+#1 {main}
+  thrown in /home2/visioni4/public_html/crm/code/prop/addprop1.php on line 27
+[25-Jun-2024 16:35:14 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/prop/addprop.php:14) in /home2/visioni4/public_html/crm/code/prop/addprop.php on line 89
+[25-Jun-2024 16:35:14 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/prop/addprop.php:14) in /home2/visioni4/public_html/crm/code/prop/addprop.php on line 109
+[25-Jun-2024 16:35:15 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/prop/addprop.php:14) in /home2/visioni4/public_html/crm/code/prop/addprop.php on line 89
+[25-Jun-2024 16:35:15 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/prop/addprop.php:14) in /home2/visioni4/public_html/crm/code/prop/addprop.php on line 109
+[25-Jun-2024 16:35:20 America/Bogota] PHP Warning:  Undefined array key "id_prop " in /home2/visioni4/public_html/crm/code/prop/addprop1.php on line 16
+[25-Jun-2024 16:35:20 America/Bogota] PHP Warning:  Undefined array key "mat_inm " in /home2/visioni4/public_html/crm/code/prop/addprop1.php on line 17
+[25-Jun-2024 16:35:20 America/Bogota] PHP Fatal error:  Uncaught mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`visioni4_crm`.`propiedades`, CONSTRAINT `fk_prop_inm` FOREIGN KEY (`mat_inm`) REFERENCES `inmuebles` (`mat_inm`)) in /home2/visioni4/public_html/crm/code/prop/addprop1.php:27
+Stack trace:
+#0 /home2/visioni4/public_html/crm/code/prop/addprop1.php(27): mysqli->query('INSERT INTO pro...')
+#1 {main}
+  thrown in /home2/visioni4/public_html/crm/code/prop/addprop1.php on line 27
+[25-Jun-2024 16:35:50 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/prop/addprop.php:14) in /home2/visioni4/public_html/crm/code/prop/addprop.php on line 89
+[25-Jun-2024 16:35:50 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/prop/addprop.php:14) in /home2/visioni4/public_html/crm/code/prop/addprop.php on line 109
+[25-Jun-2024 16:35:52 America/Bogota] PHP Warning:  Undefined array key "id_prop" in /home2/visioni4/public_html/crm/code/prop/addprop1.php on line 16
+[25-Jun-2024 16:35:53 America/Bogota] PHP Fatal error:  Uncaught mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`visioni4_crm`.`propiedades`, CONSTRAINT `fk_prop_inm` FOREIGN KEY (`mat_inm`) REFERENCES `inmuebles` (`mat_inm`)) in /home2/visioni4/public_html/crm/code/prop/addprop1.php:27
+Stack trace:
+#0 /home2/visioni4/public_html/crm/code/prop/addprop1.php(27): mysqli->query('INSERT INTO pro...')
+#1 {main}
+  thrown in /home2/visioni4/public_html/crm/code/prop/addprop1.php on line 27
+[25-Jun-2024 16:36:01 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/prop/addprop.php:14) in /home2/visioni4/public_html/crm/code/prop/addprop.php on line 89
+[25-Jun-2024 16:36:01 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/prop/addprop.php:14) in /home2/visioni4/public_html/crm/code/prop/addprop.php on line 109
+[25-Jun-2024 16:36:02 America/Bogota] PHP Warning:  Undefined array key "id_prop" in /home2/visioni4/public_html/crm/code/prop/addprop1.php on line 16
+[25-Jun-2024 16:36:02 America/Bogota] PHP Fatal error:  Uncaught mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`visioni4_crm`.`propiedades`, CONSTRAINT `fk_prop_inm` FOREIGN KEY (`mat_inm`) REFERENCES `inmuebles` (`mat_inm`)) in /home2/visioni4/public_html/crm/code/prop/addprop1.php:27
+Stack trace:
+#0 /home2/visioni4/public_html/crm/code/prop/addprop1.php(27): mysqli->query('INSERT INTO pro...')
+#1 {main}
+  thrown in /home2/visioni4/public_html/crm/code/prop/addprop1.php on line 27

@@ -1,0 +1,1007 @@
+[28-Jun-2024 16:23:59 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/editexh.php:14) in /home2/visioni4/public_html/crm/code/exh/editexh.php on line 170
+[28-Jun-2024 16:24:48 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/editexh.php:14) in /home2/visioni4/public_html/crm/code/exh/editexh.php on line 170
+[28-Jun-2024 16:25:52 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/editexh1.php:14) in /home2/visioni4/public_html/crm/code/exh/editexh1.php on line 41
+[28-Jun-2024 16:26:35 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/editexh.php:14) in /home2/visioni4/public_html/crm/code/exh/editexh.php on line 170
+[28-Jun-2024 16:27:31 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/editexh.php:14) in /home2/visioni4/public_html/crm/code/exh/editexh.php on line 170
+[28-Jun-2024 16:29:57 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/editexh.php:14) in /home2/visioni4/public_html/crm/code/exh/editexh.php on line 170
+[28-Jun-2024 16:30:41 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/editexh.php:14) in /home2/visioni4/public_html/crm/code/exh/editexh.php on line 170
+[28-Jun-2024 16:32:00 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:14) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 167
+[28-Jun-2024 16:32:28 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:14) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 167
+[28-Jun-2024 16:33:31 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/editexh.php:14) in /home2/visioni4/public_html/crm/code/exh/editexh.php on line 170
+[28-Jun-2024 16:36:46 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:14) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 167
+[02-Jul-2024 20:54:22 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:14) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 167
+[02-Jul-2024 20:54:28 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:14) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 167
+[02-Jul-2024 20:55:23 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:14) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 167
+[04-Jul-2024 10:22:34 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:14) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 167
+[04-Jul-2024 10:27:12 America/Bogota] PHP Warning:  Undefined array key "nombre" in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 9
+[04-Jul-2024 10:27:12 America/Bogota] PHP Warning:  Undefined array key "tipo_usu" in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 10
+[04-Jul-2024 10:27:12 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:14) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 167
+[04-Jul-2024 10:27:34 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:14) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 167
+[04-Jul-2024 11:07:08 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:14) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 167
+[04-Jul-2024 23:08:31 America/Bogota] PHP Warning:  Undefined array key "nombre" in /home2/visioni4/public_html/crm/code/exh/showexh.php on line 9
+[04-Jul-2024 23:08:31 America/Bogota] PHP Warning:  Undefined array key "tipo_usu" in /home2/visioni4/public_html/crm/code/exh/showexh.php on line 10
+[05-Jul-2024 12:50:35 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:14) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 167
+[05-Jul-2024 12:50:55 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:14) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 167
+[05-Jul-2024 13:54:30 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:14) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 167
+[05-Jul-2024 14:01:48 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:14) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 184
+[05-Jul-2024 14:02:07 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:14) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 180
+[05-Jul-2024 14:32:02 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:14) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 180
+[05-Jul-2024 14:32:35 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:14) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 180
+[05-Jul-2024 15:08:12 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:14) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 191
+[05-Jul-2024 15:08:50 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:14) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 191
+[05-Jul-2024 15:10:19 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:14) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 192
+[05-Jul-2024 15:10:38 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:14) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 192
+[05-Jul-2024 15:26:55 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:12) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 235
+[05-Jul-2024 15:29:11 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:12) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 235
+[05-Jul-2024 15:29:36 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:12) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 235
+[05-Jul-2024 15:30:16 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:12) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 235
+[05-Jul-2024 15:40:06 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:12) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 235
+[05-Jul-2024 15:40:16 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:12) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 235
+[05-Jul-2024 15:46:22 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:12) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 235
+[05-Jul-2024 15:56:28 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:12) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 236
+[05-Jul-2024 16:51:43 America/Bogota] PHP Warning:  Undefined array key "nombre" in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 8
+[05-Jul-2024 16:51:43 America/Bogota] PHP Warning:  Undefined array key "tipo_usu" in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 9
+[05-Jul-2024 16:51:43 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:12) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 236
+[05-Jul-2024 16:51:57 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:12) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 236
+[05-Jul-2024 16:52:38 America/Bogota] PHP Fatal error:  Uncaught mysqli_sql_exception: Column 'cel_inte_exh' specified twice in /home2/visioni4/public_html/crm/code/exh/addexh1.php:44
+Stack trace:
+#0 /home2/visioni4/public_html/crm/code/exh/addexh1.php(44): mysqli->query('INSERT INTO exh...')
+#1 {main}
+  thrown in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 44
+[05-Jul-2024 16:56:19 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:12) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 236
+[05-Jul-2024 16:56:21 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:12) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 236
+[05-Jul-2024 16:59:21 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:12) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 236
+[05-Jul-2024 16:59:31 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:12) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 236
+[05-Jul-2024 16:59:45 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:12) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 236
+[05-Jul-2024 17:10:22 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:12) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 236
+[05-Jul-2024 18:18:56 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:12) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 236
+[06-Jul-2024 18:56:32 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:12) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 236
+[09-Jul-2024 12:26:07 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:12) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 236
+[10-Jul-2024 13:25:23 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:12) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 236
+[10-Jul-2024 13:29:17 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:12) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 236
+[10-Jul-2024 16:33:27 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:12) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 236
+[10-Jul-2024 16:34:58 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:12) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 236
+[11-Jul-2024 07:53:39 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:12) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 236
+[11-Jul-2024 07:58:52 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:12) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 244
+[11-Jul-2024 07:59:27 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:12) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 244
+[11-Jul-2024 08:00:46 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:12) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 244
+[11-Jul-2024 08:07:20 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:12) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 245
+[11-Jul-2024 08:08:37 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:12) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 245
+[11-Jul-2024 08:09:04 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:12) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 245
+[11-Jul-2024 08:09:37 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:12) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 245
+[11-Jul-2024 08:10:14 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:12) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 245
+[11-Jul-2024 08:18:11 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:12) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 245
+[11-Jul-2024 08:18:36 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:12) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 245
+[11-Jul-2024 08:18:50 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:12) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 245
+[11-Jul-2024 08:18:57 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:12) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 245
+[11-Jul-2024 08:19:16 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:12) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 245
+[11-Jul-2024 08:19:24 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:12) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 245
+[11-Jul-2024 08:21:42 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:12) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 245
+[11-Jul-2024 08:24:04 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:12) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 245
+[11-Jul-2024 08:24:34 America/Bogota] PHP Warning:  Undefined array key "nom_ape_inte_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 18
+[11-Jul-2024 08:24:34 America/Bogota] PHP Warning:  Undefined array key "raz_soc_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 19
+[11-Jul-2024 08:24:34 America/Bogota] PHP Warning:  Undefined array key "nit_cc_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 20
+[11-Jul-2024 08:24:34 America/Bogota] PHP Warning:  Undefined array key "cel_inte_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 22
+[11-Jul-2024 08:24:34 America/Bogota] PHP Warning:  Undefined array key "tel_inte_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 25
+[11-Jul-2024 08:24:34 America/Bogota] PHP Warning:  Undefined array key "email_inte_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 26
+[11-Jul-2024 08:24:34 America/Bogota] PHP Warning:  Undefined array key "obs1_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 36
+[11-Jul-2024 08:25:01 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:12) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 245
+[11-Jul-2024 08:30:48 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:12) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 245
+[11-Jul-2024 08:30:53 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:12) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 245
+[11-Jul-2024 09:29:37 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/editexh.php:14) in /home2/visioni4/public_html/crm/code/exh/editexh.php on line 170
+[11-Jul-2024 09:38:45 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/editexh.php:14) in /home2/visioni4/public_html/crm/code/exh/editexh.php on line 203
+[11-Jul-2024 09:39:03 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:12) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 245
+[11-Jul-2024 09:39:29 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:12) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 245
+[11-Jul-2024 09:39:45 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:12) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 245
+[11-Jul-2024 09:40:20 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/editexh.php:14) in /home2/visioni4/public_html/crm/code/exh/editexh.php on line 203
+[11-Jul-2024 09:41:03 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/editexh.php:14) in /home2/visioni4/public_html/crm/code/exh/editexh.php on line 203
+[11-Jul-2024 09:56:05 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:12) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 245
+[11-Jul-2024 09:56:42 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/editexh.php:14) in /home2/visioni4/public_html/crm/code/exh/editexh.php on line 203
+[11-Jul-2024 09:58:00 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/editexh1.php:14) in /home2/visioni4/public_html/crm/code/exh/editexh1.php on line 41
+[12-Jul-2024 04:12:34 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:12) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 245
+[12-Jul-2024 17:34:33 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:12) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 245
+[23-Jul-2024 19:39:32 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:12) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 245
+[24-Jul-2024 11:55:07 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:12) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 245
+[24-Jul-2024 11:56:03 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:12) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 245
+[24-Jul-2024 12:02:21 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:12) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 245
+[24-Jul-2024 15:45:06 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:12) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 245
+[24-Jul-2024 16:13:27 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:12) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 247
+[24-Jul-2024 16:16:41 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:12) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 247
+[24-Jul-2024 16:17:33 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 127
+[24-Jul-2024 16:17:49 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:12) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 247
+[24-Jul-2024 16:52:07 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:12) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 247
+[24-Jul-2024 16:52:33 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 260
+[24-Jul-2024 16:52:49 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 260
+[24-Jul-2024 23:09:58 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 260
+[24-Jul-2024 23:10:08 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 260
+[25-Jul-2024 08:36:08 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 260
+[25-Jul-2024 08:37:04 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 260
+[25-Jul-2024 08:40:50 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 260
+[25-Jul-2024 08:41:22 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 260
+[25-Jul-2024 08:42:23 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 129
+[25-Jul-2024 08:42:25 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 129
+[25-Jul-2024 08:42:26 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 129
+[25-Jul-2024 08:44:45 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 260
+[25-Jul-2024 08:44:57 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 260
+[25-Jul-2024 08:44:59 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 260
+[25-Jul-2024 08:45:02 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 260
+[25-Jul-2024 08:45:40 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 260
+[25-Jul-2024 08:47:34 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 260
+[25-Jul-2024 08:53:23 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 187
+[25-Jul-2024 09:13:55 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 187
+[25-Jul-2024 09:14:05 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 187
+[25-Jul-2024 09:15:29 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 187
+[25-Jul-2024 09:33:37 America/Bogota] PHP Warning:  Undefined array key "archivo" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 50
+[25-Jul-2024 09:33:37 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 50
+[25-Jul-2024 09:33:37 America/Bogota] PHP Warning:  foreach() argument must be of type array|object, null given in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 50
+[25-Jul-2024 09:33:37 America/Bogota] PHP Warning:  file_put_contents(files/signatures/66a26241a55d3.png): Failed to open stream: No such file or directory in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 90
+[25-Jul-2024 09:36:31 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 187
+[25-Jul-2024 09:37:26 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 187
+[25-Jul-2024 09:37:34 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 187
+[25-Jul-2024 09:38:53 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 187
+[25-Jul-2024 09:40:31 America/Bogota] PHP Warning:  file_put_contents(files/signatures/66a263dff1e7a.png): Failed to open stream: No such file or directory in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 90
+[25-Jul-2024 09:58:22 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 187
+[25-Jul-2024 10:07:49 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 187
+[25-Jul-2024 10:08:35 America/Bogota] PHP Warning:  Undefined array key "raz_soc_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 19
+[25-Jul-2024 10:08:35 America/Bogota] PHP Warning:  Undefined array key "nit_cc_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 20
+[25-Jul-2024 10:08:35 America/Bogota] PHP Warning:  Undefined array key "tel_inte_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 25
+[25-Jul-2024 10:08:35 America/Bogota] PHP Warning:  Undefined array key "email_inte_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 26
+[25-Jul-2024 10:08:35 America/Bogota] PHP Warning:  Undefined array key "obs1_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 36
+[25-Jul-2024 10:14:04 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 187
+[25-Jul-2024 10:20:33 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 191
+[25-Jul-2024 10:21:15 America/Bogota] PHP Warning:  Undefined array key "raz_soc_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 19
+[25-Jul-2024 10:21:15 America/Bogota] PHP Warning:  Undefined array key "nit_cc_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 20
+[25-Jul-2024 10:21:15 America/Bogota] PHP Warning:  Undefined array key "tel_inte_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 25
+[25-Jul-2024 10:21:15 America/Bogota] PHP Warning:  Undefined array key "email_inte_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 26
+[25-Jul-2024 10:21:15 America/Bogota] PHP Warning:  Undefined array key "obs1_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 36
+[25-Jul-2024 10:21:40 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 191
+[25-Jul-2024 10:37:09 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 191
+[25-Jul-2024 10:47:53 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 191
+[25-Jul-2024 10:47:54 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 191
+[25-Jul-2024 10:52:14 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 191
+[25-Jul-2024 10:52:34 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 191
+[25-Jul-2024 10:56:59 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 191
+[25-Jul-2024 11:00:37 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 191
+[25-Jul-2024 11:18:45 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 191
+[26-Jul-2024 10:01:23 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 191
+[26-Jul-2024 13:56:18 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 191
+[26-Jul-2024 13:57:05 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 191
+[26-Jul-2024 13:57:58 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 191
+[27-Jul-2024 17:01:35 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 191
+[29-Jul-2024 10:57:53 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 191
+[29-Jul-2024 10:58:45 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 191
+[29-Jul-2024 11:18:00 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 191
+[29-Jul-2024 16:35:57 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 191
+[29-Jul-2024 17:53:55 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 191
+[29-Jul-2024 18:01:51 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 191
+[29-Jul-2024 18:14:23 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 191
+[30-Jul-2024 08:59:07 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 191
+[30-Jul-2024 11:03:22 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 191
+[30-Jul-2024 11:47:16 America/Bogota] PHP Warning:  Undefined array key "nombre" in /home2/visioni4/public_html/crm/code/exh/showexh.php on line 8
+[30-Jul-2024 11:47:16 America/Bogota] PHP Warning:  Undefined array key "tipo_usu" in /home2/visioni4/public_html/crm/code/exh/showexh.php on line 9
+[30-Jul-2024 12:31:27 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 191
+[30-Jul-2024 12:31:32 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 191
+[30-Jul-2024 12:31:32 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 191
+[30-Jul-2024 12:31:32 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 191
+[30-Jul-2024 12:34:10 America/Bogota] PHP Warning:  Undefined array key "raz_soc_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 19
+[30-Jul-2024 12:34:10 America/Bogota] PHP Warning:  Undefined array key "nit_cc_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 20
+[30-Jul-2024 12:34:10 America/Bogota] PHP Warning:  Undefined array key "tel_inte_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 25
+[30-Jul-2024 12:34:10 America/Bogota] PHP Warning:  Undefined array key "email_inte_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 26
+[30-Jul-2024 12:34:10 America/Bogota] PHP Warning:  Undefined array key "obs1_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 36
+[30-Jul-2024 15:31:33 America/Bogota] PHP Warning:  Undefined array key "nombre" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 9
+[30-Jul-2024 15:31:33 America/Bogota] PHP Warning:  Undefined array key "tipo_usu" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 10
+[30-Jul-2024 15:31:33 America/Bogota] PHP Warning:  Undefined array key "raz_soc_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 19
+[30-Jul-2024 15:31:33 America/Bogota] PHP Warning:  Undefined array key "nit_cc_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 20
+[30-Jul-2024 15:31:33 America/Bogota] PHP Warning:  Undefined array key "tel_inte_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 25
+[30-Jul-2024 15:31:33 America/Bogota] PHP Warning:  Undefined array key "email_inte_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 26
+[30-Jul-2024 15:31:33 America/Bogota] PHP Warning:  Undefined array key "obs1_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 36
+[30-Jul-2024 15:31:33 America/Bogota] PHP Warning:  Undefined array key "id_usu" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 41
+[30-Jul-2024 15:31:33 America/Bogota] PHP Warning:  Undefined array key "id_usu" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 43
+[30-Jul-2024 15:31:33 America/Bogota] PHP Fatal error:  Uncaught mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`visioni4_crm`.`exhibiciones`, CONSTRAINT `fk_exh_users` FOREIGN KEY (`id_usu`) REFERENCES `usuarios` (`id_usu`)) in /home2/visioni4/public_html/crm/code/exh/addexh1.php:46
+Stack trace:
+#0 /home2/visioni4/public_html/crm/code/exh/addexh1.php(46): mysqli->query('INSERT INTO exh...')
+#1 {main}
+  thrown in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 46
+[30-Jul-2024 15:31:51 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 191
+[30-Jul-2024 18:10:21 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 191
+[31-Jul-2024 16:04:14 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 191
+[01-Aug-2024 17:42:35 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 191
+[01-Aug-2024 17:42:39 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 191
+[01-Aug-2024 17:42:39 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 191
+[01-Aug-2024 17:42:40 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 191
+[01-Aug-2024 17:45:57 America/Bogota] PHP Warning:  Undefined array key "raz_soc_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 19
+[01-Aug-2024 17:45:57 America/Bogota] PHP Warning:  Undefined array key "nit_cc_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 20
+[01-Aug-2024 17:45:57 America/Bogota] PHP Warning:  Undefined array key "tel_inte_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 25
+[01-Aug-2024 17:45:57 America/Bogota] PHP Warning:  Undefined array key "email_inte_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 26
+[01-Aug-2024 17:45:57 America/Bogota] PHP Warning:  Undefined array key "obs1_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 36
+[01-Aug-2024 17:46:01 America/Bogota] PHP Warning:  Undefined array key "nombre" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 9
+[01-Aug-2024 17:46:01 America/Bogota] PHP Warning:  Undefined array key "tipo_usu" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 10
+[01-Aug-2024 17:46:01 America/Bogota] PHP Warning:  Undefined array key "cod_fr_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 16
+[01-Aug-2024 17:46:01 America/Bogota] PHP Warning:  Undefined array key "direccion_inm_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 17
+[01-Aug-2024 17:46:01 America/Bogota] PHP Warning:  Undefined array key "nom_ape_inte_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 18
+[01-Aug-2024 17:46:01 America/Bogota] PHP Warning:  Undefined array key "raz_soc_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 19
+[01-Aug-2024 17:46:01 America/Bogota] PHP Warning:  Undefined array key "nit_cc_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 20
+[01-Aug-2024 17:46:01 America/Bogota] PHP Warning:  Undefined array key "cel_inte_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 22
+[01-Aug-2024 17:46:01 America/Bogota] PHP Warning:  Undefined array key "visita_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 23
+[01-Aug-2024 17:46:01 America/Bogota] PHP Warning:  Undefined array key "nom_vis_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 24
+[01-Aug-2024 17:46:01 America/Bogota] PHP Warning:  Undefined array key "tel_inte_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 25
+[01-Aug-2024 17:46:01 America/Bogota] PHP Warning:  Undefined array key "email_inte_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 26
+[01-Aug-2024 17:46:01 America/Bogota] PHP Warning:  Undefined array key "valor_ubicacion_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 27
+[01-Aug-2024 17:46:01 America/Bogota] PHP Warning:  Undefined array key "valor_fachada_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 28
+[01-Aug-2024 17:46:01 America/Bogota] PHP Warning:  Undefined array key "valor_area_exterior_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 29
+[01-Aug-2024 17:46:01 America/Bogota] PHP Warning:  Undefined array key "valor_iluminacion_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 30
+[01-Aug-2024 17:46:01 America/Bogota] PHP Warning:  Undefined array key "valor_altura_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 31
+[01-Aug-2024 17:46:01 America/Bogota] PHP Warning:  Undefined array key "valor_pisos_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 32
+[01-Aug-2024 17:46:01 America/Bogota] PHP Warning:  Undefined array key "valor_paredes_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 33
+[01-Aug-2024 17:46:01 America/Bogota] PHP Warning:  Undefined array key "valor_carpinteria_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 34
+[01-Aug-2024 17:46:01 America/Bogota] PHP Warning:  Undefined array key "valor_banhos_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 35
+[01-Aug-2024 17:46:01 America/Bogota] PHP Warning:  Undefined array key "obs1_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 36
+[01-Aug-2024 17:46:01 America/Bogota] PHP Warning:  Undefined array key "obs2_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 37
+[01-Aug-2024 17:46:01 America/Bogota] PHP Warning:  Undefined array key "nit_cc_ase" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 38
+[01-Aug-2024 17:46:01 America/Bogota] PHP Warning:  Undefined array key "id_usu" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 41
+[01-Aug-2024 17:46:01 America/Bogota] PHP Warning:  Undefined array key "id_usu" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 43
+[01-Aug-2024 17:46:01 America/Bogota] PHP Fatal error:  Uncaught mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`visioni4_crm`.`exhibiciones`, CONSTRAINT `fk_exh_ase` FOREIGN KEY (`nit_cc_ase`) REFERENCES `asesores` (`nit_cc_ase`)) in /home2/visioni4/public_html/crm/code/exh/addexh1.php:46
+Stack trace:
+#0 /home2/visioni4/public_html/crm/code/exh/addexh1.php(46): mysqli->query('INSERT INTO exh...')
+#1 {main}
+  thrown in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 46
+[01-Aug-2024 17:48:29 America/Bogota] PHP Warning:  Undefined array key "nombre" in /home2/visioni4/public_html/crm/code/exh/showexh.php on line 8
+[01-Aug-2024 17:48:29 America/Bogota] PHP Warning:  Undefined array key "tipo_usu" in /home2/visioni4/public_html/crm/code/exh/showexh.php on line 9
+[01-Aug-2024 17:48:39 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 191
+[05-Aug-2024 17:02:31 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 191
+[05-Aug-2024 17:02:35 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 191
+[05-Aug-2024 17:02:35 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 191
+[05-Aug-2024 17:02:35 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 191
+[05-Aug-2024 17:08:57 America/Bogota] PHP Warning:  Undefined array key "nombre" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 9
+[05-Aug-2024 17:08:57 America/Bogota] PHP Warning:  Undefined array key "tipo_usu" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 10
+[05-Aug-2024 17:08:57 America/Bogota] PHP Warning:  Undefined array key "cod_fr_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 16
+[05-Aug-2024 17:08:57 America/Bogota] PHP Warning:  Undefined array key "direccion_inm_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 17
+[05-Aug-2024 17:08:57 America/Bogota] PHP Warning:  Undefined array key "nom_ape_inte_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 18
+[05-Aug-2024 17:08:57 America/Bogota] PHP Warning:  Undefined array key "raz_soc_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 19
+[05-Aug-2024 17:08:57 America/Bogota] PHP Warning:  Undefined array key "nit_cc_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 20
+[05-Aug-2024 17:08:57 America/Bogota] PHP Warning:  Undefined array key "cel_inte_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 22
+[05-Aug-2024 17:08:57 America/Bogota] PHP Warning:  Undefined array key "visita_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 23
+[05-Aug-2024 17:08:57 America/Bogota] PHP Warning:  Undefined array key "nom_vis_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 24
+[05-Aug-2024 17:08:57 America/Bogota] PHP Warning:  Undefined array key "tel_inte_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 25
+[05-Aug-2024 17:08:57 America/Bogota] PHP Warning:  Undefined array key "email_inte_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 26
+[05-Aug-2024 17:08:57 America/Bogota] PHP Warning:  Undefined array key "valor_ubicacion_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 27
+[05-Aug-2024 17:08:57 America/Bogota] PHP Warning:  Undefined array key "valor_fachada_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 28
+[05-Aug-2024 17:08:57 America/Bogota] PHP Warning:  Undefined array key "valor_area_exterior_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 29
+[05-Aug-2024 17:08:57 America/Bogota] PHP Warning:  Undefined array key "valor_iluminacion_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 30
+[05-Aug-2024 17:08:57 America/Bogota] PHP Warning:  Undefined array key "valor_altura_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 31
+[05-Aug-2024 17:08:57 America/Bogota] PHP Warning:  Undefined array key "valor_pisos_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 32
+[05-Aug-2024 17:08:57 America/Bogota] PHP Warning:  Undefined array key "valor_paredes_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 33
+[05-Aug-2024 17:08:57 America/Bogota] PHP Warning:  Undefined array key "valor_carpinteria_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 34
+[05-Aug-2024 17:08:57 America/Bogota] PHP Warning:  Undefined array key "valor_banhos_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 35
+[05-Aug-2024 17:08:57 America/Bogota] PHP Warning:  Undefined array key "obs1_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 36
+[05-Aug-2024 17:08:57 America/Bogota] PHP Warning:  Undefined array key "obs2_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 37
+[05-Aug-2024 17:08:57 America/Bogota] PHP Warning:  Undefined array key "nit_cc_ase" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 38
+[05-Aug-2024 17:08:57 America/Bogota] PHP Warning:  Undefined array key "id_usu" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 41
+[05-Aug-2024 17:08:57 America/Bogota] PHP Warning:  Undefined array key "id_usu" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 43
+[05-Aug-2024 17:08:57 America/Bogota] PHP Fatal error:  Uncaught mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`visioni4_crm`.`exhibiciones`, CONSTRAINT `fk_exh_ase` FOREIGN KEY (`nit_cc_ase`) REFERENCES `asesores` (`nit_cc_ase`)) in /home2/visioni4/public_html/crm/code/exh/addexh1.php:46
+Stack trace:
+#0 /home2/visioni4/public_html/crm/code/exh/addexh1.php(46): mysqli->query('INSERT INTO exh...')
+#1 {main}
+  thrown in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 46
+[10-Aug-2024 16:16:15 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 191
+[11-Aug-2024 19:13:57 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 191
+[13-Aug-2024 14:19:04 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 191
+[13-Aug-2024 14:20:39 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 191
+[13-Aug-2024 14:20:44 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 191
+[13-Aug-2024 14:20:44 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 191
+[13-Aug-2024 14:20:44 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 191
+[13-Aug-2024 14:26:49 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 191
+[14-Aug-2024 08:01:36 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 191
+[14-Aug-2024 08:08:47 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 191
+[14-Aug-2024 08:09:05 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 191
+[14-Aug-2024 08:09:07 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 191
+[14-Aug-2024 08:09:07 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 191
+[14-Aug-2024 08:09:07 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 191
+[14-Aug-2024 08:09:08 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 191
+[14-Aug-2024 08:09:08 America/Bogota] PHP Warning:  Undefined array key "nombre" in /home2/visioni4/public_html/crm/code/exh/showexh.php on line 8
+[14-Aug-2024 08:09:08 America/Bogota] PHP Warning:  Undefined array key "tipo_usu" in /home2/visioni4/public_html/crm/code/exh/showexh.php on line 9
+[14-Aug-2024 08:10:38 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 191
+[14-Aug-2024 08:13:48 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 191
+[14-Aug-2024 08:15:49 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 191
+[14-Aug-2024 08:16:29 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 191
+[14-Aug-2024 08:23:59 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 191
+[14-Aug-2024 08:30:27 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 191
+[14-Aug-2024 08:43:06 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 191
+[14-Aug-2024 08:43:17 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 191
+[14-Aug-2024 09:31:34 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 191
+[14-Aug-2024 09:50:27 America/Bogota] PHP Warning:  Undefined array key "nombre" in /home2/visioni4/public_html/crm/code/exh/showexh.php on line 8
+[14-Aug-2024 09:50:27 America/Bogota] PHP Warning:  Undefined array key "tipo_usu" in /home2/visioni4/public_html/crm/code/exh/showexh.php on line 9
+[15-Aug-2024 14:04:23 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 191
+[15-Aug-2024 14:43:44 America/Bogota] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 41
+[15-Aug-2024 14:43:44 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 46
+[15-Aug-2024 14:43:44 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 46
+[15-Aug-2024 14:43:44 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 47
+[15-Aug-2024 14:43:44 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 47
+[15-Aug-2024 14:43:44 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 251
+[15-Aug-2024 14:47:46 America/Bogota] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 41
+[15-Aug-2024 14:47:46 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 47
+[15-Aug-2024 14:47:46 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 50
+[15-Aug-2024 14:47:46 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 50
+[15-Aug-2024 14:47:46 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 51
+[15-Aug-2024 14:47:46 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 51
+[15-Aug-2024 15:26:21 America/Bogota] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 44
+[15-Aug-2024 15:26:21 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 45
+[15-Aug-2024 15:26:21 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 45
+[15-Aug-2024 15:26:21 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 46
+[15-Aug-2024 15:26:21 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 46
+[15-Aug-2024 15:26:21 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 202
+[15-Aug-2024 15:31:46 America/Bogota] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 44
+[15-Aug-2024 15:31:46 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 45
+[15-Aug-2024 15:31:46 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 45
+[15-Aug-2024 15:31:46 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 46
+[15-Aug-2024 15:31:46 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 46
+[15-Aug-2024 15:31:46 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 203
+[15-Aug-2024 15:32:28 America/Bogota] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 44
+[15-Aug-2024 15:32:28 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 45
+[15-Aug-2024 15:32:28 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 45
+[15-Aug-2024 15:32:28 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 46
+[15-Aug-2024 15:32:28 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 46
+[15-Aug-2024 15:32:28 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 202
+[15-Aug-2024 15:33:10 America/Bogota] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 44
+[15-Aug-2024 15:33:10 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 45
+[15-Aug-2024 15:33:10 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 45
+[15-Aug-2024 15:33:10 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 46
+[15-Aug-2024 15:33:10 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 46
+[15-Aug-2024 15:33:10 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 202
+[15-Aug-2024 16:10:28 America/Bogota] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 44
+[15-Aug-2024 16:10:28 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 45
+[15-Aug-2024 16:10:28 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 45
+[15-Aug-2024 16:10:28 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 46
+[15-Aug-2024 16:10:28 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 46
+[15-Aug-2024 16:10:28 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 225
+[15-Aug-2024 16:14:22 America/Bogota] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 44
+[15-Aug-2024 16:14:22 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 45
+[15-Aug-2024 16:14:22 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 45
+[15-Aug-2024 16:14:22 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 46
+[15-Aug-2024 16:14:22 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 46
+[15-Aug-2024 16:14:22 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 226
+[15-Aug-2024 16:14:46 America/Bogota] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 44
+[15-Aug-2024 16:14:46 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 45
+[15-Aug-2024 16:14:46 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 45
+[15-Aug-2024 16:14:46 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 46
+[15-Aug-2024 16:14:46 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 46
+[15-Aug-2024 16:14:46 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 226
+[15-Aug-2024 16:18:08 America/Bogota] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 44
+[15-Aug-2024 16:18:08 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 45
+[15-Aug-2024 16:18:08 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 45
+[15-Aug-2024 16:18:08 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 46
+[15-Aug-2024 16:18:08 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 46
+[15-Aug-2024 16:18:08 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 226
+[15-Aug-2024 16:22:04 America/Bogota] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 44
+[15-Aug-2024 16:22:04 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 45
+[15-Aug-2024 16:22:04 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 45
+[15-Aug-2024 16:22:04 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 46
+[15-Aug-2024 16:22:04 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 46
+[15-Aug-2024 16:22:04 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 231
+[15-Aug-2024 16:24:40 America/Bogota] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 44
+[15-Aug-2024 16:24:40 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 45
+[15-Aug-2024 16:24:40 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 45
+[15-Aug-2024 16:24:40 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 46
+[15-Aug-2024 16:24:40 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 46
+[15-Aug-2024 16:24:40 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 231
+[15-Aug-2024 16:26:34 America/Bogota] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 44
+[15-Aug-2024 16:26:34 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 45
+[15-Aug-2024 16:26:34 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 45
+[15-Aug-2024 16:26:34 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 46
+[15-Aug-2024 16:26:34 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 46
+[15-Aug-2024 16:26:34 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 239
+[15-Aug-2024 16:36:28 America/Bogota] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 44
+[15-Aug-2024 16:36:28 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 45
+[15-Aug-2024 16:36:28 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 45
+[15-Aug-2024 16:36:28 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 46
+[15-Aug-2024 16:36:28 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 46
+[15-Aug-2024 16:36:28 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 239
+[15-Aug-2024 16:40:51 America/Bogota] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 44
+[15-Aug-2024 16:40:51 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 45
+[15-Aug-2024 16:40:51 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 45
+[15-Aug-2024 16:40:51 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 46
+[15-Aug-2024 16:40:51 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 46
+[15-Aug-2024 16:40:51 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 239
+[15-Aug-2024 16:42:58 America/Bogota] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 44
+[15-Aug-2024 16:42:58 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 45
+[15-Aug-2024 16:42:58 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 45
+[15-Aug-2024 16:42:58 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 46
+[15-Aug-2024 16:42:58 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 46
+[15-Aug-2024 16:42:58 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 239
+[15-Aug-2024 16:55:14 America/Bogota] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 44
+[15-Aug-2024 16:55:14 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 45
+[15-Aug-2024 16:55:14 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 45
+[15-Aug-2024 16:55:14 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 46
+[15-Aug-2024 16:55:14 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 46
+[15-Aug-2024 16:55:42 America/Bogota] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 44
+[15-Aug-2024 16:55:42 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 45
+[15-Aug-2024 16:55:42 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 45
+[15-Aug-2024 16:55:42 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 46
+[15-Aug-2024 16:55:42 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 46
+[15-Aug-2024 16:57:09 America/Bogota] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 44
+[15-Aug-2024 16:57:09 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 45
+[15-Aug-2024 16:57:09 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 45
+[15-Aug-2024 16:57:09 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 46
+[15-Aug-2024 16:57:09 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 46
+[16-Aug-2024 14:16:56 America/Bogota] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 44
+[16-Aug-2024 14:16:56 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 45
+[16-Aug-2024 14:16:56 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 45
+[16-Aug-2024 14:16:56 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 46
+[16-Aug-2024 14:16:56 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 46
+[16-Aug-2024 14:17:48 America/Bogota] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 44
+[16-Aug-2024 14:17:48 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 45
+[16-Aug-2024 14:17:48 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 45
+[16-Aug-2024 14:17:48 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 46
+[16-Aug-2024 14:17:48 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 46
+[16-Aug-2024 14:19:38 America/Bogota] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 44
+[16-Aug-2024 14:19:38 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 45
+[16-Aug-2024 14:19:38 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 45
+[16-Aug-2024 14:19:38 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 46
+[16-Aug-2024 14:19:38 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 46
+[16-Aug-2024 14:19:43 America/Bogota] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 44
+[16-Aug-2024 14:19:43 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 45
+[16-Aug-2024 14:19:43 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 45
+[16-Aug-2024 14:19:43 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 46
+[16-Aug-2024 14:19:43 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 46
+[16-Aug-2024 14:21:07 America/Bogota] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 44
+[16-Aug-2024 14:21:07 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 45
+[16-Aug-2024 14:21:07 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 45
+[16-Aug-2024 14:21:07 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 46
+[16-Aug-2024 14:21:07 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 46
+[16-Aug-2024 14:21:15 America/Bogota] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 44
+[16-Aug-2024 14:21:15 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 45
+[16-Aug-2024 14:21:15 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 45
+[16-Aug-2024 14:21:15 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 46
+[16-Aug-2024 14:21:15 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 46
+[16-Aug-2024 14:21:34 America/Bogota] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 44
+[16-Aug-2024 14:21:34 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 45
+[16-Aug-2024 14:21:34 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 45
+[16-Aug-2024 14:21:34 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 46
+[16-Aug-2024 14:21:34 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 46
+[16-Aug-2024 14:21:43 America/Bogota] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 44
+[16-Aug-2024 14:21:43 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 45
+[16-Aug-2024 14:21:43 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 45
+[16-Aug-2024 14:21:43 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 46
+[16-Aug-2024 14:21:43 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 46
+[16-Aug-2024 14:22:45 America/Bogota] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 44
+[16-Aug-2024 14:22:45 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 45
+[16-Aug-2024 14:22:45 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 45
+[16-Aug-2024 14:22:45 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 46
+[16-Aug-2024 14:22:45 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 46
+[16-Aug-2024 14:27:42 America/Bogota] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 44
+[16-Aug-2024 14:27:42 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 45
+[16-Aug-2024 14:27:42 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 45
+[16-Aug-2024 14:27:42 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 46
+[16-Aug-2024 14:27:42 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 46
+[16-Aug-2024 14:27:42 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 239
+[16-Aug-2024 14:27:55 America/Bogota] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 44
+[16-Aug-2024 14:27:55 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 45
+[16-Aug-2024 14:27:55 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 45
+[16-Aug-2024 14:27:55 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 46
+[16-Aug-2024 14:27:55 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 46
+[16-Aug-2024 14:27:55 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 239
+[16-Aug-2024 14:32:25 America/Bogota] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 40
+[16-Aug-2024 14:32:25 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 41
+[16-Aug-2024 14:32:25 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 41
+[16-Aug-2024 14:32:25 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 42
+[16-Aug-2024 14:32:25 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 42
+[16-Aug-2024 14:32:25 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 235
+[16-Aug-2024 14:35:20 America/Bogota] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 40
+[16-Aug-2024 14:35:20 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 41
+[16-Aug-2024 14:35:20 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 41
+[16-Aug-2024 14:35:20 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 42
+[16-Aug-2024 14:35:20 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 42
+[16-Aug-2024 14:35:20 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 235
+[16-Aug-2024 14:43:23 America/Bogota] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 44
+[16-Aug-2024 14:43:23 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 45
+[16-Aug-2024 14:43:23 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 45
+[16-Aug-2024 14:43:23 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 46
+[16-Aug-2024 14:43:23 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 46
+[16-Aug-2024 14:43:23 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 239
+[16-Aug-2024 14:43:41 America/Bogota] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 44
+[16-Aug-2024 14:43:41 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 45
+[16-Aug-2024 14:43:41 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 45
+[16-Aug-2024 14:43:41 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 46
+[16-Aug-2024 14:43:41 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 46
+[16-Aug-2024 14:43:41 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 239
+[16-Aug-2024 14:44:12 America/Bogota] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 44
+[16-Aug-2024 14:44:12 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 45
+[16-Aug-2024 14:44:12 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 45
+[16-Aug-2024 14:44:12 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 46
+[16-Aug-2024 14:44:12 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 46
+[16-Aug-2024 14:44:12 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 239
+[16-Aug-2024 14:45:51 America/Bogota] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 44
+[16-Aug-2024 14:45:51 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 45
+[16-Aug-2024 14:45:51 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 45
+[16-Aug-2024 14:45:51 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 46
+[16-Aug-2024 14:45:51 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 46
+[16-Aug-2024 14:45:51 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 239
+[16-Aug-2024 14:56:56 America/Bogota] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 44
+[16-Aug-2024 14:56:56 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 45
+[16-Aug-2024 14:56:56 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 45
+[16-Aug-2024 14:56:56 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 46
+[16-Aug-2024 14:56:56 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 46
+[16-Aug-2024 15:05:47 America/Bogota] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 44
+[16-Aug-2024 15:05:47 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 45
+[16-Aug-2024 15:05:47 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 45
+[16-Aug-2024 15:05:47 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 46
+[16-Aug-2024 15:05:47 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 46
+[16-Aug-2024 15:05:47 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 239
+[16-Aug-2024 15:07:42 America/Bogota] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 44
+[16-Aug-2024 15:07:42 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 45
+[16-Aug-2024 15:07:42 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 45
+[16-Aug-2024 15:07:42 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 46
+[16-Aug-2024 15:07:42 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 46
+[16-Aug-2024 15:07:42 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 239
+[16-Aug-2024 15:15:04 America/Bogota] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 44
+[16-Aug-2024 15:15:04 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 45
+[16-Aug-2024 15:15:04 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 45
+[16-Aug-2024 15:15:04 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 46
+[16-Aug-2024 15:15:04 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 46
+[16-Aug-2024 15:15:58 America/Bogota] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 44
+[16-Aug-2024 15:15:58 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 45
+[16-Aug-2024 15:15:58 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 45
+[16-Aug-2024 15:15:58 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 46
+[16-Aug-2024 15:15:58 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 46
+[16-Aug-2024 15:17:02 America/Bogota] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 44
+[16-Aug-2024 15:17:02 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 45
+[16-Aug-2024 15:17:02 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 45
+[16-Aug-2024 15:17:02 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 46
+[16-Aug-2024 15:17:02 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 46
+[16-Aug-2024 15:20:21 America/Bogota] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 44
+[16-Aug-2024 15:20:21 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 45
+[16-Aug-2024 15:20:21 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 45
+[16-Aug-2024 15:20:21 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 46
+[16-Aug-2024 15:20:21 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 46
+[16-Aug-2024 15:23:59 America/Bogota] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 44
+[16-Aug-2024 15:23:59 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 45
+[16-Aug-2024 15:23:59 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 45
+[16-Aug-2024 15:23:59 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 46
+[16-Aug-2024 15:23:59 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 46
+[16-Aug-2024 15:28:38 America/Bogota] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 39
+[16-Aug-2024 15:28:38 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 40
+[16-Aug-2024 15:28:38 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 40
+[16-Aug-2024 15:28:38 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 41
+[16-Aug-2024 15:28:38 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 41
+[16-Aug-2024 15:30:37 America/Bogota] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 39
+[16-Aug-2024 15:30:37 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 40
+[16-Aug-2024 15:30:37 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 40
+[16-Aug-2024 15:30:37 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 41
+[16-Aug-2024 15:30:37 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 41
+[16-Aug-2024 15:34:44 America/Bogota] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 40
+[16-Aug-2024 15:34:44 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 41
+[16-Aug-2024 15:34:44 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 41
+[16-Aug-2024 15:34:44 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 42
+[16-Aug-2024 15:34:44 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 42
+[16-Aug-2024 15:34:44 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 235
+[16-Aug-2024 15:34:57 America/Bogota] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 40
+[16-Aug-2024 15:34:57 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 41
+[16-Aug-2024 15:34:57 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 41
+[16-Aug-2024 15:34:57 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 42
+[16-Aug-2024 15:34:57 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 42
+[16-Aug-2024 15:34:57 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 235
+[16-Aug-2024 15:35:20 America/Bogota] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 40
+[16-Aug-2024 15:35:20 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 41
+[16-Aug-2024 15:35:20 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 41
+[16-Aug-2024 15:35:20 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 42
+[16-Aug-2024 15:35:20 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 42
+[16-Aug-2024 15:35:20 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 235
+[16-Aug-2024 15:37:22 America/Bogota] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 40
+[16-Aug-2024 15:37:22 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 41
+[16-Aug-2024 15:37:22 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 41
+[16-Aug-2024 15:37:22 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 42
+[16-Aug-2024 15:37:22 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 42
+[16-Aug-2024 15:37:22 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 235
+[16-Aug-2024 15:40:33 America/Bogota] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 44
+[16-Aug-2024 15:40:33 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 45
+[16-Aug-2024 15:40:33 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 45
+[16-Aug-2024 15:40:33 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 46
+[16-Aug-2024 15:40:33 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 46
+[16-Aug-2024 15:41:26 America/Bogota] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 40
+[16-Aug-2024 15:41:26 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 41
+[16-Aug-2024 15:41:26 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 41
+[16-Aug-2024 15:41:26 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 42
+[16-Aug-2024 15:41:26 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 42
+[16-Aug-2024 15:41:26 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 235
+[16-Aug-2024 15:44:00 America/Bogota] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 41
+[16-Aug-2024 15:44:00 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 42
+[16-Aug-2024 15:44:00 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 42
+[16-Aug-2024 15:44:00 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 43
+[16-Aug-2024 15:44:00 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 43
+[16-Aug-2024 15:44:00 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 236
+[16-Aug-2024 15:44:24 America/Bogota] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 40
+[16-Aug-2024 15:44:24 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 41
+[16-Aug-2024 15:44:24 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 41
+[16-Aug-2024 15:44:24 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 42
+[16-Aug-2024 15:44:24 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 42
+[16-Aug-2024 15:44:24 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 235
+[16-Aug-2024 15:48:25 America/Bogota] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 41
+[16-Aug-2024 15:48:25 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 42
+[16-Aug-2024 15:48:25 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 42
+[16-Aug-2024 15:48:25 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 43
+[16-Aug-2024 15:48:25 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 43
+[16-Aug-2024 15:48:46 America/Bogota] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 40
+[16-Aug-2024 15:48:46 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 41
+[16-Aug-2024 15:48:46 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 41
+[16-Aug-2024 15:48:46 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 42
+[16-Aug-2024 15:48:46 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 42
+[16-Aug-2024 15:48:46 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 235
+[16-Aug-2024 15:52:51 America/Bogota] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 41
+[16-Aug-2024 15:52:51 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 42
+[16-Aug-2024 15:52:51 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 42
+[16-Aug-2024 15:52:51 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 43
+[16-Aug-2024 15:52:51 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 43
+[16-Aug-2024 15:53:06 America/Bogota] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 40
+[16-Aug-2024 15:53:06 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 41
+[16-Aug-2024 15:53:06 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 41
+[16-Aug-2024 15:53:06 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 42
+[16-Aug-2024 15:53:06 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 42
+[16-Aug-2024 15:53:06 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 235
+[16-Aug-2024 15:54:49 America/Bogota] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 40
+[16-Aug-2024 15:54:49 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 41
+[16-Aug-2024 15:54:49 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 41
+[16-Aug-2024 15:54:49 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 42
+[16-Aug-2024 15:54:49 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 42
+[16-Aug-2024 15:54:49 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 235
+[16-Aug-2024 15:55:53 America/Bogota] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 40
+[16-Aug-2024 15:55:53 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 41
+[16-Aug-2024 15:55:53 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 41
+[16-Aug-2024 15:55:53 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 42
+[16-Aug-2024 15:55:53 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 42
+[16-Aug-2024 15:55:53 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 235
+[19-Aug-2024 01:16:12 America/Bogota] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 40
+[19-Aug-2024 01:16:12 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 41
+[19-Aug-2024 01:16:12 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 41
+[19-Aug-2024 01:16:12 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 42
+[19-Aug-2024 01:16:12 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 42
+[19-Aug-2024 01:16:12 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 235
+[19-Aug-2024 01:16:34 America/Bogota] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 40
+[19-Aug-2024 01:16:34 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 41
+[19-Aug-2024 01:16:34 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 41
+[19-Aug-2024 01:16:34 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 42
+[19-Aug-2024 01:16:34 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 42
+[19-Aug-2024 01:16:34 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 235
+[20-Aug-2024 10:16:56 America/Bogota] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 40
+[20-Aug-2024 10:16:56 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 41
+[20-Aug-2024 10:16:56 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 41
+[20-Aug-2024 10:16:56 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 42
+[20-Aug-2024 10:16:56 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 42
+[20-Aug-2024 10:16:56 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 235
+[20-Aug-2024 10:17:32 America/Bogota] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 40
+[20-Aug-2024 10:17:32 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 41
+[20-Aug-2024 10:17:32 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 41
+[20-Aug-2024 10:17:32 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 42
+[20-Aug-2024 10:17:32 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 42
+[20-Aug-2024 10:17:32 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 235
+[20-Aug-2024 10:19:54 America/Bogota] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 40
+[20-Aug-2024 10:19:54 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 41
+[20-Aug-2024 10:19:54 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 41
+[20-Aug-2024 10:19:54 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 42
+[20-Aug-2024 10:19:54 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 42
+[20-Aug-2024 10:19:54 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 235
+[20-Aug-2024 10:35:47 America/Bogota] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 40
+[20-Aug-2024 10:35:47 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 41
+[20-Aug-2024 10:35:47 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 41
+[20-Aug-2024 10:35:47 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 42
+[20-Aug-2024 10:35:47 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 42
+[20-Aug-2024 10:35:47 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 235
+[20-Aug-2024 10:37:46 America/Bogota] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 40
+[20-Aug-2024 10:37:46 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 41
+[20-Aug-2024 10:37:46 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 41
+[20-Aug-2024 10:37:46 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 42
+[20-Aug-2024 10:37:46 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 42
+[20-Aug-2024 10:37:46 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 235
+[20-Aug-2024 10:39:05 America/Bogota] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 40
+[20-Aug-2024 10:39:05 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 41
+[20-Aug-2024 10:39:05 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 41
+[20-Aug-2024 10:39:05 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 42
+[20-Aug-2024 10:39:05 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 42
+[20-Aug-2024 10:39:05 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/addexh.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 235
+[20-Aug-2024 10:40:46 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/zebra.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 14
+[20-Aug-2024 10:40:46 America/Bogota] PHP Warning:  Undefined variable $nit_cc_ase in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 248
+[20-Aug-2024 10:40:46 America/Bogota] PHP Warning:  Undefined variable $nombre_usu in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 248
+[20-Aug-2024 10:40:46 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/zebra.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 250
+[20-Aug-2024 10:45:31 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/zebra.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 17
+[20-Aug-2024 10:46:26 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/zebra.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 17
+[20-Aug-2024 11:04:39 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/zebra.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 17
+[20-Aug-2024 11:04:56 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/zebra.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 17
+[20-Aug-2024 11:22:21 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/zebra.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 17
+[20-Aug-2024 11:23:20 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/zebra.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 17
+[20-Aug-2024 11:28:33 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/zebra.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 17
+[20-Aug-2024 11:55:59 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/zebra.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 17
+[20-Aug-2024 12:08:08 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/zebra.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 17
+[20-Aug-2024 12:08:12 America/Bogota] PHP Warning:  Undefined array key "nombre" in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 9
+[20-Aug-2024 12:08:12 America/Bogota] PHP Warning:  Undefined array key "tipo_usu" in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 10
+[20-Aug-2024 12:08:12 America/Bogota] PHP Warning:  Undefined array key "id_usu" in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 11
+[20-Aug-2024 12:08:12 America/Bogota] PHP Warning:  Undefined array key "nombre" in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 12
+[20-Aug-2024 12:08:12 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/zebra.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 17
+[20-Aug-2024 12:27:52 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/editexh.php:14) in /home2/visioni4/public_html/crm/code/exh/editexh.php on line 203
+[20-Aug-2024 12:33:27 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/zebra.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 17
+[20-Aug-2024 12:37:34 America/Bogota] PHP Warning:  Undefined array key "" in /home2/visioni4/public_html/crm/code/exh/showexhpre.php on line 131
+[20-Aug-2024 12:37:34 America/Bogota] PHP Warning:  Undefined array key "" in /home2/visioni4/public_html/crm/code/exh/showexhpre.php on line 131
+[20-Aug-2024 12:37:34 America/Bogota] PHP Warning:  Undefined array key "" in /home2/visioni4/public_html/crm/code/exh/showexhpre.php on line 131
+[20-Aug-2024 12:37:34 America/Bogota] PHP Warning:  Undefined array key "" in /home2/visioni4/public_html/crm/code/exh/showexhpre.php on line 131
+[20-Aug-2024 12:37:34 America/Bogota] PHP Warning:  Undefined array key "" in /home2/visioni4/public_html/crm/code/exh/showexhpre.php on line 131
+[20-Aug-2024 12:37:34 America/Bogota] PHP Warning:  Undefined array key "" in /home2/visioni4/public_html/crm/code/exh/showexhpre.php on line 131
+[20-Aug-2024 12:37:34 America/Bogota] PHP Warning:  Undefined array key "" in /home2/visioni4/public_html/crm/code/exh/showexhpre.php on line 131
+[20-Aug-2024 12:37:34 America/Bogota] PHP Warning:  Undefined array key "" in /home2/visioni4/public_html/crm/code/exh/showexhpre.php on line 131
+[20-Aug-2024 12:37:34 America/Bogota] PHP Warning:  Undefined array key "" in /home2/visioni4/public_html/crm/code/exh/showexhpre.php on line 131
+[20-Aug-2024 12:37:34 America/Bogota] PHP Warning:  Undefined array key "" in /home2/visioni4/public_html/crm/code/exh/showexhpre.php on line 131
+[20-Aug-2024 12:37:42 America/Bogota] PHP Warning:  Undefined array key "" in /home2/visioni4/public_html/crm/code/exh/showexhpre.php on line 131
+[20-Aug-2024 12:37:42 America/Bogota] PHP Warning:  Undefined array key "" in /home2/visioni4/public_html/crm/code/exh/showexhpre.php on line 131
+[20-Aug-2024 12:37:42 America/Bogota] PHP Warning:  Undefined array key "" in /home2/visioni4/public_html/crm/code/exh/showexhpre.php on line 131
+[20-Aug-2024 12:37:42 America/Bogota] PHP Warning:  Undefined array key "" in /home2/visioni4/public_html/crm/code/exh/showexhpre.php on line 131
+[20-Aug-2024 12:37:42 America/Bogota] PHP Warning:  Undefined array key "" in /home2/visioni4/public_html/crm/code/exh/showexhpre.php on line 131
+[20-Aug-2024 12:37:42 America/Bogota] PHP Warning:  Undefined array key "" in /home2/visioni4/public_html/crm/code/exh/showexhpre.php on line 131
+[20-Aug-2024 12:37:42 America/Bogota] PHP Warning:  Undefined array key "" in /home2/visioni4/public_html/crm/code/exh/showexhpre.php on line 131
+[20-Aug-2024 12:37:42 America/Bogota] PHP Warning:  Undefined array key "" in /home2/visioni4/public_html/crm/code/exh/showexhpre.php on line 131
+[20-Aug-2024 12:37:42 America/Bogota] PHP Warning:  Undefined array key "" in /home2/visioni4/public_html/crm/code/exh/showexhpre.php on line 131
+[20-Aug-2024 12:37:42 America/Bogota] PHP Warning:  Undefined array key "" in /home2/visioni4/public_html/crm/code/exh/showexhpre.php on line 131
+[20-Aug-2024 12:41:06 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/zebra.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 17
+[20-Aug-2024 12:42:56 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/zebra.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 17
+[20-Aug-2024 12:45:37 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/zebra.php:1) in /home2/visioni4/public_html/crm/code/exh/addexhpre.php on line 24
+[20-Aug-2024 12:45:57 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/zebra.php:1) in /home2/visioni4/public_html/crm/code/exh/addexhpre.php on line 24
+[21-Aug-2024 14:12:17 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/zebra.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 17
+[21-Aug-2024 14:18:24 America/Bogota] PHP Warning:  Undefined array key "nom_vis_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 19
+[21-Aug-2024 14:18:24 America/Bogota] PHP Warning:  Undefined array key "area_max_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 28
+[21-Aug-2024 14:18:24 America/Bogota] PHP Warning:  Undefined array key "area_min_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 29
+[21-Aug-2024 14:18:24 America/Bogota] PHP Warning:  Undefined array key "tipo_sis_elec_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 30
+[21-Aug-2024 14:18:24 America/Bogota] PHP Warning:  Undefined array key "kVA_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 31
+[21-Aug-2024 14:18:24 America/Bogota] PHP Warning:  Undefined array key "presupuesto_max_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 32
+[21-Aug-2024 14:18:24 America/Bogota] PHP Warning:  Undefined array key "presupuesto_min_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 33
+[21-Aug-2024 14:18:24 America/Bogota] PHP Fatal error:  Uncaught mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`visioni4_crm`.`exhibiciones`, CONSTRAINT `fk_exh_ase` FOREIGN KEY (`nit_cc_ase`) REFERENCES `asesores` (`nit_cc_ase`)) in /home2/visioni4/public_html/crm/code/exh/addexh1.php:53
+Stack trace:
+#0 /home2/visioni4/public_html/crm/code/exh/addexh1.php(53): mysqli->query('INSERT INTO exh...')
+#1 {main}
+  thrown in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 53
+[21-Aug-2024 14:21:37 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/zebra.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 17
+[21-Aug-2024 14:23:13 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/zebra.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 17
+[21-Aug-2024 14:31:59 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/zebra.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 17
+[21-Aug-2024 14:32:37 America/Bogota] PHP Warning:  Undefined array key "nom_vis_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 19
+[21-Aug-2024 14:32:37 America/Bogota] PHP Warning:  Undefined array key "area_max_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 28
+[21-Aug-2024 14:32:37 America/Bogota] PHP Warning:  Undefined array key "area_min_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 29
+[21-Aug-2024 14:32:37 America/Bogota] PHP Warning:  Undefined array key "tipo_sis_elec_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 30
+[21-Aug-2024 14:32:37 America/Bogota] PHP Warning:  Undefined array key "kVA_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 31
+[21-Aug-2024 14:32:37 America/Bogota] PHP Warning:  Undefined array key "presupuesto_max_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 32
+[21-Aug-2024 14:32:37 America/Bogota] PHP Warning:  Undefined array key "presupuesto_min_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 33
+[21-Aug-2024 14:32:37 America/Bogota] PHP Fatal error:  Uncaught mysqli_sql_exception: Column count doesn't match value count at row 1 in /home2/visioni4/public_html/crm/code/exh/addexh1.php:54
+Stack trace:
+#0 /home2/visioni4/public_html/crm/code/exh/addexh1.php(54): mysqli->prepare('INSERT INTO exh...')
+#1 {main}
+  thrown in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 54
+[21-Aug-2024 14:38:04 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/zebra.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 17
+[21-Aug-2024 14:38:05 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/zebra.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 17
+[21-Aug-2024 14:40:50 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/zebra.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 17
+[21-Aug-2024 14:41:21 America/Bogota] PHP Warning:  Undefined array key "nom_vis_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 19
+[21-Aug-2024 14:41:21 America/Bogota] PHP Warning:  Undefined array key "area_max_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 28
+[21-Aug-2024 14:41:21 America/Bogota] PHP Warning:  Undefined array key "area_min_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 29
+[21-Aug-2024 14:41:21 America/Bogota] PHP Warning:  Undefined array key "tipo_sis_elec_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 30
+[21-Aug-2024 14:41:21 America/Bogota] PHP Warning:  Undefined array key "kVA_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 31
+[21-Aug-2024 14:41:21 America/Bogota] PHP Warning:  Undefined array key "presupuesto_max_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 32
+[21-Aug-2024 14:41:21 America/Bogota] PHP Warning:  Undefined array key "presupuesto_min_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 33
+[21-Aug-2024 14:41:21 America/Bogota] PHP Fatal error:  Uncaught mysqli_sql_exception: Column count doesn't match value count at row 1 in /home2/visioni4/public_html/crm/code/exh/addexh1.php:54
+Stack trace:
+#0 /home2/visioni4/public_html/crm/code/exh/addexh1.php(54): mysqli->prepare('INSERT INTO exh...')
+#1 {main}
+  thrown in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 54
+[21-Aug-2024 14:47:53 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/zebra.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 17
+[21-Aug-2024 14:47:55 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/zebra.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 17
+[21-Aug-2024 14:48:32 America/Bogota] PHP Warning:  Undefined array key "nom_vis_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 19
+[21-Aug-2024 14:48:32 America/Bogota] PHP Warning:  Undefined array key "area_max_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 28
+[21-Aug-2024 14:48:32 America/Bogota] PHP Warning:  Undefined array key "area_min_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 29
+[21-Aug-2024 14:48:32 America/Bogota] PHP Warning:  Undefined array key "tipo_sis_elec_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 30
+[21-Aug-2024 14:48:32 America/Bogota] PHP Warning:  Undefined array key "kVA_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 31
+[21-Aug-2024 14:48:32 America/Bogota] PHP Warning:  Undefined array key "presupuesto_max_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 32
+[21-Aug-2024 14:48:32 America/Bogota] PHP Warning:  Undefined array key "presupuesto_min_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 33
+[21-Aug-2024 14:48:32 America/Bogota] PHP Fatal error:  Uncaught mysqli_sql_exception: Column count doesn't match value count at row 1 in /home2/visioni4/public_html/crm/code/exh/addexh1.php:54
+Stack trace:
+#0 /home2/visioni4/public_html/crm/code/exh/addexh1.php(54): mysqli->prepare('INSERT INTO exh...')
+#1 {main}
+  thrown in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 54
+[21-Aug-2024 15:03:03 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/zebra.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 17
+[21-Aug-2024 15:03:04 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/zebra.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 17
+[21-Aug-2024 15:05:15 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/zebra.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 17
+[21-Aug-2024 15:06:55 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/zebra.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 17
+[21-Aug-2024 15:07:25 America/Bogota] PHP Warning:  Undefined array key "nom_vis_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 19
+[21-Aug-2024 15:07:25 America/Bogota] PHP Warning:  Undefined array key "area_max_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 28
+[21-Aug-2024 15:07:25 America/Bogota] PHP Warning:  Undefined array key "area_min_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 29
+[21-Aug-2024 15:07:25 America/Bogota] PHP Warning:  Undefined array key "tipo_sis_elec_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 30
+[21-Aug-2024 15:07:25 America/Bogota] PHP Warning:  Undefined array key "kVA_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 31
+[21-Aug-2024 15:07:25 America/Bogota] PHP Warning:  Undefined array key "presupuesto_max_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 32
+[21-Aug-2024 15:07:25 America/Bogota] PHP Warning:  Undefined array key "presupuesto_min_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 33
+[21-Aug-2024 15:07:25 America/Bogota] PHP Fatal error:  Uncaught mysqli_sql_exception: Column count doesn't match value count at row 1 in /home2/visioni4/public_html/crm/code/exh/addexh1.php:54
+Stack trace:
+#0 /home2/visioni4/public_html/crm/code/exh/addexh1.php(54): mysqli->prepare('INSERT INTO exh...')
+#1 {main}
+  thrown in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 54
+[21-Aug-2024 15:11:02 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/zebra.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 17
+[21-Aug-2024 15:11:03 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/zebra.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 17
+[21-Aug-2024 15:31:13 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/zebra.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 17
+[21-Aug-2024 15:32:03 America/Bogota] PHP Warning:  Undefined array key "nom_vis_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 19
+[21-Aug-2024 15:32:03 America/Bogota] PHP Warning:  Undefined array key "area_max_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 28
+[21-Aug-2024 15:32:03 America/Bogota] PHP Warning:  Undefined array key "area_min_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 29
+[21-Aug-2024 15:32:03 America/Bogota] PHP Warning:  Undefined array key "tipo_sis_elec_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 30
+[21-Aug-2024 15:32:03 America/Bogota] PHP Warning:  Undefined array key "kVA_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 31
+[21-Aug-2024 15:32:03 America/Bogota] PHP Warning:  Undefined array key "presupuesto_max_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 32
+[21-Aug-2024 15:32:03 America/Bogota] PHP Warning:  Undefined array key "presupuesto_min_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 33
+[21-Aug-2024 15:32:03 America/Bogota] PHP Fatal error:  Uncaught mysqli_sql_exception: Column count doesn't match value count at row 1 in /home2/visioni4/public_html/crm/code/exh/addexh1.php:54
+Stack trace:
+#0 /home2/visioni4/public_html/crm/code/exh/addexh1.php(54): mysqli->prepare('INSERT INTO exh...')
+#1 {main}
+  thrown in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 54
+[21-Aug-2024 15:32:19 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/zebra.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 17
+[21-Aug-2024 15:32:23 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/zebra.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 17
+[21-Aug-2024 15:34:45 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/zebra.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 17
+[21-Aug-2024 15:35:45 America/Bogota] PHP Warning:  Undefined array key "nom_vis_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 19
+[21-Aug-2024 15:35:45 America/Bogota] PHP Warning:  Undefined array key "area_max_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 28
+[21-Aug-2024 15:35:45 America/Bogota] PHP Warning:  Undefined array key "area_min_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 29
+[21-Aug-2024 15:35:45 America/Bogota] PHP Warning:  Undefined array key "tipo_sis_elec_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 30
+[21-Aug-2024 15:35:45 America/Bogota] PHP Warning:  Undefined array key "kVA_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 31
+[21-Aug-2024 15:35:45 America/Bogota] PHP Warning:  Undefined array key "presupuesto_max_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 32
+[21-Aug-2024 15:35:45 America/Bogota] PHP Warning:  Undefined array key "presupuesto_min_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 33
+[21-Aug-2024 15:35:45 America/Bogota] PHP Fatal error:  Uncaught mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`visioni4_crm`.`exhibiciones`, CONSTRAINT `fk_exh_ase` FOREIGN KEY (`nit_cc_ase`) REFERENCES `asesores` (`nit_cc_ase`)) in /home2/visioni4/public_html/crm/code/exh/addexh1.php:53
+Stack trace:
+#0 /home2/visioni4/public_html/crm/code/exh/addexh1.php(53): mysqli->query('INSERT INTO exh...')
+#1 {main}
+  thrown in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 53
+[21-Aug-2024 15:37:28 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/zebra.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 17
+[21-Aug-2024 15:47:07 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/zebra.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 17
+[21-Aug-2024 15:51:58 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/zebra.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 17
+[21-Aug-2024 15:54:39 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/zebra.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 17
+[21-Aug-2024 15:54:41 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/zebra.php:1) in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 17
+[21-Aug-2024 16:04:48 America/Bogota] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'nombre' in 'field list' in /home2/visioni4/public_html/crm/code/exh/addexh.php:13
+Stack trace:
+#0 /home2/visioni4/public_html/crm/code/exh/addexh.php(13): mysqli->prepare('SELECT nombre, ...')
+#1 {main}
+  thrown in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 13
+[21-Aug-2024 16:05:35 America/Bogota] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'nombre' in 'field list' in /home2/visioni4/public_html/crm/code/exh/addexh.php:21
+Stack trace:
+#0 /home2/visioni4/public_html/crm/code/exh/addexh.php(21): mysqli->prepare('SELECT nombre, ...')
+#1 {main}
+  thrown in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 21
+[21-Aug-2024 16:06:21 America/Bogota] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'nombre' in 'field list' in /home2/visioni4/public_html/crm/code/exh/addexh.php:16
+Stack trace:
+#0 /home2/visioni4/public_html/crm/code/exh/addexh.php(16): mysqli->prepare('SELECT nombre, ...')
+#1 {main}
+  thrown in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 16
+[21-Aug-2024 16:08:12 America/Bogota] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'nombre' in 'field list' in /home2/visioni4/public_html/crm/code/exh/addexh.php:20
+Stack trace:
+#0 /home2/visioni4/public_html/crm/code/exh/addexh.php(20): mysqli->prepare('SELECT nombre, ...')
+#1 {main}
+  thrown in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 20
+[21-Aug-2024 16:08:16 America/Bogota] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'nombre' in 'field list' in /home2/visioni4/public_html/crm/code/exh/addexh.php:20
+Stack trace:
+#0 /home2/visioni4/public_html/crm/code/exh/addexh.php(20): mysqli->prepare('SELECT nombre, ...')
+#1 {main}
+  thrown in /home2/visioni4/public_html/crm/code/exh/addexh.php on line 20
+[21-Aug-2024 16:16:37 America/Bogota] PHP Fatal error:  Uncaught mysqli_sql_exception: Column count doesn't match value count at row 1 in /home2/visioni4/public_html/crm/code/exh/addexh1.php:52
+Stack trace:
+#0 /home2/visioni4/public_html/crm/code/exh/addexh1.php(52): mysqli->prepare('INSERT INTO exh...')
+#1 {main}
+  thrown in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 52
+[21-Aug-2024 16:22:02 America/Bogota] PHP Fatal error:  Uncaught mysqli_sql_exception: Column count doesn't match value count at row 1 in /home2/visioni4/public_html/crm/code/exh/addexh1.php:62
+Stack trace:
+#0 /home2/visioni4/public_html/crm/code/exh/addexh1.php(62): mysqli->prepare('INSERT INTO exh...')
+#1 {main}
+  thrown in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 62
+[21-Aug-2024 16:22:36 America/Bogota] PHP Fatal error:  Uncaught mysqli_sql_exception: Column count doesn't match value count at row 1 in /home2/visioni4/public_html/crm/code/exh/addexh1.php:62
+Stack trace:
+#0 /home2/visioni4/public_html/crm/code/exh/addexh1.php(62): mysqli->prepare('INSERT INTO exh...')
+#1 {main}
+  thrown in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 62
+[21-Aug-2024 16:28:27 America/Bogota] PHP Fatal error:  Uncaught mysqli_sql_exception: Column count doesn't match value count at row 1 in /home2/visioni4/public_html/crm/code/exh/addexh1.php:62
+Stack trace:
+#0 /home2/visioni4/public_html/crm/code/exh/addexh1.php(62): mysqli->prepare('INSERT INTO exh...')
+#1 {main}
+  thrown in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 62
+[22-Aug-2024 14:10:12 America/Bogota] PHP Warning:  Undefined array key "raz_soc_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 21
+[22-Aug-2024 14:15:06 America/Bogota] PHP Warning:  Undefined array key "raz_soc_exh" in /home2/visioni4/public_html/crm/code/exh/addexh1.php on line 21
+[22-Aug-2024 14:45:02 America/Bogota] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'fec_exh' in 'field list' in /home2/visioni4/public_html/crm/code/exh/showexhpre.php:20
+Stack trace:
+#0 /home2/visioni4/public_html/crm/code/exh/showexhpre.php(20): mysqli->prepare('\n        SELECT...')
+#1 {main}
+  thrown in /home2/visioni4/public_html/crm/code/exh/showexhpre.php on line 20
+[22-Aug-2024 14:45:03 America/Bogota] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'fec_exh' in 'field list' in /home2/visioni4/public_html/crm/code/exh/showexhpre.php:20
+Stack trace:
+#0 /home2/visioni4/public_html/crm/code/exh/showexhpre.php(20): mysqli->prepare('\n        SELECT...')
+#1 {main}
+  thrown in /home2/visioni4/public_html/crm/code/exh/showexhpre.php on line 20
+[22-Aug-2024 14:46:58 America/Bogota] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'fec_exh' in 'field list' in /home2/visioni4/public_html/crm/code/exh/showexhpre.php:20
+Stack trace:
+#0 /home2/visioni4/public_html/crm/code/exh/showexhpre.php(20): mysqli->prepare('\n    SELECT cod...')
+#1 {main}
+  thrown in /home2/visioni4/public_html/crm/code/exh/showexhpre.php on line 20
+[22-Aug-2024 14:49:54 America/Bogota] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'fec_exh' in 'field list' in /home2/visioni4/public_html/crm/code/exh/showexhpre.php:20
+Stack trace:
+#0 /home2/visioni4/public_html/crm/code/exh/showexhpre.php(20): mysqli->prepare('\n    SELECT cod...')
+#1 {main}
+  thrown in /home2/visioni4/public_html/crm/code/exh/showexhpre.php on line 20
+[22-Aug-2024 14:52:27 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/zebra.php:1) in /home2/visioni4/public_html/crm/code/exh/addexhpre.php on line 24
+[22-Aug-2024 14:56:59 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/zebra.php:1) in /home2/visioni4/public_html/crm/code/exh/addexhpre.php on line 24
+[22-Aug-2024 14:58:01 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/zebra.php:1) in /home2/visioni4/public_html/crm/code/exh/addexhpre.php on line 24
+[22-Aug-2024 15:00:38 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/zebra.php:1) in /home2/visioni4/public_html/crm/code/exh/addexhpre.php on line 24
+[22-Aug-2024 15:03:52 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/zebra.php:1) in /home2/visioni4/public_html/crm/code/exh/addexhpre.php on line 24
+[22-Aug-2024 15:04:00 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/zebra.php:1) in /home2/visioni4/public_html/crm/code/exh/addexhpre.php on line 24
+[22-Aug-2024 15:08:00 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/zebra.php:1) in /home2/visioni4/public_html/crm/code/exh/addexhpre.php on line 24
+[22-Aug-2024 15:08:54 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/zebra.php:1) in /home2/visioni4/public_html/crm/code/exh/addexhpre.php on line 24
+[22-Aug-2024 15:09:19 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/zebra.php:1) in /home2/visioni4/public_html/crm/code/exh/addexhpre.php on line 24
+[22-Aug-2024 15:10:29 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/zebra.php:1) in /home2/visioni4/public_html/crm/code/exh/addexhpre.php on line 24
+[22-Aug-2024 15:18:56 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/zebra.php:1) in /home2/visioni4/public_html/crm/code/exh/addexhpre.php on line 24
+[22-Aug-2024 15:19:15 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/zebra.php:1) in /home2/visioni4/public_html/crm/code/exh/addexhpre.php on line 24
+[22-Aug-2024 15:54:25 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/zebra.php:1) in /home2/visioni4/public_html/crm/code/exh/addexhpre.php on line 24
+[22-Aug-2024 15:54:29 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/zebra.php:1) in /home2/visioni4/public_html/crm/code/exh/addexhpre.php on line 24
+[22-Aug-2024 15:56:45 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/zebra.php:1) in /home2/visioni4/public_html/crm/code/exh/addexhpre.php on line 24
+[22-Aug-2024 16:02:04 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/zebra.php:1) in /home2/visioni4/public_html/crm/code/exh/addexhpre.php on line 24
+[22-Aug-2024 16:04:18 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/zebra.php:1) in /home2/visioni4/public_html/crm/code/exh/addexhpre.php on line 24
+[22-Aug-2024 16:07:29 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/zebra.php:1) in /home2/visioni4/public_html/crm/code/exh/addexhpre.php on line 24
+[22-Aug-2024 16:12:49 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/zebra.php:1) in /home2/visioni4/public_html/crm/code/exh/addexhpre.php on line 24
+[22-Aug-2024 16:21:34 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/zebra.php:1) in /home2/visioni4/public_html/crm/code/exh/addexhpre.php on line 24
+[22-Aug-2024 16:23:59 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/zebra.php:1) in /home2/visioni4/public_html/crm/code/exh/addexhpre.php on line 24
+[22-Aug-2024 16:34:45 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/zebra.php:1) in /home2/visioni4/public_html/crm/code/exh/addexhpre.php on line 24
+[22-Aug-2024 16:35:14 America/Bogota] PHP Fatal error:  Uncaught mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`visioni4_crm`.`exhibiciones`, CONSTRAINT `fk_exh_ase` FOREIGN KEY (`nit_cc_ase`) REFERENCES `asesores` (`nit_cc_ase`)) in /home2/visioni4/public_html/crm/code/exh/addexhpre1.php:75
+Stack trace:
+#0 /home2/visioni4/public_html/crm/code/exh/addexhpre1.php(75): mysqli_stmt->execute()
+#1 {main}
+  thrown in /home2/visioni4/public_html/crm/code/exh/addexhpre1.php on line 75
+[22-Aug-2024 16:37:05 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/zebra.php:1) in /home2/visioni4/public_html/crm/code/exh/addexhpre.php on line 24
+[22-Aug-2024 16:37:12 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/zebra.php:1) in /home2/visioni4/public_html/crm/code/exh/addexhpre.php on line 24
+[22-Aug-2024 16:40:03 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/zebra.php:1) in /home2/visioni4/public_html/crm/code/exh/addexhpre.php on line 24
+[22-Aug-2024 16:40:55 America/Bogota] PHP Fatal error:  Uncaught mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`visioni4_crm`.`exhibiciones`, CONSTRAINT `fk_exh_ase` FOREIGN KEY (`nit_cc_ase`) REFERENCES `asesores` (`nit_cc_ase`)) in /home2/visioni4/public_html/crm/code/exh/addexhpre1.php:75
+Stack trace:
+#0 /home2/visioni4/public_html/crm/code/exh/addexhpre1.php(75): mysqli_stmt->execute()
+#1 {main}
+  thrown in /home2/visioni4/public_html/crm/code/exh/addexhpre1.php on line 75
+[22-Aug-2024 16:42:10 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/zebra.php:1) in /home2/visioni4/public_html/crm/code/exh/addexhpre.php on line 24
+[22-Aug-2024 16:42:11 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/zebra.php:1) in /home2/visioni4/public_html/crm/code/exh/addexhpre.php on line 24
+[22-Aug-2024 16:42:17 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/zebra.php:1) in /home2/visioni4/public_html/crm/code/exh/addexhpre.php on line 24
+[22-Aug-2024 16:42:47 America/Bogota] PHP Fatal error:  Uncaught mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`visioni4_crm`.`exhibiciones`, CONSTRAINT `fk_exh_ase` FOREIGN KEY (`nit_cc_ase`) REFERENCES `asesores` (`nit_cc_ase`)) in /home2/visioni4/public_html/crm/code/exh/addexhpre1.php:79
+Stack trace:
+#0 /home2/visioni4/public_html/crm/code/exh/addexhpre1.php(79): mysqli_stmt->execute()
+#1 {main}
+  thrown in /home2/visioni4/public_html/crm/code/exh/addexhpre1.php on line 79
+[22-Aug-2024 16:44:48 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/zebra.php:1) in /home2/visioni4/public_html/crm/code/exh/addexhpre.php on line 24
+[22-Aug-2024 16:44:51 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/zebra.php:1) in /home2/visioni4/public_html/crm/code/exh/addexhpre.php on line 24
+[22-Aug-2024 16:45:21 America/Bogota] PHP Fatal error:  Uncaught mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`visioni4_crm`.`exhibiciones`, CONSTRAINT `fk_exh_ase` FOREIGN KEY (`nit_cc_ase`) REFERENCES `asesores` (`nit_cc_ase`)) in /home2/visioni4/public_html/crm/code/exh/addexhpre1.php:95
+Stack trace:
+#0 /home2/visioni4/public_html/crm/code/exh/addexhpre1.php(95): mysqli_stmt->execute()
+#1 {main}
+  thrown in /home2/visioni4/public_html/crm/code/exh/addexhpre1.php on line 95
+[22-Aug-2024 16:49:46 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/zebra.php:1) in /home2/visioni4/public_html/crm/code/exh/addexhpre.php on line 24
+[22-Aug-2024 16:49:51 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/zebra.php:1) in /home2/visioni4/public_html/crm/code/exh/addexhpre.php on line 24
+[22-Aug-2024 16:53:04 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/zebra.php:1) in /home2/visioni4/public_html/crm/code/exh/addexhpre.php on line 24
+[22-Aug-2024 16:55:41 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/zebra.php:1) in /home2/visioni4/public_html/crm/code/exh/addexhpre.php on line 24
+[22-Aug-2024 16:55:48 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/zebra.php:1) in /home2/visioni4/public_html/crm/code/exh/addexhpre.php on line 24
+[22-Aug-2024 16:59:18 America/Bogota] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/visioni4/public_html/crm/code/exh/editexh.php:14) in /home2/visioni4/public_html/crm/code/exh/editexh.php on line 203
+[23-Aug-2024 14:44:59 America/Bogota] PHP Fatal error:  Uncaught Error: Call to undefined function get_magic_quotes_runtime() in /home2/visioni4/public_html/crm/fpdf/fpdf.php:1043
+Stack trace:
+#0 /home2/visioni4/public_html/crm/fpdf/fpdf.php(77): FPDF->_dochecks()
+#1 /home2/visioni4/public_html/crm/code/exh/infexh.php(22): FPDF->__construct()
+#2 {main}
+  thrown in /home2/visioni4/public_html/crm/fpdf/fpdf.php on line 1043
+[23-Aug-2024 14:46:29 America/Bogota] PHP Warning:  require(../../fpdf.php): Failed to open stream: No such file or directory in /home2/visioni4/public_html/crm/code/exh/infexh.php on line 2
+[23-Aug-2024 14:46:29 America/Bogota] PHP Fatal error:  Uncaught Error: Failed opening required '../../fpdf.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/visioni4/public_html/crm/code/exh/infexh.php:2
+Stack trace:
+#0 {main}
+  thrown in /home2/visioni4/public_html/crm/code/exh/infexh.php on line 2
+[23-Aug-2024 14:46:39 America/Bogota] PHP Warning:  require(../../fpdf.php): Failed to open stream: No such file or directory in /home2/visioni4/public_html/crm/code/exh/infexh.php on line 2
+[23-Aug-2024 14:46:39 America/Bogota] PHP Fatal error:  Uncaught Error: Failed opening required '../../fpdf.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/visioni4/public_html/crm/code/exh/infexh.php:2
+Stack trace:
+#0 {main}
+  thrown in /home2/visioni4/public_html/crm/code/exh/infexh.php on line 2
+[23-Aug-2024 14:49:36 America/Bogota] PHP Fatal error:  Uncaught Error: Call to undefined function get_magic_quotes_runtime() in /home2/visioni4/public_html/crm/fpdf/fpdf.php:1043
+Stack trace:
+#0 /home2/visioni4/public_html/crm/fpdf/fpdf.php(77): FPDF->_dochecks()
+#1 /home2/visioni4/public_html/crm/code/exh/infexh.php(22): FPDF->__construct()
+#2 {main}
+  thrown in /home2/visioni4/public_html/crm/fpdf/fpdf.php on line 1043
+[23-Aug-2024 14:49:41 America/Bogota] PHP Fatal error:  Uncaught Error: Call to undefined function get_magic_quotes_runtime() in /home2/visioni4/public_html/crm/fpdf/fpdf.php:1043
+Stack trace:
+#0 /home2/visioni4/public_html/crm/fpdf/fpdf.php(77): FPDF->_dochecks()
+#1 /home2/visioni4/public_html/crm/code/exh/infexh.php(22): FPDF->__construct()
+#2 {main}
+  thrown in /home2/visioni4/public_html/crm/fpdf/fpdf.php on line 1043
+[23-Aug-2024 14:58:24 America/Bogota] PHP Warning:  require_once(../../tcpdf/tcpdf_include.php): Failed to open stream: No such file or directory in /home2/visioni4/public_html/crm/code/exh/infexh.php on line 4
+[23-Aug-2024 14:58:24 America/Bogota] PHP Fatal error:  Uncaught Error: Failed opening required '../../tcpdf/tcpdf_include.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/visioni4/public_html/crm/code/exh/infexh.php:4
+Stack trace:
+#0 {main}
+  thrown in /home2/visioni4/public_html/crm/code/exh/infexh.php on line 4

@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if(!isset($_SESSION['id_usu'])){
+if (!isset($_SESSION['id_usu'])) {
     header("Location: ../../index.php");
     exit();
 }
@@ -13,7 +13,7 @@ header("Content-Type: text/html;charset=utf-8");
 include("../../conexion.php");
 
 // Verificar si el parámetro num_con está presente y válido
-if(!isset($_GET['num_con']) || empty($_GET['num_con'])) {
+if (!isset($_GET['num_con']) || empty($_GET['num_con'])) {
     die("Número de contrato no especificado.");
 }
 
@@ -21,7 +21,7 @@ $num_con = $_GET['num_con'];
 
 // Consulta a la base de datos
 $sql = mysqli_query($mysqli, "SELECT * FROM contratos WHERE num_con = '$num_con'");
-if(!$sql) {
+if (!$sql) {
     die("Error en la consulta SQL: " . mysqli_error($mysqli));
 }
 $row = mysqli_fetch_array($sql);
@@ -32,38 +32,57 @@ if (!$row) {
 
 $fec_inicio_con = new DateTime($row['fec_inicio_con']);
 $vigencia_duracion_con = $row['vigencia_duracion_con'];
-
+print_r($_POST);
 // Verificar si se recibieron los datos del formulario correctamente
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $pago_propietario           = $_POST['pago_propietario'] ?? '';
-    $transferencia_propietario  = $_POST['transferencia_propietario'] ?? 'N/A';
+    // $transferencia_propietario  = $_POST['transferencia_propietario'] ?? 'N/A';
     $factura_electronica0       = $_POST['factura_electronica0'] ?? '';
     $factura_electronica1       = $_POST['factura_electronica1'] ?? 'N/A';
     $factura_electronica2       = $_POST['factura_electronica2'] ?? 'N/A';
+    $cuenta_cobro               = $_POST['cuenta_cobro'] ?? 'N/A';
+    $factura_colbodegas        = $_POST['factura_colbodegas'] ?? 'N/A';
+
+
     $canon_con                  = $row['canon_con'];
     $iva_con                    = $row['iva_con'];
     $renta_con                  = $row['renta_con'];
     $admon_con                  = $row['admon_con'];
     $perfil                     = $_POST['perfil'] ?? '';
     $comision1                  = $_POST['comision1'] ?? 0;
+    //rte propietario
+    $rte_fte1                  = $_POST['rte_fte1'] ?? 0;
+    $rte_fte2                  = $_POST['rte_fte2'] ?? 0;
+    $rte_ica1                 = $_POST['rte_ica1'] ?? 0;
+    $rte_ica2                 = $_POST['rte_ica2'] ?? 0;
+    $rte_iva1                 = $_POST['rte_iva1'] ?? 0;
+    $rte_iva2                 = $_POST['rte_iva2'] ?? 0;
+    //rete inmobiliaria
+    $rte_fte3                  = $_POST['rte_fte3'] ?? 0;
+    $rte_fte4                  = $_POST['rte_fte4'] ?? 0;
+    $rte_ica3                 = $_POST['rte_ica3'] ?? 0;
+    $rte_ica4                 = $_POST['rte_ica4'] ?? 0;
+    $comision_aplica_a          = $_POST['comision_aplica_a'] ?? '';
     $comision2                  = $_POST['comision2'] ?? 0;
+    $acuerdo                    = $_POST['acuerdo'] ?? '';
+
     $estado_pago                = 1;
     $fecha_alta_pago            = date('Y-m-d h:i:s');
     $id_usu_alta_pago           = $_SESSION['id_usu'];
     $fecha_edit_pago            = ('0000-00-00 00:00:00');
     $id_usu                     = $_SESSION['id_usu'];
 
-    if(empty($pago_propietario) || empty($factura_electronica0) || empty($perfil)) {
+    if (empty($pago_propietario) || empty($factura_electronica0)) {
         die("Por favor, completa todos los campos obligatorios del formulario.");
     }
 
     // Generar registros en la tabla PAGOS
-    for($i = 0; $i < $vigencia_duracion_con; $i++) {
+    for ($i = 0; $i < $vigencia_duracion_con; $i++) {
         $fecha_pago = $fec_inicio_con->format('Y-m-d');
         $num_pago = $i + 1; // Número de pago secuencial
 
         // Calcular comision_pago y total_consignar_pago
-        if($comision1 != 0) {
+        if ($comision1 != 0) {
             $comision_pago = $renta_con * ($comision1 / 100);
         } else {
             $comision_pago = $renta_con * ($comision2 / 100);
@@ -71,9 +90,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $total_consignar_pago = $canon_con - $comision_pago;
 
         // Insertar registro en la tabla PAGOS
-        $insert_sql = "INSERT INTO pagos (num_con, fecha_pago, pago_propietario, transferencia_propietario, factura_electronica0, factura_electronica1, factura_electronica2, canon_con, iva_con, renta_con, admon_con, perfil, comision_pago, total_consignar_pago, estado_pago, fecha_alta_pago, id_usu_alta_pago, fecha_edit_pago, id_usu, num_pago)
-                       VALUES ('$num_con', '$fecha_pago', '$pago_propietario', '$transferencia_propietario', '$factura_electronica0', '$factura_electronica1', '$factura_electronica2', '$canon_con', '$iva_con', '$renta_con', '$admon_con', '$perfil', '$comision_pago', '$total_consignar_pago', '$estado_pago', '$fecha_alta_pago', '$id_usu_alta_pago', '$fecha_edit_pago', '$id_usu', '$num_pago')";
-        if(!mysqli_query($mysqli, $insert_sql)) {
+        $insert_sql = "INSERT INTO pagos (num_con, fecha_pago, num_pago, pagado_a, pago_a_inmobiliaria, metodo_pago, factura_electronica0, factura_electronica1, factura_electronica2, canon_con, iva_con, admon_con, renta_con, comision_aplica_a, comision1, comision2, acuerdo, rte_fte1, rte_fte2, rte_fte3, rte_fte4, rte_ica1, rte_ica2, rte_ica3, rte_ica4, rte_iva1, rte_iva2, cuenta_cobro, factura_colbodegas, comision_pago, total_consignar_pago, prorrateo, dias_prorra, valor_prorra, estado_pago, fecha_alta_pago, id_usu_alta_pago, fecha_edit_pago, id_usu)
+        VALUES ('$num_con', '$fecha_pago', '$num_pago', '$pago_propietario', '', '', '$factura_electronica0', '$factura_electronica1', '$factura_electronica2', '$canon_con', '$iva_con', '$admon_con', '$renta_con', '$comision_aplica_a', '$comision1', '$comision2', '$acuerdo', '$rte_fte1', '$rte_fte2', '$rte_fte3', '$rte_fte4', '$rte_ica1', '$rte_ica2', '$rte_ica3', '$rte_ica4', '$rte_iva1', '$rte_iva2', '$cuenta_cobro', '$factura_colbodegas', '$comision_pago', '$total_consignar_pago', '', '', '', '$estado_pago', '$fecha_alta_pago', '$id_usu_alta_pago', '$fecha_edit_pago', '$id_usu')";
+        
+
+        if (!mysqli_query($mysqli, $insert_sql)) {
             die("Error al insertar en la tabla PAGOS: " . mysqli_error($mysqli));
         }
 
@@ -106,7 +127,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <div class='container'>
                         <br />
                         <h3><b><i class='fa-solid fa-money-check-dollar'></i> SE GENERÓ LOS PAGOS DE FORMA EXITOSA</b></h3>";
-                        echo "<h5>Número de contrato recibido: $num_con</h5><br>
+    echo "<h5>Número de contrato recibido: $num_con</h5><br>
                         <p align='center'><a href='showpay.php'><img src='../../img/atras.png' width=96 height=96></a></p>
                     </div>
                     </center>
@@ -122,4 +143,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     print_r($_POST);
     echo "</pre>";
 }
-?>

@@ -252,10 +252,10 @@ header("Content-Type: text/html;charset=utf-8");
                         <label for="rte_ica1">RTE ICA</label>
                         <select class="form-control" name="rte_ica1" id="rte_ica1">
                             <option value=""></option>
-                            <option value=7>7%</option>
-                            <option value=8>8%</option>
-                            <option value=9>9%</option>
-                            <option value=10>10%</option>
+                            <option value=7>7</option>
+                            <option value=8>8</option>
+                            <option value=9>9</option>
+                            <option value=10>10</option>
                             <option value=0>N/A</option>
                         </select>
                     </div>
@@ -293,8 +293,8 @@ header("Content-Type: text/html;charset=utf-8");
                         <label for="rte_fte3">RTE FTE %</label>
                         <select class="form-control" name="rte_fte3" id="rte_fte3">
                             <option value=""></option>
-                            <option value=10>10%</option>
-                            <option value=11>11%</option>
+                            <option value=3.5>3.5%</option>
+                            <option value=20>20%</option>
                         </select>
                     </div>
                     <div class="col-12 col-sm-2">
@@ -302,12 +302,31 @@ header("Content-Type: text/html;charset=utf-8");
                         <input type='text' name='rte_fte4' id="rte_fte4" class='form-control' readonly style="font-weight:bold;" />
                     </div>
                     <div class="col-12 col-sm-2">
-                        <strong><label for="rte_ica3">RTE ICA $</label></strong>
-                        <input type='number' name='rte_ica3' id="rte_ica3" class='form-control' value='<?php echo $row['rte_ica3']; ?>' readonly style="font-weight:bold;" />
+                        <label for="rte_ica1">RTE ICA</label>
+                        <select class="form-control" name="rte_ica3" id="rte_ica3">
+                            <option value=""></option>
+                            <option value=7>7</option>
+                            <option value=8>8</option>
+                            <option value=9>9</option>
+                            <option value=10>10</option>
+                            <option value=0>N/A</option>
+                        </select>
+                    </div>
+                    <div class="col-12 col-sm-2">
+                        <strong><label for="rte_ica2">RTE ICA $</label></strong>
+                        <input type='text' name='rte_ica4' id="rte_ica4" class='form-control' readonly style="font-weight:bold;" />
                     </div>
                     <!-- <div class="col-12 col-sm-2">
-                        <strong><label for="rte_iva2">RTE IVA $</label></strong>
-                        <input type='number' name='rte_iva2' id="rte_iva2" class='form-control' value='<?php echo $row['rte_iva2']; ?>' readonly style="font-weight:bold;" />
+                        <label for="rte_iva3">RTE IVA:</label>
+                        <select class="form-control" name="rte_iva3" id="rte_iva3" required>
+                            <option value=""></option>
+                            <option value=1>Sí</option>
+                            <option value=0>No</option>
+                        </select>
+                    </div>
+                    <div class="col-12 col-sm-2">
+                        <strong><label for="rte_iva4">RTE IVA $</label></strong>
+                        <input type='text' name='rte_iva4' id="rte_iva4" class='form-control' readonly style="font-weight:bold;" />
                     </div> -->
                 </div>
             </div>
@@ -379,7 +398,7 @@ header("Content-Type: text/html;charset=utf-8");
         // Verificar si se seleccionó un valor válido y que no sea N/A (valor 0)
         if (!isNaN(rteIcaPercent) && rteIcaPercent > 0) {
             // Calcular la retención ICA
-            var rteIcaAmount = canonCon * (rteIcaPercent / 100);
+            var rteIcaAmount = canonCon * (rteIcaPercent / 1000);
 
             // Mostrar el resultado en el campo de texto
             document.getElementById('rte_ica2').value = rteIcaAmount.toFixed(2);
@@ -477,18 +496,16 @@ header("Content-Type: text/html;charset=utf-8");
                     comisionPago = canonCon * (comision2 / 100);
                 } else if (comisionAplicaA == 2 && !isNaN(rentaCon)) {
                     comisionPago = rentaCon * (comision2 / 100);
-                }
-                else if (comisionAplicaA == 3 && !isNaN(canonCon) ) {
+                } else if (comisionAplicaA == 3 && !isNaN(canonCon)) {
                     comisionPago = (canonCon + admon_con) * (comision2 / 100);
                 }
             } else if (comision1 != 0 && comision1 != 1) {
                 // Caso: comision1 diferente de 0 y 1
                 if (comisionAplicaA == 1 && !isNaN(canonCon)) {
                     comisionPago = canonCon * (comision1 / 100);
-                } else if (comisionAplicaA == 2 && !isNaN(rentaCon) && !isNaN(comision1))  {
+                } else if (comisionAplicaA == 2 && !isNaN(rentaCon) && !isNaN(comision1)) {
                     comisionPago = rentaCon * (comision1 / 100);
-                }
-                else if (comisionAplicaA == 3 && !isNaN(canonCon) && !isNaN(comision1)  ) {
+                } else if (comisionAplicaA == 3 && !isNaN(canonCon) && !isNaN(comision1)) {
                     comisionPago = (canonCon + admon_con) * (comision1 / 100);
                 }
             }
@@ -559,4 +576,57 @@ header("Content-Type: text/html;charset=utf-8");
             document.getElementById('facturaColbodegasContainer').style.display = 'none';
         }
     });
+
+    //rte fuente inmobiliaria
+    document.getElementById('rte_fte3').addEventListener('change', function() {
+        // Obtener el valor de la comisión
+        let comisionRaw = document.getElementById('comision_pago').value;
+        // Limpiar el formato de moneda (quitar $, puntos y comas)
+        let comision = comisionRaw.replace(/[.$]/g, '').replace(',', '.').replace('$', '');
+        // Convertir la comisión a un número
+        comision = parseFloat(comision);
+        // Obtener el porcentaje seleccionado en RTE FTE
+        const rtePorcentaje = parseFloat(this.value);
+
+        // Si hay un valor válido seleccionado
+        if (!isNaN(rtePorcentaje) && !isNaN(comision)) {
+            // Calcular la retención en la fuente (RTE FTE $)
+            const rteFte = comision * (rtePorcentaje / 100);
+            console.log(rteFte);
+            // Colocar el resultado en el campo de RTE FTE $
+            document.getElementById('rte_fte4').value = rteFte.toFixed(2); // Formato con 2 decimales
+        } else {
+            // Limpiar el campo si no hay un valor seleccionado
+            document.getElementById('rte_fte4').value = '';
+            console.log("no entro");
+        }
+    });
+    //end rte fuente inmobiliaria
+
+    //rte ica inmobiliaria
+    document.getElementById('rte_ica3').addEventListener('change', function() {
+        // Obtener el valor de la comisión y limpiarlo
+        let comisionRaw = document.getElementById('comision_pago').value;
+        
+        // Limpiar el formato de moneda (quitar $, puntos y comas)
+        let comision = comisionRaw.replace(/[.$]/g, '').replace(',', '.').replace('$', '');
+
+        // Convertir la comisión a un número
+        comision = parseFloat(comision);
+
+        // Obtener el porcentaje seleccionado en RTE ICA
+        const rteIca = parseFloat(this.value);
+        
+        // Si hay un valor válido seleccionado
+        if (!isNaN(rteIca) && !isNaN(comision)) {
+            // Calcular la retención en la fuente (RTE ICA $)
+            const rteIcaValor = (comision * rteIca) / 1000;
+            // Colocar el resultado en el campo de RTE ICA $
+            document.getElementById('rte_ica4').value = rteIcaValor.toFixed(2); // Formato con 2 decimales
+        } else {
+            // Limpiar el campo si no hay un valor seleccionado
+            document.getElementById('rte_ica4').value = '';
+        }
+    });
+    //end rte ica inmobiliaria
 </script>

@@ -162,6 +162,7 @@ if (!$result) {
 
 $paginacion->render();
 while ($row = mysqli_fetch_array($result)) {
+    print_r($row);
     // Formatear los valores como moneda
     $total_canon = '$' . number_format($row['total_canon'], 0, ',', '.');
     $total_admon = '$' . number_format($row['total_admon'], 0, ',', '.');

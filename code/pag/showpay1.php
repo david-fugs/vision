@@ -193,8 +193,7 @@ while ($row = mysqli_fetch_array($result)) {
         }
     }
 
-    $prorrateo = '<td data-label="PRORRATEO"><a href="dias_prorrateo.php?num_con=' . $row['num_con'] . '&dias=8"><img src="../../img/prorrateo.png" width=28 height=28></a></td>';
-
+    $prorrateo = '<td data-label="PRORRATEO"><a href="dias_prorrateo.php?num_con=' . $row['num_con'] . '&dias=8&id_pago=' . $row['id_pago'] . '"><img src="../../img/prorrateo.png" width=28 height=28></a></td>';
     echo '
         <tr>
         <td data-label="PAGO No.">' . $row['num_pago'] . '</td>

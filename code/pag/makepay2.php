@@ -1,7 +1,5 @@
 <?php
 session_start();
-//error_reporting(E_ALL);
-//ini_set('display_errors', 1);
 
 if (!isset($_SESSION['id_usu'])) {
     header("Location: ../../index.php");
@@ -14,8 +12,6 @@ $tipo_usu = $_SESSION['tipo_usu'];
 include("../../conexion.php");
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    //echo "Formulario recibido";
-    var_dump($_POST);
     
     $id_pago = $_POST['id_pago'];
     $fecha_pago_realizado = $_POST['fecha_pago_realizado'];

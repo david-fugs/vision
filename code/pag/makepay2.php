@@ -14,6 +14,9 @@ $tipo_usu = $_SESSION['tipo_usu'];
 include("../../conexion.php");
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    //echo "Formulario recibido";
+    var_dump($_POST);
+    
     $id_pago = $_POST['id_pago'];
     $fecha_pago_realizado = $_POST['fecha_pago_realizado'];
     $valor_pagado = $_POST['valor_pagado'];
@@ -29,11 +32,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $rte_fte4_inmobi = $_POST['rte_fte4'];
     $rte_ica3_inmobi = $_POST['rte_ica3'];
     $rte_ica4_inmobi = $_POST['rte_ica4'];
+    $iva_valor = $_POST['iva_con'];
+    $rte_iva_aplica_inmobi = $_POST['rte_iva_aplica_inmobi'];
+    $rte_iva_inmobi = $_POST['rte_iva_inmobi'];
     $pagado_a = $_POST['pagado_a'];
     $observaciones_diferencia = isset($_POST['observaciones_diferencia']) ? $_POST['observaciones_diferencia'] : '';
     $propietarios = $_POST['propietarios'];
     $propietarios_monto = $_POST['propietarios_monto'];
     $pago_comision = $_POST['pago_comision'];
+    $id_usu = $_SESSION['id_usu'];
 
     // Validar entrada numérica
     $adecuaciones = is_numeric($adecuaciones) ? $adecuaciones : 0;
@@ -50,6 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         // Calcular la diferencia
         $diferencia = $renta_con - $valor_pagado;
+
 
         // Insertar el pago realizado en la tabla pagos_realizados
         $insert_query = "INSERT INTO pagos_realizados (
@@ -73,6 +81,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $insert_propietario_query = "INSERT INTO pagos_propietarios (id_pago_realizado, nit_cc_pro, monto) 
                                              VALUES ($id_pago_realizado, $propietario_id, $monto)";
                 $mysqli->query($insert_propietario_query);
+            }
+
+            $sql_pip = "INSERT INTO pagos_impuestos_propietario( id_pago,ret_fte_porc_pip, ret_fte_valor_pip,ret_ica_porc_pip ,ret_ica_valor_pip, ret_iva_valor_pip, obs_pip, estado_pip,fecha_alta_pip,id_usu_alta_pip , id_usu ) 
+            VALUES( $id_pago, $rte_fte1_prop, $rte_fte2_prop, $rte_ica1_prop, $rte_ica2_prop, $rte_iva2_prop, '$observaciones_diferencia', 1, now(),$id_usu , $id_usu )";             // Ejecutar la consulta y verificar si hay error
+            if ($mysqli->query($sql_pip) === TRUE) {
+                echo "Consulta exitosa";
+            } else {
+                // Mostrar el error
+                echo "Error en la consulta: " . $mysqli->error;
+            }
+            $sql_pii = "INSERT INTO pagos_impuestos_inmobiliaria( id_pago,iva_valor_pii ,ret_iva_aplica_pii,ret_iva_valor_pii,comision_valor_pii, ret_fte_porc_pii, ret_fte_valor_pii, ret_ica_porc_pii, ret_ica_valor_pii, obs_pii, estado_pii, fecha_alta_pii, id_usu_alta_pii, id_usu )
+            VALUES( $id_pago,$iva_valor, $rte_iva_aplica_inmobi, $rte_iva_inmobi ,$comision_pago, $rte_fte3_inmobi, $rte_fte4_inmobi, $rte_ica3_inmobi, $rte_ica4_inmobi, 0, 1, now(), $id_usu, $id_usu )";
+            //verificar si hay error
+            if ($mysqli->query($sql_pii) === TRUE) {
+                echo "Consulta exitosa inmobiliaria";
+            } else {
+                // Mostrar el error
+                echo "Error en la consulta: " . $mysqli->error;
             }
 
             header("Location: pago_satisfactorio.htm");
@@ -112,7 +138,7 @@ $propietarios = [];
 while ($propietario = $result_propietarios->fetch_assoc()) {
     $propietarios[] = $propietario;
 }
-
+print_r($row);
 ?>
 
 <!DOCTYPE html>
@@ -191,7 +217,6 @@ while ($propietario = $result_propietarios->fetch_assoc()) {
 </head>
 
 <body>
-
     <center>
         <img src='../../img/logo.png' width="300" height="212" class="responsive">
     </center>
@@ -349,6 +374,21 @@ while ($propietario = $result_propietarios->fetch_assoc()) {
                         <strong><label for="rte_ica2">RTE ICA $</label></strong>
                         <input type='text' value="<?= $row['rte_ica4'] ?>" name='rte_ica4' id="rte_ica4" class='form-control' readonly style="font-weight:bold;" />
                     </div>
+                    <!-- rete iva -->
+                    <div class="col-12 col-sm-2">
+                        <label for="rte_iva3">RTE IVA:</label>
+                        <select class="form-control" name="rte_iva_aplica_inmobi" id="rte_iva_aplica_inmobi" onchange="updateRteIvaInmobi()" required>
+                            <option value=""></option>
+                            <option <?php if ($row['rte_iva_aplica_inmobi'] == 1) echo "selected"; ?> value=1>Sí</option>
+                            <option <?php if ($row['rte_iva_aplica_inmobi'] == 0) echo "selected"; ?> value=0>No</option>
+                        </select>
+                    </div>
+                    <div class="col-12 col-sm-2">
+                        <strong><label for="rte_iva_inmobi">RTE IVA $</label></strong>
+                        <input type='text' name='rte_iva_inmobi' id="rte_iva_inmobi" class='form-control' value="<?= $row['rte_iva_inmobi'] ?>" readonly style="font-weight:bold;" />
+                    </div>
+                    <input type="hidden" name="iva_con" value="<?= $row['iva_con'] ?>" >
+
                 </div>
             </div>
 
@@ -380,8 +420,8 @@ while ($propietario = $result_propietarios->fetch_assoc()) {
             <div class="form-group">
                 <div class="row">
                     <div class="col-12 col-sm-6">
-                        <label for="total_monto"><strong>Total Monto Distribuido $</strong></label>
-                        <input type="text" class="form-control highlight-total" id="total_monto" name="total_monto" readonly>
+                        <!-- <label type="hidden"  for="total_monto"><strong>Total Monto Distribuido $</strong></label> -->
+                        <input type="hidden" class="form-control highlight-total" id="total_monto" name="total_monto" readonly>
                     </div>
                 </div>
             </div>
@@ -645,13 +685,27 @@ while ($propietario = $result_propietarios->fetch_assoc()) {
         function updateComision() {
             var rteFte4 = parseFloat(document.getElementById('rte_fte4').value) || 0;
             var rteIca4 = parseFloat(document.getElementById('rte_ica4').value) || 0;
+            var rteIvaInmobi = parseFloat(document.getElementById('rte_iva_inmobi').value) || 0;
 
             // Calcular la comisión neta restando las retenciones
-            var nuevaComision = originalComision - rteFte4 - rteIca4;
-
+            var nuevaComision = originalComision - rteFte4 - rteIca4
+            - rteIvaInmobi ;
 
             // Actualizar el valor en el campo de comisión
             document.getElementById('comision_pago').value = nuevaComision.toFixed(2) + " COP";
+        }
+        function updateRteIvaInmobi(){
+            var rte_iva_aplica_inmobi = document.getElementById('rte_iva_aplica_inmobi').value;
+            var rte_iva_inmobi = document.getElementById('rte_iva_inmobi');
+            var iva = <?= $row['iva_con'] ?>;
+            if (rte_iva_aplica_inmobi === "" || rte_iva_aplica_inmobi == 0) {
+                rte_iva_inmobi.value = "";
+            } else if (rte_iva_aplica_inmobi === "1") {
+                var result = iva * 0.15;
+                rte_iva_inmobi.value = result.toFixed(2);
+
+            }
+            updateComision();
         }
     </script>
 

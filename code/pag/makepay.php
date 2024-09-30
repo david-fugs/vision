@@ -286,9 +286,18 @@ header("Content-Type: text/html;charset=utf-8");
                             <input type='text' name='comision_pago' id="comision_pago" class='form-control comision-pago' readonly /></strong>
                     </div>
                     <div class="col-12 col-sm-2">
-                        <label for="iva_inmo">IVA $</label>
-                        <input type='text' name='iva_inmo' id="iva_inmo" class='form-control' readonly style="font-weight:bold;" />
+                        <label for="iva3"> IVA:</label>
+                        <select onchange="updateIvaInmobi()" class="form-control" name="iva3" id="iva3" required>
+                            <option value=""></option>
+                            <option value=1>Sí</option>
+                            <option value=0>No</option>
+                        </select>
                     </div>
+                    <div class="col-12 col-sm-2">
+                        <strong><label for="iva4">IVA $</label></strong>
+                        <input type='text' name='iva4' id="iva4" class='form-control' readonly style="font-weight:bold;" />
+                    </div>
+
                     <div class="col-12 col-sm-2">
                         <label for="rte_fte3">RTE FTE %</label>
                         <select class="form-control" name="rte_fte3" id="rte_fte3">
@@ -316,9 +325,10 @@ header("Content-Type: text/html;charset=utf-8");
                         <strong><label for="rte_ica2">RTE ICA $</label></strong>
                         <input type='text' name='rte_ica4' id="rte_ica4" class='form-control' readonly style="font-weight:bold;" />
                     </div>
-                    <!-- <div class="col-12 col-sm-2">
+
+                    <div class="col-12 col-sm-2">
                         <label for="rte_iva3">RTE IVA:</label>
-                        <select class="form-control" name="rte_iva3" id="rte_iva3" required>
+                        <select onchange="updateRteIvaInmobi()" class="form-control" name="rte_iva3" id="rte_iva3" required onchange="updateRteIvaInmobi()" >
                             <option value=""></option>
                             <option value=1>Sí</option>
                             <option value=0>No</option>
@@ -327,7 +337,7 @@ header("Content-Type: text/html;charset=utf-8");
                     <div class="col-12 col-sm-2">
                         <strong><label for="rte_iva4">RTE IVA $</label></strong>
                         <input type='text' name='rte_iva4' id="rte_iva4" class='form-control' readonly style="font-weight:bold;" />
-                    </div> -->
+                    </div>
                 </div>
             </div>
 
@@ -629,4 +639,42 @@ header("Content-Type: text/html;charset=utf-8");
         }
     });
     //end rte ica inmobiliaria
+    function updateIvaInmobi(){
+        // Obtener el valor de la comisión
+        let comisionRaw = document.getElementById('comision_pago').value;
+        let iva = document.getElementById('iva3').value;
+        // Limpiar el formato de moneda (quitar $, puntos y comas)
+        let comision = comisionRaw.replace(/[.$]/g, '').replace(',', '.').replace('$', '');
+        // Convertir la comisión a un número
+        comision = parseFloat(comision);
+        // Obtener el porcentaje seleccionado en IVA
+        // Si hay un valor válido seleccionado
+        if ( !isNaN(comision) && iva == 1) {
+            // Calcular el IVA
+            const ivaValor = comision * (19 / 100);
+            // Colocar el resultado en el campo de IVA $
+            document.getElementById('iva4').value = ivaValor.toFixed(2); // Formato con 2 decimales
+        } else {
+
+            // Limpiar el campo si no hay un valor seleccionado
+            document.getElementById('iva4').value = '';
+        }
+    }
+    function updateRteIvaInmobi(){
+        // Obtener el valor de la comisión
+        let comision = document.getElementById('iva4').value;
+        let rteIva = document.getElementById('rte_iva3').value;
+        // Si hay un valor válido seleccionado
+        if ( !isNaN(comision) && rteIva == 1) {
+            // Calcular el RTE IVA
+            const rteIvaValor = comision * (15 / 100);
+            // Colocar el resultado en el campo de RTE IVA $
+            document.getElementById('rte_iva4').value = rteIvaValor.toFixed(2); // Formato con 2 decimales
+        } else {
+            // Limpiar el campo si no hay un valor seleccionado
+            document.getElementById('rte_iva4').value = '';
+        }
+    }
+
+
 </script>

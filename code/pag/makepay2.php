@@ -14,8 +14,6 @@ $tipo_usu = $_SESSION['tipo_usu'];
 include("../../conexion.php");
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    //echo "Formulario recibido";
-    var_dump($_POST);
     $id_pago = $_POST['id_pago'];
     $fecha_pago_realizado = $_POST['fecha_pago_realizado'];
     $valor_pagado = $_POST['valor_pagado'];
@@ -194,7 +192,6 @@ while ($propietario = $result_propietarios->fetch_assoc()) {
 
 <body>
 
-    <?php print_r($row); ?>
     <center>
         <img src='../../img/logo.png' width="300" height="212" class="responsive">
     </center>

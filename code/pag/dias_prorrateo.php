@@ -108,7 +108,7 @@ include("functions.php");
             <div class="form-group mt-4" >
                 <div class="row">
                     <div class="col-12 col">
-                        <button type="submit" class="btn btn-primary">Registrar Pago Arrendamiento</button>
+                        <button type="submit" class="btn btn-primary">Registrar Prorrateo</button>
                         <a href="showpay1.php?num_con=<?= $pago['num_con'] ?>" class="btn btn-outline-dark">Regresar</a>
                     </div>
                 </div>

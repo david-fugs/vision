@@ -142,7 +142,10 @@ foreach ($res_pagos_todos as $res_pagos) {
         $sql_update = "UPDATE pagos SET fecha_pago = '$prorrateo_fecha_actualizada' WHERE id_pago = {$res_pagos['id_pago']}";
 
         if ($mysqli->query($sql_update) === TRUE) {
-            // Redirigir con un alert en caso de éxito
+            //saco los valores del ultimo update para hacer la ultima insercion
+            $num_pago= $res_pagos['num_pago'] + 1 ;
+            $fecha_pago= $prorrateo_fecha_actualizada;
+            
         } else {
             // En caso de error, puedes redirigir o mostrar otro mensaje
             echo "<script>
@@ -152,7 +155,115 @@ foreach ($res_pagos_todos as $res_pagos) {
         }
     }
 }
+
+// PARA SUMARLE 1 MES A LA FECHA DE PAGO
+$date = new DateTime($fecha_pago);
+
+// Sumar 1 mes
+$date->modify('+1 month');
+
+// Obtener la nueva fecha en formato 'Y-m-d'
+$nueva_fecha_pago = $date->format('Y-m-d');
+
+//crear una ultima insercion con el mismo canon 
+//hacer update a  la fecha insertada en prorrateo 
+$sql_insert = "INSERT INTO pagos (
+    num_con,
+    fecha_pago,
+    num_pago,
+    pagado_a,
+    pago_a_inmobiliaria,
+    metodo_pago,
+    factura_electronica0,
+    factura_electronica1,
+    factura_electronica2,
+    canon_con,
+    iva_con,
+    admon_con,
+    renta_con,
+    comision_aplica_a,
+    comision1,
+    comision2,
+    acuerdo,
+    rte_fte1,
+    rte_fte2,
+    rte_fte3,
+    rte_fte4,
+    rte_ica1,
+    rte_ica2,
+    rte_ica3,
+    rte_ica4,
+    rte_iva1,
+    rte_iva2,
+    iva_aplica_inmobi,
+    iva_inmobi,
+    rte_iva_aplica_inmobi,
+    rte_iva_inmobi,
+    cuenta_cobro,
+    factura_colbodegas,
+    comision_pago,
+    total_consignar_pago,
+    prorrateo,
+    dias_prorra,
+    valor_prorra,
+    estado_pago,
+    fecha_alta_pago,
+    id_usu_alta_pago,
+    fecha_edit_pago,
+    id_usu
+) VALUES (
+    '{$pagos['num_con']}',
+    '$nueva_fecha_pago',
+    '$num_pago',
+    '{$pagos['pagado_a']}',
+    '{$pagos['pago_a_inmobiliaria']}',
+    '{$pagos['metodo_pago']}',
+    '{$pagos['factura_electronica0']}',
+    '{$pagos['factura_electronica1']}',
+    '{$pagos['factura_electronica2']}',
+    '{$pagos['canon_con']}',
+    '{$pagos['iva_con']}',
+    '{$pagos['admon_con']}',
+    '{$pagos['renta_con']}',
+    '{$pagos['comision_aplica_a']}',
+    '{$pagos['comision1']}',
+    '{$pagos['comision2']}',
+    '{$pagos['acuerdo']}',
+    '{$pagos['rte_fte1']}',
+    '{$pagos['rte_fte2']}',
+    '{$pagos['rte_fte3']}',
+    '{$pagos['rte_fte4']}',
+    '{$pagos['rte_ica1']}',
+    '{$pagos['rte_ica2']}',
+    '{$pagos['rte_ica3']}',
+    '{$pagos['rte_ica4']}',
+    '{$pagos['rte_iva1']}',
+    '{$pagos['rte_iva2']}',
+    '{$pagos['iva_aplica_inmobi']}',
+    '{$pagos['iva_inmobi']}',
+    '{$pagos['rte_iva_aplica_inmobi']}',
+    '{$pagos['rte_iva_inmobi']}',
+    '{$pagos['cuenta_cobro']}',
+    '{$pagos['factura_colbodegas']}',
+    '{$pagos['comision_pago']}',
+    '{$pagos['total_consignar_pago']}',
+    '{$pagos['prorrateo']}',
+    '{$pagos['dias_prorra']}',
+    '{$pagos['valor_prorra']}',
+    '{$pagos['estado_pago']}',
+    '{$pagos['fecha_alta_pago']}',
+    '{$pagos['id_usu_alta_pago']}',
+    '{$pagos['fecha_edit_pago']}',
+    '{$pagos['id_usu']}'
+)";
+
+if ($mysqli->query($sql_insert) === TRUE) {
+    echo "Registro insertado con éxito";
+} else {
+    echo "Error: " . $sql_insert . "<br>" . $mysqli->error;
+}
+
 echo "<script>
 alert('Fecha de prorrateo insertada correctamente');
- window.location.href = 'showpay1.php?num_con={$pagos['num_con']}';
+ window.location.href = 'showpay.php';
  </script>";

@@ -62,7 +62,6 @@ include("functions.php");
     $res_pago = $mysqli->query($sql_pago);
     $pago = $res_pago->fetch_assoc();
 
-    print_r($pago);
     ?>
 
     <div class="container">

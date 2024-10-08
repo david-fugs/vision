@@ -34,6 +34,7 @@ $fec_inicio_con = new DateTime($row['fec_inicio_con']);
 $vigencia_duracion_con = $row['vigencia_duracion_con'];
 // Verificar si se recibieron los datos del formulario correctamente
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+ 
     $pago_propietario           = $_POST['pago_propietario'] ?? '';
     // $transferencia_propietario  = $_POST['transferencia_propietario'] ?? 'N/A';
     $factura_electronica0       = $_POST['factura_electronica0'] ?? '';
@@ -68,8 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $comision_aplica_a          = $_POST['comision_aplica_a'] ?? '';
     $comision2                  = $_POST['comision2'] ?? 0;
-    $acuerdo                    = $_POST['acuerdo'] ?? '';
-
+    $acuerdo                    = $_POST['acuerdo'];
     $estado_pago                = 1;
     $fecha_alta_pago            = date('Y-m-d h:i:s');
     $id_usu_alta_pago           = $_SESSION['id_usu'];
@@ -91,7 +91,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } else {
             $comision_pago = $renta_con * ($comision2 / 100);
         }
-        $total_consignar_pago = $canon_con - $comision_pago;
+        if($acuerdo > 0) {
+            $comision_pago = $acuerdo;
+        }
+        $total_consignar_pago = $renta_con - $comision_pago;
 
         // Insertar registro en la tabla PAGOS
         $insert_sql = "INSERT INTO pagos (num_con, fecha_pago, num_pago, pagado_a, pago_a_inmobiliaria, metodo_pago, factura_electronica0, factura_electronica1, factura_electronica2, canon_con, iva_con, admon_con, renta_con, comision_aplica_a, comision1, comision2, acuerdo, rte_fte1, rte_fte2, rte_fte3, rte_fte4, rte_ica1, rte_ica2, rte_ica3, rte_ica4, rte_iva1, rte_iva2, cuenta_cobro, 

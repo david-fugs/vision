@@ -338,6 +338,7 @@ while ($propietario = $result_propietarios->fetch_assoc()) {
                                 <option value=""></option>
                                 <option value="3.5" <?php if ($row['rte_fte1'] == 3.5) echo "selected"; ?>>3.5%</option>
                                 <option value="20" <?php if ($row['rte_fte1'] == 20) echo "selected"; ?>>20%</option>
+                                <option value="0" <?php if ($row['rte_fte1'] == "0") echo "selected"; ?>>N/A</option>
                             </select>
                         </div>
                         <div class="col-12 col-sm-2">
@@ -383,6 +384,7 @@ while ($propietario = $result_propietarios->fetch_assoc()) {
                                 <option value=""></option>
                                 <option <?php if ($row['rte_fte3'] == 3.5) echo "selected"; ?> value=3.5>3.5%</option>
                                 <option <?php if ($row['rte_fte3'] == 20) echo "selected"; ?> value=20>20%</option>
+                                <option <?php if ($row['rte_fte3'] == 0) echo "selected"; ?> value=0>N/A</option>
                             </select>
                         </div>
                         <div class="col-12 col-sm-2">

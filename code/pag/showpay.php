@@ -118,17 +118,11 @@ $tipo_usu = $_SESSION['tipo_usu'];
             <table>
                 <thead>
                     <tr>
-                        <th>CONT. No.</th>
-                        <th>FECHA INICIO</th>
-                        <th>TOTAL CANON</th>
-                        <th>TOTAL ADMON</th>
-                        <th>TOTAL IVA</th>
-                        <th>TOTAL RENTA</th>
-                        <th>TOTAL COMISION</th>
-                        <th>TOTAL PROPIETARIO</th>
+                        <th >CONT. No.</th>
+                        <th >FECHA INICIO</th>
                         <th>NÚMERO DE PAGOS</th>
-                        <th>PAGOS PENDIENTES</th>
-                        <th>PAGOS AL DÍA</th>
+                        <th style='width:125px;' >PAGOS PENDIENTES</th>
+                        <th  style='width:125px;'>PAGOS AL DÍA</th>
                         <th>+ INF</th>
                     </tr>
                 </thead>
@@ -185,12 +179,6 @@ $tipo_usu = $_SESSION['tipo_usu'];
         <tr>
         <td data-label="CONT. No.">' . $row['num_con'] . '</td>
         <td data-label="FECHA INICIO">' . $row['fec_inicio_con'] . '</td>
-        <td data-label="TOTAL CANON">' . $total_canon . '</td>
-        <td data-label="TOTAL ADMON">' . $total_admon . '</td>
-        <td data-label="TOTAL IVA">' . $total_iva . '</td>
-        <td data-label="TOTAL RENTA">' . $total_renta . '</td>
-        <td data-label="TOTAL COMISION"><strong>' . $total_comision . '</strong></td>
-        <td data-label="TOTAL PROPIETARIO"><strong>' . $total_consignar . '</strong></td>
         <td data-label="NÚMERO DE PAGOS">' . $row['num_pagos'] . '</td>
         <td data-label="PAGOS PENDIENTES" class="' . $clase_estado . '">' . $pagos_pendientes . '</td>
         <td data-label="PAGOS AL DÍA" class="bg-green">' . $row['pagos_al_dia'] . '</td>

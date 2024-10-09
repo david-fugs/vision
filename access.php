@@ -1,10 +1,10 @@
 <?php
     session_start();
-    
+
     if(!isset($_SESSION['id_usu'])){
         header("Location: index.php");
     }
-    
+
     $usuario      = $_SESSION['usuario'];
     $nombre       = $_SESSION['nombre'];
     $tipo_usu     = $_SESSION['tipo_usu'];
@@ -114,7 +114,7 @@
             </ul>
           </li>
 
-        
+
           <li class="item">
             <div href="#" class="nav_link submenu_item">
               <span class="navlink_icon">
@@ -131,7 +131,7 @@
               <a href="code/arr/showarr.php" class="nav_link sublink">Consultar</a>
               <a href="code/arr/addcod.php" class="nav_link sublink">Ingresar Deudor Solidario</a>
               <a href="code/arr/showcod.php" class="nav_link sublink">Consultar Deudor Solidario</a>
-            
+
             </ul>
           </li>
 
@@ -185,6 +185,22 @@
 
             </ul>
     </li>
+    <li class="item">
+            <div href="#" class="nav_link submenu_item">
+              <span class="navlink_icon">
+               <i class='fa-solid fa-money-check-dollar'></i>
+                <!--<i class="bx bx-home-alt"></i>-->
+              </span>
+
+              <span class="navlink">Comisiones Pendientes</span>
+              <i class="bx bx-chevron-right arrow-left"></i>
+            </div>
+
+            <ul class="menu_items submenu">
+              <a href="code/pag/showPendingPays.php" class="nav_link sublink">Consultar</a>
+
+            </ul>
+    </li>
 
           <hr style="border: 1px solid #F3840D; border-radius: 5px;">
           <strong>Formatos-></strong>
@@ -204,7 +220,7 @@
               <a href="code/ase/showase.php" class="nav_link sublink">Consultar</a>
             </ul>
           </li>
-          
+
           <li class="item">
             <div href="#" class="nav_link submenu_item">
               <span class="navlink_icon">
@@ -304,7 +320,7 @@
               <a href="code/ase/showase.php" class="nav_link sublink">Consultar</a>
             </ul>
           </li>
-          
+
           <li class="item">
             <div href="#" class="nav_link submenu_item">
               <span class="navlink_icon">
@@ -474,7 +490,7 @@
       <div class="menu_content">
         <ul class="menu_items">
           <div class="menu_title menu_dahsboard"></div>
-      
+
           <li class="item">
             <div href="#" class="nav_link submenu_item">
               <span class="navlink_icon">
@@ -561,7 +577,7 @@
           <div class="menu_title menu_dahsboard"></div>
           <!-- duplicate or remove this li tag if you want to add or remove navlink with submenu -->
           <!-- start -->
-          
+
           <li class="item">
             <div href="#" class="nav_link submenu_item">
               <span class="navlink_icon">
@@ -635,7 +651,7 @@
           <div class="menu_title menu_dahsboard"></div>
           <!-- duplicate or remove this li tag if you want to add or remove navlink with submenu -->
           <!-- start -->
-          
+
           <li class="item">
             <div href="#" class="nav_link submenu_item">
               <span class="navlink_icon">

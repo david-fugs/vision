@@ -5,6 +5,9 @@ if (!isset($_SESSION['id_usu'])) {
     header("Location: ../../index.php");
     exit();
 }
+ini_set('display_errors', 1);  // Habilita la visualización de errores
+ini_set('display_startup_errors', 1);  // Habilita la visualización de errores de inicio
+error_reporting(E_ALL);  // Reporta todos los tipos de errores
 
 $nombre = $_SESSION['nombre'];
 $tipo_usu = $_SESSION['tipo_usu'];
@@ -13,7 +16,13 @@ include("../../conexion.php");
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
+
+    $tipos_gasto = $_POST['tipo_gasto'];
+    $valores_gasto = $_POST['valor_gasto'];
+    $observaciones_gasto = $_POST['observaciones_gasto'];
+
     $id_pago = $_POST['id_pago'];
+
     $fecha_pago_realizado = $_POST['fecha_pago_realizado'];
     $valor_pagado = $_POST['valor_pagado'];
     $afianzamiento = isset($_POST['afianzamiento']) ? str_replace('.', '', $_POST['afianzamiento']) : 0;
@@ -39,10 +48,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $pago_comision = $_POST['pago_comision'];
     $id_usu = $_SESSION['id_usu'];
 
+
+
     // Validar entrada numérica
     $adecuaciones = is_numeric($adecuaciones) ? $adecuaciones : 0;
     $deposito = is_numeric($deposito) ? $deposito : 0;
-
     // Obtener la información del pago
     $query = "SELECT renta_con, comision_pago, total_consignar_pago FROM pagos WHERE id_pago = $id_pago";
     $result = $mysqli->query($query);
@@ -51,54 +61,87 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $renta_con = $row['renta_con'];
         $comision_pago = $row['comision_pago'];
         $total_consignar_pago = $row['total_consignar_pago'];
-
         // Calcular la diferencia
         $diferencia = $renta_con - $valor_pagado;
-
 
         // Insertar el pago realizado en la tabla pagos_realizados
         $insert_query = "INSERT INTO pagos_realizados (
             id_pago, fecha_pago_realizado, valor_pagado, diferencia, adecuaciones, deposito, afianzamiento,
-            observaciones_diferencia, comision_pago, comision_pendiente,pago_comision, 
-            rte_fte1_prop, rte_fte2_prop, rte_ica1_prop, rte_ica2_prop, rte_iva1_prop, rte_iva2_prop, 
+            observaciones_diferencia, comision_pago, comision_pendiente,pago_comision,
+            rte_fte1_prop, rte_fte2_prop, rte_ica1_prop, rte_ica2_prop, rte_iva1_prop, rte_iva2_prop,
             rte_fte3_inmobi, rte_fte4_inmobi, rte_ica3_inmobi, rte_ica4_inmobi, pagado_a
-        ) 
+        )
       VALUES (
-        $id_pago, 
-        '$fecha_pago_realizado', 
-        $valor_pagado, 
-        $diferencia, 
-        $adecuaciones, 
-        $deposito, 
+        $id_pago,
+        '$fecha_pago_realizado',
+        $valor_pagado,
+        $diferencia,
+        $adecuaciones,
+        $deposito,
         $afianzamiento,
-        '$observaciones_diferencia', 
-        " . ($pago_comision == '1' ? $comision_pago : 0) . ", 
-        " . ($pago_comision == '0' ? $comision_pago : 0) . ", 
+        '$observaciones_diferencia',
+        " . ($pago_comision == '1' ? $comision_pago : 0) . ",
+        " . ($pago_comision == '0' ? $comision_pago : 0) . ",
         $pago_comision,
-        " . (isset($rte_fte1_prop) ? $rte_fte1_prop : 'NULL') . ", 
-        " . (isset($rte_fte2_prop) ? $rte_fte2_prop : 'NULL') . ", 
-        $rte_ica1_prop, 
-        $rte_ica2_prop, 
-        $rte_iva1_prop, 
-        $rte_iva2_prop, 
-        $rte_fte3_inmobi, 
-        $rte_fte4_inmobi, 
-        $rte_ica3_inmobi, 
-        $rte_ica4_inmobi, 
+        " . (isset($rte_fte1_prop) ? $rte_fte1_prop : 'NULL') . ",
+        " . (isset($rte_fte2_prop) ? $rte_fte2_prop : 'NULL') . ",
+        $rte_ica1_prop,
+        $rte_ica2_prop,
+        $rte_iva1_prop,
+        $rte_iva2_prop,
+        $rte_fte3_inmobi,
+        $rte_fte4_inmobi,
+        $rte_ica3_inmobi,
+        $rte_ica4_inmobi,
         '$pagado_a'
       )";
         if ($mysqli->query($insert_query)) {
             $id_pago_realizado = $mysqli->insert_id;
+            // Insertar los gastos en la tabla gastos
+            // Inicializar un array para almacenar los gastos
+            $gastos_array = [];
 
-            // Insertar los detalles de los propietarios
-            foreach ($propietarios as $index => $propietario_id) {
-                $monto = $propietarios_monto[$index];
-                $insert_propietario_query = "INSERT INTO pagos_propietarios (id_pago_realizado, nit_cc_pro, monto) 
-                                             VALUES ($id_pago_realizado, $propietario_id, $monto)";
-                $mysqli->query($insert_propietario_query);
+            // Recorre cada tipo de gasto
+            foreach ($tipos_gasto as $index => $tipo_gasto) {
+                $valor_gasto = isset($valores_gasto[$index]) ? str_replace('.', '', $valores_gasto[$index]) : 0;
+                $observacion_gasto = isset($observaciones_gasto[$index]) ? $observaciones_gasto[$index] : '';
+                // Concatenar el tipo de gasto, valor y observación
+                $gastos_array[] = "$tipo_gasto: $$valor_gasto  ($observacion_gasto)";
+            }
+            // Asegúrate de que $id_pago_realizado sea válido
+            if (isset($id_pago_realizado)) {
+                // Convertir el array en una cadena separada por comas
+                $gastos_string = implode(', ', $gastos_array);
+
+                // Actualizar la tabla pagos_realizados una sola vez
+                $insert_gasto_query = "UPDATE pagos_realizados SET
+                    gastos = '$gastos_string'
+                    WHERE id_pago_realizado = $id_pago_realizado";
+
+                // Ejecutar la consulta y verificar errores
+                if (!$mysqli->query($insert_gasto_query)) {
+                    echo "Error en la consulta: " . $mysqli->error;
+                    die;
+                }
+            } else {
+                echo "Error: id_pago_realizado no está definido." . $id_pago_realizado;
             }
 
-            $sql_pip = "INSERT INTO pagos_impuestos_propietario( id_pago,ret_fte_porc_pip, ret_fte_valor_pip,ret_ica_porc_pip ,ret_ica_valor_pip, ret_iva_valor_pip, obs_pip, estado_pip,fecha_alta_pip,id_usu_alta_pip , id_usu ) 
+            foreach ($propietarios as $index => $propietario_id) {
+                $monto = $propietarios_monto[$index];
+                // Corregir la consulta para que sea un UPDATE correcto
+                $insert_propietario_query = "INSERT INTO pagos_propietarios (id_pago_realizado, nit_cc_pro, monto)
+                                              VALUES ($id_pago_realizado, $propietario_id, $monto)";
+                // Ejecutar la consulta y verificar si se insertó correctamente
+                if ($mysqli->query($insert_propietario_query) === TRUE) {
+                    // Puedes manejar el caso de éxito si es necesario
+                    echo "Detalles del propietario insertados correctamente para el propietario ID: $propietario_id.<br>";
+                } else {
+                    // Manejo de error si la inserción falla
+                    echo "Error al insertar detalles del propietario ID: $propietario_id - " . $mysqli->error . "<br>";
+                }
+            }
+            $sql_pip = "INSERT INTO pagos_impuestos_propietario( id_pago,ret_fte_porc_pip, ret_fte_valor_pip,ret_ica_porc_pip ,ret_ica_valor_pip, ret_iva_valor_pip, obs_pip, estado_pip,fecha_alta_pip,id_usu_alta_pip , id_usu )
             VALUES( $id_pago, $rte_fte1_prop, $rte_fte2_prop, $rte_ica1_prop, $rte_ica2_prop, $rte_iva2_prop, '$observaciones_diferencia', 1, now(),$id_usu , $id_usu )";             // Ejecutar la consulta y verificar si hay error
             if ($mysqli->query($sql_pip) === TRUE) {
                 header("Location: pago_satisfactorio.htm");
@@ -142,11 +185,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 
 // Obtener la lista de propietarios relacionados con la propiedad
-$query_propietarios = "SELECT propietarios.nit_cc_pro, propietarios.nom_ape_pro 
-                       FROM propiedades 
-                       INNER JOIN propietarios ON propiedades.nit_cc_pro = propietarios.nit_cc_pro 
-                       INNER JOIN inmuebles ON propiedades.mat_inm = inmuebles.mat_inm 
-                       INNER JOIN contratos ON inmuebles.mat_inm = contratos.mat_inm 
+$query_propietarios = "SELECT propietarios.nit_cc_pro, propietarios.nom_ape_pro
+                       FROM propiedades
+                       INNER JOIN propietarios ON propiedades.nit_cc_pro = propietarios.nit_cc_pro
+                       INNER JOIN inmuebles ON propiedades.mat_inm = inmuebles.mat_inm
+                       INNER JOIN contratos ON inmuebles.mat_inm = contratos.mat_inm
                        WHERE contratos.num_con = (SELECT num_con FROM pagos WHERE id_pago = $id_pago)";
 $result_propietarios = $mysqli->query($query_propietarios);
 $propietarios = [];
@@ -295,7 +338,7 @@ while ($propietario = $result_propietarios->fetch_assoc()) {
 
                     </div>
                 </div>
-                <div class="form-grou">
+                <div class="form-group">
                     <div class="row">
                         <?php
                         if ($row['num_pago'] == 1) {
@@ -467,12 +510,107 @@ while ($propietario = $result_propietarios->fetch_assoc()) {
                 </div>
                 <hr style="border: 4px solid #FA8B07; border-radius: 4px;">
 
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-12 col-sm-6">
+                            <label for="Agregar Gastos"><strong>Agregar Gastos:</strong></label>
+                        </div>
+                    </div>
+                    <button type="button" id="add-gastos" class="btn btn-secondary mt-2">Agregar Gastos</button>
+                </div>
+
+                <div id="gastos-container" class="mt-3"></div>
+
+                <hr style="border: 4px solid #FA8B07; border-radius: 4px;">
+
                 <button type="submit" class="btn btn-primary" onclick="validateForm()">Registrar Pago Arrendamiento</button>
                 <a href="showpay1.php?num_con=<?= urlencode($row['num_con']); ?>" class="btn btn-outline-dark">Regresar</a>
 
             </div>
         </form>
         <script>
+            document.getElementById('add-gastos').addEventListener('click', function() {
+                const container = document.getElementById('gastos-container');
+
+                // Crear el contenedor para un nuevo gasto
+                const gastoDiv = document.createElement('div');
+                gastoDiv.classList.add('row', 'mb-3', 'gasto-item', 'p-2', 'border', 'rounded');
+
+                // Crear el campo select con opciones
+                const selectDiv = document.createElement('div');
+                selectDiv.classList.add('col-12', 'col-sm-3');
+                const selectLabel = document.createElement('label');
+                selectLabel.textContent = 'Tipo de Gasto:';
+                const select = document.createElement('select');
+                select.classList.add('form-control');
+                select.name = 'tipo_gasto[]';
+
+                // Agregar opciones al select
+                const opciones = ['Afianzamiento', 'Adecuaciones', 'Deposito', 'Otros'];
+                opciones.forEach(opcion => {
+                    const option = document.createElement('option');
+                    option.value = opcion;
+                    option.textContent = opcion;
+                    select.appendChild(option);
+                });
+
+                selectDiv.appendChild(selectLabel);
+                selectDiv.appendChild(select);
+
+                // Crear el campo de valor $
+                const valorDiv = document.createElement('div');
+                valorDiv.classList.add('col-12', 'col-sm-3');
+                const valorLabel = document.createElement('label');
+                valorLabel.textContent = 'Valor $:';
+                const valorInput = document.createElement('input');
+                valorInput.type = 'number';
+                valorInput.step = '0.01';
+                valorInput.classList.add('form-control');
+                valorInput.name = 'valor_gasto[]';
+                valorInput.value = '0';
+
+                valorDiv.appendChild(valorLabel);
+                valorDiv.appendChild(valorInput);
+
+                // Crear el campo de observaciones
+                const obsDiv = document.createElement('div');
+                obsDiv.classList.add('col-12', 'col-sm-3');
+                const observacionesLabel = document.createElement('label');
+                observacionesLabel.textContent = 'Observaciones:';
+                const observacionesInput = document.createElement('input');
+                observacionesInput.type = 'text';
+                observacionesInput.classList.add('form-control');
+                observacionesInput.name = 'observaciones_gasto[]';
+                observacionesInput.placeholder = 'Añadir observaciones';
+
+                obsDiv.appendChild(observacionesLabel);
+                obsDiv.appendChild(observacionesInput);
+
+                // Crear el botón de eliminación
+                const deleteDiv = document.createElement('div');
+                deleteDiv.classList.add('col-6', 'col-sm-1', 'd-flex', 'align-items-end');
+                const deleteButton = document.createElement('button');
+                deleteButton.type = 'button';
+                deleteButton.classList.add('btn', 'btn-danger', 'w-60');
+                deleteButton.textContent = 'Eliminar';
+
+                // Añadir evento para eliminar el gasto actual
+                deleteButton.addEventListener('click', function() {
+                    container.removeChild(gastoDiv);
+                });
+
+                deleteDiv.appendChild(deleteButton);
+
+                // Agregar los campos y el botón de eliminación al contenedor del gasto
+                gastoDiv.appendChild(selectDiv);
+                gastoDiv.appendChild(valorDiv);
+                gastoDiv.appendChild(obsDiv);
+                gastoDiv.appendChild(deleteDiv);
+
+                // Agregar el nuevo conjunto de campos de gasto al contenedor principal
+                container.appendChild(gastoDiv);
+            });
+
             function formatCurrency(amount) {
                 return new Intl.NumberFormat('es-ES', {
                     style: 'currency',

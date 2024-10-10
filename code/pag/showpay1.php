@@ -9,6 +9,22 @@ $nombre = $_SESSION['nombre'];
 $tipo_usu = $_SESSION['tipo_usu'];
 
 $nume_con = isset($_GET['num_con']) ? $_GET['num_con'] : '';
+function consultarPagosParciales($id_pago) {
+    include("../../conexion.php");
+    $query = "SELECT pagos_realizados.*, pagos.renta_con FROM pagos_realizados
+              LEFT JOIN pagos ON pagos_realizados.id_pago = pagos.id_pago
+              WHERE pagos_realizados.id_pago = $id_pago";
+    $result = $mysqli->query($query);
+
+    // Verificar si hay un resultado
+    if ($result && $result->num_rows > 0) {
+        // Devolver la primera fila como un array asociativo
+        return $result->fetch_assoc();
+    } else {
+        // Devolver un array vacío si no hay resultados
+        return [];
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -53,7 +69,8 @@ $nume_con = isset($_GET['num_con']) ? $_GET['num_con'] : '';
         }
 
         .text-orange {
-            color: orange;
+            background-color: orange;
+            color: white;
         }
 
         .bg-red {
@@ -89,7 +106,7 @@ $nume_con = isset($_GET['num_con']) ? $_GET['num_con'] : '';
 
     <h3 style="color: #3e1913; text-shadow: #FFFFFF 0.1em 0.1em 0.2em; font-size: 30px; text-align: center;"><b>VOLVER O IMPRIMIR PAGOS DEL CONTRATO</b></h3><br>
     <div class="excelAtras">
-    
+
         <a href="../../access.php"><img src='../../img/atras.png' width="72" height="72" title="Regresar" /></a>
         <a class="ml-4" href="exportarAllPays.php?num_con=<?= urlencode($nume_con) ?>"> <img src='../../img/excel.png' width="75" height="80" title="Regresar" />
         </a>
@@ -97,7 +114,7 @@ $nume_con = isset($_GET['num_con']) ? $_GET['num_con'] : '';
     </div>
 
 
-   
+
     <br>
 
     <?php
@@ -115,11 +132,11 @@ $nume_con = isset($_GET['num_con']) ? $_GET['num_con'] : '';
         die("Conexión fallida: " . $mysqli->connect_error);
     }
 
-    $query = "SELECT pagos.*, contratos.*, inmuebles.*, 
+    $query = "SELECT pagos.*, contratos.*, inmuebles.*,
                  COALESCE(prorrateos.fecha_prorrateada, pagos.fecha_pago) AS fecha_pago_mostrar,
                  COALESCE(prorrateos.canon_prorrateado, pagos.canon_con) AS canon_mostrar,
                  (SELECT SUM(valor_pagado) FROM pagos_realizados WHERE id_pago = pagos.id_pago) AS total_pagado
-          FROM contratos 
+          FROM contratos
           INNER JOIN pagos ON contratos.num_con = pagos.num_con
           INNER JOIN inmuebles ON contratos.mat_inm = inmuebles.mat_inm
           LEFT JOIN pagos_prorrateos prorrateos ON pagos.id_pago = prorrateos.id_pago
@@ -158,17 +175,17 @@ $nume_con = isset($_GET['num_con']) ? $_GET['num_con'] : '';
     $paginacion->records($num_registros);
     $paginacion->records_per_page($resul_x_pagina);
 
-    $consulta = "SELECT pagos.*, contratos.*, inmuebles.*, 
+    $consulta = "SELECT pagos.*, contratos.*, inmuebles.*,
                     COALESCE(prorrateos.fecha_prorrateada, pagos.fecha_pago) AS fecha_pago_mostrar,
                     COALESCE(prorrateos.canon_prorrateado, pagos.canon_con) AS canon_mostrar,
                     (SELECT SUM(valor_pagado) FROM pagos_realizados WHERE id_pago = pagos.id_pago) AS total_pagado
-             FROM contratos 
+             FROM contratos
              INNER JOIN pagos ON contratos.num_con = pagos.num_con
              INNER JOIN inmuebles ON contratos.mat_inm = inmuebles.mat_inm
              LEFT JOIN pagos_prorrateos prorrateos ON pagos.id_pago = prorrateos.id_pago
              WHERE (contratos.num_con LIKE '%$num_con%')
              AND (contratos.mat_inm LIKE '%$mat_inm%')
-             ORDER BY fecha_pago_mostrar ASC, pagos.id_pago ASC 
+             ORDER BY fecha_pago_mostrar ASC, pagos.id_pago ASC
              LIMIT " . (($paginacion->get_page() - 1) * $resul_x_pagina) . ", $resul_x_pagina";
 
     $result = $mysqli->query($consulta);
@@ -194,12 +211,17 @@ $nume_con = isset($_GET['num_con']) ? $_GET['num_con'] : '';
         // Calcular el estado del pago
         $estado_pago = "";
         $clase_estado = "";
-        if ($row['canon_mostrar'] <= $row['total_pagado']) {
+        $prorrateo = '<td data-label="PRORRATEO"><a href="dias_prorrateo.php?num_con=' . $row['num_con'] . '&dias=8&id_pago=' . $row['id_pago'] . '"><img src="../../img/prorrateo.png" width=28 height=28></a></td>';
+        $pago_parcial_hecho = "";
+        $pagos_parciales =consultarPagosParciales($row['id_pago']);
+        if ($row['canon_mostrar'] <= $row['total_pagado'] && $pagos_parciales['valor_pagado'] >= $pagos_parciales['renta_con'] ) {
             $estado_pago = "Pago al día";
             $clase_estado = "bg-green";
             $pago_total = '<td data-label="PAGO TOTAL"><span class="text-muted">N/A</span></td>';
             $pago_parcial = '<td data-label="PAGO PARCIAL"><span class="text-muted">N/A</span></td>';
+            $prorrateo = '<td data-label="PRORRATEO"><span class="text-muted">N/A</span></td>';
         } else {
+            $estado_pago = "Pago al día";
             $fecha_pago = new DateTime($row['fecha_pago_mostrar']);
             $diferencia = $fecha_pago->diff($hoy)->days;
 
@@ -207,8 +229,19 @@ $nume_con = isset($_GET['num_con']) ? $_GET['num_con'] : '';
                 $estado_pago = "Faltan $diferencia días";
                 $clase_estado = "text-blue";
             } else {
-                $estado_pago = "Pago vencido";
-                $clase_estado = "bg-red";
+                $pago_parcial_hecho = "";
+                if($pagos_parciales['valor_pagado'] >= $pagos_parciales['renta_con']){
+                    $estado_pago = "Pago vencido";
+                    $clase_estado = "bg-red";
+                }
+                else{
+                    $estado_pago = "Pago parcial";
+                    $clase_estado = "text-orange";
+                    $pago_total = '<td data-label="PAGO TOTAL"><span class="text-muted">N/A</span></td>';
+                    $pago_parcial_hecho = 1;
+                    $pago_habilitado = true;
+                }
+
             }
 
             if (!$pago_habilitado) {
@@ -219,9 +252,12 @@ $nume_con = isset($_GET['num_con']) ? $_GET['num_con'] : '';
                 $pago_total = '<td data-label="PAGO TOTAL"><span class="text-muted">N/A</span></td>';
                 $pago_parcial = '<td data-label="PAGO PARCIAL"><span class="text-muted">N/A</span></td>';
             }
+
+            if($pago_parcial_hecho == 1){
+                $pago_parcial = '<td data-label="PAGO PARCIAL"><a href="../pag/makePartialPay.php?id_pago=' . $row['id_pago'] . '"><img src="../../img/credito.png" width=28 height=28></a></td>';
+            }
         }
 
-        $prorrateo = '<td data-label="PRORRATEO"><a href="dias_prorrateo.php?num_con=' . $row['num_con'] . '&dias=8&id_pago=' . $row['id_pago'] . '"><img src="../../img/prorrateo.png" width=28 height=28></a></td>';
         echo '
         <tr>
         <td data-label="PAGO No.">' . $row['num_pago'] . '</td>
@@ -243,11 +279,9 @@ $nume_con = isset($_GET['num_con']) ? $_GET['num_con'] : '';
     echo '</table>
 </div>';
     ?>
-
     <center>
         <br /><a href="showpay.php"><img src='../../img/atras.png' width="72" height="72" title="Regresar" /></a>
     </center>
-
     <script src="https://www.jose-aguilar.com/scripts/fontawesome/js/all.min.js" data-auto-replace-svg="nest"></script>
 
 </body>

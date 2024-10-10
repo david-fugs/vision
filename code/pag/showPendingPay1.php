@@ -190,7 +190,6 @@ print_r($nume_con);
 
         ';
     }
-
     echo '</table>
 </div>';
     ?>

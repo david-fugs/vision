@@ -25,9 +25,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $fecha_pago_realizado = $_POST['fecha_pago_realizado'];
     $valor_pagado = $_POST['valor_pagado'];
-    $afianzamiento = isset($_POST['afianzamiento']) ? str_replace('.', '', $_POST['afianzamiento']) : 0;
-    $adecuaciones = isset($_POST['adecuaciones']) ? str_replace('.', '', $_POST['adecuaciones']) : 0;
-    $deposito = isset($_POST['deposito']) ? str_replace('.', '', $_POST['deposito']) : 0;
+   // $afianzamiento = isset($_POST['afianzamiento']) ? str_replace('.', '', $_POST['afianzamiento']) : 0;
+   // $adecuaciones = isset($_POST['adecuaciones']) ? str_replace('.', '', $_POST['adecuaciones']) : 0;
+  //  $deposito = isset($_POST['deposito']) ? str_replace('.', '', $_POST['deposito']) : 0;
     $rte_fte1_prop = isset($_POST['rte_fte1']) && $_POST['rte_fte1'] !== '' ? $_POST['rte_fte1'] : 0;
     $rte_fte2_prop = isset($_POST['rte_fte2']) && $_POST['rte_fte2'] !== '' ? $_POST['rte_fte2'] : 0;
     $rte_ica1_prop = isset($_POST['rte_ica1']) && $_POST['rte_ica1'] !== '' ? $_POST['rte_ica1'] : 0;
@@ -51,8 +51,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
     // Validar entrada numérica
-    $adecuaciones = is_numeric($adecuaciones) ? $adecuaciones : 0;
-    $deposito = is_numeric($deposito) ? $deposito : 0;
+  //  $adecuaciones = is_numeric($adecuaciones) ? $adecuaciones : 0;
+   // $deposito = is_numeric($deposito) ? $deposito : 0;
     // Obtener la información del pago
     $query = "SELECT renta_con, comision_pago, total_consignar_pago FROM pagos WHERE id_pago = $id_pago";
     $result = $mysqli->query($query);
@@ -76,9 +76,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         '$fecha_pago_realizado',
         $valor_pagado,
         $diferencia,
-        $adecuaciones,
-        $deposito,
-        $afianzamiento,
+        0,
+        0,
+        0,
         '$observaciones_diferencia',
         " . ($pago_comision == '1' ? $comision_pago : 0) . ",
         " . ($pago_comision == '0' ? $comision_pago : 0) . ",
@@ -300,13 +300,13 @@ while ($propietario = $result_propietarios->fetch_assoc()) {
                     </div>
                     <div class="col-12 col-sm-3 radio-group">
                         <label><strong>¿Pagó comisión?</strong></label>
-                        <div class="form-check radio-green">
-                            <input class="form-check-input" type="radio" name="pago_comision" id="pago_comision_si" value="1" required>
+                        <div style="display:flex; align-items:center; justify-content: space-around; " class="form-check radio-green">
+                            <input  class="form-check-input" type="radio" name="pago_comision" id="pago_comision_si" value="1" required>
                             <label class="form-check-label" for="pago_comision_si">Sí</label>
                         </div>
-                        <div class="form-check radio-red">
+                        <div style="display:flex; align-items:center; justify-content: space-around; "class="form-check radio-red">
                             <input class="form-check-input" type="radio" name="pago_comision" id="pago_comision_no" value="0" required>
-                            <label class="form-check-label" for="pago_comision_no">No</label>
+                            <label style=" padding-left: 35px;" class="form-check-label" for="pago_comision_no">No</label>
                         </div>
                     </div>
                     <div class="col-12 col-sm-3">
@@ -348,23 +348,14 @@ while ($propietario = $result_propietarios->fetch_assoc()) {
                                 <input type="text" class="form-control" id="afianzamiento" name="afianzamiento" value="0">
                             </div>
                         <?php } ?>
-                        <div class="col-12 col-sm-3">
-                            <label for="adecuaciones">Adecuaciones $</label>
-                            <input type="text" step="0.01" class="form-control" id="adecuaciones" name="adecuaciones" value="0">
-                        </div>
-                        <div class="col-12 col-sm-3">
-                            <label for="deposito">Depósito $</label>
-                            <input type="text" step="0.01" class="form-control" id="deposito" name="deposito" value="0">
-                        </div>
+                            <input type="hidden" step="0.01" class="form-control" id="adecuaciones" name="adecuaciones" value="0">
+                            <input type="hidden" step="0.01" class="form-control" id="deposito" name="deposito" value="0">
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="row">
-                        <div class="col-12 col-sm-10">
-                            <label for="observaciones_diferencia">Observaciones Diferencia:</label>
-                            <input type="text" class="form-control" id="observaciones_diferencia" name="observaciones_diferencia" disabled>
-                        </div>
+                            <input type="hidden" class="form-control" id="observaciones_diferencia" name="observaciones_diferencia" disabled>
                         <div class="col-12 col-sm-2">
                             <label for="fecha_pago_realizado">Fecha de Pago:</label>
                             <input type="date" class="form-control" id="fecha_pago_realizado" name="fecha_pago_realizado" required>

@@ -214,7 +214,22 @@ function consultarPagosParciales($id_pago) {
         $prorrateo = '<td data-label="PRORRATEO"><a href="dias_prorrateo.php?num_con=' . $row['num_con'] . '&dias=8&id_pago=' . $row['id_pago'] . '"><img src="../../img/prorrateo.png" width=28 height=28></a></td>';
         $pago_parcial_hecho = "";
         $pagos_parciales =consultarPagosParciales($row['id_pago']);
-        if ($row['canon_mostrar'] <= $row['total_pagado'] && $pagos_parciales['valor_pagado'] >= $pagos_parciales['renta_con'] ) {
+        if($pagos_parciales['id_pago_realizado']  == 52) print_r($pagos_parciales);
+        $valorPago = 1;
+        if($pagos_parciales != []){
+            $valorPago = $pagos_parciales['renta_con'] - (
+                $pagos_parciales['diferencia'] +
+                $pagos_parciales['valor_pagado'] +
+                $pagos_parciales['rte_fte2_prop'] +
+                $pagos_parciales['rte_ica2_prop'] +
+                $pagos_parciales['rte_iva2_prop'] +
+                $pagos_parciales['rte_fte4_inmobi'] +
+                $pagos_parciales['rte_ica4_inmobi']
+            );
+        }
+        print_r($valorPago);
+        if ($row['canon_mostrar'] <= $row['total_pagado'] &&   $pagos_parciales['diferencia'] <= 0 && $valorPago <= 0) {
+
             $estado_pago = "Pago al día";
             $clase_estado = "bg-green";
             $pago_total = '<td data-label="PAGO TOTAL"><span class="text-muted">N/A</span></td>';
@@ -225,7 +240,7 @@ function consultarPagosParciales($id_pago) {
             $fecha_pago = new DateTime($row['fecha_pago_mostrar']);
             $diferencia = $fecha_pago->diff($hoy)->days;
 
-            if ($fecha_pago > $hoy) {
+            if ($fecha_pago > $hoy ) {
                 $estado_pago = "Faltan $diferencia días";
                 $clase_estado = "text-blue";
             } else {
@@ -243,10 +258,7 @@ function consultarPagosParciales($id_pago) {
                         $pago_habilitado = true;
                     }
                 }
-
-
             }
-
             if (!$pago_habilitado) {
                 $pago_total = '<td data-label="PAGO TOTAL"><a href="../pag/makepay2.php?id_pago=' . $row['id_pago'] . '"><img src="../../img/pagar.png" width=28 height=28></a></td>';
                 $pago_parcial = '<td data-label="PAGO PARCIAL"><a href="../pag/makePartialPay.php?id_pago=' . $row['id_pago'] . '"><img src="../../img/credito.png" width=28 height=28></a></td>';

@@ -46,10 +46,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $propietarios_monto = $_POST['propietarios_monto'];
     $pago_comision = $_POST['pago_comision'];
     $id_usu = $_SESSION['id_usu'];
+    $diferencia = (int)str_replace(['.', ',', 'COP', ' '], '', $_POST['diferencia']) / 100;
+
 
     if ($valor_anterior_pagado > 0) {
         $valor_pagado = $valor_pagado + $valor_anterior_pagado;
-        $sql_update = "UPDATE pagos_realizados SET valor_pagado = $valor_pagado, fecha_pago_parcial  = $fecha_pago_realizado WHERE id_pago = $id_pago";
+        $sql_update = "UPDATE pagos_realizados SET valor_pagado = $valor_pagado, fecha_pago_parcial  = $fecha_pago_realizado, diferencia = $diferencia WHERE id_pago = $id_pago";
           // Ejecutar la consulta y verificar errores
           if (!$mysqli->query($sql_update)) {
             echo "Error en la consulta: " . $mysqli->error;
@@ -216,6 +218,7 @@ if ($result_pago && $result_pago->num_rows > 0) {
 }
 if ($pago_data != [])  $consignar = $pago_data['renta_con'] -  $pago_data['valor_pagado'];
 else $consignar = $row['renta_con'];
+print_r($pago_data);
 ?>
 
 <!DOCTYPE html>

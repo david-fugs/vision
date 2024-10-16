@@ -230,17 +230,20 @@ function consultarPagosParciales($id_pago) {
                 $clase_estado = "text-blue";
             } else {
                 $pago_parcial_hecho = "";
-                if($pagos_parciales['valor_pagado'] >= $pagos_parciales['renta_con']){
-                    $estado_pago = "Pago vencido";
-                    $clase_estado = "bg-red";
+                if($pagos_parciales != []){
+                    if($pagos_parciales['valor_pagado'] >= $pagos_parciales['renta_con']){
+                        $estado_pago = "Pago vencido";
+                        $clase_estado = "bg-red";
+                    }
+                    else{
+                        $estado_pago = "Pago parcial";
+                        $clase_estado = "text-orange";
+                        $pago_total = '<td data-label="PAGO TOTAL"><span class="text-muted">N/A</span></td>';
+                        $pago_parcial_hecho = 1;
+                        $pago_habilitado = true;
+                    }
                 }
-                else{
-                    $estado_pago = "Pago parcial";
-                    $clase_estado = "text-orange";
-                    $pago_total = '<td data-label="PAGO TOTAL"><span class="text-muted">N/A</span></td>';
-                    $pago_parcial_hecho = 1;
-                    $pago_habilitado = true;
-                }
+
 
             }
 

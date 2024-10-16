@@ -14,7 +14,7 @@ $tipo_usu = $_SESSION['tipo_usu'];
 
 include("../../conexion.php");
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
     $tipos_gasto = $_POST['tipo_gasto'];

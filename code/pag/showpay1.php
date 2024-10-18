@@ -312,8 +312,8 @@ function consultarPagosParciales($id_pago)
     <div class="modal fade" id="modalIpc" tabindex="-1" aria-labelledby="modalIpcLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="modalIpcLabel">Aumento del IPC</h1>
+                <div class="modal-header" style="background-color:#4e4a4a;">
+                    <h1 class="modal-title fs-5" id="modalIpcLabel" style="color: white;" >Aumento del IPC</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -321,24 +321,17 @@ function consultarPagosParciales($id_pago)
                     <div class="form-group">
                         <div class="row">
                             <div class="col-12">
-                                <label for="id_pago">* ID Pago:</label>
-                                <input type='text' name='id_pago' id='id_pago' class='form-control' disabled />
+                                <input type='hidden' name='id_pago' id='id_pago' class='form-control' disabled />
                             </div>
                             <div class="col-12 mt-2">
-                                <label for="num_con">* Número de Contrato:</label>
-                                <input type='text' name='num_con' id='num_con' class='form-control' disabled />
+                                <input type='hidden' name='num_con' id='num_con' class='form-control' disabled />
                             </div>
                             <div class="col-12 mt-2">
-                                <label for="num_pago">* Num pago:</label>
-                                <input type='text' name='num_pago' id='num_pago' class='form-control' disabled />
+                                <input type='hidden' name='num_pago' id='num_pago' class='form-control' disabled />
                             </div>
                             <div class="col-12 mt-2">
-                                <label for="ipc">* IPC %:</label>
+                                <label for="ipc" style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;">* IPC %:</label>
                                 <input type='number' name='ipc' id='ipc' class='form-control' step='0.01' min='0' required />
-                            </div>
-                            <div class="col-12 mt-2">
-                                <label for="acuerdo">* ACUERDO:</label>
-                                <input type='number' name='acuerdo' id="acuerdo" class='form-control' required />
                             </div>
                         </div>
                     </div>
@@ -346,7 +339,7 @@ function consultarPagosParciales($id_pago)
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary" onclick="submitForm()">Guardar cambios</button>
+                    <button type="button" class="btn btn-dark" onclick="submitForm()">Guardar cambios</button>
                 </div>
             </div>
         </div>
@@ -382,7 +375,6 @@ function consultarPagosParciales($id_pago)
 
         function submitForm() {
             var ipc = $('#ipc').val();
-            var acuerdo = $('#acuerdo').val();
             var id_pago = $('#id_pago').val();
             var num_con = $('#num_con').val();
             var num_pago = $('#num_pago').val();
@@ -393,7 +385,6 @@ function consultarPagosParciales($id_pago)
                 type: 'POST',
                 data: {
                     ipc: ipc,
-                    acuerdo: acuerdo,
                     id_pago: id_pago,
                     num_con: num_con,
                     num_pago: num_pago
@@ -401,7 +392,7 @@ function consultarPagosParciales($id_pago)
                 dataType: 'json', // Suponiendo que el servidor devuelve JSON
                 success: function(data) {
                     console.log('Éxito:', data);
-                    // Aquí puedes manejar la respuesta del servidor
+                    location.reload();
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
                     console.error('Error:', textStatus, errorThrown);

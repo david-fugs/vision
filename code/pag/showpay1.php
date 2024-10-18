@@ -9,7 +9,8 @@ $nombre = $_SESSION['nombre'];
 $tipo_usu = $_SESSION['tipo_usu'];
 
 $nume_con = isset($_GET['num_con']) ? $_GET['num_con'] : '';
-function consultarPagosParciales($id_pago) {
+function consultarPagosParciales($id_pago)
+{
     include("../../conexion.php");
     $query = "SELECT pagos_realizados.*, pagos.renta_con FROM pagos_realizados
               LEFT JOIN pagos ON pagos_realizados.id_pago = pagos.id_pago
@@ -43,7 +44,9 @@ function consultarPagosParciales($id_pago) {
     <link href="../../fontawesome/css/all.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/fed2435e21.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm">
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <style>
         .excelAtras {
             display: flex;
@@ -101,7 +104,7 @@ function consultarPagosParciales($id_pago) {
     <div>
         <h3 style="color: #3e1913; text-shadow: #FFFFFF 0.1em 0.1em 0.2em; font-size: 30px; text-align: center;"><b>IMPRIMIR DETALLES DEL CONTRATO</b></h3>
         <a class="ml-4" href="exportarAllContract.php?num_con=<?= urlencode($nume_con) ?>"> <img src='../../img/excel.png' width="75" height="80" title="Regresar" />
-<br><br>
+            <br><br>
     </div>
 
     <h3 style="color: #3e1913; text-shadow: #FFFFFF 0.1em 0.1em 0.2em; font-size: 30px; text-align: center;"><b>VOLVER O IMPRIMIR PAGOS DEL CONTRATO</b></h3><br>
@@ -161,12 +164,12 @@ function consultarPagosParciales($id_pago) {
                         <th>PAGO No.</th>
                         <th>CONT. No.</th>
                         <th>FECHA PAGO</th>
-                        <th>PROPIETARIO</th>
                         <th>ESTADO</th>
                         <th>PAGO TOTAL</th>
                         <th>PAGO PARCIAL</th>
                         <th>PRORRATEO</th>
                         <th>EXCEL</th>
+                        <th>OBSERVACION IPC</th>
                     </tr>
                 </thead>
                 <tbody>";
@@ -213,10 +216,9 @@ function consultarPagosParciales($id_pago) {
         $clase_estado = "";
         $prorrateo = '<td data-label="PRORRATEO"><a href="dias_prorrateo.php?num_con=' . $row['num_con'] . '&dias=8&id_pago=' . $row['id_pago'] . '"><img src="../../img/prorrateo.png" width=28 height=28></a></td>';
         $pago_parcial_hecho = "";
-        $pagos_parciales =consultarPagosParciales($row['id_pago']);
-        if($pagos_parciales['id_pago_realizado']  == 52) print_r($pagos_parciales);
+        $pagos_parciales = consultarPagosParciales($row['id_pago']);
         $valorPago = 1;
-        if($pagos_parciales != []){
+        if ($pagos_parciales != []) {
             $valorPago = $pagos_parciales['renta_con'] - (
                 $pagos_parciales['diferencia'] +
                 $pagos_parciales['valor_pagado'] +
@@ -227,7 +229,6 @@ function consultarPagosParciales($id_pago) {
                 $pagos_parciales['rte_ica4_inmobi']
             );
         }
-        print_r($valorPago);
         if ($row['canon_mostrar'] <= $row['total_pagado'] &&   $pagos_parciales['diferencia'] <= 0 && $valorPago <= 0) {
 
             $estado_pago = "Pago al día";
@@ -240,17 +241,16 @@ function consultarPagosParciales($id_pago) {
             $fecha_pago = new DateTime($row['fecha_pago_mostrar']);
             $diferencia = $fecha_pago->diff($hoy)->days;
 
-            if ($fecha_pago > $hoy ) {
+            if ($fecha_pago > $hoy) {
                 $estado_pago = "Faltan $diferencia días";
                 $clase_estado = "text-blue";
             } else {
                 $pago_parcial_hecho = "";
-                if($pagos_parciales != []){
-                    if($pagos_parciales['valor_pagado'] >= $pagos_parciales['renta_con']){
+                if ($pagos_parciales != []) {
+                    if ($pagos_parciales['valor_pagado'] >= $pagos_parciales['renta_con']) {
                         $estado_pago = "Pago vencido";
                         $clase_estado = "bg-red";
-                    }
-                    else{
+                    } else {
                         $estado_pago = "Pago parcial";
                         $clase_estado = "text-orange";
                         $pago_total = '<td data-label="PAGO TOTAL"><span class="text-muted">N/A</span></td>';
@@ -268,37 +268,147 @@ function consultarPagosParciales($id_pago) {
                 $pago_parcial = '<td data-label="PAGO PARCIAL"><span class="text-muted">N/A</span></td>';
             }
 
-            if($pago_parcial_hecho == 1){
+            if ($pago_parcial_hecho == 1) {
                 $pago_parcial = '<td data-label="PAGO PARCIAL"><a href="../pag/makePartialPay.php?id_pago=' . $row['id_pago'] . '"><img src="../../img/credito.png" width=28 height=28></a></td>';
             }
         }
+
+
 
         echo '
         <tr>
         <td data-label="PAGO No.">' . $row['num_pago'] . '</td>
         <td data-label="CONT. No.">' . $row['num_con'] . '</td>
         <td data-label="FECHA PAGO">' . $row['fecha_pago_mostrar'] . '</td>
-        <td data-label="PROPIETARIO"><strong>' . $total_consignar_pago . '</strong></td>
         <td data-label="ESTADO" class="' . $clase_estado . '">' . $estado_pago . '</td>
         ' . $pago_total . '
         ' . $pago_parcial . '
         ' . $prorrateo . '
         ';
-        if($estado_pago == "Pago al día"){
-            echo '<td data-label="EXCEL"><a href="exportarIndPays.php?num_con=' . $row['num_con'] . '&id_pago=' . $row['id_pago'] . '&nit_cc_arr=' . $row['nit_cc_arr'] . '"><img src="../../img/excel.png" width=28 height=28></a></td>';}
-        else{
+        if ($estado_pago == "Pago al día") {
+            echo '<td data-label="EXCEL"><a href="exportarIndPays.php?num_con=' . $row['num_con'] . '&id_pago=' . $row['id_pago'] . '&nit_cc_arr=' . $row['nit_cc_arr'] . '"><img src="../../img/excel.png" width=28 height=28></a></td>';
+        } else {
             echo '<td data-label="EXCEL"><span class="text-muted">Aun sin pagar</span></td>';
         }
+        if ($row['num_pago'] == 12 || $row['num_pago'] == 24 || $row['num_pago'] == 36 || $row['num_pago'] == 48 || $row['num_pago'] == 60) {
+            echo '<td data-label="aumenTo PIC">
+            <button
+                type="button"
+                class="btn btn-dark"
+                data-bs-toggle="modal"
+                data-bs-target="#modalIpc"
+                data-id-pago="' . $row['id_pago'] . '"
+                data-num-pago="' . $row['num_pago'] . '"
+                data-num-con="' . $row['num_con'] . '">
+                <i class="fa-solid fa-arrow-up"></i>
+            </button>
+        </td>';
+        }
     }
-
     echo '</table>
 </div>';
     ?>
+    <!-- Modal IPC -->
+    <div class="modal fade" id="modalIpc" tabindex="-1" aria-labelledby="modalIpcLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="modalIpcLabel">Aumento del IPC</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="ipc" method="POST"></form>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-12">
+                                <label for="id_pago">* ID Pago:</label>
+                                <input type='text' name='id_pago' id='id_pago' class='form-control' disabled />
+                            </div>
+                            <div class="col-12 mt-2">
+                                <label for="num_con">* Número de Contrato:</label>
+                                <input type='text' name='num_con' id='num_con' class='form-control' disabled />
+                            </div>
+                            <div class="col-12 mt-2">
+                                <label for="num_pago">* Num pago:</label>
+                                <input type='text' name='num_pago' id='num_pago' class='form-control' disabled />
+                            </div>
+                            <div class="col-12 mt-2">
+                                <label for="ipc">* IPC %:</label>
+                                <input type='number' name='ipc' id='ipc' class='form-control' step='0.01' min='0' required />
+                            </div>
+                            <div class="col-12 mt-2">
+                                <label for="acuerdo">* ACUERDO:</label>
+                                <input type='number' name='acuerdo' id="acuerdo" class='form-control' required />
+                            </div>
+                        </div>
+                    </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary" onclick="submitForm()">Guardar cambios</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <center>
         <br /><a href="showpay.php"><img src='../../img/atras.png' width="72" height="72" title="Regresar" /></a>
     </center>
     <script src="https://www.jose-aguilar.com/scripts/fontawesome/js/all.min.js" data-auto-replace-svg="nest"></script>
 
+    <script>
+        var modalIpc = document.getElementById('modalIpc');
+        modalIpc.addEventListener('show.bs.modal', function(event) {
+            // Botón que activó el modal
+            var button = event.relatedTarget;
+
+            // Extraer los datos de los atributos data-
+            var idPago = button.getAttribute('data-id-pago');
+            var numCon = button.getAttribute('data-num-con');
+            var numPago = button.getAttribute('data-num-pago');
+
+            // Elementos donde se mostrarán los valores
+            var modalIdPago = modalIpc.querySelector('#id_pago');
+            var modalNumCon = modalIpc.querySelector('#num_con');
+            var modalNumPago = modalIpc.querySelector('#num_pago');
+
+            // Asignar los valores a los elementos del modal
+            modalIdPago.value = idPago; // Asigna el valor a 'id_pago'
+            modalNumCon.value = numCon; // Asigna el valor a 'num_con'
+            modalNumPago.value = numPago; // Asigna el valor a 'num_pago'
+        });
+
+        function submitForm() {
+            var ipc = $('#ipc').val();
+            var acuerdo = $('#acuerdo').val();
+            var id_pago = $('#id_pago').val();
+            var num_con = $('#num_con').val();
+            var num_pago = $('#num_pago').val();
+
+            // Hacer la solicitud AJAX
+            $.ajax({
+                url: 'processIpc.php',
+                type: 'POST',
+                data: {
+                    ipc: ipc,
+                    acuerdo: acuerdo,
+                    id_pago: id_pago,
+                    num_con: num_con,
+                    num_pago: num_pago
+                },
+                dataType: 'json', // Suponiendo que el servidor devuelve JSON
+                success: function(data) {
+                    console.log('Éxito:', data);
+                    // Aquí puedes manejar la respuesta del servidor
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.error('Error:', textStatus, errorThrown);
+                }
+            });
+        }
+    </script>
 </body>
 
 </html>

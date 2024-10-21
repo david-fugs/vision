@@ -17,9 +17,9 @@ include("../../conexion.php");
  if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
-    $tipos_gasto = $_POST['tipo_gasto'];
-    $valores_gasto = $_POST['valor_gasto'];
-    $observaciones_gasto = $_POST['observaciones_gasto'];
+    $tipos_gasto = $_POST['tipo_gasto'] ?? [];
+    $valores_gasto = $_POST['valor_gasto'] ?? [];
+    $observaciones_gasto = $_POST['observaciones_gasto'] ?? [];
 
     $id_pago = $_POST['id_pago'];
 
@@ -95,75 +95,64 @@ include("../../conexion.php");
         $rte_ica4_inmobi,
         '$pagado_a'
       )";
-        if ($mysqli->query($insert_query)) {
-            $id_pago_realizado = $mysqli->insert_id;
-            // Insertar los gastos en la tabla gastos
-            // Inicializar un array para almacenar los gastos
-            $gastos_array = [];
+      if ($mysqli->query($insert_query)) {
+        $id_pago_realizado = $mysqli->insert_id;
 
-            // Recorre cada tipo de gasto
+        // Insertar gastos
+        $gastos_array = [];
+        if (!empty($tipos_gasto)) {
             foreach ($tipos_gasto as $index => $tipo_gasto) {
                 $valor_gasto = isset($valores_gasto[$index]) ? str_replace('.', '', $valores_gasto[$index]) : 0;
                 $observacion_gasto = isset($observaciones_gasto[$index]) ? $observaciones_gasto[$index] : '';
-                // Concatenar el tipo de gasto, valor y observación
                 $gastos_array[] = "$tipo_gasto: $$valor_gasto  ($observacion_gasto)";
             }
-            // Asegúrate de que $id_pago_realizado sea válido
-            if (isset($id_pago_realizado)) {
-                // Convertir el array en una cadena separada por comas
-                $gastos_string = implode(', ', $gastos_array);
-
-                // Actualizar la tabla pagos_realizados una sola vez
-                $insert_gasto_query = "UPDATE pagos_realizados SET
-                    gastos = '$gastos_string'
-                    WHERE id_pago_realizado = $id_pago_realizado";
-
-                // Ejecutar la consulta y verificar errores
-                if (!$mysqli->query($insert_gasto_query)) {
-                    echo "Error en la consulta: " . $mysqli->error;
-                    die;
-                }
-            } else {
-                echo "Error: id_pago_realizado no está definido." . $id_pago_realizado;
-            }
-
-            foreach ($propietarios as $index => $propietario_id) {
-                $monto = $propietarios_monto[$index];
-                // Corregir la consulta para que sea un UPDATE correcto
-                $insert_propietario_query = "INSERT INTO pagos_propietarios (id_pago_realizado, nit_cc_pro, monto)
-                                              VALUES ($id_pago_realizado, $propietario_id, $monto)";
-                // Ejecutar la consulta y verificar si se insertó correctamente
-                if ($mysqli->query($insert_propietario_query) === TRUE) {
-                    // Puedes manejar el caso de éxito si es necesario
-                    echo "Detalles del propietario insertados correctamente para el propietario ID: $propietario_id.<br>";
-                } else {
-                    // Manejo de error si la inserción falla
-                    echo "Error al insertar detalles del propietario ID: $propietario_id - " . $mysqli->error . "<br>";
-                }
-            }
-            $sql_pip = "INSERT INTO pagos_impuestos_propietario( id_pago,ret_fte_porc_pip, ret_fte_valor_pip,ret_ica_porc_pip ,ret_ica_valor_pip, ret_iva_valor_pip, obs_pip, estado_pip,fecha_alta_pip,id_usu_alta_pip , id_usu )
-            VALUES( $id_pago, $rte_fte1_prop, $rte_fte2_prop, $rte_ica1_prop, $rte_ica2_prop, $rte_iva2_prop, '$observaciones_diferencia', 1, now(),$id_usu , $id_usu )";             // Ejecutar la consulta y verificar si hay error
-            if ($mysqli->query($sql_pip) === TRUE) {
-                header("Location: pago_satisfactorio.htm");
-            } else {
-                // Mostrar el error
-                echo "Error en la consulta: " . $mysqli->error;
-            }
-            $sql_pii = "INSERT INTO pagos_impuestos_inmobiliaria( id_pago,iva_valor_pii ,ret_iva_aplica_pii,ret_iva_valor_pii,comision_valor_pii, ret_fte_porc_pii, ret_fte_valor_pii, ret_ica_porc_pii, ret_ica_valor_pii, obs_pii, estado_pii, fecha_alta_pii, id_usu_alta_pii, id_usu )
-            VALUES( $id_pago,$iva_valor, $rte_iva_aplica_inmobi, $rte_iva_inmobi ,$comision_pago, $rte_fte3_inmobi, $rte_fte4_inmobi, $rte_ica3_inmobi, $rte_ica4_inmobi, 0, 1, now(), $id_usu, $id_usu )";
-            //verificar si hay error
-            if ($mysqli->query($sql_pii) === TRUE) {
-                header("Location: pago_satisfactorio.htm");
-            } else {
-                // Mostrar el error
-                echo "Error en la consulta: " . $mysqli->error;
-            }
-
-            header("Location: pago_satisfactorio.htm");
-            exit();
-        } else {
-            echo "Error al registrar el pago: " . $mysqli->error;
         }
+
+        if (isset($id_pago_realizado)) {
+            $gastos_string = implode(', ', $gastos_array);
+            $insert_gasto_query = "UPDATE pagos_realizados SET gastos = '$gastos_string' WHERE id_pago_realizado = $id_pago_realizado";
+
+            if (!$mysqli->query($insert_gasto_query)) {
+                echo "Error en la consulta de gastos: " . $mysqli->error;
+                die;
+            }
+        } else {
+            echo "Error: id_pago_realizado no está definido.";
+            die;
+        }
+
+        // Insertar propietarios
+        foreach ($propietarios as $index => $propietario_id) {
+            $monto = $propietarios_monto[$index];
+            $insert_propietario_query = "INSERT INTO pagos_propietarios (id_pago_realizado, nit_cc_pro, monto) VALUES ($id_pago_realizado, $propietario_id, $monto)";
+            if (!$mysqli->query($insert_propietario_query)) {
+                echo "Error al insertar propietario ID: $propietario_id - " . $mysqli->error;
+                die;
+            }
+        }
+
+        // Insertar pagos impuestos propietario
+        $sql_pip = "INSERT INTO pagos_impuestos_propietario(id_pago, ret_fte_porc_pip, ret_fte_valor_pip, ret_ica_porc_pip, ret_ica_valor_pip, ret_iva_valor_pip, obs_pip, estado_pip, fecha_alta_pip, id_usu_alta_pip, id_usu)
+                    VALUES($id_pago, $rte_fte1_prop, $rte_fte2_prop, $rte_ica1_prop, $rte_ica2_prop, $rte_iva2_prop, '$observaciones_diferencia', 1, now(), $id_usu, $id_usu)";
+        if (!$mysqli->query($sql_pip)) {
+            echo "Error en la consulta de pagos impuestos propietario: " . $mysqli->error;
+            die;
+        }
+
+        // Insertar pagos impuestos inmobiliaria
+        $sql_pii = "INSERT INTO pagos_impuestos_inmobiliaria(id_pago, iva_valor_pii, ret_iva_aplica_pii, ret_iva_valor_pii, comision_valor_pii, ret_fte_porc_pii, ret_fte_valor_pii, ret_ica_porc_pii, ret_ica_valor_pii, obs_pii, estado_pii, fecha_alta_pii, id_usu_alta_pii, id_usu)
+                    VALUES($id_pago, $iva_valor, $rte_iva_aplica_inmobi, $rte_iva_inmobi, $comision_pago, $rte_fte3_inmobi, $rte_fte4_inmobi, $rte_ica3_inmobi, $rte_ica4_inmobi, 0, 1, now(), $id_usu, $id_usu)";
+        if (!$mysqli->query($sql_pii)) {
+            echo "Error en la consulta de pagos impuestos inmobiliaria: " . $mysqli->error;
+            die;
+        }
+
+        // Si todo sale bien, redirige
+        header("Location: pago_satisfactorio.htm");
+        exit();
+    } else {
+        echo "Error al registrar el pago: " . $mysqli->error;
+    }
     } else {
         echo "Pago no encontrado.";
     }
@@ -301,11 +290,11 @@ while ($propietario = $result_propietarios->fetch_assoc()) {
                     <div class="col-12 col-sm-3 radio-group">
                         <label><strong>¿Pagó comisión?</strong></label>
                         <div style="display:flex; align-items:center; justify-content: space-around; " class="form-check radio-green">
-                            <input  class="form-check-input" type="radio" name="pago_comision" id="pago_comision_si" value="1" required>
+                            <input  class="form-check-input" type="radio" name="pago_comision" id="pago_comision_si" value="0" required>
                             <label class="form-check-label" for="pago_comision_si">Sí</label>
                         </div>
                         <div style="display:flex; align-items:center; justify-content: space-around; "class="form-check radio-red">
-                            <input class="form-check-input" type="radio" name="pago_comision" id="pago_comision_no" value="0" required>
+                            <input class="form-check-input" type="radio" name="pago_comision" id="pago_comision_no" value="1" required>
                             <label style=" padding-left: 35px;" class="form-check-label" for="pago_comision_no">No</label>
                         </div>
                     </div>
@@ -416,8 +405,8 @@ while ($propietario = $result_propietarios->fetch_assoc()) {
                             <label for="rte_fte3">RTE FTE %</label>
                             <select class="form-control" name="rte_fte3" id="rte_fte3" onchange="updateRteFteInmobi()">
                                 <option value=""></option>
-                                <option <?php if ($row['rte_fte3'] == 3.5) echo "selected"; ?> value=3.5>3.5%</option>
-                                <option <?php if ($row['rte_fte3'] == 20) echo "selected"; ?> value=20>20%</option>
+                                <option <?php if ($row['rte_fte3'] == 4) echo "selected"; ?> value=3.5>4%</option>
+                                <option <?php if ($row['rte_fte3'] == 11) echo "selected"; ?> value=20>11%</option>
                                 <option <?php if ($row['rte_fte3'] == 0) echo "selected"; ?> value=0>N/A</option>
                             </select>
                         </div>

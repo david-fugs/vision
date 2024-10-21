@@ -8,8 +8,7 @@ if (!isset($_SESSION['id_usu'])) {
 $nombre = $_SESSION['nombre'];
 $tipo_usu = $_SESSION['tipo_usu'];
 
-$nume_con = isset($_GET['num_con']) ? $_GET['num_con'] : '';
-print_r($nume_con);
+$nume_con = isset($_GET['num_con']) ? $_GET['num_con'] : '';;
 ?>
 
 <!DOCTYPE html>
@@ -96,7 +95,7 @@ print_r($nume_con);
 
 
     <div class="excelAtras">
-        <a href="../../access.php"><img src='../../img/atras.png' width="72" height="72" title="Regresar" /></a>
+        <a href="showPendingPays.php"><img src='../../img/atras.png' width="72" height="72" title="Regresar" /></a>
         </a>
         <br>
     </div>
@@ -195,7 +194,7 @@ print_r($nume_con);
     ?>
 
     <center>
-        <br /><a href="showpay.php"><img src='../../img/atras.png' width="72" height="72" title="Regresar" /></a>
+        <br /><a href="showPendingPays.php"><img src='../../img/atras.png' width="72" height="72" title="Regresar" /></a>
     </center>
 
     <script src="https://www.jose-aguilar.com/scripts/fontawesome/js/all.min.js" data-auto-replace-svg="nest"></script>

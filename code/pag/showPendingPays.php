@@ -95,7 +95,8 @@ $tipo_usu = $_SESSION['tipo_usu'];
                  SUM(pagos.total_consignar_pago) AS total_consignar,
                  COUNT(pagos.id_pago) AS num_pagos,
                  SUM(CASE WHEN pagos_realizados.valor_pagado IS NULL AND pagos.fecha_pago < NOW() THEN 1 ELSE 0 END) AS pagos_vencidos,
-                 SUM(CASE WHEN pagos_realizados.valor_pagado IS NOT NULL AND pagos_realizados.valor_pagado >= pagos.canon_con THEN 1 ELSE 0 END) AS pagos_al_dia
+                 SUM(CASE WHEN pagos_realizados.valor_pagado IS NOT NULL AND pagos_realizados.valor_pagado >= pagos.canon_con THEN 1 ELSE 0 END) AS pagos_al_dia,
+                SUM(CASE WHEN pagos_realizados.pago_comision = 0 THEN 1 ELSE 0 END) AS pagos_pendientes
           FROM contratos
           INNER JOIN pagos ON contratos.num_con = pagos.num_con
           INNER JOIN inmuebles ON contratos.mat_inm = inmuebles.mat_inm
@@ -120,7 +121,7 @@ $tipo_usu = $_SESSION['tipo_usu'];
                     <tr>
                         <th >CONT. No.</th>
                         <th >FECHA INICIO</th>
-                        <th style='width:300px;'>NÚMERO DE COMISIONES PENDIENTES</th>
+                        <th style='width:300px;'>NÚMERO DE COMISIONES / COMISIONES PENDIENTES </th>
                         <th>+ INF</th>
                     </tr>
                 </thead>
@@ -139,7 +140,8 @@ $tipo_usu = $_SESSION['tipo_usu'];
                     SUM(pagos.total_consignar_pago) AS total_consignar,
                     COUNT(pagos.id_pago) AS num_pagos,
                     SUM(CASE WHEN pagos_realizados.valor_pagado IS NULL AND pagos.fecha_pago < NOW() THEN 1 ELSE 0 END) AS pagos_vencidos,
-                    SUM(CASE WHEN pagos_realizados.valor_pagado IS NOT NULL AND pagos_realizados.valor_pagado >= pagos.canon_con THEN 1 ELSE 0 END) AS pagos_al_dia
+                    SUM(CASE WHEN pagos_realizados.valor_pagado IS NOT NULL AND pagos_realizados.valor_pagado >= pagos.canon_con THEN 1 ELSE 0 END) AS pagos_al_dia,
+                    SUM(CASE WHEN pagos_realizados.estado_comision = 0 THEN 1 ELSE 0 END) AS pagos_pendientes
              FROM contratos
              INNER JOIN pagos ON contratos.num_con = pagos.num_con
              INNER JOIN inmuebles ON contratos.mat_inm = inmuebles.mat_inm
@@ -177,8 +179,8 @@ $tipo_usu = $_SESSION['tipo_usu'];
         <tr>
         <td data-label="CONT. No.">' . $row['num_con'] . '</td>
         <td data-label="FECHA INICIO">' . $row['fec_inicio_con'] . '</td>
-        <td data-label="NÚMERO DE PAGOS">' . $row['num_pagos'] . '</td>
-        <td data-label="+ INFO"><a href="showPendingPay1.php?num_con=' . $row['num_con'] . '"><img src="../../img/buscar.png" width=28 height=28></a></td>
+        <td data-label="NÚMERO DE PAGOS">' . $row['num_pagos'] . ' / ' . $row['pagos_pendientes'] . '</td>
+         <td data-label="+ INFO"><a href="showPendingPay1.php?num_con=' . $row['num_con'] . '"><img src="../../img/buscar.png" width=28 height=28></a></td>
         </tr>';
     }
 

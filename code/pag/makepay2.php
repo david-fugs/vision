@@ -57,8 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $comision_pago = $row['comision_pago'];
         $total_consignar_pago = $row['total_consignar_pago'];
         // Calcular la diferencia
-        $diferencia = $renta_con - $valor_pagado;
-
+        $diferencia = (int)str_replace([',00 COP', ' ', '.'], '', str_replace(',', '.', $_POST['diferencia'] ?? '0'))/100;
         // Insertar el pago realizado en la tabla pagos_realizados
         $insert_query = "INSERT INTO pagos_realizados (
             id_pago, fecha_pago_realizado, valor_pagado, diferencia, adecuaciones, deposito, afianzamiento,
@@ -339,7 +338,7 @@ while ($propietario = $result_propietarios->fetch_assoc()) {
                         <input type="date" class="form-control" id="fecha_pago_realizado" name="fecha_pago_realizado" required>
                     </div>
                 </div>
-                
+
                 <!-- esto lo dejo por testing  -->
                 <div class="form-group">
                          <input type="hidden" class="form-control" id="afianzamiento" name="afianzamiento" value="0">
@@ -362,6 +361,8 @@ while ($propietario = $result_propietarios->fetch_assoc()) {
                             <select class="form-control" name="rte_fte1" id="rte_fte1" onchange="updateRteFte()">
                                 <option value=""></option>
                                 <option value="3.5" <?php if ($row['rte_fte1'] == 3.5) echo "selected"; ?>>3.5%</option>
+                                <option value="20" <?php if ($row['rte_fte1'] == 4) echo "selected"; ?>>4%</option>
+                                <option value="20" <?php if ($row['rte_fte1'] == 10) echo "selected"; ?>>10%</option>
                                 <option value="20" <?php if ($row['rte_fte1'] == 20) echo "selected"; ?>>20%</option>
                                 <option value="0" <?php if ($row['rte_fte1'] == "0") echo "selected"; ?>>N/A</option>
                             </select>
@@ -824,6 +825,7 @@ while ($propietario = $result_propietarios->fetch_assoc()) {
             //restar al propietario
             function updateConsignar() {
 
+                
 
                 var rteFte2 = parseFloat(document.getElementById('rte_fte2').value) || 0;
                 var rteIca2 = parseFloat(document.getElementById('rte_ica2').value) || 0;

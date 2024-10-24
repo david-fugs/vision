@@ -14,20 +14,15 @@ $tipo_usu = $_SESSION['tipo_usu'];
 
 include("../../conexion.php");
 
- if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
     $tipos_gasto = $_POST['tipo_gasto'] ?? [];
     $valores_gasto = $_POST['valor_gasto'] ?? [];
     $observaciones_gasto = $_POST['observaciones_gasto'] ?? [];
-
     $id_pago = $_POST['id_pago'];
-
     $fecha_pago_realizado = $_POST['fecha_pago_realizado'];
     $valor_pagado = $_POST['valor_pagado'];
-   // $afianzamiento = isset($_POST['afianzamiento']) ? str_replace('.', '', $_POST['afianzamiento']) : 0;
-   // $adecuaciones = isset($_POST['adecuaciones']) ? str_replace('.', '', $_POST['adecuaciones']) : 0;
-  //  $deposito = isset($_POST['deposito']) ? str_replace('.', '', $_POST['deposito']) : 0;
     $rte_fte1_prop = isset($_POST['rte_fte1']) && $_POST['rte_fte1'] !== '' ? $_POST['rte_fte1'] : 0;
     $rte_fte2_prop = isset($_POST['rte_fte2']) && $_POST['rte_fte2'] !== '' ? $_POST['rte_fte2'] : 0;
     $rte_ica1_prop = isset($_POST['rte_ica1']) && $_POST['rte_ica1'] !== '' ? $_POST['rte_ica1'] : 0;
@@ -51,8 +46,8 @@ include("../../conexion.php");
 
 
     // Validar entrada numérica
-  //  $adecuaciones = is_numeric($adecuaciones) ? $adecuaciones : 0;
-   // $deposito = is_numeric($deposito) ? $deposito : 0;
+    //  $adecuaciones = is_numeric($adecuaciones) ? $adecuaciones : 0;
+    // $deposito = is_numeric($deposito) ? $deposito : 0;
     // Obtener la información del pago
     $query = "SELECT renta_con, comision_pago, total_consignar_pago FROM pagos WHERE id_pago = $id_pago";
     $result = $mysqli->query($query);
@@ -95,64 +90,64 @@ include("../../conexion.php");
         $rte_ica4_inmobi,
         '$pagado_a'
       )";
-      if ($mysqli->query($insert_query)) {
-        $id_pago_realizado = $mysqli->insert_id;
+        if ($mysqli->query($insert_query)) {
+            $id_pago_realizado = $mysqli->insert_id;
 
-        // Insertar gastos
-        $gastos_array = [];
-        if (!empty($tipos_gasto)) {
-            foreach ($tipos_gasto as $index => $tipo_gasto) {
-                $valor_gasto = isset($valores_gasto[$index]) ? str_replace('.', '', $valores_gasto[$index]) : 0;
-                $observacion_gasto = isset($observaciones_gasto[$index]) ? $observaciones_gasto[$index] : '';
-                $gastos_array[] = "$tipo_gasto: $$valor_gasto  ($observacion_gasto)";
+            // Insertar gastos
+            $gastos_array = [];
+            if (!empty($tipos_gasto)) {
+                foreach ($tipos_gasto as $index => $tipo_gasto) {
+                    $valor_gasto = isset($valores_gasto[$index]) ? str_replace('.', '', $valores_gasto[$index]) : 0;
+                    $observacion_gasto = isset($observaciones_gasto[$index]) ? $observaciones_gasto[$index] : '';
+                    $gastos_array[] = "$tipo_gasto: $$valor_gasto  ($observacion_gasto)";
+                }
             }
-        }
 
-        if (isset($id_pago_realizado)) {
-            $gastos_string = implode(', ', $gastos_array);
-            $insert_gasto_query = "UPDATE pagos_realizados SET gastos = '$gastos_string' WHERE id_pago_realizado = $id_pago_realizado";
+            if (isset($id_pago_realizado)) {
+                $gastos_string = implode(', ', $gastos_array);
+                $insert_gasto_query = "UPDATE pagos_realizados SET gastos = '$gastos_string' WHERE id_pago_realizado = $id_pago_realizado";
 
-            if (!$mysqli->query($insert_gasto_query)) {
-                echo "Error en la consulta de gastos: " . $mysqli->error;
+                if (!$mysqli->query($insert_gasto_query)) {
+                    echo "Error en la consulta de gastos: " . $mysqli->error;
+                    die;
+                }
+            } else {
+                echo "Error: id_pago_realizado no está definido.";
                 die;
             }
-        } else {
-            echo "Error: id_pago_realizado no está definido.";
-            die;
-        }
 
-        // Insertar propietarios
-        foreach ($propietarios as $index => $propietario_id) {
-            $monto = $propietarios_monto[$index];
-            $insert_propietario_query = "INSERT INTO pagos_propietarios (id_pago_realizado, nit_cc_pro, monto) VALUES ($id_pago_realizado, $propietario_id, $monto)";
-            if (!$mysqli->query($insert_propietario_query)) {
-                echo "Error al insertar propietario ID: $propietario_id - " . $mysqli->error;
-                die;
+            // Insertar propietarios
+            foreach ($propietarios as $index => $propietario_id) {
+                $monto = $propietarios_monto[$index];
+                $insert_propietario_query = "INSERT INTO pagos_propietarios (id_pago_realizado, nit_cc_pro, monto) VALUES ($id_pago_realizado, $propietario_id, $monto)";
+                if (!$mysqli->query($insert_propietario_query)) {
+                    echo "Error al insertar propietario ID: $propietario_id - " . $mysqli->error;
+                    die;
+                }
             }
-        }
 
-        // Insertar pagos impuestos propietario
-        $sql_pip = "INSERT INTO pagos_impuestos_propietario(id_pago, ret_fte_porc_pip, ret_fte_valor_pip, ret_ica_porc_pip, ret_ica_valor_pip, ret_iva_valor_pip, obs_pip, estado_pip, fecha_alta_pip, id_usu_alta_pip, id_usu)
+            // Insertar pagos impuestos propietario
+            $sql_pip = "INSERT INTO pagos_impuestos_propietario(id_pago, ret_fte_porc_pip, ret_fte_valor_pip, ret_ica_porc_pip, ret_ica_valor_pip, ret_iva_valor_pip, obs_pip, estado_pip, fecha_alta_pip, id_usu_alta_pip, id_usu)
                     VALUES($id_pago, $rte_fte1_prop, $rte_fte2_prop, $rte_ica1_prop, $rte_ica2_prop, $rte_iva2_prop, '$observaciones_diferencia', 1, now(), $id_usu, $id_usu)";
-        if (!$mysqli->query($sql_pip)) {
-            echo "Error en la consulta de pagos impuestos propietario: " . $mysqli->error;
-            die;
-        }
+            if (!$mysqli->query($sql_pip)) {
+                echo "Error en la consulta de pagos impuestos propietario: " . $mysqli->error;
+                die;
+            }
 
-        // Insertar pagos impuestos inmobiliaria
-        $sql_pii = "INSERT INTO pagos_impuestos_inmobiliaria(id_pago, iva_valor_pii, ret_iva_aplica_pii, ret_iva_valor_pii, comision_valor_pii, ret_fte_porc_pii, ret_fte_valor_pii, ret_ica_porc_pii, ret_ica_valor_pii, obs_pii, estado_pii, fecha_alta_pii, id_usu_alta_pii, id_usu)
+            // Insertar pagos impuestos inmobiliaria
+            $sql_pii = "INSERT INTO pagos_impuestos_inmobiliaria(id_pago, iva_valor_pii, ret_iva_aplica_pii, ret_iva_valor_pii, comision_valor_pii, ret_fte_porc_pii, ret_fte_valor_pii, ret_ica_porc_pii, ret_ica_valor_pii, obs_pii, estado_pii, fecha_alta_pii, id_usu_alta_pii, id_usu)
                     VALUES($id_pago, $iva_valor, $rte_iva_aplica_inmobi, $rte_iva_inmobi, $comision_pago, $rte_fte3_inmobi, $rte_fte4_inmobi, $rte_ica3_inmobi, $rte_ica4_inmobi, 0, 1, now(), $id_usu, $id_usu)";
-        if (!$mysqli->query($sql_pii)) {
-            echo "Error en la consulta de pagos impuestos inmobiliaria: " . $mysqli->error;
-            die;
-        }
+            if (!$mysqli->query($sql_pii)) {
+                echo "Error en la consulta de pagos impuestos inmobiliaria: " . $mysqli->error;
+                die;
+            }
 
-        // Si todo sale bien, redirige
-        header("Location: pago_satisfactorio.htm");
-        exit();
-    } else {
-        echo "Error al registrar el pago: " . $mysqli->error;
-    }
+            // Si todo sale bien, redirige
+            header("Location: pago_satisfactorio.htm");
+            exit();
+        } else {
+            echo "Error al registrar el pago: " . $mysqli->error;
+        }
     } else {
         echo "Pago no encontrado.";
     }
@@ -290,11 +285,11 @@ while ($propietario = $result_propietarios->fetch_assoc()) {
                     <div class="col-12 col-sm-3 radio-group">
                         <label><strong>¿Pagó comisión?</strong></label>
                         <div style="display:flex; align-items:center; justify-content: space-around; " class="form-check radio-green">
-                            <input  class="form-check-input" type="radio" name="pago_comision" id="pago_comision_si" value="0" required>
+                            <input class="form-check-input" type="radio" name="pago_comision" id="pago_comision_si" value="0" onclick="updateConsignar(),updateDiferencia()" required>
                             <label class="form-check-label" for="pago_comision_si">Sí</label>
                         </div>
-                        <div style="display:flex; align-items:center; justify-content: space-around; "class="form-check radio-red">
-                            <input class="form-check-input" type="radio" name="pago_comision" id="pago_comision_no" value="1" required>
+                        <div style="display:flex; align-items:center; justify-content: space-around; " class="form-check radio-red">
+                            <input class="form-check-input" type="radio" name="pago_comision" id="pago_comision_no" onclick="updateConsignar(),updateDiferencia()" value="1" required>
                             <label style=" padding-left: 35px;" class="form-check-label" for="pago_comision_no">No</label>
                         </div>
                     </div>
@@ -333,18 +328,17 @@ while ($propietario = $result_propietarios->fetch_assoc()) {
                         if ($row['num_pago'] == 1) {
                         ?>
                             <div class="col-12 col-sm-3">
-                                <label for="afianzamiento">Afianzamiento $</label>
-                                <input type="text" class="form-control" id="afianzamiento" name="afianzamiento" value="0">
+                                <input type="hidden" class="form-control" id="afianzamiento" name="afianzamiento" value="0">
                             </div>
                         <?php } ?>
-                            <input type="hidden" step="0.01" class="form-control" id="adecuaciones" name="adecuaciones" value="0">
-                            <input type="hidden" step="0.01" class="form-control" id="deposito" name="deposito" value="0">
+                        <input type="hidden" step="0.01" class="form-control" id="adecuaciones" name="adecuaciones" value="0">
+                        <input type="hidden" step="0.01" class="form-control" id="deposito" name="deposito" value="0">
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="row">
-                            <input type="hidden" class="form-control" id="observaciones_diferencia" name="observaciones_diferencia" disabled>
+                        <input type="hidden" class="form-control" id="observaciones_diferencia" name="observaciones_diferencia" disabled>
                         <div class="col-12 col-sm-2">
                             <label for="fecha_pago_realizado">Fecha de Pago:</label>
                             <input type="date" class="form-control" id="fecha_pago_realizado" name="fecha_pago_realizado" required>
@@ -397,7 +391,6 @@ while ($propietario = $result_propietarios->fetch_assoc()) {
                         </div>
                     </div>
                 </div>
-
                 <h4><strong>Impuestos Inmobiliaria:</strong></h4>
                 <div class="form-group">
                     <div class="row">
@@ -549,6 +542,9 @@ while ($propietario = $result_propietarios->fetch_assoc()) {
                 valorInput.name = 'valor_gasto[]';
                 valorInput.value = '0';
 
+                // Añadir evento para actualizar el total de gastos al cambiar el valor
+                valorInput.addEventListener('input', updateConsignar);
+
                 valorDiv.appendChild(valorLabel);
                 valorDiv.appendChild(valorInput);
 
@@ -577,6 +573,7 @@ while ($propietario = $result_propietarios->fetch_assoc()) {
                 // Añadir evento para eliminar el gasto actual
                 deleteButton.addEventListener('click', function() {
                     container.removeChild(gastoDiv);
+                    updateConsignar(); // Actualizar total al eliminar
                 });
 
                 deleteDiv.appendChild(deleteButton);
@@ -589,6 +586,9 @@ while ($propietario = $result_propietarios->fetch_assoc()) {
 
                 // Agregar el nuevo conjunto de campos de gasto al contenedor principal
                 container.appendChild(gastoDiv);
+
+                // Llamar a la función para actualizar el total de gastos después de agregar un nuevo gasto
+                updateConsignar();
             });
 
             function formatCurrency(amount) {
@@ -599,21 +599,35 @@ while ($propietario = $result_propietarios->fetch_assoc()) {
             }
 
             function updateDiferencia() {
-                var valorRenta = parseFloat(document.getElementById('renta_con').value.replace(/\./g, '').replace(',', '.'));
-                var valorPagado = parseFloat(document.getElementById('valor_pagado').value);
-                var diferencia = valorRenta - valorPagado;
+                // Verificar si alguno de los radios está seleccionado
+                var pagoComisionRadios = document.getElementsByName('pago_comision');
+                var isSelected = Array.from(pagoComisionRadios).some(radio => radio.checked);
 
-                var diferenciaInput = document.getElementById('diferencia');
-                diferenciaInput.value = formatCurrency(diferencia);
+                // Solo hacer cálculos si hay un radio seleccionado
+                if (isSelected) {
+                    var valorRenta = (parseFloat(document.getElementById('total_consignar_pago').value.replace(/\./g, '').replace(/,/, '.').replace(' COP', ''))) / 100;
+                    var valorPagado = parseFloat(document.getElementById('valor_pagado').value);
+                    var diferencia = valorRenta - valorPagado;
 
-                if (diferencia < 0) {
-                    diferenciaInput.classList.add('text-red');
-                    diferenciaInput.classList.remove('text-green');
-                } else if (diferencia === 0) {
-                    diferenciaInput.classList.add('text-green');
-                    diferenciaInput.classList.remove('text-red');
+                    console.log(valorRenta);
+                    console.log(valorPagado);
+
+                    var diferenciaInput = document.getElementById('diferencia');
+                    diferenciaInput.value = formatCurrency(diferencia);
+
+                    // Cambiar las clases según la diferencia
+                    if (diferencia < 0) {
+                        diferenciaInput.classList.add('text-red');
+                        diferenciaInput.classList.remove('text-green');
+                    } else if (diferencia === 0) {
+                        diferenciaInput.classList.add('text-green');
+                        diferenciaInput.classList.remove('text-red');
+                    } else {
+                        diferenciaInput.classList.remove('text-green', 'text-red');
+                    }
                 } else {
-                    diferenciaInput.classList.remove('text-green', 'text-red');
+                    // Si no hay radio seleccionado, puedes limpiar el input o manejar el caso
+                    document.getElementById('diferencia').value = ""; // O puedes dejarlo como está
                 }
             }
 
@@ -624,7 +638,7 @@ while ($propietario = $result_propietarios->fetch_assoc()) {
 
                 var totalMontoInput = document.getElementById('total_monto');
                 totalMontoInput.value = formatCurrency(totalMonto);
-                console.log(totalMontoInput.value);
+                //  console.log(totalMontoInput.value);
 
                 var totalPropietarios = 0;
                 document.querySelectorAll('.propietario-monto').forEach(function(input) {
@@ -647,7 +661,7 @@ while ($propietario = $result_propietarios->fetch_assoc()) {
             }
 
             function validateForm() {
-                console.log("Validating form...");
+                //   console.log("Validating form...");
                 var valorRenta = parseFloat(document.getElementById('renta_con').value.replace(/\./g, '').replace(',', '.'));
                 var valorPagado = parseFloat(document.getElementById('valor_pagado').value);
                 var valorPagadoError = document.getElementById('valor_pagado_error');
@@ -812,13 +826,35 @@ while ($propietario = $result_propietarios->fetch_assoc()) {
 
             //restar al propietario
             function updateConsignar() {
+                const gastos = document.querySelectorAll('.gasto-item input[name="valor_gasto[]"]');
+                let totalGastos = 0;
+
+                gastos.forEach(gasto => {
+                    const valor = parseFloat(gasto.value) || 0; // Convierte a número o 0 si está vacío
+                    totalGastos += valor;
+                });
+
                 var rteFte2 = parseFloat(document.getElementById('rte_fte2').value) || 0;
                 var rteIca2 = parseFloat(document.getElementById('rte_ica2').value) || 0;
                 var rteIva2 = parseFloat(document.getElementById('rte_iva2').value) || 0;
+                var pago_comision = document.getElementsByName('pago_comision');
+                var rentaNumero = parseFloat(document.getElementById('renta_con').value.replace(/\./g, '').replace(/,/, '.').replace(' COP', ''));
+                var comision_SINO = 3;
+                pago_comision.forEach((radio) => {
+                    radio.addEventListener('change', () => {
+                        comision_SINO = radio.value; // Muestra 0 si es "Sí", 1 si es "No"
+                        console.log(radio.value);
+                    });
+                });
+                console.log(comision_SINO);
 
-                // Calcular la nueva comisión restando los valores de las retenciones
-                var nuevaComision = originalConsignar - rteFte2 - rteIca2 - rteIva2;
-
+                // Calcular la nueva comisión restando los valores de las retenciones y los gastos
+                if (comision_SINO == 0) {
+                    var nuevaComision = originalConsignar - rteFte2 - rteIca2 - rteIva2 - totalGastos;
+                    console.log(nuevaComision);
+                } else {
+                    var nuevaComision = originalConsignar - rteFte2 - rteIca2 - rteIva2 - totalGastos;
+                }
                 // Actualizar el valor en el campo de comisión
                 document.getElementById('total_consignar_pago').value = nuevaComision.toFixed(2) + " COP";
             }

@@ -303,7 +303,10 @@ header("Content-Type: text/html;charset=utf-8");
                         <select class="form-control" name="rte_fte3" id="rte_fte3">
                             <option value=""></option>
                             <option value=3.5>3.5%</option>
-                            <option value=20>20%</option>
+                            <option value=4>4%</option>
+                            <option value=10>10%</option>
+                            <option value=11>11%</option>
+
                         </select>
                     </div>
                     <div class="col-12 col-sm-2">
@@ -617,7 +620,7 @@ header("Content-Type: text/html;charset=utf-8");
     document.getElementById('rte_ica3').addEventListener('change', function() {
         // Obtener el valor de la comisión y limpiarlo
         let comisionRaw = document.getElementById('comision_pago').value;
-        
+
         // Limpiar el formato de moneda (quitar $, puntos y comas)
         let comision = comisionRaw.replace(/[.$]/g, '').replace(',', '.').replace('$', '');
 
@@ -626,7 +629,7 @@ header("Content-Type: text/html;charset=utf-8");
 
         // Obtener el porcentaje seleccionado en RTE ICA
         const rteIca = parseFloat(this.value);
-        
+
         // Si hay un valor válido seleccionado
         if (!isNaN(rteIca) && !isNaN(comision)) {
             // Calcular la retención en la fuente (RTE ICA $)

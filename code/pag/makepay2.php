@@ -282,35 +282,49 @@ while ($propietario = $result_propietarios->fetch_assoc()) {
                         if ($acuerdo > 0) $row['comision_pago'] = $acuerdo;
                         else echo number_format($row['comision_pago'], 2, ',', '.'); ?> COP" readonly>
                     </div>
-                    <div class="col-12 col-sm-3 radio-group">
-                        <label><strong>¿Pagó comisión?</strong></label>
-                        <div style="display:flex; align-items:center; justify-content: space-around; " class="form-check radio-green">
-                            <input class="form-check-input" type="radio" name="pago_comision" id="pago_comision_si" value="0" onclick="updateConsignar(),updateDiferencia()" required>
-                            <label class="form-check-label" for="pago_comision_si">Sí</label>
-                        </div>
-                        <div style="display:flex; align-items:center; justify-content: space-around; " class="form-check radio-red">
-                            <input class="form-check-input" type="radio" name="pago_comision" id="pago_comision_no" onclick="updateConsignar(),updateDiferencia()" value="1" required>
-                            <label style=" padding-left: 35px;" class="form-check-label" for="pago_comision_no">No</label>
-                        </div>
+
+                </div>
+            </div>
+            <hr style="border: 4px solid #FA8B07; border-radius: 4px;">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-12 col-sm-6">
+                        <label for="Agregar Gastos"><strong>Agregar Gastos:</strong></label>
                     </div>
-                    <div class="col-12 col-sm-3">
-                        <label for="total_consignar_pago"><strong>Total a Consignar $</strong></label>
-                        <input type="text" class="form-control form-control-bold" id="total_consignar_pago" value="<?php echo number_format($row['total_consignar_pago'], 2, ',', '.'); ?> COP" readonly>
+                </div>
+                <button type="button" id="add-gastos" class="btn btn-secondary mt-2">Agregar Gastos</button>
+            </div>
+
+            <div id="gastos-container" class="mt-3"></div>
+            <hr style="border: 4px solid #FA8B07; border-radius: 4px;">
+            <div class="form-group row"> <!-- Añadido 'row' para que ambas columnas estén alineadas horizontalmente -->
+                <div class="col-12 col-sm-4 radio-group">
+                    <label><strong>¿Pagó comisión?</strong></label> <br>
+                    <div style="display:flex; align-items:center; justify-content: space-around;" class="form-check radio-green">
+                        <input class="form-check-input" type="radio" name="pago_comision" id="pago_comision_si" value="0" onclick="updateConsignar(),updateDiferencia()" required>
+                        <label class="form-check-label" for="pago_comision_si">Sí</label>
                     </div>
+                    <div style="display:flex; align-items:center; justify-content: space-around;" class="form-check radio-red">
+                        <input class="form-check-input" type="radio" name="pago_comision" id="pago_comision_no" onclick="updateConsignar(),updateDiferencia()" value="1" required>
+                        <label style="padding-left: 35px;" class="form-check-label" for="pago_comision_no">No</label>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-4">
+                    <label for="total_consignar_pago"><strong>Total a Consignar $</strong></label>
+                    <input type="text" class="form-control form-control-bold" id="total_consignar_pago" value="<?php echo number_format($row['total_consignar_pago'], 2, ',', '.'); ?> COP" readonly>
+                </div>
+                <div class="col-12 col-sm-4">
+                    <label for="pagado_a">Pagado a:</label>
+                    <select class="form-control" name="pagado_a" required>
+                        <option value=""></option>
+                        <option <?php if ($row['pagado_a'] == "Inmobiliaria")  echo "selected";  ?> value="Inmobiliaria">Inmobiliaria</option>
+                        <option <?php if ($row['pagado_a'] == "Propietario")  echo "selected";  ?> value="Propietario">Propietario</option>
+                    </select>
                 </div>
             </div>
 
             <div class="form-group">
                 <div class="row">
-                    <div class="col-12 col-sm-4">
-                        <label for="pagado_a">Pagado a:</label>
-                        <select class="form-control" name="pagado_a" required>
-                            <option value=""></option>
-                            <option <?php if ($row['pagado_a'] == "Inmobiliaria")  echo "selected";  ?> value="Inmobiliaria">Inmobiliaria</option>
-                            <option <?php if ($row['pagado_a'] == "Propietario")  echo "selected";  ?> value="Propietario">Propietario</option>
-                        </select>
-                    </div>
-
                     <div class="col-12 col-sm-4">
                         <label for="valor_pagado">Valor Pagado $</label>
                         <input type="number" step="0.01" class="form-control form-control-bold" id="valor_pagado" name="valor_pagado" required>
@@ -319,30 +333,24 @@ while ($propietario = $result_propietarios->fetch_assoc()) {
                     <div class="col-12 col-sm-4">
                         <label for="diferencia"><strong>Diferencia $</strong></label>
                         <input type="text" class="form-control" id="diferencia" name="diferencia" readonly>
-
+                    </div>
+                    <div class="col-12 col-sm-2">
+                        <label for="fecha_pago_realizado">Fecha de Pago:</label>
+                        <input type="date" class="form-control" id="fecha_pago_realizado" name="fecha_pago_realizado" required>
                     </div>
                 </div>
+                
+                <!-- esto lo dejo por testing  -->
                 <div class="form-group">
-                    <div class="row">
-                        <?php
-                        if ($row['num_pago'] == 1) {
-                        ?>
-                            <div class="col-12 col-sm-3">
-                                <input type="hidden" class="form-control" id="afianzamiento" name="afianzamiento" value="0">
-                            </div>
-                        <?php } ?>
+                         <input type="hidden" class="form-control" id="afianzamiento" name="afianzamiento" value="0">
                         <input type="hidden" step="0.01" class="form-control" id="adecuaciones" name="adecuaciones" value="0">
                         <input type="hidden" step="0.01" class="form-control" id="deposito" name="deposito" value="0">
-                    </div>
                 </div>
+
 
                 <div class="form-group">
                     <div class="row">
                         <input type="hidden" class="form-control" id="observaciones_diferencia" name="observaciones_diferencia" disabled>
-                        <div class="col-12 col-sm-2">
-                            <label for="fecha_pago_realizado">Fecha de Pago:</label>
-                            <input type="date" class="form-control" id="fecha_pago_realizado" name="fecha_pago_realizado" required>
-                        </div>
                     </div>
                 </div>
                 <hr style="border: 4px solid #FA8B07; border-radius: 4px;">
@@ -481,18 +489,9 @@ while ($propietario = $result_propietarios->fetch_assoc()) {
                         </div>
                     </div>
                 </div>
-                <hr style="border: 4px solid #FA8B07; border-radius: 4px;">
 
-                <div class="form-group">
-                    <div class="row">
-                        <div class="col-12 col-sm-6">
-                            <label for="Agregar Gastos"><strong>Agregar Gastos:</strong></label>
-                        </div>
-                    </div>
-                    <button type="button" id="add-gastos" class="btn btn-secondary mt-2">Agregar Gastos</button>
-                </div>
 
-                <div id="gastos-container" class="mt-3"></div>
+
 
                 <hr style="border: 4px solid #FA8B07; border-radius: 4px;">
 
@@ -544,6 +543,7 @@ while ($propietario = $result_propietarios->fetch_assoc()) {
 
                 // Añadir evento para actualizar el total de gastos al cambiar el valor
                 valorInput.addEventListener('input', updateConsignar);
+                valorInput.addEventListener('blur', updateConsignar);
 
                 valorDiv.appendChild(valorLabel);
                 valorDiv.appendChild(valorInput);
@@ -608,9 +608,6 @@ while ($propietario = $result_propietarios->fetch_assoc()) {
                     var valorRenta = (parseFloat(document.getElementById('total_consignar_pago').value.replace(/\./g, '').replace(/,/, '.').replace(' COP', ''))) / 100;
                     var valorPagado = parseFloat(document.getElementById('valor_pagado').value);
                     var diferencia = valorRenta - valorPagado;
-
-                    console.log(valorRenta);
-                    console.log(valorPagado);
 
                     var diferenciaInput = document.getElementById('diferencia');
                     diferenciaInput.value = formatCurrency(diferencia);
@@ -826,37 +823,40 @@ while ($propietario = $result_propietarios->fetch_assoc()) {
 
             //restar al propietario
             function updateConsignar() {
-                const gastos = document.querySelectorAll('.gasto-item input[name="valor_gasto[]"]');
-                let totalGastos = 0;
 
-                gastos.forEach(gasto => {
-                    const valor = parseFloat(gasto.value) || 0; // Convierte a número o 0 si está vacío
-                    totalGastos += valor;
-                });
 
                 var rteFte2 = parseFloat(document.getElementById('rte_fte2').value) || 0;
                 var rteIca2 = parseFloat(document.getElementById('rte_ica2').value) || 0;
                 var rteIva2 = parseFloat(document.getElementById('rte_iva2').value) || 0;
                 var pago_comision = document.getElementsByName('pago_comision');
                 var rentaNumero = parseFloat(document.getElementById('renta_con').value.replace(/\./g, '').replace(/,/, '.').replace(' COP', ''));
-                var comision_SINO = 3;
+                var comision = parseFloat(document.getElementById('comision_pago').value.replace(/\./g, '').replace(/,/, '.').replace(' COP', ''));
+                // Inicializar la nueva comisión
+                var nuevaComision;
+
+                // Añadir el event listener a los radios
                 pago_comision.forEach((radio) => {
                     radio.addEventListener('change', () => {
-                        comision_SINO = radio.value; // Muestra 0 si es "Sí", 1 si es "No"
-                        console.log(radio.value);
+                        const gastos = document.querySelectorAll('.gasto-item input[name="valor_gasto[]"]');
+                        let totalGastos = 0;
+                        gastos.forEach(gasto => {
+                            const valor = parseFloat(gasto.value) || 0; // Convierte a número o 0 si está vacío
+                            totalGastos += valor;
+                        });
+                        console.log(totalGastos);
+                        console.log("entro");
+                        // Recalcular nuevaComision basado en el valor de pago_comision
+                        const comision_SINO = document.querySelector('input[name="pago_comision"]:checked').value; // Obtiene el radio seleccionado
+                        if (comision_SINO == 1) {
+                            nuevaComision = originalConsignar - rteFte2 - rteIca2 - rteIva2 - totalGastos;
+                        } else {
+                            nuevaComision = rentaNumero - rteFte2 - rteIca2 - rteIva2 - totalGastos;
+                        }
+
+                        // Actualizar el valor en el campo de comisión
+                        document.getElementById('total_consignar_pago').value = nuevaComision.toFixed(2) + " COP";
                     });
                 });
-                console.log(comision_SINO);
-
-                // Calcular la nueva comisión restando los valores de las retenciones y los gastos
-                if (comision_SINO == 0) {
-                    var nuevaComision = originalConsignar - rteFte2 - rteIca2 - rteIva2 - totalGastos;
-                    console.log(nuevaComision);
-                } else {
-                    var nuevaComision = originalConsignar - rteFte2 - rteIca2 - rteIva2 - totalGastos;
-                }
-                // Actualizar el valor en el campo de comisión
-                document.getElementById('total_consignar_pago').value = nuevaComision.toFixed(2) + " COP";
             }
             // Llamamos a las funciones de actualización al cargar la página para que se actualice las restas
             window.onload = function() {

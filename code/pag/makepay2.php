@@ -295,59 +295,7 @@ while ($propietario = $result_propietarios->fetch_assoc()) {
             </div>
 
             <div id="gastos-container" class="mt-3"></div>
-            <hr style="border: 4px solid #FA8B07; border-radius: 4px;">
-            <div class="form-group row"> <!-- Añadido 'row' para que ambas columnas estén alineadas horizontalmente -->
-                <div class="col-12 col-sm-4 radio-group">
-                    <label><strong>¿Pagó comisión?</strong></label> <br>
-                    <div style="display:flex; align-items:center; justify-content: space-around;" class="form-check radio-green">
-                        <input class="form-check-input" type="radio" name="pago_comision" id="pago_comision_si" value="0" onclick="updateConsignar(),updateDiferencia()" required>
-                        <label class="form-check-label" for="pago_comision_si">Sí</label>
-                    </div>
-                    <div style="display:flex; align-items:center; justify-content: space-around;" class="form-check radio-red">
-                        <input class="form-check-input" type="radio" name="pago_comision" id="pago_comision_no" onclick="updateConsignar(),updateDiferencia()" value="1" required>
-                        <label style="padding-left: 35px;" class="form-check-label" for="pago_comision_no">No</label>
-                    </div>
-                </div>
-                <div class="col-12 col-sm-4">
-                    <label for="total_consignar_pago"><strong>Total a Consignar $</strong></label>
-                    <input type="text" class="form-control form-control-bold" id="total_consignar_pago" value="<?php echo number_format($row['total_consignar_pago'], 2, ',', '.'); ?> COP" readonly>
-                </div>
-                <div class="col-12 col-sm-4">
-                    <label for="pagado_a">Pagado a:</label>
-                    <select class="form-control" name="pagado_a" required>
-                        <option value=""></option>
-                        <option <?php if ($row['pagado_a'] == "Inmobiliaria")  echo "selected";  ?> value="Inmobiliaria">Inmobiliaria</option>
-                        <option <?php if ($row['pagado_a'] == "Propietario")  echo "selected";  ?> value="Propietario">Propietario</option>
-                    </select>
-                </div>
-            </div>
-
             <div class="form-group">
-                <div class="row">
-                    <div class="col-12 col-sm-4">
-                        <label for="valor_pagado">Valor Pagado $</label>
-                        <input type="number" step="0.01" class="form-control form-control-bold" id="valor_pagado" name="valor_pagado" required>
-                        <div id="valor_pagado_error" class="text-red font-weight-bold" style="display: none;">Valor superior a Valor Renta, por favor corrija.</div>
-                    </div>
-                    <div class="col-12 col-sm-4">
-                        <label for="diferencia"><strong>Diferencia $</strong></label>
-                        <input type="text" class="form-control" id="diferencia" name="diferencia" readonly>
-                    </div>
-                    <div class="col-12 col-sm-2">
-                        <label for="fecha_pago_realizado">Fecha de Pago:</label>
-                        <input type="date" class="form-control" id="fecha_pago_realizado" name="fecha_pago_realizado" required>
-                    </div>
-                </div>
-
-                <!-- esto lo dejo por testing  -->
-                <div class="form-group">
-                         <input type="hidden" class="form-control" id="afianzamiento" name="afianzamiento" value="0">
-                        <input type="hidden" step="0.01" class="form-control" id="adecuaciones" name="adecuaciones" value="0">
-                        <input type="hidden" step="0.01" class="form-control" id="deposito" name="deposito" value="0">
-                </div>
-
-
-                <div class="form-group">
                     <div class="row">
                         <input type="hidden" class="form-control" id="observaciones_diferencia" name="observaciones_diferencia" disabled>
                     </div>
@@ -448,6 +396,59 @@ while ($propietario = $result_propietarios->fetch_assoc()) {
 
                     </div>
                 </div>
+                <hr style="border: 4px solid #FA8B07; border-radius: 4px;">
+
+            <div class="form-group row"> <!-- Añadido 'row' para que ambas columnas estén alineadas horizontalmente -->
+                <div class="col-12 col-sm-4 radio-group">
+                    <label><strong>¿Pagó comisión?</strong></label> <br>
+                    <div style="display:flex; align-items:center; justify-content: space-around;" class="form-check radio-green">
+                        <input class="form-check-input" type="radio" name="pago_comision" id="pago_comision_si" value="0" onclick="updateConsignar(),updateDiferencia()" required>
+                        <label class="form-check-label" for="pago_comision_si">Sí</label>
+                    </div>
+                    <div style="display:flex; align-items:center; justify-content: space-around;" class="form-check radio-red">
+                        <input class="form-check-input" type="radio" name="pago_comision" id="pago_comision_no" onclick="updateConsignar(),updateDiferencia()" value="1" required>
+                        <label style="padding-left: 35px;" class="form-check-label" for="pago_comision_no">No</label>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-4">
+                    <label for="total_consignar_pago"><strong>Total a Consignar $</strong></label>
+                    <input type="text" class="form-control form-control-bold" id="total_consignar_pago" value="<?php echo number_format($row['total_consignar_pago'], 2, ',', '.'); ?> COP" readonly>
+                </div>
+                <div class="col-12 col-sm-4">
+                    <label for="pagado_a">Pagado a:</label>
+                    <select class="form-control" name="pagado_a" required>
+                        <option value=""></option>
+                        <option <?php if ($row['pagado_a'] == "Inmobiliaria")  echo "selected";  ?> value="Inmobiliaria">Inmobiliaria</option>
+                        <option <?php if ($row['pagado_a'] == "Propietario")  echo "selected";  ?> value="Propietario">Propietario</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-12 col-sm-4">
+                        <label for="valor_pagado">Valor Pagado $</label>
+                        <input type="number" step="0.01" class="form-control form-control-bold" id="valor_pagado" name="valor_pagado" required>
+                        <div id="valor_pagado_error" class="text-red font-weight-bold" style="display: none;">Valor superior a Valor Renta, por favor corrija.</div>
+                    </div>
+                    <div class="col-12 col-sm-4">
+                        <label for="diferencia"><strong>Diferencia $</strong></label>
+                        <input type="text" class="form-control" id="diferencia" name="diferencia" readonly>
+                    </div>
+                    <div class="col-12 col-sm-2">
+                        <label for="fecha_pago_realizado">Fecha de Pago:</label>
+                        <input type="date" class="form-control" id="fecha_pago_realizado" name="fecha_pago_realizado" required>
+                    </div>
+                </div>
+
+                <!-- esto lo dejo por testing  -->
+                <div class="form-group">
+                         <input type="hidden" class="form-control" id="afianzamiento" name="afianzamiento" value="0">
+                        <input type="hidden" step="0.01" class="form-control" id="adecuaciones" name="adecuaciones" value="0">
+                        <input type="hidden" step="0.01" class="form-control" id="deposito" name="deposito" value="0">
+                </div>
+
+
 
                 <hr style="border: 4px solid #FA8B07; border-radius: 4px;">
                 <div class="form-group">

@@ -69,8 +69,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $comision_pago = $row['comision_pago'];
             $total_consignar_pago = $row['total_consignar_pago'];
             // Calcular la diferencia
-            $diferencia = $renta_con - $valor_pagado;
-
             // Insertar el pago realizado en la tabla pagos_realizados
             $insert_query = "INSERT INTO pagos_realizados (
             id_pago, fecha_pago_realizado, valor_pagado, diferencia, adecuaciones, deposito, afianzamiento,
@@ -214,13 +212,9 @@ if ($result_pago && $result_pago->num_rows > 0) {
         $pago_data = $result_pago->fetch_assoc();
     }
 }
-
 if ($pago_data != [])  $consignar = $pago_data['renta_con'] -  $pago_data['valor_pagado'];
 else $consignar = $row['renta_con'];
-print_r($pago_data);
-
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
 
@@ -304,7 +298,7 @@ print_r($pago_data);
     <h1 style="color: #412fd1; text-shadow: #FFFFFF 0.1em 0.1em 0.2em; font-size: 40px; text-align: center;"><b><i class='fa-solid fa-money-check-dollar'></i> APLICAR PAGO PARCIAL</b></h1>
 
     <div class="container">
-        <form id="payment-form" action="makepay2.php" method="post">
+        <form id="payment-form" action="makePartialPay.php" method="post">
             <input type="hidden" name="id_pago" value="<?php echo $id_pago; ?>">
 
             <div class="form-group">
@@ -339,28 +333,137 @@ print_r($pago_data);
                 </div>
                 <button type="button" id="add-gastos" class="btn btn-secondary mt-2">Agregar Gastos</button>
             </div>
+            <hr style="border: 4px solid #FA8B07; border-radius: 4px;">
 
             <div id="gastos-container" class="mt-3"></div>
+            <h4><strong>Impuestos Propietario:</strong></h4>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-12 col-sm-2">
+                        <label for="rte_fte1">RTE FTE %</label>
+                        <select <?php if (!empty($pago_data)) echo "disabled"; ?> class="form-control" name="rte_fte1" id="rte_fte1" onchange="updateRteFte()">
+                            <option value=""></option>
+                            <option value="3.5" <?php echo (!empty($pago_data) && $pago_data['rte_fte1_prop'] == 3.5) || (!empty($row['rte_fte1']) && $row['rte_fte1'] == 3.5 && empty($pago_data)) ? 'selected' : ''; ?>>3.5%</option>
+                            <option value="4" <?php echo (!empty($pago_data) && $pago_data['rte_fte1_prop'] == 4) || (!empty($row['rte_fte1']) && $row['rte_fte1'] == 4 && empty($pago_data)) ? 'selected' : ''; ?>>4%</option>
+                            <option value="10" <?php echo (!empty($pago_data) && $pago_data['rte_fte1_prop'] == 10) || (!empty($row['rte_fte1']) && $row['rte_fte1'] == 10 && empty($pago_data)) ? 'selected' : ''; ?>>10%</option>
+                            <option value="20" <?php echo (!empty($pago_data) && $pago_data['rte_fte1_prop'] == 20) || (!empty($row['rte_fte1']) && $row['rte_fte1'] == 20 && empty($pago_data)) ? 'selected' : ''; ?>>20%</option>
+                            <option value="0" <?php echo (!empty($pago_data) && $pago_data['rte_fte1_prop'] == "0") || (!empty($row['rte_fte1']) && $row['rte_fte1'] == "0" && empty($pago_data)) ? 'selected' : ''; ?>>N/A</option>
+                        </select>
+                    </div>
+                    <div class="col-12 col-sm-2">
+                        <strong><label for="rte_fte2">RTE FTE $</label></strong>
+                        <input type='text' name='rte_fte2' id="rte_fte2" class='form-control' value="<?= $row['rte_fte2'] ?>" readonly style="font-weight:bold;" />
+                    </div>
+                    <div class="col-12 col-sm-2">
+                        <label for="rte_ica1">RTE ICA</label>
+                        <select <?php if (!empty($pago_data)) echo "disabled"; ?> class="form-control" name="rte_ica1" id="rte_ica1" onchange="updateRteIca()">
+                            <option value=""></option>
+                            <option value="7" <?php echo (!empty($pago_data) && $pago_data['rte_ica1_prop'] == 7) || (empty($pago_data) && $row['rte_ica1'] == 7) ? 'selected' : ''; ?>>7</option>
+                            <option value="8" <?php echo (!empty($pago_data) && $pago_data['rte_ica1_prop'] == 8) || (empty($pago_data) && $row['rte_ica1'] == 8) ? 'selected' : ''; ?>>8</option>
+                            <option value="9" <?php echo (!empty($pago_data) && $pago_data['rte_ica1_prop'] == 9) || (empty($pago_data) && $row['rte_ica1'] == 9) ? 'selected' : ''; ?>>9</option>
+                            <option value="10" <?php echo (!empty($pago_data) && $pago_data['rte_ica1_prop'] == 10) || (empty($pago_data) && $row['rte_ica1'] == 10) ? 'selected' : ''; ?>>10</option>
+                            <option value="0" <?php echo (!empty($pago_data) && $pago_data['rte_ica1_prop'] === "N/A") || (empty($pago_data) && $row['rte_ica1'] === "N/A") ? 'selected' : ''; ?>>N/A</option>
+                        </select>
+                    </div>
+                    <div class="col-12 col-sm-2">
+                        <strong><label for="rte_ica2">RTE ICA $</label></strong>
+                        <input type='text' name='rte_ica2' id="rte_ica2" class='form-control' value="<?= !empty($pago_data) ? $pago_data['rte_iva1_prop'] : $row['rte_ica2'] ?>" readonly style="font-weight:bold;" />
+                    </div>
+                    <div class="col-12 col-sm-2">
+                        <label for="rte_iva1">RTE IVA:</label>
+                        <select <?php if ($pago_data != []) echo "disabled" ?> class="form-control" name="rte_iva1" id="rte_iva1" onchange="updateRteIva()" required>
+                            <option value=""></option>
+                            <option <?php if ($row['rte_iva1'] == 1) echo "selected"; ?> value=1>Sí</option>
+                            <option <?php if ($row['rte_iva1'] == 0) echo "selected"; ?> value=0>No</option>
+                        </select>
+                    </div>
+                    <div class="col-12 col-sm-2">
+                        <strong><label for="rte_iva2">RTE IVA $</label></strong>
+                        <input type='text' name='rte_iva2' id="rte_iva2" class='form-control' value="<?= $row['rte_iva2'] ?>" readonly style="font-weight:bold;" />
+                    </div>
+                </div>
+            </div>
+
+            <h4><strong>Impuestos Inmobiliaria:</strong></h4>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-12 col-sm-2">
+                        <label for="rte_fte3">RTE FTE %</label>
+                        <select <?php if ($pago_data != []) echo "disabled" ?> class="form-control" name="rte_fte3" id="rte_fte3" onchange="updateRteFteInmobi()">
+                            <option value=""></option>
+                            <option <?php if ($row['rte_fte3'] == 3.5) echo "selected"; ?> value=3.5>3.5%</option>
+                            <option <?php if ($row['rte_fte3'] == 20) echo "selected"; ?> value=20>20%</option>
+                            <option <?php if ($row['rte_fte3'] == 0) echo "selected"; ?> value=0>N/A</option>
+                        </select>
+                    </div>
+                    <div class="col-12 col-sm-2">
+                        <strong><label for="rte_fte4">RTE FTE $</label></strong>
+                        <input type='text' value="<?= $row['rte_fte4'] ?>" name='rte_fte4' id="rte_fte4" class='form-control' readonly style="font-weight:bold;" />
+                    </div>
+                    <div class="col-12 col-sm-2">
+                        <label for="rte_ica3">RTE ICA</label>
+                        <select <?php if (!empty($pago_data)) echo "disabled"; ?> class="form-control" name="rte_ica3" id="rte_ica3" onchange="updateRteIcaInmobi()">
+                            <option value=""></option>
+                            <option <?php if (!empty($pago_data) && $pago_data['rte_ica3_inmobi'] == 7) echo "selected"; ?> value=7>7</option>
+                            <option <?php if (!empty($pago_data) && $pago_data['rte_ica3_inmobi'] == 8) echo "selected"; ?> value=8>8</option>
+                            <option <?php if (!empty($pago_data) && $pago_data['rte_ica3_inmobi'] == 9) echo "selected"; ?> value=9>9</option>
+                            <option <?php if (!empty($pago_data) && $pago_data['rte_ica3_inmobi'] == 10) echo "selected"; ?> value=10>10</option>
+                            <option <?php if (!empty($pago_data) && $pago_data['rte_ica3_inmobi'] == 0) echo "selected"; ?> value=0>N/A</option>
+                            <?php if (empty($pago_data)) { ?>
+                                <option <?php if ($row['rte_ica3'] == 7) echo "selected"; ?> value=7>7</option>
+                                <option <?php if ($row['rte_ica3'] == 8) echo "selected"; ?> value=8>8</option>
+                                <option <?php if ($row['rte_ica3'] == 9) echo "selected"; ?> value=9>9</option>
+                                <option <?php if ($row['rte_ica3'] == 10) echo "selected"; ?> value=10>10</option>
+                                <option <?php if ($row['rte_ica3'] == "N/A") echo "selected"; ?> value=0>N/A</option>
+                            <?php } ?>
+                        </select>
+                    </div>
+                    <div class="col-12 col-sm-2">
+                        <strong><label for="rte_ica2">RTE ICA $</label></strong>
+                        <input type='text' value="<?= $row['rte_ica4'] ?>" name='rte_ica4' id="rte_ica4" class='form-control' readonly style="font-weight:bold;" />
+                    </div>
+                    <!-- rete iva -->
+                    <div class="col-12 col-sm-2">
+                        <label for="rte_iva3">RTE IVA:</label>
+                        <select <?php if ($pago_data != []) echo "disabled" ?> class="form-control" name="rte_iva_aplica_inmobi" id="rte_iva_aplica_inmobi" onchange="updateRteIvaInmobi()" required>
+                            <option value=""></option>
+                            <option <?php if ($row['rte_iva_aplica_inmobi'] == 1) echo "selected"; ?> value=1>Sí</option>
+                            <option <?php if ($row['rte_iva_aplica_inmobi'] == 0) echo "selected"; ?> value=0>No</option>
+                        </select>
+                    </div>
+                    <div class="col-12 col-sm-2">
+                        <strong><label for="rte_iva_inmobi">RTE IVA $</label></strong>
+                        <input type='text' name='rte_iva_inmobi' id="rte_iva_inmobi" class='form-control' value="<?= $row['rte_iva_inmobi'] ?>" readonly style="font-weight:bold;" />
+                    </div>
+                    <input type="hidden" name="iva_con" value="<?= $row['iva_con'] ?>">
+
+                </div>
+            </div>
+
+            <?php $isPagoComisionSet = isset($pago_data['pago_comision']); ?>
+            <?php $isPagoComisionChecked = $isPagoComisionSet ? $pago_data['pago_comision'] : ''; ?>
+
             <hr style="border: 4px solid #FA8B07; border-radius: 4px;">
             <div class="form-group row"> <!-- Añadido 'row' para que ambas columnas estén alineadas horizontalmente -->
                 <div class="col-12 col-sm-4 radio-group">
                     <label><strong>¿Pagó comisión?</strong></label> <br>
                     <div style="display:flex; align-items:center; justify-content: space-around;" class="form-check radio-green">
-    <input class="form-check-input" type="radio" name="pago_comision" id="pago_comision_si" value="0"
-           <?php echo ($pago_data['pago_comision'] == '0') ? 'checked' : ''; ?>
-           onclick="updateConsignar(),updateDiferencia()"
-           <?php echo (!empty($pago_data['pago_comision'])) ? 'disabled' : ''; ?>
-           required>
-    <label class="form-check-label" for="pago_comision_si">Sí</label>
-</div>
-<div style="display:flex; align-items:center; justify-content: space-around;" class="form-check radio-red">
-    <input class="form-check-input" type="radio" name="pago_comision" id="pago_comision_no" value="1"
-           <?php echo ($pago_data['pago_comision'] == '1') ? 'checked' : ''; ?>
-           onclick="updateConsignar(),updateDiferencia()"
-           <?php echo (!empty($pago_data['pago_comision'])) ? 'disabled' : ''; ?>
-           required>
-    <label style="padding-left: 35px;" class="form-check-label" for="pago_comision_no">No</label>
-</div>
+                        <input class="form-check-input" type="radio" name="pago_comision" id="pago_comision_si" value="0"
+                            <?php echo ($isPagoComisionChecked === '0') ? 'checked' : ''; ?>
+                            onclick="updateConsignar(),updateDiferencia()"
+                            <?php echo $isPagoComisionSet ? 'disabled' : ''; ?>
+                            required>
+                        <label class="form-check-label" for="pago_comision_si">Sí</label>
+                    </div>
+
+                    <div style="display:flex; align-items:center; justify-content: space-around;" class="form-check radio-red">
+                        <input class="form-check-input" type="radio" name="pago_comision" id="pago_comision_no" value="1"
+                            <?php echo ($isPagoComisionChecked === '1') ? 'checked' : ''; ?>
+                            onclick="updateConsignar(),updateDiferencia()"
+                            <?php echo $isPagoComisionSet ? 'disabled' : ''; ?>
+                            required>
+                        <label style="padding-left: 35px;" class="form-check-label" for="pago_comision_no">No</label>
+                    </div>
                 </div>
                 <div class="col-12 col-sm-4">
                     <label for="total_consignar_pago"><strong>Total a Consignar $</strong></label>
@@ -401,104 +504,7 @@ print_r($pago_data);
                 </div>
 
                 <hr style="border: 4px solid #FA8B07; border-radius: 4px;">
-                <h4><strong>Impuestos Propietario:</strong></h4>
-                <div class="form-group">
-                    <div class="row">
-                        <div class="col-12 col-sm-2">
-                            <label for="rte_fte1">RTE FTE %</label>
-                            <select <?php if ($pago_data != []) echo "disabled" ?> class="form-control" name="rte_fte1" id="rte_fte1" onchange="updateRteFte()">
-                                <option value=""></option>
-                                <option value="3.5" <?php if ($row['rte_fte1'] == 3.5) echo "selected"; ?>>3.5%</option>
-                                <option value="20" <?php if ($row['rte_fte1'] == 4) echo "selected"; ?>>4%</option>
-                                <option value="20" <?php if ($row['rte_fte1'] == 10) echo "selected"; ?>>10%</option>
-                                <option value="20" <?php if ($row['rte_fte1'] == 20) echo "selected"; ?>>20%</option>
-                                <option value="0" <?php if ($row['rte_fte1'] == "0") echo "selected"; ?>>N/A</option>
-                            </select>
-                        </div>
-                        <div class="col-12 col-sm-2">
-                            <strong><label for="rte_fte2">RTE FTE $</label></strong>
-                            <input type='text' name='rte_fte2' id="rte_fte2" class='form-control' value="<?= $row['rte_fte2'] ?>" readonly style="font-weight:bold;" />
-                        </div>
-                        <div class="col-12 col-sm-2">
-                            <label for="rte_ica1">RTE ICA</label>
-                            <select <?php if ($pago_data != []) echo "disabled" ?> class="form-control" name="rte_ica1" id="rte_ica1" onchange="updateRteIca()">
-                                <option value=""></option>
-                                <option <?php if ($row['rte_ica1'] == 7) echo "selected";  ?> value=7>7</option>
-                                <option <?php if ($row['rte_ica1'] == 8) echo "selected"; ?> value=8>8</option>
-                                <option <?php if ($row['rte_ica1'] == 9) echo "selected"; ?> value=9>9</option>
-                                <option <?php if ($row['rte_ica1'] == 10) echo "selected"; ?> value=10>10</option>
-                                <option <?php if ($row['rte_ica1'] == "N/A") echo "selected"; ?> value=0>N/A</option>
-                            </select>
-                        </div>
-                        <div class="col-12 col-sm-2">
-                            <strong><label for="rte_ica2">RTE ICA $</label></strong>
-                            <input type='text' name='rte_ica2' id="rte_ica2" class='form-control' value="<?= $row['rte_ica2'] ?>" readonly style="font-weight:bold;" />
-                        </div>
-                        <div class="col-12 col-sm-2">
-                            <label for="rte_iva1">RTE IVA:</label>
-                            <select <?php if ($pago_data != []) echo "disabled" ?> class="form-control" name="rte_iva1" id="rte_iva1" onchange="updateRteIva()" required>
-                                <option value=""></option>
-                                <option <?php if ($row['rte_iva1'] == 1) echo "selected"; ?> value=1>Sí</option>
-                                <option <?php if ($row['rte_iva1'] == 0) echo "selected"; ?> value=0>No</option>
-                            </select>
-                        </div>
-                        <div class="col-12 col-sm-2">
-                            <strong><label for="rte_iva2">RTE IVA $</label></strong>
-                            <input type='text' name='rte_iva2' id="rte_iva2" class='form-control' value="<?= $row['rte_iva2'] ?>" readonly style="font-weight:bold;" />
-                        </div>
-                    </div>
-                </div>
 
-                <h4><strong>Impuestos Inmobiliaria:</strong></h4>
-                <div class="form-group">
-                    <div class="row">
-                        <div class="col-12 col-sm-2">
-                            <label for="rte_fte3">RTE FTE %</label>
-                            <select <?php if ($pago_data != []) echo "disabled" ?> class="form-control" name="rte_fte3" id="rte_fte3" onchange="updateRteFteInmobi()">
-                                <option value=""></option>
-                                <option <?php if ($row['rte_fte3'] == 3.5) echo "selected"; ?> value=3.5>3.5%</option>
-                                <option <?php if ($row['rte_fte3'] == 20) echo "selected"; ?> value=20>20%</option>
-                                <option <?php if ($row['rte_fte3'] == 0) echo "selected"; ?> value=0>N/A</option>
-                            </select>
-                        </div>
-                        <div class="col-12 col-sm-2">
-                            <strong><label for="rte_fte4">RTE FTE $</label></strong>
-                            <input type='text' value="<?= $row['rte_fte4'] ?>" name='rte_fte4' id="rte_fte4" class='form-control' readonly style="font-weight:bold;" />
-                        </div>
-                        <div class="col-12 col-sm-2">
-                            <label for="rte_ica1">RTE ICA</label>
-                            <select <?php if ($pago_data != []) echo "disabled" ?> class="form-control" name="rte_ica3" id="rte_ica3" onchange="updateRteIcaInmobi()">
-                                <option value=""></option>
-                                <option <?php if ($row['rte_ica3'] == 7) echo "selected"; ?> value=7>7</option>
-                                <option <?php if ($row['rte_ica3'] == 8) echo "selected"; ?> value=8>8</option>
-                                <option <?php if ($row['rte_ica3'] == 9) echo "selected"; ?> value=9>9</option>
-                                <option <?php if ($row['rte_ica3'] == 10) echo "selected"; ?> value=10>10</option>
-                                <option <?php if ($row['rte_ica3'] == "N/A") echo "selected"; ?> value=0>N/A</option>
-                            </select>
-                        </div>
-                        <div class="col-12 col-sm-2">
-                            <strong><label for="rte_ica2">RTE ICA $</label></strong>
-                            <input type='text' value="<?= $row['rte_ica4'] ?>" name='rte_ica4' id="rte_ica4" class='form-control' readonly style="font-weight:bold;" />
-                        </div>
-                        <!-- rete iva -->
-                        <div class="col-12 col-sm-2">
-                            <label for="rte_iva3">RTE IVA:</label>
-                            <select <?php if ($pago_data != []) echo "disabled" ?> class="form-control" name="rte_iva_aplica_inmobi" id="rte_iva_aplica_inmobi" onchange="updateRteIvaInmobi()" required>
-                                <option value=""></option>
-                                <option <?php if ($row['rte_iva_aplica_inmobi'] == 1) echo "selected"; ?> value=1>Sí</option>
-                                <option <?php if ($row['rte_iva_aplica_inmobi'] == 0) echo "selected"; ?> value=0>No</option>
-                            </select>
-                        </div>
-                        <div class="col-12 col-sm-2">
-                            <strong><label for="rte_iva_inmobi">RTE IVA $</label></strong>
-                            <input type='text' name='rte_iva_inmobi' id="rte_iva_inmobi" class='form-control' value="<?= $row['rte_iva_inmobi'] ?>" readonly style="font-weight:bold;" />
-                        </div>
-                        <input type="hidden" name="iva_con" value="<?= $row['iva_con'] ?>">
-
-                    </div>
-                </div>
-
-                <hr style="border: 4px solid #FA8B07; border-radius: 4px;">
                 <div class="form-group">
                     <label for="propietarios"><strong>Distribución entre Propietarios:</strong></label>
                     <div id="propietarios">
@@ -547,7 +553,6 @@ print_r($pago_data);
 
             </div>
         </form>
-<?php var_dump($pago_data);?>
         <script>
             document.getElementById('add-gastos').addEventListener('click', function() {
                 const container = document.getElementById('gastos-container');
@@ -647,12 +652,7 @@ print_r($pago_data);
             }
 
             function updateDiferencia() {
-                var valorRenta = parseFloat(document.getElementById('renta_con').value.replace(/\./g, '').replace(',', '.'));
-                //aqui cambio la renta por el valor de la consignacion por el pago parcial
-                <?php if ($pago_data != []) { ?>
-                    var valorRenta = parseInt(document.getElementById('total_consignar_pago').value.replace(/[.,\s]/g, '').replace('COP', ''), 10) / 100;
-                <?php } ?>
-
+                // Verificar si alguno de los radios está seleccionado
                 var pagoComisionRadios = document.getElementsByName('pago_comision');
                 var isSelected = Array.from(pagoComisionRadios).some(radio => radio.checked);
 
@@ -685,8 +685,11 @@ print_r($pago_data);
                 var totalConsignarPago = parseFloat(document.getElementById('total_consignar_pago').value.replace(/\./g, '').replace(',', '.'));
                 var adecuaciones = parseFloat(document.getElementById('adecuaciones').value) || 0;
                 var totalMonto = totalConsignarPago - adecuaciones;
+
                 var totalMontoInput = document.getElementById('total_monto');
                 totalMontoInput.value = formatCurrency(totalMonto);
+                //  console.log(totalMontoInput.value);
+
                 var totalPropietarios = 0;
                 document.querySelectorAll('.propietario-monto').forEach(function(input) {
                     totalPropietarios += parseFloat(input.value) || 0;
@@ -708,7 +711,7 @@ print_r($pago_data);
             }
 
             function validateForm() {
-                console.log("Validating form...");
+                //   console.log("Validating form...");
                 var valorRenta = parseFloat(document.getElementById('renta_con').value.replace(/\./g, '').replace(',', '.'));
                 var valorPagado = parseFloat(document.getElementById('valor_pagado').value);
                 var valorPagadoError = document.getElementById('valor_pagado_error');
@@ -796,15 +799,14 @@ print_r($pago_data);
                     validateForm();
                 });
             });
-            console.log(<?= $row['total_consignar_pago']; ?>);
 
-            var originalConsignar = <?php if ($pago_data != []) echo $row['renta_con'] - $pago_data['valor_pagado'];
+            var originalConsignar = <?php if (isset($pago_data)) echo $row['total_consignar_pago'];
                                     else echo $row['diferencia']; ?>; // Almacena la comisión
             var originalComision = <?= $row['comision_pago']; ?>; // Almacena la comisión original en una variable
             var pagoData = <?php echo json_encode($pago_data); ?>;
             var diferenciaPago = pagoData.diferencia;
-            //RTEFUENTE PROPIETARIO
 
+            //RTEFUENTE PROPIETARIO
             function updateRteFte() {
                 var rteFte1 = document.getElementById('rte_fte1').value;
                 var rteFte2 = document.getElementById('rte_fte2');
@@ -883,42 +885,40 @@ print_r($pago_data);
                 var pago_comision = document.getElementsByName('pago_comision');
                 var rentaNumero = parseFloat(document.getElementById('renta_con').value.replace(/\./g, '').replace(/,/, '.').replace(' COP', ''));
                 var comision = parseFloat(document.getElementById('comision_pago').value.replace(/\./g, '').replace(/,/, '.').replace(' COP', ''));
-
-                if (pagoData.id_pago_realizado < 1) {
-
-                // Inicializar la nueva comisión
                 var nuevaComision;
 
-                // Añadir el event listener a los radios
-                pago_comision.forEach((radio) => {
-                    radio.addEventListener('change', () => {
-                        const gastos = document.querySelectorAll('.gasto-item input[name="valor_gasto[]"]');
-                        let totalGastos = 0;
-                        gastos.forEach(gasto => {
-                            const valor = parseFloat(gasto.value) || 0; // Convierte a número o 0 si está vacío
-                            totalGastos += valor;
-                        });
-                        // Recalcular nuevaComision basado en el valor de pago_comision
-                        const comision_SINO = document.querySelector('input[name="pago_comision"]:checked').value; // Obtiene el radio seleccionado
-                        if (comision_SINO == 1) {
-                            nuevaComision = originalConsignar - rteFte2 - rteIca2 - rteIva2 - totalGastos;
-                        } else {
-                            nuevaComision = rentaNumero - rteFte2 - rteIca2 - rteIva2 - totalGastos;
-                        }
-
-                        // Actualizar el valor en el campo de comisión
-                        document.getElementById('total_consignar_pago').value = nuevaComision.toFixed(2) + " COP";
+                function calcularComision() {
+                    const gastos = document.querySelectorAll('.gasto-item input[name="valor_gasto[]"]');
+                    let totalGastos = 0;
+                    gastos.forEach(gasto => {
+                        const valor = parseFloat(gasto.value) || 0;
+                        totalGastos += valor;
                     });
+
+                    const comision_SINO = document.querySelector('input[name="pago_comision"]:checked').value;
+                    if (comision_SINO == 1) {
+                        nuevaComision = originalConsignar - rteFte2 - rteIca2 - rteIva2 - totalGastos;
+                    } else {
+                        nuevaComision = rentaNumero - rteFte2 - rteIca2 - rteIva2 - totalGastos;
+                    }
+
+                    if (<?php echo isset($pago_data['diferencia']) ? 'true' : 'false'; ?>) {
+                        document.getElementById('total_consignar_pago').value = "<?php echo isset($pago_data['diferencia']) ? $pago_data['diferencia'] . ' COP' : ''; ?>";
+                    } else {
+                        document.getElementById('total_consignar_pago').value = nuevaComision.toFixed(2) + " COP";
+                    }
+                }
+
+                pago_comision.forEach((radio) => {
+                    radio.addEventListener('change', calcularComision);
                 });
-    } else {
-        document.getElementById('total_consignar_pago').value = diferenciaPago;
 
-
-    }
-
-
+                // Ejecuta el cálculo inicial al cargar la página
+                calcularComision();
             }
-            // Llamamos a las funciones de actualización al cargar la página para que se actualice las restas
+
+            // Llama a updateConsignar cuando la página haya cargado
+            window.addEventListener('DOMContentLoaded', updateConsignar); // Llamamos a las funciones de actualización al cargar la página para que se actualice las restas
             window.onload = function() {
                 updateRteFte();
                 updateRteIca();

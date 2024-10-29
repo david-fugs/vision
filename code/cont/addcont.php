@@ -1,6 +1,6 @@
 <?php
     session_start();
-    
+
     if(!isset($_SESSION['id_usu'])){
         header("Location: ../../index.php");
     }
@@ -42,7 +42,7 @@
             $(document).ready(function() {
                 $('#num_con').on('blur', function() {
                     $('#result-num_con').html('<img src="../../img/loader.gif" />').fadeOut(1000);
-                    var num_con = $(this).val();   
+                    var num_con = $(this).val();
                     var dataString = 'num_con=' + num_con;
 
                     $.ajax({
@@ -131,7 +131,7 @@
             $(document).ready(function() {
             $('#mat_inm').on('change', function() {
                     var mat_inm = $(this).val();
-                    
+
                     if (mat_inm) {
                         $.ajax({
                             type: 'POST',
@@ -173,7 +173,7 @@
         </script>
     </head>
     <body>
-  
+
         <center>
             <img src='../../img/logo.png' width="300" height="212" class="responsive">
         </center>
@@ -194,7 +194,7 @@
                 <div class="row">
                     <div class="col">
                         <div id="result-num_con"></div>
-                    </div>  
+                    </div>
                 </div>
                 <div class="form-group">
                     <div class="row">
@@ -212,7 +212,7 @@
                                 <option value=''></option>
                                     <?php
                                         header('Content-Type: text/html;charset=utf-8');
-                                        $consulta='SELECT * FROM propiedades INNER JOIN inmuebles ON propiedades.mat_inm=inmuebles.mat_inm';
+                                        $consulta='SELECT * FROM propiedades INNER JOIN inmuebles ON propiedades.mat_inm=inmuebles.mat_inm GROUP BY propiedades.mat_inm';
                                         $res = mysqli_query($mysqli,$consulta);
                                         $num_reg = mysqli_num_rows($res);
                                         while($row = $res->fetch_array())
@@ -223,7 +223,7 @@
                                 </option>
                                         <?php
                                         }
-                                        ?>    
+                                        ?>
                             </select>
                         </div>
                     </div>
@@ -248,14 +248,14 @@
                                 </option>
                                         <?php
                                         }
-                                        ?>    
+                                        ?>
                             </select>
                             <input type="hidden" name="nit_cc_pro_hidden" id="nit_cc_pro_hidden">
                         </div>
                         <div class="col-12 col-sm-4">
                             <label for="arrendador_con">* ARRENDADOR:</label>
                             <select class="form-control" name="arrendador_con" id="arrendador_con" required>
-                                <option value=""></option>   
+                                <option value=""></option>
                                 <option value="1">TERESA RAMIREZ SANCHEZ</option>
                                 <option value="2">CAROLINA MOLINA MARIN</option>
                                 <option value="3">RICARDO ABELLA RAMIREZ</option>
@@ -287,7 +287,7 @@
                                 </option>
                                         <?php
                                         }
-                                        ?>    
+                                        ?>
                             </select>
                         </div>
                         <div class="col-12 col-sm-2">
@@ -339,7 +339,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="form-group">
                     <div class="row">
                         <div class="col-12">
@@ -358,7 +358,7 @@
                         </div>
                     </div>
                 </div>
-                    
+
                 <hr style="border: 4px solid #24E924; border-radius: 5px;">
 
                 <div class="form-group">
@@ -371,7 +371,7 @@
                 </div>
 
                 <hr style="border: 4px solid #24E924; border-radius: 5px;">
-          
+
                 <button type="submit" class="btn btn-outline-warning" id="submit_btn">
                     <span class="spinner-border spinner-border-sm"></span>
                     INGRESAR REGISTRO

@@ -34,6 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $rte_ica2_prop = isset($_POST['rte_ica2']) && $_POST['rte_ica2'] !== '' ? $_POST['rte_ica2'] : 0;
         $rte_iva1_prop = isset($_POST['rte_iva1']) && $_POST['rte_iva1'] !== '' ? $_POST['rte_iva1'] : 0;
         $rte_iva2_prop = isset($_POST['rte_iva2']) && $_POST['rte_iva2'] !== '' ? $_POST['rte_iva2'] : 0;
+        $cuatroX = $_POST['4x1000'] ?? 0;
         $rte_fte3_inmobi = isset($_POST['rte_fte3']) && $_POST['rte_fte3'] !== '' ? $_POST['rte_fte3'] : 0;
         $rte_fte4_inmobi = isset($_POST['rte_fte4']) && $_POST['rte_fte4'] !== '' ? $_POST['rte_fte4'] : 0;
         $rte_ica3_inmobi = isset($_POST['rte_ica3']) && $_POST['rte_ica3'] !== '' ? $_POST['rte_ica3'] : 0;
@@ -47,7 +48,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $propietarios_monto = $_POST['propietarios_monto'];
         $pago_comision = $_POST['pago_comision'];
         $id_usu = $_SESSION['id_usu'];
-
 
 
         // Validar entrada numérica
@@ -67,7 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $insert_query = "INSERT INTO pagos_realizados (
             id_pago, fecha_pago_realizado, valor_pagado, diferencia, adecuaciones, deposito, afianzamiento,
             observaciones_diferencia, comision_pago, comision_pendiente,pago_comision,
-            rte_fte1_prop, rte_fte2_prop, rte_ica1_prop, rte_ica2_prop, rte_iva1_prop, rte_iva2_prop,
+            rte_fte1_prop, rte_fte2_prop, rte_ica1_prop, rte_ica2_prop, rte_iva1_prop, rte_iva2_prop, 4x1000,
             rte_fte3_inmobi, rte_fte4_inmobi, rte_ica3_inmobi, rte_ica4_inmobi, pagado_a,saldo
         )
       VALUES (
@@ -88,6 +88,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $rte_ica2_prop,
         $rte_iva1_prop,
         $rte_iva2_prop,
+        '$cuatroX',
         $rte_fte3_inmobi,
         $rte_fte4_inmobi,
         $rte_ica3_inmobi,
@@ -381,6 +382,19 @@ if ($saldo == null) {
                         <strong><label for="rte_iva2">RTE IVA $</label></strong>
                         <input type='text' name='rte_iva2' id="rte_iva2" class='form-control' value="<?= $row['rte_iva2'] ?>" readonly style="font-weight:bold;" />
                     </div>
+                    <div class="col-12 col-sm-2">
+                        <label for="4x">4 X 1000:</label>
+                        <select class="form-control" name="4x" id="4x" onchange="update4x()">
+                            <option value=""></option>
+                            <option value='si'>Sí</option>
+                            <option value='no'>No</option>
+                        </select>
+                    </div>
+                    <div class="col-12 col-sm-2">
+                        <strong><label for="4x1000">4 X 1000 $</label></strong>
+                        <input type='text' name='4x1000' id="4x1000" class='form-control' value="" readonly style="font-weight:bold;" />
+                    </div>
+
                 </div>
             </div>
             <h4><strong>Impuestos Inmobiliaria:</strong></h4>
@@ -826,6 +840,19 @@ if ($saldo == null) {
 
             }
 
+            function update4x() {
+                var cuatroX = document.getElementById('4x').value;
+                var cuatroX1000 = document.getElementById('4x1000');
+                var consignar = document.getElementById('total_consignar_pago').value.replace(/[^\d]/g, '')/100;
+                if (cuatroX === "") {
+                    cuatroX1000.value = "";
+                } else if (cuatroX === "si") {
+                    var result = consignar * 0.004;
+                    cuatroX1000.value = result.toFixed(2); // Mostrar el valor calculado con dos decimales
+                }
+                updateConsignar();
+            }
+
             function updateRteFteInmobi() {
                 var rte_fte3 = document.getElementById('rte_fte3').value;
                 var rte_fte4 = document.getElementById('rte_fte4');
@@ -883,17 +910,19 @@ if ($saldo == null) {
                                 totalGastos += valor;
                             }
                         });
-
+                        var cuatroX = parseFloat(document.getElementById('4x1000').value) || 0;
+                        console.log(cuatroX);
                         // Recalcular nuevaComision basado en el valor de pago_comision
                         const comision_SINO = document.querySelector('input[name="pago_comision"]:checked').value; // Obtiene el radio seleccionado
                         if (comision_SINO == 1) {
-                            nuevaComision = originalConsignar + <?= $iva_inmobiliaria ?> - rteFte2 - rteIca2 - rteIva2 - totalGastos;
+                            nuevaComision = originalConsignar + <?= $iva_inmobiliaria ?> - cuatroX - rteFte2 - rteIca2 - rteIva2 - totalGastos;
                         } else {
-                            nuevaComision = rentaNumero - rteFte2 - rteIca2 - rteIva2 - totalGastos;
+                            nuevaComision = rentaNumero - cuatroX - rteFte2 - rteIca2 - rteIva2 - totalGastos;
                         }
 
                         // Actualizar el valor en el campo de comisión
                         document.getElementById('total_consignar_pago').value = nuevaComision.toFixed(2) + " COP";
+                        update4x();
                     });
                 });
             }

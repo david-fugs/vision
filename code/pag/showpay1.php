@@ -229,6 +229,7 @@ function consultarPagosParciales($id_pago)
                 $pagos_parciales['rte_ica4_inmobi']
             );
         }
+
         if ($row['canon_mostrar'] <= $row['total_pagado'] &&   $pagos_parciales['diferencia'] <= 0 && $valorPago <= 0) {
 
             $estado_pago = "Pago al día";
@@ -237,10 +238,13 @@ function consultarPagosParciales($id_pago)
             $pago_parcial = '<td data-label="PAGO PARCIAL"><span class="text-muted">N/A</span></td>';
             $prorrateo = '<td data-label="PRORRATEO"><span class="text-muted">N/A</span></td>';
         } else {
-            $estado_pago = "Pago al día";
-            $fecha_pago = new DateTime($row['fecha_pago_mostrar']);
-            $diferencia = $fecha_pago->diff($hoy)->days;
-
+            if (isset($pagos_parciales['diferencia']) && $pagos_parciales['diferencia'] > 0) {
+                $estado_pago = "Pago parcial";
+            } else {
+                $estado_pago = "Pago al día";
+                $fecha_pago = new DateTime($row['fecha_pago_mostrar']);
+                $diferencia = $fecha_pago->diff($hoy)->days;
+            }
             if ($fecha_pago > $hoy) {
                 $estado_pago = "Faltan $diferencia días";
                 $clase_estado = "text-blue";
@@ -259,22 +263,17 @@ function consultarPagosParciales($id_pago)
                     }
                 }
             }
-            if (!$pago_habilitado) {
-                $pago_total = '<td data-label="PAGO TOTAL"><a href="../pag/makepay2.php?id_pago=' . $row['id_pago'] . '"><img src="../../img/pagar.png" width=28 height=28></a></td>';
-                $pago_parcial = '<td data-label="PAGO PARCIAL"><a href="../pag/makePartialPay.php?id_pago=' . $row['id_pago'] . '"><img src="../../img/credito.png" width=28 height=28></a></td>';
-                $pago_habilitado = true;
-            } else {
-                $pago_total = '<td data-label="PAGO TOTAL"><span class="text-muted">N/A</span></td>';
-                $pago_parcial = '<td data-label="PAGO PARCIAL"><span class="text-muted">N/A</span></td>';
-            }
-
+            $pago_total = '<td data-label="PAGO TOTAL"><a href="../pag/makepay2.php?id_pago=' . $row['id_pago'] . '"><img src="../../img/pagar.png" width=28 height=28></a></td>';
+            $pago_parcial = '<td data-label="PAGO PARCIAL"><a href="../pag/makePartialPay.php?id_pago=' . $row['id_pago'] . '"><img src="../../img/credito.png" width=28 height=28></a></td>';
+            $pago_habilitado = true;
+            //  else {
+            //     $pago_total = '<td data-label="PAGO TOTAL"><span class="text-muted">N/A</span></td>';
+            //     $pago_parcial = '<td data-label="PAGO PARCIAL"><span class="text-muted">N/A</span></td>';
+            // }
             if ($pago_parcial_hecho == 1) {
                 $pago_parcial = '<td data-label="PAGO PARCIAL"><a href="../pag/makePartialPay.php?id_pago=' . $row['id_pago'] . '"><img src="../../img/credito.png" width=28 height=28></a></td>';
             }
         }
-
-
-
         echo '
         <tr>
         <td data-label="PAGO No.">' . $row['num_pago'] . '</td>
@@ -313,7 +312,7 @@ function consultarPagosParciales($id_pago)
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header" style="background-color:#4e4a4a;">
-                    <h1 class="modal-title fs-5" id="modalIpcLabel" style="color: white;" >Aumento del IPC</h1>
+                    <h1 class="modal-title fs-5" id="modalIpcLabel" style="color: white;">Aumento del IPC</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">

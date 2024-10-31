@@ -182,7 +182,9 @@
 
             <ul class="menu_items submenu">
               <a href="code/pag/showpay.php" class="nav_link sublink">Consultar</a>
-
+            </ul>
+             <ul class="menu_items submenu">
+              <a href="code/pag/receivables.php" class="nav_link sublink">Cuentas por cobrar</a>
             </ul>
     </li>
     <li class="item">
@@ -201,6 +203,7 @@
 
             </ul>
     </li>
+
 
           <hr style="border: 1px solid #F3840D; border-radius: 5px;">
           <strong>Formatos-></strong>

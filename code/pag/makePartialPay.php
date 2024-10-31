@@ -11,15 +11,32 @@ error_reporting(E_ALL);  // Reporta todos los tipos de errores
 
 $nombre = $_SESSION['nombre'];
 $tipo_usu = $_SESSION['tipo_usu'];
-
 include("../../conexion.php");
-
-
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $usar_saldo = $_POST['usar_saldo'] ?? 0;
+    if ($usar_saldo == 1) {
+        $saldo = intval(str_replace([' COP', '.', ','], ['', '', ''],  $_POST['saldo'] ?? 0)) / 100;
+           //actualizo la diferencia a 0
+        $id_pago = $_POST['id_pago'];
+        $sql_num_con = "SELECT num_con FROM pagos WHERE id_pago = $id_pago";
+        $result_num_con = $mysqli->query($sql_num_con);
+        $row_num_con = $result_num_con->fetch_assoc();
+        $num_con = $row_num_con['num_con'];
 
-    $tipos_gasto = $_POST['tipo_gasto'];
-    $valores_gasto = $_POST['valor_gasto'];
-    $observaciones_gasto = $_POST['observaciones_gasto'];
+        $update_diferencia = "UPDATE pagos_realizados
+        JOIN pagos ON pagos.id_pago = pagos_realizados.id_pago
+        SET diferencia = 0 , saldo = 0
+         WHERE num_con = '$num_con' ";
+        if (!$mysqli->query($update_diferencia)) {
+            echo "Error en la consulta: " . $mysqli->error;
+
+        }
+    } else {
+        $saldo = 0;
+    }
+    $tipos_gasto = $_POST['tipo_gasto'] ?? [];
+    $valores_gasto = $_POST['valor_gasto'] ?? [];
+    $observaciones_gasto = $_POST['observaciones_gasto'] ?? [];
     $id_pago = $_POST['id_pago'];
     $valor_anterior_pagado = isset($_POST['valor_anterior_pagado']) ? $_POST['valor_anterior_pagado'] : 0;
     $fecha_pago_realizado = $_POST['fecha_pago_realizado'];
@@ -47,11 +64,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $pago_comision = $_POST['pago_comision'];
     $id_usu = $_SESSION['id_usu'];
     $diferencia = (int)str_replace(['.', ',', 'COP', ' '], '', $_POST['diferencia']) / 100;
-
+    //sumo el valor del saldo
+    $valor_pagado = $valor_pagado + $saldo;
 
     if ($valor_anterior_pagado > 0) {
         $valor_pagado = $valor_pagado + $valor_anterior_pagado;
-        $sql_update = "UPDATE pagos_realizados SET valor_pagado = $valor_pagado, fecha_pago_parcial  = $fecha_pago_realizado, diferencia = $diferencia WHERE id_pago = $id_pago";
+        $sql_update = "UPDATE pagos_realizados SET valor_pagado = $valor_pagado, fecha_pago_parcial  = $fecha_pago_realizado, diferencia = $diferencia ,saldo = $saldo  WHERE id_pago = $id_pago";
         // Ejecutar la consulta y verificar errores
         if (!$mysqli->query($sql_update)) {
             echo "Error en la consulta: " . $mysqli->error;
@@ -99,13 +117,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $rte_ica3_inmobi,
         $rte_ica4_inmobi,
         '$pagado_a'
+
       )";
             if ($mysqli->query($insert_query)) {
                 $id_pago_realizado = $mysqli->insert_id;
                 // Insertar los gastos en la tabla gastos
                 // Inicializar un array para almacenar los gastos
                 $gastos_array = [];
-
                 // Recorre cada tipo de gasto
                 foreach ($tipos_gasto as $index => $tipo_gasto) {
                     $valor_gasto = isset($valores_gasto[$index]) ? str_replace('.', '', $valores_gasto[$index]) : 0;
@@ -139,10 +157,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     // Ejecutar la consulta y verificar si se insertó correctamente
                     if ($mysqli->query($insert_propietario_query) === TRUE) {
                         // Puedes manejar el caso de éxito si es necesario
-                        echo "Detalles del propietario insertados correctamente para el propietario ID: $propietario_id.<br>";
                     } else {
                         // Manejo de error si la inserción falla
-                        echo "Error al insertar detalles del propietario ID: $propietario_id - " . $mysqli->error . "<br>";
                     }
                 }
                 $sql_pip = "INSERT INTO pagos_impuestos_propietario( id_pago,ret_fte_porc_pip, ret_fte_valor_pip,ret_ica_porc_pip ,ret_ica_valor_pip, ret_iva_valor_pip, obs_pip, estado_pip,fecha_alta_pip,id_usu_alta_pip , id_usu )
@@ -214,6 +230,25 @@ if ($result_pago && $result_pago->num_rows > 0) {
 }
 if ($pago_data != [])  $consignar = $pago_data['renta_con'] -  $pago_data['valor_pagado'];
 else $consignar = $row['renta_con'];
+
+$sql_num_con = "SELECT num_con FROM pagos WHERE id_pago = $id_pago";
+$result_num_con = $mysqli->query($sql_num_con);
+$row_num_con = $result_num_con->fetch_assoc();
+$num_con = $row_num_con['num_con'];
+
+$sql_saldo = "SELECT sum(pr.diferencia) FROM pagos_realizados as pr
+    JOIN pagos p ON pr.id_pago = p.id_pago
+    WHERE p.num_con = '$num_con' ";
+$result_saldo = $mysqli->query($sql_saldo);
+$row_saldo = $result_saldo->fetch_assoc();
+$saldo = $row_saldo['sum(pr.diferencia)'];
+//la cambio a negativo si es positivo y al reves ya que la diferencia se calcula al reves
+$saldo = $saldo * -1;
+
+if ($saldo == null) {
+    $saldo = 0;
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -444,7 +479,17 @@ else $consignar = $row['renta_con'];
             <?php $isPagoComisionChecked = $isPagoComisionSet ? $pago_data['pago_comision'] : ''; ?>
 
             <hr style="border: 4px solid #FA8B07; border-radius: 4px;">
-            <div class="form-group row"> <!-- Añadido 'row' para que ambas columnas estén alineadas horizontalmente -->
+            <div class="form-group row">
+                <div class="col-12 col-sm-4">
+                    <label for="saldo"><strong>Saldo </strong></label>
+                    <input type="text" name="saldo" class="form-control form-control-bold" id="saldo" value="<?php echo number_format($saldo, 2, ',', '.'); ?> COP" readonly>
+                </div>
+                <div class="col-12 col-sm-4 mt-4 d-flex justify-content-center">
+                    <div>
+                        <input type="checkbox" class="form-check-input" id="usar_saldo" name="usar_saldo" value="1" onclick="updateConsignar(),updateDiferencia()">
+                    </div>
+                    <label for="usar_saldo" class="me-2"><strong>Usar Saldo</strong></label>
+                </div>
                 <div class="col-12 col-sm-4 radio-group">
                     <label><strong>¿Pagó comisión?</strong></label> <br>
                     <div style="display:flex; align-items:center; justify-content: space-around;" class="form-check radio-green">
@@ -465,6 +510,8 @@ else $consignar = $row['renta_con'];
                         <label style="padding-left: 35px;" class="form-check-label" for="pago_comision_no">No</label>
                     </div>
                 </div>
+            </div>
+            <div class="form-group row">
                 <div class="col-12 col-sm-4">
                     <label for="total_consignar_pago"><strong>Total a Consignar $</strong></label>
                     <input type="text" class="form-control form-control-bold" id="total_consignar_pago" value="<?php echo number_format($row['total_consignar_pago'], 2, ',', '.'); ?> COP" readonly>
@@ -477,15 +524,16 @@ else $consignar = $row['renta_con'];
                         <option <?php if ($row['pagado_a'] == "Propietario")  echo "selected";  ?> value="Propietario">Propietario</option>
                     </select>
                 </div>
+                <div class="col-12 col-sm-4">
+                    <label for="valor_pagado">Valor Pagado $</label>
+                    <input type="number" step="0.01" class="form-control form-control-bold" id="valor_pagado" name="valor_pagado" required>
+                    <div id="valor_pagado_error" class="text-red font-weight-bold" style="display: none;">Valor superior a Valor Renta, por favor corrija.</div>
+                </div>
+
             </div>
 
             <div class="form-group">
                 <div class="row">
-                    <div class="col-12 col-sm-4">
-                        <label for="valor_pagado">Valor Pagado $</label>
-                        <input type="number" step="0.01" class="form-control form-control-bold" id="valor_pagado" name="valor_pagado" required>
-                        <div id="valor_pagado_error" class="text-red font-weight-bold" style="display: none;">Valor superior a Valor Renta, por favor corrija.</div>
-                    </div>
                     <div class="col-12 col-sm-4">
                         <label for="diferencia"><strong>Diferencia $</strong></label>
                         <input type="text" class="form-control" id="diferencia" name="diferencia" readonly>
@@ -879,6 +927,8 @@ else $consignar = $row['renta_con'];
 
             //restar al propietario
             function updateConsignar() {
+
+
                 var rteFte2 = parseFloat(document.getElementById('rte_fte2').value) || 0;
                 var rteIca2 = parseFloat(document.getElementById('rte_ica2').value) || 0;
                 var rteIva2 = parseFloat(document.getElementById('rte_iva2').value) || 0;
@@ -894,6 +944,12 @@ else $consignar = $row['renta_con'];
                         const valor = parseFloat(gasto.value) || 0;
                         totalGastos += valor;
                     });
+                    var saldo = document.getElementById('usar_saldo')
+                    if (saldo.checked) {
+                        totalGastos += parseFloat(document.getElementById('saldo').value.replace(/\./g, '').replace(/,/, '.').replace(' COP', ''));
+                    } else {
+                        totalGastos = totalGastos;
+                    }
 
                     const comision_SINO = document.querySelector('input[name="pago_comision"]:checked').value;
                     if (comision_SINO == 1) {

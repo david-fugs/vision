@@ -16,54 +16,59 @@ include("../../conexion.php");
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
+    $diferencia = (int)str_replace([',00 COP', ' ', '.'], '', str_replace(',', '.', $_POST['diferencia'] ?? '0')) / 100;
+    if ($diferencia > 0) {
+        echo '<script>alert("El valor a pagado  es menor al total a consignar, por favor verifique.");</script>';
+        echo '<script>window.history.back();</script>';
+    } else {
+        $saldo = $_POST['saldo'] ?? 0;
+        $tipos_gasto = $_POST['tipo_gasto'] ?? [];
+        $valores_gasto = $_POST['valor_gasto'] ?? [];
+        $observaciones_gasto = $_POST['observaciones_gasto'] ?? [];
+        $id_pago = $_POST['id_pago'];
+        $fecha_pago_realizado = $_POST['fecha_pago_realizado'];
+        $valor_pagado = $_POST['valor_pagado'];
+        $rte_fte1_prop = isset($_POST['rte_fte1']) && $_POST['rte_fte1'] !== '' ? $_POST['rte_fte1'] : 0;
+        $rte_fte2_prop = isset($_POST['rte_fte2']) && $_POST['rte_fte2'] !== '' ? $_POST['rte_fte2'] : 0;
+        $rte_ica1_prop = isset($_POST['rte_ica1']) && $_POST['rte_ica1'] !== '' ? $_POST['rte_ica1'] : 0;
+        $rte_ica2_prop = isset($_POST['rte_ica2']) && $_POST['rte_ica2'] !== '' ? $_POST['rte_ica2'] : 0;
+        $rte_iva1_prop = isset($_POST['rte_iva1']) && $_POST['rte_iva1'] !== '' ? $_POST['rte_iva1'] : 0;
+        $rte_iva2_prop = isset($_POST['rte_iva2']) && $_POST['rte_iva2'] !== '' ? $_POST['rte_iva2'] : 0;
+        $rte_fte3_inmobi = isset($_POST['rte_fte3']) && $_POST['rte_fte3'] !== '' ? $_POST['rte_fte3'] : 0;
+        $rte_fte4_inmobi = isset($_POST['rte_fte4']) && $_POST['rte_fte4'] !== '' ? $_POST['rte_fte4'] : 0;
+        $rte_ica3_inmobi = isset($_POST['rte_ica3']) && $_POST['rte_ica3'] !== '' ? $_POST['rte_ica3'] : 0;
+        $rte_ica4_inmobi = isset($_POST['rte_ica4']) && $_POST['rte_ica4'] !== '' ? $_POST['rte_ica4'] : 0;
+        $iva_valor = isset($_POST['iva_con']) && $_POST['iva_con'] !== '' ? $_POST['iva_con'] : 0;
+        $rte_iva_aplica_inmobi = isset($_POST['rte_iva_aplica_inmobi']) && $_POST['rte_iva_aplica_inmobi'] !== '' ? $_POST['rte_iva_aplica_inmobi'] : 0;
+        $rte_iva_inmobi = isset($_POST['rte_iva_inmobi']) && $_POST['rte_iva_inmobi'] !== '' ? $_POST['rte_iva_inmobi'] : 0;
+        $pagado_a = $_POST['pagado_a'];
+        $observaciones_diferencia = isset($_POST['observaciones_diferencia']) ? $_POST['observaciones_diferencia'] : '';
+        $propietarios = $_POST['propietarios'];
+        $propietarios_monto = $_POST['propietarios_monto'];
+        $pago_comision = $_POST['pago_comision'];
+        $id_usu = $_SESSION['id_usu'];
 
-    $tipos_gasto = $_POST['tipo_gasto'] ?? [];
-    $valores_gasto = $_POST['valor_gasto'] ?? [];
-    $observaciones_gasto = $_POST['observaciones_gasto'] ?? [];
-    $id_pago = $_POST['id_pago'];
-    $fecha_pago_realizado = $_POST['fecha_pago_realizado'];
-    $valor_pagado = $_POST['valor_pagado'];
-    $rte_fte1_prop = isset($_POST['rte_fte1']) && $_POST['rte_fte1'] !== '' ? $_POST['rte_fte1'] : 0;
-    $rte_fte2_prop = isset($_POST['rte_fte2']) && $_POST['rte_fte2'] !== '' ? $_POST['rte_fte2'] : 0;
-    $rte_ica1_prop = isset($_POST['rte_ica1']) && $_POST['rte_ica1'] !== '' ? $_POST['rte_ica1'] : 0;
-    $rte_ica2_prop = isset($_POST['rte_ica2']) && $_POST['rte_ica2'] !== '' ? $_POST['rte_ica2'] : 0;
-    $rte_iva1_prop = isset($_POST['rte_iva1']) && $_POST['rte_iva1'] !== '' ? $_POST['rte_iva1'] : 0;
-    $rte_iva2_prop = isset($_POST['rte_iva2']) && $_POST['rte_iva2'] !== '' ? $_POST['rte_iva2'] : 0;
-    $rte_fte3_inmobi = isset($_POST['rte_fte3']) && $_POST['rte_fte3'] !== '' ? $_POST['rte_fte3'] : 0;
-    $rte_fte4_inmobi = isset($_POST['rte_fte4']) && $_POST['rte_fte4'] !== '' ? $_POST['rte_fte4'] : 0;
-    $rte_ica3_inmobi = isset($_POST['rte_ica3']) && $_POST['rte_ica3'] !== '' ? $_POST['rte_ica3'] : 0;
-    $rte_ica4_inmobi = isset($_POST['rte_ica4']) && $_POST['rte_ica4'] !== '' ? $_POST['rte_ica4'] : 0;
-    $iva_valor = isset($_POST['iva_con']) && $_POST['iva_con'] !== '' ? $_POST['iva_con'] : 0;
-    $rte_iva_aplica_inmobi = isset($_POST['rte_iva_aplica_inmobi']) && $_POST['rte_iva_aplica_inmobi'] !== '' ? $_POST['rte_iva_aplica_inmobi'] : 0;
-    $rte_iva_inmobi = isset($_POST['rte_iva_inmobi']) && $_POST['rte_iva_inmobi'] !== '' ? $_POST['rte_iva_inmobi'] : 0;
-    $pagado_a = $_POST['pagado_a'];
-    $observaciones_diferencia = isset($_POST['observaciones_diferencia']) ? $_POST['observaciones_diferencia'] : '';
-    $propietarios = $_POST['propietarios'];
-    $propietarios_monto = $_POST['propietarios_monto'];
-    $pago_comision = $_POST['pago_comision'];
-    $id_usu = $_SESSION['id_usu'];
 
 
-
-    // Validar entrada numérica
-    //  $adecuaciones = is_numeric($adecuaciones) ? $adecuaciones : 0;
-    // $deposito = is_numeric($deposito) ? $deposito : 0;
-    // Obtener la información del pago
-    $query = "SELECT renta_con, comision_pago, total_consignar_pago FROM pagos WHERE id_pago = $id_pago";
-    $result = $mysqli->query($query);
-    if ($result && $result->num_rows > 0) {
-        $row = $result->fetch_assoc();
-        $renta_con = $row['renta_con'];
-        $comision_pago = $row['comision_pago'];
-        $total_consignar_pago = $row['total_consignar_pago'];
-        // Calcular la diferencia
-        $diferencia = (int)str_replace([',00 COP', ' ', '.'], '', str_replace(',', '.', $_POST['diferencia'] ?? '0')) / 100;
-        // Insertar el pago realizado en la tabla pagos_realizados
-        $insert_query = "INSERT INTO pagos_realizados (
+        // Validar entrada numérica
+        //  $adecuaciones = is_numeric($adecuaciones) ? $adecuaciones : 0;
+        // $deposito = is_numeric($deposito) ? $deposito : 0;
+        // Obtener la información del pago
+        $query = "SELECT renta_con, comision_pago, total_consignar_pago FROM pagos WHERE id_pago = $id_pago";
+        $result = $mysqli->query($query);
+        if ($result && $result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            $renta_con = $row['renta_con'];
+            $comision_pago = $row['comision_pago'];
+            $total_consignar_pago = $row['total_consignar_pago'];
+            // Calcular la diferencia
+            $diferencia = (int)str_replace([',00 COP', ' ', '.'], '', str_replace(',', '.', $_POST['diferencia'] ?? '0')) / 100;
+            // Insertar el pago realizado en la tabla pagos_realizados
+            $insert_query = "INSERT INTO pagos_realizados (
             id_pago, fecha_pago_realizado, valor_pagado, diferencia, adecuaciones, deposito, afianzamiento,
             observaciones_diferencia, comision_pago, comision_pendiente,pago_comision,
             rte_fte1_prop, rte_fte2_prop, rte_ica1_prop, rte_ica2_prop, rte_iva1_prop, rte_iva2_prop,
-            rte_fte3_inmobi, rte_fte4_inmobi, rte_ica3_inmobi, rte_ica4_inmobi, pagado_a
+            rte_fte3_inmobi, rte_fte4_inmobi, rte_ica3_inmobi, rte_ica4_inmobi, pagado_a,saldo
         )
       VALUES (
         $id_pago,
@@ -87,68 +92,70 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $rte_fte4_inmobi,
         $rte_ica3_inmobi,
         $rte_ica4_inmobi,
-        '$pagado_a'
+        '$pagado_a',
+        $saldo
       )";
-        if ($mysqli->query($insert_query)) {
-            $id_pago_realizado = $mysqli->insert_id;
+            if ($mysqli->query($insert_query)) {
+                $id_pago_realizado = $mysqli->insert_id;
 
-            // Insertar gastos
-            $gastos_array = [];
-            if (!empty($tipos_gasto)) {
-                foreach ($tipos_gasto as $index => $tipo_gasto) {
-                    $valor_gasto = isset($valores_gasto[$index]) ? str_replace('.', '', $valores_gasto[$index]) : 0;
-                    $observacion_gasto = isset($observaciones_gasto[$index]) ? $observaciones_gasto[$index] : '';
-                    $gastos_array[] = "$tipo_gasto: $$valor_gasto  ($observacion_gasto)";
+                // Insertar gastos
+                $gastos_array = [];
+                if (!empty($tipos_gasto)) {
+                    foreach ($tipos_gasto as $index => $tipo_gasto) {
+                        $valor_gasto = isset($valores_gasto[$index]) ? str_replace('.', '', $valores_gasto[$index]) : 0;
+                        $observacion_gasto = isset($observaciones_gasto[$index]) ? $observaciones_gasto[$index] : '';
+                        $gastos_array[] = "$tipo_gasto: $$valor_gasto  ($observacion_gasto)";
+                    }
                 }
-            }
 
-            if (isset($id_pago_realizado)) {
-                $gastos_string = implode(', ', $gastos_array);
-                $insert_gasto_query = "UPDATE pagos_realizados SET gastos = '$gastos_string' WHERE id_pago_realizado = $id_pago_realizado";
+                if (isset($id_pago_realizado)) {
+                    $gastos_string = implode(', ', $gastos_array);
+                    $insert_gasto_query = "UPDATE pagos_realizados SET gastos = '$gastos_string' WHERE id_pago_realizado = $id_pago_realizado";
 
-                if (!$mysqli->query($insert_gasto_query)) {
-                    echo "Error en la consulta de gastos: " . $mysqli->error;
+                    if (!$mysqli->query($insert_gasto_query)) {
+                        echo "Error en la consulta de gastos: " . $mysqli->error;
+                        die;
+                    }
+                } else {
+                    echo "Error: id_pago_realizado no está definido.";
                     die;
                 }
-            } else {
-                echo "Error: id_pago_realizado no está definido.";
-                die;
-            }
 
-            // Insertar propietarios
-            foreach ($propietarios as $index => $propietario_id) {
-                $monto = $propietarios_monto[$index];
-                $insert_propietario_query = "INSERT INTO pagos_propietarios (id_pago_realizado, nit_cc_pro, monto) VALUES ($id_pago_realizado, $propietario_id, $monto)";
-                if (!$mysqli->query($insert_propietario_query)) {
-                    echo "Error al insertar propietario ID: $propietario_id - " . $mysqli->error;
-                    die;
+                // Insertar propietarios
+                foreach ($propietarios as $index => $propietario_id) {
+                    $monto = $propietarios_monto[$index];
+                    $insert_propietario_query = "INSERT INTO pagos_propietarios (id_pago_realizado, nit_cc_pro, monto) VALUES ($id_pago_realizado, $propietario_id, $monto)";
+                    if (!$mysqli->query($insert_propietario_query)) {
+                        echo "Error al insertar propietario ID: $propietario_id - " . $mysqli->error;
+                        die;
+                    }
                 }
-            }
 
-            // Insertar pagos impuestos propietario
-            $sql_pip = "INSERT INTO pagos_impuestos_propietario(id_pago, ret_fte_porc_pip, ret_fte_valor_pip, ret_ica_porc_pip, ret_ica_valor_pip, ret_iva_valor_pip, obs_pip, estado_pip, fecha_alta_pip, id_usu_alta_pip, id_usu)
+                // Insertar pagos impuestos propietario
+                $sql_pip = "INSERT INTO pagos_impuestos_propietario(id_pago, ret_fte_porc_pip, ret_fte_valor_pip, ret_ica_porc_pip, ret_ica_valor_pip, ret_iva_valor_pip, obs_pip, estado_pip, fecha_alta_pip, id_usu_alta_pip, id_usu)
                     VALUES($id_pago, $rte_fte1_prop, $rte_fte2_prop, $rte_ica1_prop, $rte_ica2_prop, $rte_iva2_prop, '$observaciones_diferencia', 1, now(), $id_usu, $id_usu)";
-            if (!$mysqli->query($sql_pip)) {
-                echo "Error en la consulta de pagos impuestos propietario: " . $mysqli->error;
-                die;
-            }
+                if (!$mysqli->query($sql_pip)) {
+                    echo "Error en la consulta de pagos impuestos propietario: " . $mysqli->error;
+                    die;
+                }
 
-            // Insertar pagos impuestos inmobiliaria
-            $sql_pii = "INSERT INTO pagos_impuestos_inmobiliaria(id_pago, iva_valor_pii, ret_iva_aplica_pii, ret_iva_valor_pii, comision_valor_pii, ret_fte_porc_pii, ret_fte_valor_pii, ret_ica_porc_pii, ret_ica_valor_pii, obs_pii, estado_pii, fecha_alta_pii, id_usu_alta_pii, id_usu)
+                // Insertar pagos impuestos inmobiliaria
+                $sql_pii = "INSERT INTO pagos_impuestos_inmobiliaria(id_pago, iva_valor_pii, ret_iva_aplica_pii, ret_iva_valor_pii, comision_valor_pii, ret_fte_porc_pii, ret_fte_valor_pii, ret_ica_porc_pii, ret_ica_valor_pii, obs_pii, estado_pii, fecha_alta_pii, id_usu_alta_pii, id_usu)
                     VALUES($id_pago, $iva_valor, $rte_iva_aplica_inmobi, $rte_iva_inmobi, $comision_pago, $rte_fte3_inmobi, $rte_fte4_inmobi, $rte_ica3_inmobi, $rte_ica4_inmobi, 0, 1, now(), $id_usu, $id_usu)";
-            if (!$mysqli->query($sql_pii)) {
-                echo "Error en la consulta de pagos impuestos inmobiliaria: " . $mysqli->error;
-                die;
-            }
+                if (!$mysqli->query($sql_pii)) {
+                    echo "Error en la consulta de pagos impuestos inmobiliaria: " . $mysqli->error;
+                    die;
+                }
 
-            // Si todo sale bien, redirige
-            header("Location: pago_satisfactorio.htm");
-            exit();
+                // Si todo sale bien, redirige
+                header("Location: pago_satisfactorio.htm");
+                exit();
+            } else {
+                echo "Error al registrar el pago: " . $mysqli->error;
+            }
         } else {
-            echo "Error al registrar el pago: " . $mysqli->error;
+            echo "Pago no encontrado.";
         }
-    } else {
-        echo "Pago no encontrado.";
     }
 } else {
     if (isset($_GET['id_pago'])) {
@@ -180,7 +187,24 @@ while ($propietario = $result_propietarios->fetch_assoc()) {
     $propietarios[] = $propietario;
 }
 $iva_inmobiliaria = $row['comision_pago'] * 0.19;
+$sql_num_con = "SELECT num_con FROM pagos WHERE id_pago = $id_pago";
+$result_num_con = $mysqli->query($sql_num_con);
+$row_num_con = $result_num_con->fetch_assoc();
+$num_con = $row_num_con['num_con'];
 
+
+$sql_saldo = "SELECT sum(pr.diferencia) FROM pagos_realizados as pr
+    JOIN pagos p ON pr.id_pago = p.id_pago
+    WHERE p.num_con = '$num_con' ";
+$result_saldo = $mysqli->query($sql_saldo);
+$row_saldo = $result_saldo->fetch_assoc();
+$saldo = $row_saldo['sum(pr.diferencia)'];
+//la cambio a negativo si es positivo y al reves ya que la diferencia se calcula al reves
+$saldo = $saldo * -1;
+
+if ($saldo == null) {
+    $saldo = 0;
+}
 ?>
 
 <!DOCTYPE html>
@@ -320,8 +344,8 @@ $iva_inmobiliaria = $row['comision_pago'] * 0.19;
                         <select class="form-control" name="rte_fte1" id="rte_fte1" onchange="updateRteFte()">
                             <option value=""></option>
                             <option value="3.5" <?php if ($row['rte_fte1'] == 3.5) echo "selected"; ?>>3.5%</option>
-                            <option value="20" <?php if ($row['rte_fte1'] == 4) echo "selected"; ?>>4%</option>
-                            <option value="20" <?php if ($row['rte_fte1'] == 10) echo "selected"; ?>>10%</option>
+                            <option value="4" <?php if ($row['rte_fte1'] == 4) echo "selected"; ?>>4%</option>
+                            <option value="10" <?php if ($row['rte_fte1'] == 10) echo "selected"; ?>>10%</option>
                             <option value="20" <?php if ($row['rte_fte1'] == 20) echo "selected"; ?>>20%</option>
                             <option value="0" <?php if ($row['rte_fte1'] == "0") echo "selected"; ?>>N/A</option>
                         </select>
@@ -422,21 +446,25 @@ $iva_inmobiliaria = $row['comision_pago'] * 0.19;
                     </div>
                 </div>
                 <div class="col-12 col-sm-4">
-                    <label for="total_consignar_pago"><strong>Total a Consignar $</strong></label>
-                    <input type="text" class="form-control form-control-bold" id="total_consignar_pago" value="<?php echo number_format($row['total_consignar_pago'], 2, ',', '.'); ?> COP" readonly>
+                    <label for="saldo"><strong>Saldo </strong></label>
+                    <input type="text" class="form-control form-control-bold" id="saldo" value="<?php echo number_format($saldo, 2, ',', '.'); ?> COP" readonly>
                 </div>
                 <div class="col-12 col-sm-4">
-                    <label for="pagado_a">Pagado a:</label>
-                    <select class="form-control" name="pagado_a" required>
-                        <option value=""></option>
-                        <option <?php if ($row['pagado_a'] == "Inmobiliaria")  echo "selected";  ?> value="Inmobiliaria">Inmobiliaria</option>
-                        <option <?php if ($row['pagado_a'] == "Propietario")  echo "selected";  ?> value="Propietario">Propietario</option>
-                    </select>
+                    <label for="total_consignar_pago"><strong>Total a Consignar $</strong></label>
+                    <input type="text" class="form-control form-control-bold" id="total_consignar_pago" value="<?php echo number_format($row['total_consignar_pago'], 2, ',', '.'); ?> COP" readonly>
                 </div>
             </div>
 
             <div class="form-group">
                 <div class="row">
+                    <div class="col-12 col-sm-4">
+                        <label for="pagado_a">Pagado a:</label>
+                        <select class="form-control" name="pagado_a" required>
+                            <option value=""></option>
+                            <option <?php if ($row['pagado_a'] == "Inmobiliaria")  echo "selected";  ?> value="Inmobiliaria">Inmobiliaria</option>
+                            <option <?php if ($row['pagado_a'] == "Propietario")  echo "selected";  ?> value="Propietario">Propietario</option>
+                        </select>
+                    </div>
                     <div class="col-12 col-sm-4">
                         <label for="valor_pagado">Valor Pagado $</label>
                         <input type="number" step="0.01" class="form-control form-control-bold" id="valor_pagado" name="valor_pagado" required>
@@ -451,16 +479,12 @@ $iva_inmobiliaria = $row['comision_pago'] * 0.19;
                         <input type="date" class="form-control" id="fecha_pago_realizado" name="fecha_pago_realizado" required>
                     </div>
                 </div>
-
                 <!-- esto lo dejo por testing  -->
                 <div class="form-group">
                     <input type="hidden" class="form-control" id="afianzamiento" name="afianzamiento" value="0">
                     <input type="hidden" step="0.01" class="form-control" id="adecuaciones" name="adecuaciones" value="0">
                     <input type="hidden" step="0.01" class="form-control" id="deposito" name="deposito" value="0">
                 </div>
-
-
-
                 <hr style="border: 4px solid #FA8B07; border-radius: 4px;">
                 <div class="form-group">
                     <label for="propietarios"><strong>Distribución entre Propietarios:</strong></label>
@@ -502,12 +526,7 @@ $iva_inmobiliaria = $row['comision_pago'] * 0.19;
                         </div>
                     </div>
                 </div>
-
-
-
-
                 <hr style="border: 4px solid #FA8B07; border-radius: 4px;">
-
                 <button type="submit" class="btn btn-primary" onclick="validateForm()">Registrar Pago Arrendamiento</button>
                 <a href="showpay1.php?num_con=<?= urlencode($row['num_con']); ?>" class="btn btn-outline-dark">Regresar</a>
 
@@ -671,6 +690,8 @@ $iva_inmobiliaria = $row['comision_pago'] * 0.19;
             }
 
             function validateForm() {
+
+
                 //   console.log("Validating form...");
                 var valorRenta = parseFloat(document.getElementById('renta_con').value.replace(/\./g, '').replace(',', '.'));
                 var valorPagado = parseFloat(document.getElementById('valor_pagado').value);
@@ -770,7 +791,7 @@ $iva_inmobiliaria = $row['comision_pago'] * 0.19;
                 var canon = <?= $row['canon_con'] ?>;
                 if (rteFte1 === "") {
                     rteFte2.value = "";
-                } else if (rteFte1 === "3.5" || rteFte1 === "20") {
+                } else if (rteFte1 === "3.5" || rteFte1 === "20" || rteFte1 === "4" || rteFte1 === "10") {
                     var result = (parseFloat(rteFte1) / 100) * canon;
                     rteFte2.value = result.toFixed(2); // Mostrar el valor calculado con dos decimales
                 }
@@ -858,9 +879,9 @@ $iva_inmobiliaria = $row['comision_pago'] * 0.19;
                             if (tipoGastoSeleccionado != 'Afianzamiento' && tipoGastoSeleccionado != "Deposito") {
                                 console.log("si es");
 
-                            const valor = parseFloat(gasto.value) || 0; // Convierte a número o 0 si está vacío
-                            totalGastos += valor;
-                        }
+                                const valor = parseFloat(gasto.value) || 0; // Convierte a número o 0 si está vacío
+                                totalGastos += valor;
+                            }
                         });
 
                         // Recalcular nuevaComision basado en el valor de pago_comision

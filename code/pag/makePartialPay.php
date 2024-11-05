@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $usar_saldo = $_POST['usar_saldo'] ?? 0;
     if ($usar_saldo == 1) {
         $saldo = intval(str_replace([' COP', '.', ','], ['', '', ''],  $_POST['saldo'] ?? 0)) / 100;
-           //actualizo la diferencia a 0
+        //actualizo la diferencia a 0
         $id_pago = $_POST['id_pago'];
         $sql_num_con = "SELECT num_con FROM pagos WHERE id_pago = $id_pago";
         $result_num_con = $mysqli->query($sql_num_con);
@@ -29,7 +29,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
          WHERE num_con = '$num_con' ";
         if (!$mysqli->query($update_diferencia)) {
             echo "Error en la consulta: " . $mysqli->error;
-
         }
     } else {
         $saldo = 0;
@@ -67,7 +66,48 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     //sumo el valor del saldo
     $valor_pagado = $valor_pagado + $saldo;
 
+
+
     if ($valor_anterior_pagado > 0) {
+
+        $sql_num_con = "SELECT pagos.num_con FROM pagos
+        JOIN pagos_realizados ON pagos.id_pago = pagos_realizados.id_pago
+        WHERE pagos.id_pago = $id_pago";
+        $result_num_con = $mysqli->query($sql_num_con);
+
+        if ($result_num_con === false) {
+            echo ("Error en la consulta: " . $mysqli->error);
+        }
+        $row_num_con = $result_num_con->fetch_assoc();
+        $num_con = $row_num_con['num_con'];
+
+        $sql_pago_realizado = "SELECT * FROM pagos_realizados WHERE id_pago = $id_pago";
+        $result_pago_realizado = $mysqli->query($sql_pago_realizado);
+        $row_pago_realizado = $result_pago_realizado->fetch_assoc();
+        $id_pago_realizado1 = $row_pago_realizado['id_pago_realizado'];
+
+
+        if ($diferencia > 0) {
+            $sql_cuenta_cobro = "INSERT INTO cuentas_cobrar (id_cuenta_cobrar, id_pago, num_con, fecha_pago, diferencia, estado_cuenta,id_pago_realizado,valor_pagado)
+                                         VALUES (NULL, $id_pago, '$num_con', '$fecha_pago_realizado', $diferencia, 1,$id_pago_realizado1,$valor_pagado)";
+            if (!$mysqli->query($sql_cuenta_cobro)) {
+                echo "Error. " . $mysqli->error;
+            }
+
+        } else {
+            // Realizar el INSERT primero
+            $sql_cuenta_cobro_insert = "INSERT INTO cuentas_cobrar (id_cuenta_cobrar, id_pago, num_con, fecha_pago, diferencia, estado_cuenta,id_pago_realizado,valor_pagado)
+                                                VALUES (NULL, $id_pago, '$num_con', '$fecha_pago_realizado', $diferencia, 0,$id_pago_realizado1,$valor_pagado)";
+            if (!$mysqli->query($sql_cuenta_cobro_insert)) {
+                echo "Error en el INSERT. " . $mysqli->error;
+            }
+            // Luego realizar el UPDATE
+            $sql_cuenta_cobro_update = "UPDATE cuentas_cobrar SET estado_cuenta = 0 WHERE id_pago = $id_pago";
+            if (!$mysqli->query($sql_cuenta_cobro_update)) {
+                echo "Error en el UPDATE. " . $mysqli->error;
+                die;
+            }
+        }
         $valor_pagado = $valor_pagado + $valor_anterior_pagado;
         $sql_update = "UPDATE pagos_realizados SET valor_pagado = $valor_pagado, fecha_pago_parcial  = $fecha_pago_realizado, diferencia = $diferencia ,saldo = $saldo  WHERE id_pago = $id_pago";
         // Ejecutar la consulta y verificar errores
@@ -75,6 +115,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             echo "Error en la consulta: " . $mysqli->error;
             die;
         } else {
+            //traigo el numero del contrato
             header("Location: pago_satisfactorio.htm");
         }
     } else {
@@ -121,6 +162,41 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       )";
             if ($mysqli->query($insert_query)) {
                 $id_pago_realizado = $mysqli->insert_id;
+
+                $sql_num_con = "SELECT pagos.num_con FROM pagos
+                JOIN pagos_realizados ON pagos.id_pago = pagos_realizados.id_pago
+                WHERE pagos.id_pago = $id_pago";
+                $result_num_con = $mysqli->query($sql_num_con);
+
+                if ($result_num_con === false) {
+                    echo ("Error en la consulta: " . $mysqli->error);
+                }
+                $row_num_con = $result_num_con->fetch_assoc();
+                $num_con = $row_num_con['num_con'];
+
+                //si la diferencia es 0  inserto en cuentas por cobrar
+                //  lógica de inserción/actualización en cuentas_cobrar
+                if ($diferencia > 0) {
+                    $sql_cuenta_cobro = "INSERT INTO cuentas_cobrar (id_cuenta_cobrar, id_pago, num_con, fecha_pago, diferencia, estado_cuenta,id_pago_realizado,valor_pagado)
+                                     VALUES (NULL, $id_pago, '$num_con', '$fecha_pago_realizado', $diferencia, 1,$id_pago_realizado,$valor_pagado)";
+                    if (!$mysqli->query($sql_cuenta_cobro)) {
+                        echo "Error. " . $mysqli->error;
+                    }
+                } else {
+                    // Realizar el INSERT primero
+                    $sql_cuenta_cobro_insert = "INSERT INTO cuentas_cobrar (id_cuenta_cobrar, id_pago, num_con, fecha_pago, diferencia, estado_cuenta,id_pago_realizado,valor_pagado)
+                                            VALUES (NULL, $id_pago, '$num_con', '$fecha_pago_realizado', $diferencia, 0,$id_pago_realizado,$valor_pagado)";
+                    if (!$mysqli->query($sql_cuenta_cobro_insert)) {
+                        echo "Error en el INSERT. " . $mysqli->error;
+                    }
+
+                    // Luego realizar el UPDATE
+                    $sql_cuenta_cobro_update = "UPDATE cuentas_cobrar SET estado_cuenta = 0 WHERE id_pago = $id_pago";
+                    if (!$mysqli->query($sql_cuenta_cobro_update)) {
+                        echo "Error en el UPDATE. " . $mysqli->error;
+                    }
+                }
+
                 // Insertar los gastos en la tabla gastos
                 // Inicializar un array para almacenar los gastos
                 $gastos_array = [];
@@ -144,11 +220,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     // Ejecutar la consulta y verificar errores
                     if (!$mysqli->query($insert_gasto_query)) {
                         echo "Error en la consulta: " . $mysqli->error;
-                        die;
                     }
                 } else {
                     echo "Error: id_pago_realizado no está definido." . $id_pago_realizado;
                 }
+                
                 foreach ($propietarios as $index => $propietario_id) {
                     $monto = $propietarios_monto[$index];
                     // Corregir la consulta para que sea un UPDATE correcto

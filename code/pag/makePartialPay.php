@@ -63,6 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $pago_comision = $_POST['pago_comision'];
     $id_usu = $_SESSION['id_usu'];
     $diferencia = (int)str_replace(['.', ',', 'COP', ' '], '', $_POST['diferencia']) / 100;
+    $cuatroX = $_POST['4x1000'] ?? 0;
     //sumo el valor del saldo
     $valor_pagado = $valor_pagado + $saldo;
 
@@ -93,7 +94,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             if (!$mysqli->query($sql_cuenta_cobro)) {
                 echo "Error. " . $mysqli->error;
             }
-
         } else {
             // Realizar el INSERT primero
             $sql_cuenta_cobro_insert = "INSERT INTO cuentas_cobrar (id_cuenta_cobrar, id_pago, num_con, fecha_pago, diferencia, estado_cuenta,id_pago_realizado,valor_pagado)
@@ -132,7 +132,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $insert_query = "INSERT INTO pagos_realizados (
             id_pago, fecha_pago_realizado, valor_pagado, diferencia, adecuaciones, deposito, afianzamiento,
             observaciones_diferencia, comision_pago, comision_pendiente,pago_comision,
-            rte_fte1_prop, rte_fte2_prop, rte_ica1_prop, rte_ica2_prop, rte_iva1_prop, rte_iva2_prop,
+            rte_fte1_prop, rte_fte2_prop, rte_ica1_prop, rte_ica2_prop, rte_iva1_prop, rte_iva2_prop,4x1000
             rte_fte3_inmobi, rte_fte4_inmobi, rte_ica3_inmobi, rte_ica4_inmobi, pagado_a
         )
       VALUES (
@@ -153,6 +153,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $rte_ica2_prop,
         $rte_iva1_prop,
         $rte_iva2_prop,
+        '$cuatroX',
         $rte_fte3_inmobi,
         $rte_fte4_inmobi,
         $rte_ica3_inmobi,
@@ -224,7 +225,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 } else {
                     echo "Error: id_pago_realizado no está definido." . $id_pago_realizado;
                 }
-                
+
                 foreach ($propietarios as $index => $propietario_id) {
                     $monto = $propietarios_monto[$index];
                     // Corregir la consulta para que sea un UPDATE correcto
@@ -491,6 +492,18 @@ if ($saldo == null) {
                     <div class="col-12 col-sm-2">
                         <strong><label for="rte_iva2">RTE IVA $</label></strong>
                         <input type='text' name='rte_iva2' id="rte_iva2" class='form-control' value="<?= $row['rte_iva2'] ?>" readonly style="font-weight:bold;" />
+                    </div>
+                    <div class="col-12 col-sm-2">
+                        <label for="4x">4 X 1000:</label>
+                        <select class="form-control" name="4x" id="4x" onchange="update4x()">
+                            <option value=""></option>
+                            <option value='si'>Sí</option>
+                            <option value='no'>No</option>
+                        </select>
+                    </div>
+                    <div class="col-12 col-sm-2">
+                        <strong><label for="4x1000">4 X 1000 $</label></strong>
+                        <input type='text' name='4x1000' id="4x1000" class='form-control' value="" readonly style="font-weight:bold;" />
                     </div>
                 </div>
             </div>
@@ -775,6 +788,20 @@ if ($saldo == null) {
                 }).format(amount);
             }
 
+            function update4x() {
+                var cuatroX = document.getElementById('4x').value;
+                var cuatroX1000 = document.getElementById('4x1000');
+                var consignar = document.getElementById('total_consignar_pago').value.replace(/[^\d]/g, '') / 100;
+                console.log(cuatroX);
+                if (cuatroX === "no" || cuatroX === "") {
+                    cuatroX1000.value = "";
+                } else if (cuatroX === "si") {
+                    var result = consignar * 0.004;
+                    cuatroX1000.value = result.toFixed(2); // Mostrar el valor calculado con dos decimales
+                }
+
+            }
+
             function updateDiferencia() {
                 // Verificar si alguno de los radios está seleccionado
                 var pagoComisionRadios = document.getElementsByName('pago_comision');
@@ -1027,17 +1054,20 @@ if ($saldo == null) {
                         totalGastos = totalGastos;
                     }
 
+                    var cuatroX = parseFloat(document.getElementById('4x1000').value) || 0;
                     const comision_SINO = document.querySelector('input[name="pago_comision"]:checked').value;
                     if (comision_SINO == 1) {
-                        nuevaComision = originalConsignar - rteFte2 - rteIca2 - rteIva2 - totalGastos;
+                        nuevaComision = originalConsignar - cuatroX - rteFte2 - rteIca2 - rteIva2 - totalGastos;
                     } else {
-                        nuevaComision = rentaNumero - rteFte2 - rteIca2 - rteIva2 - totalGastos;
+                        nuevaComision = rentaNumero - cuatroX - rteFte2 - rteIca2 - rteIva2 - totalGastos;
                     }
 
                     if (<?php echo isset($pago_data['diferencia']) ? 'true' : 'false'; ?>) {
                         document.getElementById('total_consignar_pago').value = "<?php echo isset($pago_data['diferencia']) ? $pago_data['diferencia'] . ' COP' : ''; ?>";
+                        update4x();
                     } else {
                         document.getElementById('total_consignar_pago').value = nuevaComision.toFixed(2) + " COP";
+                        update4x();
                     }
                 }
 
@@ -1047,6 +1077,12 @@ if ($saldo == null) {
 
                 // Ejecuta el cálculo inicial al cargar la página
                 calcularComision();
+                // Llama a update4x explícitamente solo si es necesario
+                var cuatroX = document.getElementById('4x').value;
+                if (cuatroX === "si") {
+                    update4x(); // Esto asegura que se calcule 4x1000 correctamente
+                }
+
             }
 
             // Llama a updateConsignar cuando la página haya cargado

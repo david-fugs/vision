@@ -915,9 +915,9 @@ if ($saldo == null) {
                         // Recalcular nuevaComision basado en el valor de pago_comision
                         const comision_SINO = document.querySelector('input[name="pago_comision"]:checked').value; // Obtiene el radio seleccionado
                         if (comision_SINO == 1) {
-                            nuevaComision = originalConsignar + <?= $iva_inmobiliaria ?> - cuatroX - rteFte2 - rteIca2 - rteIva2 - totalGastos;
+                            nuevaComision = originalConsignar + <?= $iva_inmobiliaria ?>- rteFte2 - rteIca2 - rteIva2 - totalGastos;
                         } else {
-                            nuevaComision = rentaNumero - cuatroX - rteFte2 - rteIca2 - rteIva2 - totalGastos;
+                            nuevaComision = rentaNumero  - rteFte2 - rteIca2 - rteIva2 - totalGastos;
                         }
 
                         // Actualizar el valor en el campo de comisión

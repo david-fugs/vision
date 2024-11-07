@@ -48,6 +48,19 @@ function consultarPagosParciales($id_pago)
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <style>
+        .sticky-header-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.sticky-header-table thead th {
+    position: sticky;
+    top: 0; /* Fija el encabezado en la parte superior */
+    background-color: #f1f1f1; /* Color de fondo para el encabezado */
+    z-index: 1; /* Asegura que los encabezados se mantengan encima de los datos */
+    padding: 10px;
+    border-bottom: 2px solid #ddd;
+}
         .excelAtras {
             display: flex;
             justify-content: center;
@@ -158,7 +171,7 @@ function consultarPagosParciales($id_pago)
     echo "<section class='content'>
     <div class='card-body'>
         <div class='table-responsive'>
-            <table>
+            <table class='sticky-header-table'>
                 <thead>
                     <tr>
                         <th>PAGO No.</th>

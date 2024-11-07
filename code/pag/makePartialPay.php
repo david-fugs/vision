@@ -64,6 +64,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $id_usu = $_SESSION['id_usu'];
     $diferencia = (int)str_replace(['.', ',', 'COP', ' '], '', $_POST['diferencia']) / 100;
     $cuatroX = $_POST['4x1000'] ?? 0;
+    if($cuatroX == "no") $cuatroX = 0;
+
+
+
     //sumo el valor del saldo
     $valor_pagado = $valor_pagado + $saldo;
 
@@ -132,7 +136,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $insert_query = "INSERT INTO pagos_realizados (
             id_pago, fecha_pago_realizado, valor_pagado, diferencia, adecuaciones, deposito, afianzamiento,
             observaciones_diferencia, comision_pago, comision_pendiente,pago_comision,
-            rte_fte1_prop, rte_fte2_prop, rte_ica1_prop, rte_ica2_prop, rte_iva1_prop, rte_iva2_prop,4x1000
+            rte_fte1_prop, rte_fte2_prop, rte_ica1_prop, rte_ica2_prop, rte_iva1_prop, rte_iva2_prop,4x1000,
             rte_fte3_inmobi, rte_fte4_inmobi, rte_ica3_inmobi, rte_ica4_inmobi, pagado_a
         )
       VALUES (
@@ -260,6 +264,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 exit();
             } else {
                 echo "Error al registrar el pago: " . $mysqli->error;
+                echo "Error en la consulta: " . $mysqli->error . "\n";
+                echo "Consulta SQL: " . $insert_query . "\n";
             }
         } else {
             echo "Pago no encontrado.";
@@ -516,7 +522,8 @@ if ($saldo == null) {
                         <select <?php if ($pago_data != []) echo "disabled" ?> class="form-control" name="rte_fte3" id="rte_fte3" onchange="updateRteFteInmobi()">
                             <option value=""></option>
                             <option <?php if ($row['rte_fte3'] == 3.5) echo "selected"; ?> value=3.5>3.5%</option>
-                            <option <?php if ($row['rte_fte3'] == 20) echo "selected"; ?> value=20>20%</option>
+                            <option <?php if ($row['rte_fte3'] == 4) echo "selected"; ?> value=4>4%</option>
+                            <option <?php if ($row['rte_fte3'] == 11) echo "selected"; ?> value=11>11%</option>
                             <option <?php if ($row['rte_fte3'] == 0) echo "selected"; ?> value=0>N/A</option>
                         </select>
                     </div>
@@ -1005,7 +1012,7 @@ if ($saldo == null) {
                 var comision = <?= $row['comision_pago'] ?>;
                 if (rte_fte3 === "") {
                     rte_fte4.value = "";
-                } else if (rte_fte3 === "3.5" || rte_fte3 === "20") {
+                } else if (rte_fte3 === "4" || rte_fte3 === "11") {
                     var result = (parseFloat(rte_fte3) / 100) * comision;
                     rte_fte4.value = result.toFixed(2); // Mostrar el valor calculado con dos decimales
                 }
@@ -1057,9 +1064,9 @@ if ($saldo == null) {
                     var cuatroX = parseFloat(document.getElementById('4x1000').value) || 0;
                     const comision_SINO = document.querySelector('input[name="pago_comision"]:checked').value;
                     if (comision_SINO == 1) {
-                        nuevaComision = originalConsignar - cuatroX - rteFte2 - rteIca2 - rteIva2 - totalGastos;
+                        nuevaComision = originalConsignar - rteFte2 - rteIca2 - rteIva2 - totalGastos;
                     } else {
-                        nuevaComision = rentaNumero - cuatroX - rteFte2 - rteIca2 - rteIva2 - totalGastos;
+                        nuevaComision = rentaNumero - rteFte2 - rteIca2 - rteIva2 - totalGastos;
                     }
 
                     if (<?php echo isset($pago_data['diferencia']) ? 'true' : 'false'; ?>) {

@@ -711,7 +711,7 @@ if ($saldo == null) {
                 var valorPagado = parseFloat(document.getElementById('valor_pagado').value);
                 var valorPagadoError = document.getElementById('valor_pagado_error');
 
-                if (valorPagado > valorRenta) {
+                if (valorPagado > (valorRenta + 4000000)) {
                     valorPagadoError.style.display = 'block';
                     document.getElementById('valor_pagado').value = 0;
                     return false;

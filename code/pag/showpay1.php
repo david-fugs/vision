@@ -346,7 +346,6 @@ function consultarPagosParciales($id_pago)
         </div>
     </div>
 
-
     <center>
         <br /><a href="showpay.php"><img src='../../img/atras.png' width="72" height="72" title="Regresar" /></a>
     </center>
@@ -373,6 +372,7 @@ function consultarPagosParciales($id_pago)
             modalNumCon.value = numCon; // Asigna el valor a 'num_con'
             modalNumPago.value = numPago; // Asigna el valor a 'num_pago'
         });
+
 
         function submitForm() {
             var ipc = $('#ipc').val();

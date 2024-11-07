@@ -125,10 +125,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 // Insertar propietarios
                 foreach ($propietarios as $index => $propietario_id) {
                     $monto = $propietarios_monto[$index];
-                    $insert_propietario_query = "INSERT INTO pagos_propietarios (id_pago_realizado, nit_cc_pro, monto) VALUES ($id_pago_realizado, $propietario_id, $monto)";
-                    if (!$mysqli->query($insert_propietario_query)) {
-                        echo "Error al insertar propietario ID: $propietario_id - " . $mysqli->error;
-                        die;
+                    if ($monto > 0) {
+                        $insert_propietario_query = "INSERT INTO pagos_propietarios (id_pago_realizado, nit_cc_pro, monto) VALUES ($id_pago_realizado, $propietario_id, $monto)";
+                        if (!$mysqli->query($insert_propietario_query)) {
+                            echo "Error al insertar propietario ID: $propietario_id - " . $mysqli->error;
+                            die;
+                        }
                     }
                 }
 
@@ -482,7 +484,7 @@ if ($saldo == null) {
                     <div class="col-12 col-sm-4">
                         <label for="valor_pagado">Valor Pagado $</label>
                         <input type="number" step="0.01" class="form-control form-control-bold" id="valor_pagado" name="valor_pagado" required>
-                        <div id="valor_pagado_error" class="text-red font-weight-bold" style="display: none;">Valor superior a Valor Renta, por favor corrija.</div>
+                        <div id="valor_pagado_error" class="text-green font-weight-bold" style="display: none;">Valor superior a Valor Renta, por favor corrija.</div>
                     </div>
                     <div class="col-12 col-sm-4">
                         <label for="diferencia"><strong>Diferencia $</strong></label>
@@ -660,13 +662,13 @@ if ($saldo == null) {
 
                     // Cambiar las clases según la diferencia
                     if (diferencia < 0) {
-                        diferenciaInput.classList.add('text-red');
+                        diferenciaInput.classList.add('text-green');
                         diferenciaInput.classList.remove('text-green');
                     } else if (diferencia === 0) {
                         diferenciaInput.classList.add('text-green');
                         diferenciaInput.classList.remove('text-red');
                     } else {
-                        diferenciaInput.classList.remove('text-green', 'text-red');
+                        diferenciaInput.classList.remove('text-green', 'text-green');
                     }
                 } else {
                     // Si no hay radio seleccionado, puedes limpiar el input o manejar el caso
@@ -843,7 +845,7 @@ if ($saldo == null) {
             function update4x() {
                 var cuatroX = document.getElementById('4x').value;
                 var cuatroX1000 = document.getElementById('4x1000');
-                var consignar = document.getElementById('total_consignar_pago').value.replace(/[^\d]/g, '')/100;
+                var consignar = document.getElementById('total_consignar_pago').value.replace(/[^\d]/g, '') / 100;
                 if (cuatroX === "") {
                     cuatroX1000.value = "";
                 } else if (cuatroX === "si") {
@@ -915,9 +917,9 @@ if ($saldo == null) {
                         // Recalcular nuevaComision basado en el valor de pago_comision
                         const comision_SINO = document.querySelector('input[name="pago_comision"]:checked').value; // Obtiene el radio seleccionado
                         if (comision_SINO == 1) {
-                            nuevaComision = originalConsignar + <?= $iva_inmobiliaria ?>- rteFte2 - rteIca2 - rteIva2 - totalGastos;
+                            nuevaComision = originalConsignar + <?= $iva_inmobiliaria ?> - rteFte2 - rteIca2 - rteIva2 - totalGastos;
                         } else {
-                            nuevaComision = rentaNumero  - rteFte2 - rteIca2 - rteIva2 - totalGastos;
+                            nuevaComision = rentaNumero - rteFte2 - rteIca2 - rteIva2 - totalGastos;
                         }
 
                         // Actualizar el valor en el campo de comisión

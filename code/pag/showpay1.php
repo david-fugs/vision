@@ -171,6 +171,7 @@ function consultarPagosParciales($id_pago)
                         <th>EXCEL</th>
                         <th> PAGO PROPIETARIOS </th>
                         <th>OBSERVACION IPC</th>
+                        <th> ACUERDO </th>
                     </tr>
                 </thead>
                 <tbody>";
@@ -304,6 +305,14 @@ function consultarPagosParciales($id_pago)
                 <i class="fa-solid fa-arrow-up"></i>
             </button>
         </td>';
+            echo '<td data-label="aumenTo PIC">
+        <button
+            type="button"
+            class="btn btn-dark"
+            onclick="window.location.href=\'agreement.php?id_pago=' . $row['id_pago'] . '&num_pago=' . $row['num_pago'] . '&num_con=' . $row['num_con'] . '\';">
+            <i class="fa-solid fa-handshake"></i>
+        </button>
+    </td>';
         }
     }
     echo '</table>

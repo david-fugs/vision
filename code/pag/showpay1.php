@@ -294,26 +294,31 @@ function consultarPagosParciales($id_pago)
         echo '<td data-label="PAGO PROPIETARIOS"><a href="ownerPayments.php?num_con=' . $row['num_con'] . '&id_pago=' . $row['id_pago'] . '"><img src="../../img/credito.png" width=28 height=28></a></td>';
         if ($row['num_pago'] == 12 || $row['num_pago'] == 24 || $row['num_pago'] == 36 || $row['num_pago'] == 48 || $row['num_pago'] == 60) {
             echo '<td data-label="aumenTo PIC">
+                <button
+                    type="button"
+                    class="btn btn-dark"
+                    data-bs-toggle="modal"
+                    data-bs-target="#modalIpc"
+                    data-id-pago="' . $row['id_pago'] . '"
+                    data-num-pago="' . $row['num_pago'] . '"
+                    data-num-con="' . $row['num_con'] . '">
+                    <i class="fa-solid fa-arrow-up"></i>
+                </button>
+            </td>';
+        } else {
+            // Dejar una columna vacía si no se cumple la condición
+            echo '<td></td>';
+        }
+
+        // Botón que siempre se muestra
+        echo '<td data-label="aumenTo PIC">
             <button
                 type="button"
                 class="btn btn-dark"
-                data-bs-toggle="modal"
-                data-bs-target="#modalIpc"
-                data-id-pago="' . $row['id_pago'] . '"
-                data-num-pago="' . $row['num_pago'] . '"
-                data-num-con="' . $row['num_con'] . '">
-                <i class="fa-solid fa-arrow-up"></i>
+                onclick="window.location.href=\'agreement.php?id_pago=' . $row['id_pago'] . '&num_pago=' . $row['num_pago'] . '&num_con=' . $row['num_con'] . '\';">
+                <i class="fa-solid fa-handshake"></i>
             </button>
         </td>';
-            echo '<td data-label="aumenTo PIC">
-        <button
-            type="button"
-            class="btn btn-dark"
-            onclick="window.location.href=\'agreement.php?id_pago=' . $row['id_pago'] . '&num_pago=' . $row['num_pago'] . '&num_con=' . $row['num_con'] . '\';">
-            <i class="fa-solid fa-handshake"></i>
-        </button>
-    </td>';
-        }
     }
     echo '</table>
 </div>';

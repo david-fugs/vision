@@ -221,20 +221,20 @@ header("Content-Type: text/html;charset=utf-8");
                     <div class="row">
                         <div class="col-12 col-sm-3">
                             <strong><label for="canon_con">CANON $</label></strong>
-                            <input type='number' onchange="CanonChange()" name='canon_con' id="canon_con" class='form-control' value='<?php echo $row_pagos['canon_con']; ?>' style="font-weight:bold;" />
+                            <input type='number' step="any"  onchange="CanonChange()" name='canon_con' id="canon_con" class='form-control' value='<?php echo $row_pagos['canon_con']; ?>' style="font-weight:bold;" />
                         </div>
                         <div class="col-12 col-sm-3">
                             <strong><label for="iva_con">IVA $</label></strong>
-                            <input type='number' name='iva_con' id="iva_con" class='form-control' value='<?php echo $row_pagos['iva_con']; ?>' style="font-weight:bold;" />
+                            <input type='number' step="any"  name='iva_con' id="iva_con" class='form-control' value='<?php echo $row_pagos['iva_con']; ?>' style="font-weight:bold;" />
                         </div>
 
                         <div class="col-12 col-sm-3">
                             <strong><label for="renta_con">RENTA $</label></strong>
-                            <input type='number' name='renta_con' id="renta_con" class='form-control' value='<?php echo $row_pagos['renta_con']; ?>' style="font-weight:bold;" />
+                            <input type='number' step="any"  name='renta_con' id="renta_con" class='form-control' value='<?php echo $row_pagos['renta_con']; ?>' style="font-weight:bold;" />
                         </div>
                         <div class="col-12 col-sm-3">
                             <strong><label for="total_consignar_pago">TOTAL CONSIGNAR $</label></strong>
-                            <input type='number' name='total_consignar_pago' id="total_consignar_pago" class='form-control' value='<?php echo $row_pagos['total_consignar_pago']; ?>' style="font-weight:bold;" />
+                            <input type='number' step="any"  name='total_consignar_pago' id="total_consignar_pago" class='form-control' value='<?php echo $row_pagos['total_consignar_pago']; ?>' style="font-weight:bold;" />
                         </div>
 
                     </div>

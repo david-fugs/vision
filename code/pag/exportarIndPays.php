@@ -73,8 +73,28 @@ if ($res === false) {
     exit;
 }
 
+$sql_pagos_propietarios = "SELECT pagos_propietarios.*  FROM `pagos_realizados`
+JOIN pagos_propietarios ON pagos_realizados.id_pago_realizado = pagos_propietarios.id_pago_realizado
+where pagos_realizados.id_pago = $id_pago";
+$res_pagos_propietarios = mysqli_query($mysqli, $sql_pagos_propietarios);
+// Verificar si la consulta se ejecutó correctamente
+if ($res_pagos_propietarios === false) {
+    // Mostrar un mensaje de error si la consulta falla
+    echo "Error en la consulta: " . mysqli_error($mysqli);
+    exit;
+}
+$resultado_pagos = "";
+if (mysqli_num_rows($res_pagos_propietarios) > 0) {
+    $resultado_pagos = "";
+    foreach ($res_pagos_propietarios as $pagos_propietarios) {
+        $resultado_pagos .= "NIT: " . $pagos_propietarios['nit_cc_pro'] .
+                            " - Monto: " . $pagos_propietarios['monto'] . "\n";
+    }
+}
+print_r($resultado_pagos);
+die;
 // Aplicar color de fondo a las celdas A1 a AL1
-$sheet->getStyle('A2:N2')->applyFromArray([
+$sheet->getStyle('A2:O2')->applyFromArray([
     'fill' => [
         'fillType' => \PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID,
         'startColor' => [
@@ -87,7 +107,7 @@ $sheet->getStyle('A2:N2')->applyFromArray([
 $boldFontStyle = [
     'bold' => true,
 ];
-$sheet->getStyle('A2:N2')->applyFromArray(['font' => $boldFontStyle]);
+$sheet->getStyle('A2:O2')->applyFromArray(['font' => $boldFontStyle]);
 
 // Establecer estilos para los encabezados
 $styleHeader = [
@@ -106,12 +126,12 @@ $styleHeader = [
 ];
 
 // Aplicar el estilo a las celdas de encabezado
-$sheet->getStyle('A2:N2')->applyFromArray(['font' => $styleHeader, 'fill' => $styleHeader, 'alignment' => $styleHeader]);
+$sheet->getStyle('A2:O2')->applyFromArray(['font' => $styleHeader, 'fill' => $styleHeader, 'alignment' => $styleHeader]);
 
 // Definir los encabezados de columna
 $sheet->setCellValue('A1', 'NUM CONTRATO ' . $num_con);
 $sheet->setCellValue('B1', 'DATOS GENERALES');
-$sheet->setCellValue('J1', 'IMPUESTOS INMOBILIARIA');
+$sheet->setCellValue('K1', 'IMPUESTOS INMOBILIARIA');
 $sheet->setCellValue('G1', 'IMPUESTOS PROPIETARIO');
 $sheet->setCellValue('A2', 'FECHA DEL PAGO');
 $sheet->setCellValue('B2', 'VALOR PAGADO');
@@ -122,17 +142,19 @@ $sheet->setCellValue('F2', 'GASTOS');
 $sheet->setCellValue('G2', 'RTE FUENTE PROPIETARIO');
 $sheet->setCellValue('H2', 'RTE ICA PROPIETARIO');
 $sheet->setCellValue('I2', 'RTE IVA PROPIETARIO');
-$sheet->setCellValue('J2', 'RTE FUENTE INMOBILIARIA');
-$sheet->setCellValue('K2', 'RTE ICA INMOBILIARIA');
-$sheet->setCellValue('L2', 'RTE IVA INMOBILIARIA');
-$sheet->setCellValue('M2', 'PAGADO A');
-$sheet->setCellValue('N2', 'PAGO COMISION');
+$sheet->setCellValue('J2', '4X1000');
+$sheet->setCellValue('K2', 'RTE FUENTE INMOBILIARIA');
+$sheet->setCellValue('L2', 'RTE ICA INMOBILIARIA');
+$sheet->setCellValue('M2', 'RTE IVA INMOBILIARIA');
+$sheet->setCellValue('N2', 'PAGADO A');
+$sheet->setCellValue('O2', 'PAGO COMISION');
+$sheet->setCellValue('P2', 'PAGOS PROPIETARIOS');
 
 $sheet->mergeCells('B1:F1');
-$sheet->mergeCells('G1:I1');
-$sheet->mergeCells('J1:L1');
+$sheet->mergeCells('G1:J1');
+$sheet->mergeCells('K1:M1');
 $sheet->getStyle('B1:I1')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
-$sheet->getStyle('K1:N1')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
+$sheet->getStyle('K1:O1')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
 $sheet->getStyle('O1:Q1')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
 
 // Ajustar el ancho de las columna
@@ -174,11 +196,12 @@ while ($row = mysqli_fetch_array($res, MYSQLI_ASSOC)) {
     $sheet->setCellValue('G' . $rowIndex, $row['rte_fte2_prop']);
     $sheet->setCellValue('H' . $rowIndex, $row['rte_ica2_prop']);
     $sheet->setCellValue('I' . $rowIndex, $row['rte_iva2_prop']);
-    $sheet->setCellValue('J' . $rowIndex, $row['rte_fte4_inmobi']);
-    $sheet->setCellValue('K' . $rowIndex, $row['rte_ica4_inmobi']);
-    $sheet->setCellValue('L' . $rowIndex, $row['ret_iva_valor_pii']);
-    $sheet->setCellValue('M' . $rowIndex, $row['pagado_a']);
-    $sheet->setCellValue('N' . $rowIndex, Si1No2($row['pago_comision']));
+    $sheet->setCellValue('J' . $rowIndex, $row['4x1000']);
+    $sheet->setCellValue('K' . $rowIndex, $row['rte_fte4_inmobi']);
+    $sheet->setCellValue('L' . $rowIndex, $row['rte_ica4_inmobi']);
+    $sheet->setCellValue('M' . $rowIndex, $row['ret_iva_valor_pii']);
+    $sheet->setCellValue('N' . $rowIndex, $row['pagado_a']);
+    $sheet->setCellValue('O' . $rowIndex, Si1No2($row['pago_comision']));
     //   $sheet->getStyle('A' .$rowIndex. ':S'.$rowIndex.'')->applyFromArray(['font' => $boldFontStyle]);
       $rowIndex++;
 }

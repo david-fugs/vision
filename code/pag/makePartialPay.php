@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $usar_saldo = $_POST['usar_saldo'] ?? 0;
     if ($usar_saldo == 1) {
         $saldo = intval(str_replace([' COP', '.', ','], ['', '', ''],  $_POST['saldo'] ?? 0)) / 100;
-           //actualizo la diferencia a 0
+        //actualizo la diferencia a 0
         $id_pago = $_POST['id_pago'];
         $sql_num_con = "SELECT num_con FROM pagos WHERE id_pago = $id_pago";
         $result_num_con = $mysqli->query($sql_num_con);
@@ -29,7 +29,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
          WHERE num_con = '$num_con' ";
         if (!$mysqli->query($update_diferencia)) {
             echo "Error en la consulta: " . $mysqli->error;
-
         }
     } else {
         $saldo = 0;
@@ -64,10 +63,55 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $pago_comision = $_POST['pago_comision'];
     $id_usu = $_SESSION['id_usu'];
     $diferencia = (int)str_replace(['.', ',', 'COP', ' '], '', $_POST['diferencia']) / 100;
+    $cuatroX = $_POST['4x1000'] ?? 0;
+    if($cuatroX == "no") $cuatroX = 0;
+
+
+
     //sumo el valor del saldo
     $valor_pagado = $valor_pagado + $saldo;
 
+
+
     if ($valor_anterior_pagado > 0) {
+
+        $sql_num_con = "SELECT pagos.num_con FROM pagos
+        JOIN pagos_realizados ON pagos.id_pago = pagos_realizados.id_pago
+        WHERE pagos.id_pago = $id_pago";
+        $result_num_con = $mysqli->query($sql_num_con);
+
+        if ($result_num_con === false) {
+            echo ("Error en la consulta: " . $mysqli->error);
+        }
+        $row_num_con = $result_num_con->fetch_assoc();
+        $num_con = $row_num_con['num_con'];
+
+        $sql_pago_realizado = "SELECT * FROM pagos_realizados WHERE id_pago = $id_pago";
+        $result_pago_realizado = $mysqli->query($sql_pago_realizado);
+        $row_pago_realizado = $result_pago_realizado->fetch_assoc();
+        $id_pago_realizado1 = $row_pago_realizado['id_pago_realizado'];
+
+
+        if ($diferencia > 0) {
+            $sql_cuenta_cobro = "INSERT INTO cuentas_cobrar (id_cuenta_cobrar, id_pago, num_con, fecha_pago, diferencia, estado_cuenta,id_pago_realizado,valor_pagado)
+                                         VALUES (NULL, $id_pago, '$num_con', '$fecha_pago_realizado', $diferencia, 1,$id_pago_realizado1,$valor_pagado)";
+            if (!$mysqli->query($sql_cuenta_cobro)) {
+                echo "Error. " . $mysqli->error;
+            }
+        } else {
+            // Realizar el INSERT primero
+            $sql_cuenta_cobro_insert = "INSERT INTO cuentas_cobrar (id_cuenta_cobrar, id_pago, num_con, fecha_pago, diferencia, estado_cuenta,id_pago_realizado,valor_pagado)
+                                                VALUES (NULL, $id_pago, '$num_con', '$fecha_pago_realizado', $diferencia, 0,$id_pago_realizado1,$valor_pagado)";
+            if (!$mysqli->query($sql_cuenta_cobro_insert)) {
+                echo "Error en el INSERT. " . $mysqli->error;
+            }
+            // Luego realizar el UPDATE
+            $sql_cuenta_cobro_update = "UPDATE cuentas_cobrar SET estado_cuenta = 0 WHERE id_pago = $id_pago";
+            if (!$mysqli->query($sql_cuenta_cobro_update)) {
+                echo "Error en el UPDATE. " . $mysqli->error;
+                die;
+            }
+        }
         $valor_pagado = $valor_pagado + $valor_anterior_pagado;
         $sql_update = "UPDATE pagos_realizados SET valor_pagado = $valor_pagado, fecha_pago_parcial  = $fecha_pago_realizado, diferencia = $diferencia ,saldo = $saldo  WHERE id_pago = $id_pago";
         // Ejecutar la consulta y verificar errores
@@ -75,6 +119,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             echo "Error en la consulta: " . $mysqli->error;
             die;
         } else {
+            //traigo el numero del contrato
             header("Location: pago_satisfactorio.htm");
         }
     } else {
@@ -91,7 +136,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $insert_query = "INSERT INTO pagos_realizados (
             id_pago, fecha_pago_realizado, valor_pagado, diferencia, adecuaciones, deposito, afianzamiento,
             observaciones_diferencia, comision_pago, comision_pendiente,pago_comision,
-            rte_fte1_prop, rte_fte2_prop, rte_ica1_prop, rte_ica2_prop, rte_iva1_prop, rte_iva2_prop,
+            rte_fte1_prop, rte_fte2_prop, rte_ica1_prop, rte_ica2_prop, rte_iva1_prop, rte_iva2_prop,4x1000,
             rte_fte3_inmobi, rte_fte4_inmobi, rte_ica3_inmobi, rte_ica4_inmobi, pagado_a
         )
       VALUES (
@@ -112,6 +157,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $rte_ica2_prop,
         $rte_iva1_prop,
         $rte_iva2_prop,
+        '$cuatroX',
         $rte_fte3_inmobi,
         $rte_fte4_inmobi,
         $rte_ica3_inmobi,
@@ -121,6 +167,41 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       )";
             if ($mysqli->query($insert_query)) {
                 $id_pago_realizado = $mysqli->insert_id;
+
+                $sql_num_con = "SELECT pagos.num_con FROM pagos
+                JOIN pagos_realizados ON pagos.id_pago = pagos_realizados.id_pago
+                WHERE pagos.id_pago = $id_pago";
+                $result_num_con = $mysqli->query($sql_num_con);
+
+                if ($result_num_con === false) {
+                    echo ("Error en la consulta: " . $mysqli->error);
+                }
+                $row_num_con = $result_num_con->fetch_assoc();
+                $num_con = $row_num_con['num_con'];
+
+                //si la diferencia es 0  inserto en cuentas por cobrar
+                //  lógica de inserción/actualización en cuentas_cobrar
+                if ($diferencia > 0) {
+                    $sql_cuenta_cobro = "INSERT INTO cuentas_cobrar (id_cuenta_cobrar, id_pago, num_con, fecha_pago, diferencia, estado_cuenta,id_pago_realizado,valor_pagado)
+                                     VALUES (NULL, $id_pago, '$num_con', '$fecha_pago_realizado', $diferencia, 1,$id_pago_realizado,$valor_pagado)";
+                    if (!$mysqli->query($sql_cuenta_cobro)) {
+                        echo "Error. " . $mysqli->error;
+                    }
+                } else {
+                    // Realizar el INSERT primero
+                    $sql_cuenta_cobro_insert = "INSERT INTO cuentas_cobrar (id_cuenta_cobrar, id_pago, num_con, fecha_pago, diferencia, estado_cuenta,id_pago_realizado,valor_pagado)
+                                            VALUES (NULL, $id_pago, '$num_con', '$fecha_pago_realizado', $diferencia, 0,$id_pago_realizado,$valor_pagado)";
+                    if (!$mysqli->query($sql_cuenta_cobro_insert)) {
+                        echo "Error en el INSERT. " . $mysqli->error;
+                    }
+
+                    // Luego realizar el UPDATE
+                    $sql_cuenta_cobro_update = "UPDATE cuentas_cobrar SET estado_cuenta = 0 WHERE id_pago = $id_pago";
+                    if (!$mysqli->query($sql_cuenta_cobro_update)) {
+                        echo "Error en el UPDATE. " . $mysqli->error;
+                    }
+                }
+
                 // Insertar los gastos en la tabla gastos
                 // Inicializar un array para almacenar los gastos
                 $gastos_array = [];
@@ -144,11 +225,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     // Ejecutar la consulta y verificar errores
                     if (!$mysqli->query($insert_gasto_query)) {
                         echo "Error en la consulta: " . $mysqli->error;
-                        die;
                     }
                 } else {
                     echo "Error: id_pago_realizado no está definido." . $id_pago_realizado;
                 }
+
                 foreach ($propietarios as $index => $propietario_id) {
                     $monto = $propietarios_monto[$index];
                     // Corregir la consulta para que sea un UPDATE correcto
@@ -183,6 +264,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 exit();
             } else {
                 echo "Error al registrar el pago: " . $mysqli->error;
+                echo "Error en la consulta: " . $mysqli->error . "\n";
+                echo "Consulta SQL: " . $insert_query . "\n";
             }
         } else {
             echo "Pago no encontrado.";
@@ -416,6 +499,18 @@ if ($saldo == null) {
                         <strong><label for="rte_iva2">RTE IVA $</label></strong>
                         <input type='text' name='rte_iva2' id="rte_iva2" class='form-control' value="<?= $row['rte_iva2'] ?>" readonly style="font-weight:bold;" />
                     </div>
+                    <div class="col-12 col-sm-2">
+                        <label for="4x">4 X 1000:</label>
+                        <select class="form-control" name="4x" id="4x" onchange="update4x()">
+                            <option value=""></option>
+                            <option value='si'>Sí</option>
+                            <option value='no'>No</option>
+                        </select>
+                    </div>
+                    <div class="col-12 col-sm-2">
+                        <strong><label for="4x1000">4 X 1000 $</label></strong>
+                        <input type='text' name='4x1000' id="4x1000" class='form-control' value="" readonly style="font-weight:bold;" />
+                    </div>
                 </div>
             </div>
 
@@ -427,7 +522,8 @@ if ($saldo == null) {
                         <select <?php if ($pago_data != []) echo "disabled" ?> class="form-control" name="rte_fte3" id="rte_fte3" onchange="updateRteFteInmobi()">
                             <option value=""></option>
                             <option <?php if ($row['rte_fte3'] == 3.5) echo "selected"; ?> value=3.5>3.5%</option>
-                            <option <?php if ($row['rte_fte3'] == 20) echo "selected"; ?> value=20>20%</option>
+                            <option <?php if ($row['rte_fte3'] == 4) echo "selected"; ?> value=4>4%</option>
+                            <option <?php if ($row['rte_fte3'] == 11) echo "selected"; ?> value=11>11%</option>
                             <option <?php if ($row['rte_fte3'] == 0) echo "selected"; ?> value=0>N/A</option>
                         </select>
                     </div>
@@ -699,6 +795,20 @@ if ($saldo == null) {
                 }).format(amount);
             }
 
+            function update4x() {
+                var cuatroX = document.getElementById('4x').value;
+                var cuatroX1000 = document.getElementById('4x1000');
+                var consignar = document.getElementById('total_consignar_pago').value.replace(/[^\d]/g, '') / 100;
+                console.log(cuatroX);
+                if (cuatroX === "no" || cuatroX === "") {
+                    cuatroX1000.value = "";
+                } else if (cuatroX === "si") {
+                    var result = consignar * 0.004;
+                    cuatroX1000.value = result.toFixed(2); // Mostrar el valor calculado con dos decimales
+                }
+
+            }
+
             function updateDiferencia() {
                 // Verificar si alguno de los radios está seleccionado
                 var pagoComisionRadios = document.getElementsByName('pago_comision');
@@ -902,7 +1012,7 @@ if ($saldo == null) {
                 var comision = <?= $row['comision_pago'] ?>;
                 if (rte_fte3 === "") {
                     rte_fte4.value = "";
-                } else if (rte_fte3 === "3.5" || rte_fte3 === "20") {
+                } else if (rte_fte3 === "4" || rte_fte3 === "11") {
                     var result = (parseFloat(rte_fte3) / 100) * comision;
                     rte_fte4.value = result.toFixed(2); // Mostrar el valor calculado con dos decimales
                 }
@@ -951,6 +1061,7 @@ if ($saldo == null) {
                         totalGastos = totalGastos;
                     }
 
+                    var cuatroX = parseFloat(document.getElementById('4x1000').value) || 0;
                     const comision_SINO = document.querySelector('input[name="pago_comision"]:checked').value;
                     if (comision_SINO == 1) {
                         nuevaComision = originalConsignar - rteFte2 - rteIca2 - rteIva2 - totalGastos;
@@ -960,8 +1071,10 @@ if ($saldo == null) {
 
                     if (<?php echo isset($pago_data['diferencia']) ? 'true' : 'false'; ?>) {
                         document.getElementById('total_consignar_pago').value = "<?php echo isset($pago_data['diferencia']) ? $pago_data['diferencia'] . ' COP' : ''; ?>";
+                        update4x();
                     } else {
                         document.getElementById('total_consignar_pago').value = nuevaComision.toFixed(2) + " COP";
+                        update4x();
                     }
                 }
 
@@ -971,6 +1084,12 @@ if ($saldo == null) {
 
                 // Ejecuta el cálculo inicial al cargar la página
                 calcularComision();
+                // Llama a update4x explícitamente solo si es necesario
+                var cuatroX = document.getElementById('4x').value;
+                if (cuatroX === "si") {
+                    update4x(); // Esto asegura que se calcule 4x1000 correctamente
+                }
+
             }
 
             // Llama a updateConsignar cuando la página haya cargado

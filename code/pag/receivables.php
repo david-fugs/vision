@@ -64,7 +64,7 @@ $tipo_usu = $_SESSION['tipo_usu'];
 
     <div class="flex">
         <div class="box">
-            <form action="showpay.php" method="get" class="form">
+            <form action="receivables.php" method="get" class="form">
                 <input name="num_con" type="text" placeholder="Contrato No.">
                 <input value="Realizar Busqueda" type="submit">
             </form>
@@ -86,9 +86,11 @@ $tipo_usu = $_SESSION['tipo_usu'];
         die("Conexión fallida: " . $mysqli->connect_error);
     }
 
-    $query = "SELECT  COUNT(*) as total_filas, pr.*,p.num_con FROM pagos_realizados as pr
-    JOIN pagos as  p ON pr.id_pago = p.id_pago
-     WHERE pr.diferencia > 0";
+    $query = "SELECT *,
+       COUNT(id_pago) AS total_filas,
+       SUM(CASE WHEN estado_cuenta = 1 THEN 1 ELSE 0 END) AS faltantes
+        FROM cuentas_cobrar
+        GROUP BY num_con";
 
     $res = $mysqli->query($query);
     if (!$res) {
@@ -105,8 +107,8 @@ $tipo_usu = $_SESSION['tipo_usu'];
                 <thead>
                     <tr>
                         <th >CONT. No.</th>
-                        <th >FECHA PAGO</th>
                         <th style='width:300px;'>NÚMERO CUENTAS POR COBRAR </th>
+                        <th >FALTANTES POR COBRAR</th>
                         <th>+ INF</th>
                     </tr>
                 </thead>
@@ -116,9 +118,11 @@ $tipo_usu = $_SESSION['tipo_usu'];
     $paginacion->records($num_registros);
     $paginacion->records_per_page($resul_x_pagina);
 
-    $consulta = "SELECT COUNT(*) as total_filas, pr.*,p.num_con FROM pagos_realizados as pr
-    JOIN pagos as  p ON pr.id_pago = p.id_pago
-     WHERE pr.diferencia > 0
+    $consulta = "SELECT *,
+       COUNT(id_pago) AS total_filas,
+       SUM(CASE WHEN estado_cuenta = 1 THEN 1 ELSE 0 END) AS faltantes
+        FROM cuentas_cobrar
+        GROUP BY  num_con
              LIMIT " . (($paginacion->get_page() - 1) * $resul_x_pagina) . ", $resul_x_pagina";
 
     $result = $mysqli->query($consulta);
@@ -132,8 +136,8 @@ $tipo_usu = $_SESSION['tipo_usu'];
         echo '
         <tr>
         <td data-label="CONT. No.">' . $row['num_con'] . '</td>
-        <td data-label="FECHA INICIO">' . $row['fecha_pago_realizado'] . '</td>
         <td data-label="NÚMERO DE PAGOS">' . $row['total_filas'] . '</td>
+        <td data-label="FALTANTES POR COBRAR">' . $row['faltantes'] . '</td>
          <td data-label="+ INFO"><a href="showReceivables1.php?num_con=' . $row['num_con'] . '"><img src="../../img/buscar.png" width=28 height=28></a></td>
         </tr>';
     }

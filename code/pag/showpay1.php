@@ -169,8 +169,9 @@ function consultarPagosParciales($id_pago)
                         <th>PAGO PARCIAL</th>
                         <th>PRORRATEO</th>
                         <th>EXCEL</th>
-                        <th>PAGO PROPIETARIOS</th>
+                        <th> PAGO PROPIETARIOS </th>
                         <th>OBSERVACION IPC</th>
+                        <th> ACUERDO </th>
                     </tr>
                 </thead>
                 <tbody>";
@@ -290,21 +291,34 @@ function consultarPagosParciales($id_pago)
         } else {
             echo '<td data-label="EXCEL"><span class="text-muted">Aun sin pagar</span></td>';
         }
-        echo '<td> <a href="ownerPayments.php?num_con=' . $row['num_con'] . '&id_pago=' . $row['id_pago'] . '"><img src="../../img/pagoprop.png" width=48 height=48></a></td>';
+        echo '<td data-label="PAGO PROPIETARIOS"><a href="ownerPayments.php?num_con=' . $row['num_con'] . '&id_pago=' . $row['id_pago'] . '"><img src="../../img/pagoprop.png" width=48 height=48></a></td>';
         if ($row['num_pago'] == 12 || $row['num_pago'] == 24 || $row['num_pago'] == 36 || $row['num_pago'] == 48 || $row['num_pago'] == 60) {
             echo '<td data-label="aumenTo PIC">
+                <button
+                    type="button"
+                    class="btn btn-dark"
+                    data-bs-toggle="modal"
+                    data-bs-target="#modalIpc"
+                    data-id-pago="' . $row['id_pago'] . '"
+                    data-num-pago="' . $row['num_pago'] . '"
+                    data-num-con="' . $row['num_con'] . '">
+                    <i class="fa-solid fa-arrow-up"></i>
+                </button>
+            </td>';
+        } else {
+            // Dejar una columna vacía si no se cumple la condición
+            echo '<td></td>';
+        }
+
+        // Botón que siempre se muestra
+        echo '<td data-label="aumenTo PIC">
             <button
                 type="button"
                 class="btn btn-dark"
-                data-bs-toggle="modal"
-                data-bs-target="#modalIpc"
-                data-id-pago="' . $row['id_pago'] . '"
-                data-num-pago="' . $row['num_pago'] . '"
-                data-num-con="' . $row['num_con'] . '">
-                <i class="fa-solid fa-arrow-up"></i>
+                onclick="window.location.href=\'agreement.php?id_pago=' . $row['id_pago'] . '&num_pago=' . $row['num_pago'] . '&num_con=' . $row['num_con'] . '\';">
+                <i class="fa-solid fa-handshake"></i>
             </button>
         </td>';
-        }
     }
     echo '</table>
 </div>';
@@ -346,7 +360,6 @@ function consultarPagosParciales($id_pago)
         </div>
     </div>
 
-
     <center>
         <br /><a href="showpay.php"><img src='../../img/atras.png' width="72" height="72" title="Regresar" /></a>
     </center>
@@ -373,6 +386,7 @@ function consultarPagosParciales($id_pago)
             modalNumCon.value = numCon; // Asigna el valor a 'num_con'
             modalNumPago.value = numPago; // Asigna el valor a 'num_pago'
         });
+
 
         function submitForm() {
             var ipc = $('#ipc').val();

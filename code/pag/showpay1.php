@@ -169,6 +169,7 @@ function consultarPagosParciales($id_pago)
                         <th>PAGO PARCIAL</th>
                         <th>PRORRATEO</th>
                         <th>EXCEL</th>
+                        <th>PAGO PROPIETARIOS</th>
                         <th>OBSERVACION IPC</th>
                     </tr>
                 </thead>
@@ -289,6 +290,7 @@ function consultarPagosParciales($id_pago)
         } else {
             echo '<td data-label="EXCEL"><span class="text-muted">Aun sin pagar</span></td>';
         }
+        echo '<td> <a href="ownerPayments.php?num_con=' . $row['num_con'] . '&id_pago=' . $row['id_pago'] . '"><img src="../../img/pagoprop.png" width=48 height=48></a></td>';
         if ($row['num_pago'] == 12 || $row['num_pago'] == 24 || $row['num_pago'] == 36 || $row['num_pago'] == 48 || $row['num_pago'] == 60) {
             echo '<td data-label="aumenTo PIC">
             <button

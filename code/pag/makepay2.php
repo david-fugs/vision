@@ -848,7 +848,7 @@ if ($saldo == null) {
                     cuatroX1000.value = "";
                 } else if (cuatroX === "si") {
                     var result = consignar * 0.004;
-                    cuatroX1000.value = result.toFixed(2); // Mostrar el valor calculado con dos decimales
+                    cuatroX1000.value = result.toFixed(2) ; // Mostrar el valor calculado con dos decimales
                 }
                 updateConsignar();
             }
@@ -911,18 +911,22 @@ if ($saldo == null) {
                             }
                         });
                         var cuatroX = parseFloat(document.getElementById('4x1000').value) || 0;
-                        console.log(cuatroX);
+                        update4x();
                         // Recalcular nuevaComision basado en el valor de pago_comision
                         const comision_SINO = document.querySelector('input[name="pago_comision"]:checked').value; // Obtiene el radio seleccionado
                         if (comision_SINO == 1) {
-                            nuevaComision = originalConsignar + <?= $iva_inmobiliaria ?> - cuatroX - rteFte2 - rteIca2 - rteIva2 - totalGastos;
+                            nuevaComision = originalConsignar + <?= $iva_inmobiliaria ?>  - rteFte2 - rteIca2 - rteIva2 - totalGastos;
+                            
                         } else {
-                            nuevaComision = rentaNumero - cuatroX - rteFte2 - rteIca2 - rteIva2 - totalGastos;
+                            nuevaComision = rentaNumero  - rteFte2 - rteIca2 - rteIva2 - totalGastos;
+                           
                         }
+                        
 
                         // Actualizar el valor en el campo de comisión
                         document.getElementById('total_consignar_pago').value = nuevaComision.toFixed(2) + " COP";
-                        update4x();
+
+                        
                     });
                 });
             }

@@ -134,7 +134,6 @@ $nume_con = isset($_GET['num_con']) ? $_GET['num_con'] : '';;
             <table>
                 <thead>
                     <tr>
-                        <th>PAGO No.</th>
                         <th>CONT. No.</th>
                         <th>FECHA PAGO</th>
                         <th>DIFERENCIA</th>

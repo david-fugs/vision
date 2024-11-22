@@ -861,7 +861,7 @@ if ($saldo == null) {
                 var canon = <?= $row['canon_con'] ?>;
                 if (rteFte1 === "") {
                     rteFte2.value = "";
-                } else if (rteFte1 === "3.5" || rteFte1 === "20") {
+                } else if (rteFte1 === "3.5" || rteFte1 === "4" || rteFte1 === "10" || rteFte1 === "20"  ) {
                     var result = (parseFloat(rteFte1) / 100) * canon;
                     rteFte2.value = result.toFixed(2); // Mostrar el valor calculado con dos decimales
                 }

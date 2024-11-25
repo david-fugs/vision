@@ -241,6 +241,8 @@ header("Content-Type: text/html;charset=utf-8");
                         <select class="form-control" name="rte_fte1" id="rte_fte1">
                             <option value=""></option>
                             <option value=3.5>3.5%</option>
+                            <option value=4>4%</option>
+                            <option value=10>10%</option>
                             <option value=20>20%</option>
                         </select>
                     </div>

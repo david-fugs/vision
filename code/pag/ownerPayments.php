@@ -201,7 +201,7 @@ function nombrePropietario($nit_cc_pro)
             <input type="hidden" name="id_pago" value="<?php echo $id_pago; ?>">
             <div class="form-group">
                 <hr style="border: 4px solid #FA8B07; border-radius: 4px;">
-                <label for="propietarios"><strong>Distribución entre Propietarios:</strong></label>
+                <label for="propietarios"><strong>Pagos Anterior Propietarios:</strong></label>
                 <?php foreach ($result_pagos_propietarios as $pago) :   ?>
                     <div class="row">
                         <div class="col-12 col-sm-3">

@@ -204,16 +204,17 @@ function nombrePropietario($nit_cc_pro)
                 <label for="propietarios"><strong>Distribución entre Propietarios:</strong></label>
                 <?php foreach ($result_pagos_propietarios as $pago) :   ?>
                     <div class="row">
-
                         <div class="col-12 col-sm-3">
                             <label for="propietario">Propietario</label>
                             <input type="text" class="form-control form-control-bold" name="propietario" value='<?= nombrePropietario($pago['nit_cc_pro']); ?>' readonly>
                         </div>
                         <div class="col-12 col-sm-3">
                             <label for="pago_anterior">Pago</label>
-                            <input type="text" name="pago_anterior" class="form-control form-control-bold" value="<?= $pago['monto'] ?>">
+                            <input type="text" id="pago_anterior_<?= $pago['id_pago_propietario'] ?>" name="pago_anterior" class="form-control form-control-bold" value="<?= $pago['monto'] ?>">
                         </div>
                         <div class="col-12 col-sm-4">
+                            <button type="button" class="btn btn-primary mt-4" onclick="editarPago(<?= $pago['id_pago_propietario'] ?>)">Cambiar</button>
+                            <button type="button" class="btn btn-danger mt-4" onclick="eliminarPago(<?= $pago['id_pago_propietario'] ?>)">Eliminar</button>
                         </div>
                     </div>
                 <?php endforeach; ?>
@@ -301,6 +302,38 @@ function nombrePropietario($nit_cc_pro)
                     this.closest('.propietario-row').remove();
                 });
             });
+
+            function editarPago(id_pago_propietario) {
+                // Obtén el valor actual del input correspondiente
+                const pagoAnterior = document.getElementById(`pago_anterior_${id_pago_propietario}`).value;
+                console.log('ID:', id_pago_propietario, 'Pago Anterior:', pagoAnterior);
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange = function() {
+                    if (this.readyState === 4 && this.status === 200) {
+                        alert("Pago actualizado correctamente.");
+                    }
+                };
+                xmlhttp.open("GET", "processOwnerPays.php?action=editaPago&id_pago_propietario=" + id_pago_propietario + "&pago_anterior=" + pagoAnterior, true);
+                xmlhttp.send();
+            }
+
+
+            function eliminarPago(id_pago_propietario) {
+                // Mostrar un cuadro de confirmación
+                const confirmacion = confirm("¿Estás seguro de que deseas eliminar este pago?");
+                // Si el usuario confirma, proceder con la eliminación
+                if (confirmacion) {
+                    var xmlhttp = new XMLHttpRequest();
+                    xmlhttp.onreadystatechange = function() {
+                        if (this.readyState === 4 && this.status === 200) {
+                            alert("Pago eliminado correctamente.");
+                            window.location.reload();
+                        }
+                    };
+                    xmlhttp.open("GET", "processOwnerPays.php?action=eliminarPago&id_pago_propietario=" + id_pago_propietario, true);
+                    xmlhttp.send();
+                }
+            }
         </script>
 
 </body>

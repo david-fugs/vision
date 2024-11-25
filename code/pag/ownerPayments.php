@@ -47,7 +47,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     } else {
         echo "Error al insertar registros: " . $mysqli->error;
     }
-
 } else {
     if (isset($_GET['id_pago'])) {
         $id_pago = $_GET['id_pago'];
@@ -96,6 +95,23 @@ $saldo = $saldo * -1;
 if ($saldo == null) {
     $saldo = 0;
 }
+
+//consulta de pagos a los propietarios
+$sql_pagos_propietarios = "SELECT * FROM pagos_propietarios as pp
+    JOIN pagos_realizados pr ON pp.id_pago_realizado = pr.id_pago_realizado
+    JOIN pagos p ON pr.id_pago = p.id_pago
+    WHERE p.num_con = '$num_con' AND p.id_pago = $id_pago";
+$result_pagos_propietarios = $mysqli->query($sql_pagos_propietarios);
+
+function nombrePropietario($nit_cc_pro)
+{
+    include("../../conexion.php");
+    $sql = "SELECT nom_ape_pro FROM propietarios WHERE nit_cc_pro = '$nit_cc_pro'";
+    $result = $mysqli->query($sql);
+    $row = $result->fetch_assoc();
+    return $row['nom_ape_pro'];
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -183,6 +199,25 @@ if ($saldo == null) {
     <div class="container">
         <form id="payment-form" action="ownerPayments.php" method="post">
             <input type="hidden" name="id_pago" value="<?php echo $id_pago; ?>">
+            <div class="form-group">
+                <hr style="border: 4px solid #FA8B07; border-radius: 4px;">
+                <label for="propietarios"><strong>Distribución entre Propietarios:</strong></label>
+                <?php foreach ($result_pagos_propietarios as $pago) :   ?>
+                    <div class="row">
+
+                        <div class="col-12 col-sm-3">
+                            <label for="propietario">Propietario</label>
+                            <input type="text" class="form-control form-control-bold" name="propietario" value='<?= nombrePropietario($pago['nit_cc_pro']); ?>' readonly>
+                        </div>
+                        <div class="col-12 col-sm-3">
+                            <label for="pago_anterior">Pago</label>
+                            <input type="text" name="pago_anterior" class="form-control form-control-bold" value="<?= $pago['monto'] ?>">
+                        </div>
+                        <div class="col-12 col-sm-4">
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
             <hr style="border: 4px solid #FA8B07; border-radius: 4px;">
 
             <div class="form-group">
@@ -190,7 +225,6 @@ if ($saldo == null) {
                     <label for="fecha_pago_realizado">Fecha de Pago:</label>
                     <input type="date" class="form-control" id="fecha_pago_realizado" name="fecha_pago_realizado" required>
                 </div>
-
             </div>
 
             <div class="form-group">
@@ -249,7 +283,7 @@ if ($saldo == null) {
                 <?php foreach ($propietarios as $propietario) : ?>
                     <option value="<?php echo $propietario['nit_cc_pro']; ?>"><?php echo $propietario['nom_ape_pro']; ?></option>
                 <?php endforeach; ?>
-            </select>     
+            </select>
         </div>
         <div class="col-12 col-sm-3">
             <label for="monto_${newPropietarioIndex}">Monto $</label>

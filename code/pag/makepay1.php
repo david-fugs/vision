@@ -34,7 +34,7 @@ $fec_inicio_con = new DateTime($row['fec_inicio_con']);
 $vigencia_duracion_con = $row['vigencia_duracion_con'];
 // Verificar si se recibieron los datos del formulario correctamente
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
- 
+
     $pago_propietario           = $_POST['pago_propietario'] ?? '';
     // $transferencia_propietario  = $_POST['transferencia_propietario'] ?? 'N/A';
     $factura_electronica0       = $_POST['factura_electronica0'] ?? '';
@@ -76,7 +76,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $fecha_edit_pago            = ('0000-00-00 00:00:00');
     $id_usu                     = $_SESSION['id_usu'];
 
-    if (empty($pago_propietario) || empty($factura_electronica0)) {
+    if (empty($pago_propietario)) {
         die("Por favor, completa todos los campos obligatorios del formulario.");
     }
 
@@ -97,13 +97,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $total_consignar_pago = $renta_con - $comision_pago;
 
         // Insertar registro en la tabla PAGOS
-        $insert_sql = "INSERT INTO pagos (num_con, fecha_pago, num_pago, pagado_a, pago_a_inmobiliaria, metodo_pago, factura_electronica0, factura_electronica1, factura_electronica2, canon_con, iva_con, admon_con, renta_con, comision_aplica_a, comision1, comision2, acuerdo, rte_fte1, rte_fte2, rte_fte3, rte_fte4, rte_ica1, rte_ica2, rte_ica3, rte_ica4, rte_iva1, rte_iva2, cuenta_cobro, 
+        $insert_sql = "INSERT INTO pagos (num_con, fecha_pago, num_pago, pagado_a, pago_a_inmobiliaria, metodo_pago, factura_electronica0, factura_electronica1, factura_electronica2, canon_con, iva_con, admon_con, renta_con, comision_aplica_a, comision1, comision2, acuerdo, rte_fte1, rte_fte2, rte_fte3, rte_fte4, rte_ica1, rte_ica2, rte_ica3, rte_ica4, rte_iva1, rte_iva2, cuenta_cobro,
         iva_aplica_inmobi, iva_inmobi,rte_iva_aplica_inmobi,rte_iva_inmobi,
         factura_colbodegas, comision_pago, total_consignar_pago, prorrateo, dias_prorra, valor_prorra, estado_pago, fecha_alta_pago, id_usu_alta_pago, fecha_edit_pago, id_usu)
-        VALUES ('$num_con', '$fecha_pago', '$num_pago', '$pago_propietario', '', '', '$factura_electronica0', '$factura_electronica1', '$factura_electronica2', '$canon_con', '$iva_con', '$admon_con', '$renta_con', '$comision_aplica_a', '$comision1', '$comision2', '$acuerdo', '$rte_fte1', '$rte_fte2', '$rte_fte3', '$rte_fte4', '$rte_ica1', '$rte_ica2', '$rte_ica3', '$rte_ica4', '$rte_iva1', '$rte_iva2', '$cuenta_cobro', 
+        VALUES ('$num_con', '$fecha_pago', '$num_pago', '$pago_propietario', '', '', '$factura_electronica0', '$factura_electronica1', '$factura_electronica2', '$canon_con', '$iva_con', '$admon_con', '$renta_con', '$comision_aplica_a', '$comision1', '$comision2', '$acuerdo', '$rte_fte1', '$rte_fte2', '$rte_fte3', '$rte_fte4', '$rte_ica1', '$rte_ica2', '$rte_ica3', '$rte_ica4', '$rte_iva1', '$rte_iva2', '$cuenta_cobro',
         '$iva3', '$iva4', '$rte_iva3', '$rte_iva4',
         '$factura_colbodegas', '$comision_pago', '$total_consignar_pago', '', '', '', '$estado_pago', '$fecha_alta_pago', '$id_usu_alta_pago', '$fecha_edit_pago', '$id_usu')";
-        
+
 
         if (!mysqli_query($mysqli, $insert_sql)) {
             die("Error al insertar en la tabla PAGOS: " . mysqli_error($mysqli));

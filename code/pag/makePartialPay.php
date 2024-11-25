@@ -60,11 +60,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $observaciones_diferencia = isset($_POST['observaciones_diferencia']) ? $_POST['observaciones_diferencia'] : '';
     $propietarios = $_POST['propietarios'];
     $propietarios_monto = $_POST['propietarios_monto'];
-    $pago_comision = $_POST['pago_comision'];
+    $pago_comision = $_POST['pago_comision'] ?? "";
     $id_usu = $_SESSION['id_usu'];
     $diferencia = (int)str_replace(['.', ',', 'COP', ' '], '', $_POST['diferencia']) / 100;
     $cuatroX = $_POST['4x1000'] ?? 0;
-    if($cuatroX == "no") $cuatroX = 0;
+    if ($cuatroX == "no") $cuatroX = 0;
 
 
 
@@ -96,19 +96,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $sql_cuenta_cobro = "INSERT INTO cuentas_cobrar (id_cuenta_cobrar, id_pago, num_con, fecha_pago, diferencia, estado_cuenta,id_pago_realizado,valor_pagado)
                                          VALUES (NULL, $id_pago, '$num_con', '$fecha_pago_realizado', $diferencia, 1,$id_pago_realizado1,$valor_pagado)";
             if (!$mysqli->query($sql_cuenta_cobro)) {
-                echo "Error. " . $mysqli->error;
+                error_log( "Error. " . $mysqli->error) ;
             }
         } else {
             // Realizar el INSERT primero
             $sql_cuenta_cobro_insert = "INSERT INTO cuentas_cobrar (id_cuenta_cobrar, id_pago, num_con, fecha_pago, diferencia, estado_cuenta,id_pago_realizado,valor_pagado)
                                                 VALUES (NULL, $id_pago, '$num_con', '$fecha_pago_realizado', $diferencia, 0,$id_pago_realizado1,$valor_pagado)";
             if (!$mysqli->query($sql_cuenta_cobro_insert)) {
-                echo "Error en el INSERT. " . $mysqli->error;
+                error_log( "Error en el INSERT. " . $mysqli->error);
             }
             // Luego realizar el UPDATE
             $sql_cuenta_cobro_update = "UPDATE cuentas_cobrar SET estado_cuenta = 0 WHERE id_pago = $id_pago";
             if (!$mysqli->query($sql_cuenta_cobro_update)) {
-                echo "Error en el UPDATE. " . $mysqli->error;
+                error_log( "Error en el UPDATE. " . $mysqli->error);
                 die;
             }
         }
@@ -116,7 +116,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $sql_update = "UPDATE pagos_realizados SET valor_pagado = $valor_pagado, fecha_pago_parcial  = $fecha_pago_realizado, diferencia = $diferencia ,saldo = $saldo  WHERE id_pago = $id_pago";
         // Ejecutar la consulta y verificar errores
         if (!$mysqli->query($sql_update)) {
-            echo "Error en la consulta: " . $mysqli->error;
+            error_log( "Error en la consulta: " . $mysqli->error);
             die;
         } else {
             //traigo el numero del contrato
@@ -715,7 +715,7 @@ if ($saldo == null) {
                 select.name = 'tipo_gasto[]';
 
                 // Agregar opciones al select
-                const opciones = ['Afianzamiento', 'Adecuaciones', 'Deposito', 'Otros'];
+                const opciones = ['Afianzamiento', 'Adecuaciones', 'Deposito', 'Mora', 'Otros'];
                 opciones.forEach(opcion => {
                     const option = document.createElement('option');
                     option.value = opcion;
@@ -874,7 +874,8 @@ if ($saldo == null) {
                 var valorPagado = parseFloat(document.getElementById('valor_pagado').value);
                 var valorPagadoError = document.getElementById('valor_pagado_error');
 
-                if (valorPagado > valorRenta) {
+                //pongo + 1 millon por el impuesto de MORA
+                if (valorPagado > valorRenta+1000000) {
                     valorPagadoError.style.display = 'block';
                     document.getElementById('valor_pagado').value = 0;
                     return false;
@@ -1051,8 +1052,18 @@ if ($saldo == null) {
                     const gastos = document.querySelectorAll('.gasto-item input[name="valor_gasto[]"]');
                     let totalGastos = 0;
                     gastos.forEach(gasto => {
-                        const valor = parseFloat(gasto.value) || 0;
-                        totalGastos += valor;
+                        const selectTipoGasto = gasto.closest('.gasto-item').querySelector('select[name="tipo_gasto[]"]');
+                        const tipoGastoSeleccionado = selectTipoGasto ? selectTipoGasto.value : '';
+
+                        // Verificar si el tipo de gasto es "Afianzamiento"
+                        if (tipoGastoSeleccionado != 'Afianzamiento' && tipoGastoSeleccionado != "Deposito" && tipoGastoSeleccionado != "Mora") {
+                            const valor = parseFloat(gasto.value) || 0; // Convierte a número o 0 si está vacío
+                            totalGastos += valor;
+                        }
+                        if (tipoGastoSeleccionado == "Mora") {
+                            const valor = parseFloat(gasto.value) || 0; // Convierte a número o 0 si está vacío
+                            totalGastos -= valor;
+                        }
                     });
                     var saldo = document.getElementById('usar_saldo')
                     if (saldo.checked) {

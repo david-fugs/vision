@@ -566,7 +566,7 @@ if ($saldo == null) {
                 select.name = 'tipo_gasto[]';
 
                 // Agregar opciones al select
-                const opciones = ['Afianzamiento', 'Adecuaciones', 'Deposito', 'Servicios Publicos', 'Otros'];
+                const opciones = ['Afianzamiento', 'Adecuaciones', 'Deposito', 'Servicios Publicos', 'Mora', 'Otros'];
                 opciones.forEach(opcion => {
                     const option = document.createElement('option');
                     option.value = opcion;
@@ -905,11 +905,13 @@ if ($saldo == null) {
                             const tipoGastoSeleccionado = selectTipoGasto ? selectTipoGasto.value : '';
 
                             // Verificar si el tipo de gasto es "Afianzamiento"
-                            if (tipoGastoSeleccionado != 'Afianzamiento' && tipoGastoSeleccionado != "Deposito") {
-                                console.log("si es");
-
+                            if (tipoGastoSeleccionado != 'Afianzamiento' && tipoGastoSeleccionado != "Deposito" && tipoGastoSeleccionado != "Mora") {
                                 const valor = parseFloat(gasto.value) || 0; // Convierte a número o 0 si está vacío
                                 totalGastos += valor;
+                            }
+                            if(tipoGastoSeleccionado == "Mora"){
+                                const valor = parseFloat(gasto.value) || 0; // Convierte a número o 0 si está vacío
+                                totalGastos -= valor;
                             }
                         });
                         var cuatroX = parseFloat(document.getElementById('4x1000').value) || 0;

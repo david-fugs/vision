@@ -12,7 +12,8 @@ if ($conn->connect_error) {
 // Obtener los valores del formulario
 $fecha_inicial = $_POST['de'];
 $fecha_final = $_POST['hasta'];
-$tipo_inmueble = $_POST['tipo_inm_exh'];
+$tipo_inmueble = $_POST['tipo_inm_exh'] ?? " ";
+$nit_cc_ase = $_POST['asesor'];
 
 // Crear una clase personalizada extendiendo TCPDF para el pie de página
 class MYPDF extends TCPDF
@@ -48,18 +49,13 @@ $pdf->setPrintFooter(true); // Activar el pie de página
 $pdf->SetFont('helvetica', '', 10);
 
 // Consulta SQL con filtros
-$sql = "SELECT fec_exh, cod_fr_exh, direccion_inm_exh, nom_ape_inte_exh, raz_soc_exh,
-               nit_cc_exh, cel_inte_exh, tipo_inm_exh, visita_exh,
-               valor_ubicacion_exh, valor_fachada_exh, valor_area_exterior_exh, valor_iluminacion_exh,
-               valor_altura_exh, valor_pisos_exh, valor_paredes_exh, valor_carpinteria_exh, valor_banhos_exh,
-               area_max_exh, area_min_exh, tipo_sis_elec_exh, kVA_exh, presupuesto_max_exh, presupuesto_min_exh,
-               obs1_exh, obs2_exh, nit_cc_ase
+$sql = "SELECT exhibiciones.*, asesores.nom_ape_ase
         FROM exhibiciones
-        WHERE fec_exh BETWEEN ? AND ?
-        AND tipo_inm_exh = ?";
+        JOIN asesores ON exhibiciones.nit_cc_ase = asesores.nit_cc_ase
+        WHERE exhibiciones.fec_exh BETWEEN ? AND ?  AND exhibiciones.nit_cc_ase = ?";
 
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("sss", $fecha_inicial, $fecha_final, $tipo_inmueble);
+$stmt->bind_param("ssi", $fecha_inicial, $fecha_final, $nit_cc_ase  );
 $stmt->execute();
 $result = $stmt->get_result();
 
@@ -205,7 +201,7 @@ if ($result->num_rows > 0) {
         $pdf->SetFont('helvetica', 'B', 10);
         $pdf->Cell(260, 10, 'Asesor:', 1, 1, 'L', 1);
         $pdf->SetFont('helvetica', '', 10);
-        $pdf->Cell(260, 10, "Asesor: {$row['nit_cc_ase']}", 1, 1, 'L', 0);
+        $pdf->Cell(260, 10, "Asesor: {$row['nom_ape_ase']}", 1, 1, 'L', 0);
     }
 } else {
     $pdf->Cell(260, 10, 'No se encontraron resultados.', 1, 1, 'C');

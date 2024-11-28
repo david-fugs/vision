@@ -10,13 +10,25 @@ include("../../conexion.php");
 
 // Obtener los registros distintos desde la base de datos, incluyendo raz_soc_exh
 $stmt = $mysqli->prepare("
-    SELECT DISTINCT cod_fr_exh, direccion_inm_exh, nom_ape_inte_exh, cel_inte_exh, raz_soc_exh, fec_exh, nit_cc_exh, tel_inte_exh, email_inte_exh
+    SELECT DISTINCT cod_fr_exh, direccion_inm_exh, nom_ape_inte_exh, cel_inte_exh, raz_soc_exh, fec_exh, nit_cc_exh, tel_inte_exh, email_inte_exh,nit_cc_ase
     FROM exhibiciones
     WHERE id_usu = ?
     ORDER BY id_exh ASC");
 $stmt->bind_param('i', $_SESSION['id_usu']);
 $stmt->execute();
 $result = $stmt->get_result();
+
+
+function nombreAsesor($nit_cc_ase) {
+    global $mysqli;
+    $stmt = $mysqli->prepare("SELECT nom_ape_ase FROM asesores WHERE nit_cc_ase = ?");
+    $stmt->bind_param('s', $nit_cc_ase);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $row = $result->fetch_assoc();
+    return $row['nom_ape_ase'];
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -35,7 +47,7 @@ $result = $stmt->get_result();
     <script src="https://kit.fontawesome.com/fed2435e21.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    
+
     <center>
         <img src='../../img/logo.png' width="300" height="212" class="responsive">
     </center>
@@ -67,7 +79,7 @@ require_once("../../zebra.php");
 @$nit_cc_ase        = ($_GET['nit_cc_ase']);
 
 // Consulta principal con DISTINCT incluyendo raz_soc_exh
-$query = "SELECT DISTINCT cod_fr_exh, direccion_inm_exh, nom_ape_inte_exh, cel_inte_exh, raz_soc_exh, fec_exh, nit_cc_exh, tel_inte_exh, email_inte_exh
+$query = "SELECT DISTINCT cod_fr_exh, direccion_inm_exh, nom_ape_inte_exh, cel_inte_exh, raz_soc_exh, fec_exh, nit_cc_exh, tel_inte_exh, email_inte_exh,nit_cc_ase
           FROM exhibiciones
           WHERE direccion_inm_exh LIKE '%".$direccion_inm_exh."%'
           AND nit_cc_ase LIKE '%".$nit_cc_ase."%'
@@ -84,6 +96,7 @@ echo "<div class='flex'>
                     <tr>
                         <th>No.</th>
                         <th>FECHA</th>
+                        <th>ASESOR </th>
                         <th>CODIGO FR</th>
                         <th>DIRECCION</th>
                         <th>INTERESAD@</th>
@@ -99,7 +112,7 @@ $paginacion->records($num_registros);
 $paginacion->records_per_page($resul_x_pagina);
 
 // Consulta principal con GROUP BY para eliminar duplicados
-$consulta = "SELECT cod_fr_exh, direccion_inm_exh, nom_ape_inte_exh, cel_inte_exh, raz_soc_exh, fec_exh, nit_cc_exh, tel_inte_exh, email_inte_exh
+$consulta = "SELECT cod_fr_exh, direccion_inm_exh, nom_ape_inte_exh, cel_inte_exh, raz_soc_exh, fec_exh, nit_cc_exh, tel_inte_exh, email_inte_exh, nit_cc_ase
              FROM exhibiciones
              WHERE direccion_inm_exh LIKE '%".$direccion_inm_exh."%'
              AND nit_cc_ase LIKE '%".$nit_cc_ase."%'
@@ -147,6 +160,7 @@ while($row = mysqli_fetch_array($result))
 <tr style="' . $row_style . '">
     <td data-label="No.">'.($i + (($paginacion->get_page() - 1) * $resul_x_pagina)).'</td>
     <td data-label="FECHA">'.$row['fec_exh'].'</td>
+    <td data-label="ASESOR">'.nombreAsesor($row['nit_cc_ase']).'</td>
     <td data-label="CODIGO FR">'.$row['cod_fr_exh'].'</td>
     <td data-label="DIRECCION">'.$row['direccion_inm_exh'].'</td>
     <td data-label="INTERESAD@">'.$row['nom_ape_inte_exh'].'</td>

@@ -11,6 +11,7 @@ include("../../conexion.php");
 header("Content-Type: text/html;charset=utf-8");
 date_default_timezone_set("America/Bogota");
 
+$consentimiento      = $_POST['consentimiento'] ?? '';
 $cod_fr_exh          = $_POST['cod_fr_exh'];
 $visita_exh          = $_POST['visita_exh'];
 $tipo_inm_exh        = isset($_POST['tipo_inm_exh']) ? $_POST['tipo_inm_exh'] : 'N/A';
@@ -47,36 +48,32 @@ $id_usu              = $_SESSION['id_usu'];
 $fecha_edit_exh      = ('0000-00-00 00:00:00');
 $id_usu_alta_exh     = $_SESSION['id_usu'];
 
+
 $sql = "INSERT INTO exhibiciones (
-    cod_fr_exh, visita_exh, tipo_inm_exh, nom_vis_exh, fec_exh, 
-    direccion_inm_exh, nom_ape_inte_exh, raz_soc_exh, nit_cc_exh, 
-    cel_inte_exh, tel_inte_exh, email_inte_exh, area_max_exh, area_min_exh, 
-    tipo_sis_elec_exh, kVA_exh, presupuesto_max_exh, presupuesto_min_exh, 
-    valor_ubicacion_exh, valor_fachada_exh, valor_area_exterior_exh, valor_iluminacion_exh, 
-    valor_altura_exh, valor_pisos_exh, valor_paredes_exh, valor_carpinteria_exh, 
-    valor_banhos_exh, obs1_exh, obs2_exh, nit_cc_ase, estado_exh, 
-    fecha_alta_exh, id_usu_alta_exh, fecha_edit_exh, id_usu
+    cod_fr_exh, visita_exh, tipo_inm_exh, nom_vis_exh, fec_exh,
+    direccion_inm_exh, nom_ape_inte_exh, raz_soc_exh, nit_cc_exh,
+    cel_inte_exh, tel_inte_exh, email_inte_exh, area_max_exh, area_min_exh,
+    tipo_sis_elec_exh, kVA_exh, presupuesto_max_exh, presupuesto_min_exh,
+    valor_ubicacion_exh, valor_fachada_exh, valor_area_exterior_exh, valor_iluminacion_exh,
+    valor_altura_exh, valor_pisos_exh, valor_paredes_exh, valor_carpinteria_exh,
+    valor_banhos_exh, obs1_exh, obs2_exh, nit_cc_ase, estado_exh,
+    fecha_alta_exh, id_usu_alta_exh, fecha_edit_exh, id_usu, consentimiento
 ) VALUES (
-    ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
+    '$cod_fr_exh', '$visita_exh', '$tipo_inm_exh', '$nom_vis_exh', '$fec_exh',
+    '$direccion_inm_exh', '$nom_ape_inte_exh', '$raz_soc_exh', '$nit_cc_exh',
+    '$cel_inte_exh', '$tel_inte_exh', '$email_inte_exh', '$area_max_exh', '$area_min_exh',
+    '$tipo_sis_elec_exh', '$kVA_exh', '$presupuesto_max_exh', '$presupuesto_min_exh',
+    '$valor_ubicacion_exh', '$valor_fachada_exh', '$valor_area_exterior_exh', '$valor_iluminacion_exh',
+    '$valor_altura_exh', '$valor_pisos_exh', '$valor_paredes_exh', '$valor_carpinteria_exh',
+    '$valor_banhos_exh', '$obs1_exh', '$obs2_exh', '$nit_cc_ase', '$estado_exh',
+    '$fecha_alta_exh', '$id_usu_alta_exh', '$fecha_edit_exh', '$id_usu', '$consentimiento'
 )";
 
-$stmt = $mysqli->prepare($sql);
-$stmt->bind_param('sssssssssssssssssssssssssssssssssss', 
-    $cod_fr_exh, $visita_exh, $tipo_inm_exh, $nom_vis_exh, $fec_exh, 
-    $direccion_inm_exh, $nom_ape_inte_exh, $raz_soc_exh, $nit_cc_exh, 
-    $cel_inte_exh, $tel_inte_exh, $email_inte_exh, $area_max_exh, $area_min_exh, 
-    $tipo_sis_elec_exh, $kVA_exh, $presupuesto_max_exh, $presupuesto_min_exh, 
-    $valor_ubicacion_exh, $valor_fachada_exh, $valor_area_exterior_exh, $valor_iluminacion_exh, 
-    $valor_altura_exh, $valor_pisos_exh, $valor_paredes_exh, $valor_carpinteria_exh, 
-    $valor_banhos_exh, $obs1_exh, $obs2_exh, $nit_cc_ase, $estado_exh, 
-    $fecha_alta_exh, $id_usu_alta_exh, $fecha_edit_exh, $id_usu
-);
-
-if ($stmt->execute()) {
+if ($mysqli->query($sql) === TRUE) {
     // Usa cod_fr_exh como nombre de directorio
     $directorio = 'files/' . $cod_fr_exh . '/';
     if (!file_exists($directorio)) {
-        mkdir($directorio, 0777, true) or die("No se puede crear el directorio de extracción");    
+        mkdir($directorio, 0777, true) or die("No se puede crear el directorio de extracción");
     }
 
     // Asegúrate de que el directorio de firmas basado en nit_cc_exh exista y tenga permisos de escritura
@@ -113,6 +110,7 @@ if ($stmt->execute()) {
         }
     }
 
+
     echo "
     <!DOCTYPE html>
         <html lang='es'>
@@ -146,9 +144,7 @@ if ($stmt->execute()) {
         </html>
     ";
 } else {
-    echo "Error al guardar el registro: " . $stmt->error;
-}
+    echo "Error al insertar en la base de datos: " . $mysqli->error;}
 
-$stmt->close();
 
 ?>

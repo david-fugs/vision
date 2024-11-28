@@ -1,36 +1,37 @@
 <?php
 
-    session_start();
+session_start();
 
-    if(!isset($_SESSION['id_usu'])){
-        header("Location: ../../index.php");
-        exit();
-    }
+if (!isset($_SESSION['id_usu'])) {
+    header("Location: ../../index.php");
+    exit();
+}
 
-    include("../../conexion.php");
+include("../../conexion.php");
 
-    // Obtener el nit_cc_ase y el nombre del usuario relacionado desde las tablas asesores y usuarios
-    $stmt = $mysqli->prepare("
-        SELECT a.nit_cc_ase, u.nombre 
+// Obtener el nit_cc_ase y el nombre del usuario relacionado desde las tablas asesores y usuarios
+$stmt = $mysqli->prepare("
+        SELECT a.nit_cc_ase, u.nombre
         FROM asesores a
         INNER JOIN usuarios u ON a.id_usu = u.id_usu
         WHERE a.id_usu = ?");
-    $stmt->bind_param('i', $_SESSION['id_usu']);
-    $stmt->execute();
-    $stmt->bind_result($nit_cc_ase, $nombre_usu);
-    $stmt->fetch();
-    $stmt->close();
+$stmt->bind_param('i', $_SESSION['id_usu']);
+$stmt->execute();
+$stmt->bind_result($nit_cc_ase, $nombre_usu);
+$stmt->fetch();
+$stmt->close();
 
-    if (!$nombre_usu || !$nit_cc_ase) {
-        die("Error: El usuario no está registrado correctamente en las tablas.");
-    }
+if (!$nombre_usu || !$nit_cc_ase) {
+    die("Error: El usuario no está registrado correctamente en las tablas.");
+}
 
-    header("Content-Type: text/html;charset=utf-8");
-    date_default_timezone_set("America/Bogota");
+header("Content-Type: text/html;charset=utf-8");
+date_default_timezone_set("America/Bogota");
 
 ?>
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -48,24 +49,48 @@
             max-width: 100%;
             height: auto;
         }
+
         .signature-pad {
             border: 1px solid #000000;
             width: 100%;
             height: 200px;
         }
+
         .disabled-canvas {
             pointer-events: none;
             opacity: 0.5;
         }
     </style>
 </head>
+
 <body>
-    
+
     <div class="container">
         <h1><img src='../../img/logo.png' width="80" height="56" class="responsive"><b><i class="fa-solid fa-store"></i> CONSTANCIA EXHIBICION DE INMUEBLE COMERCIAL</b></h1>
-        <p><i><b><font size=3 color=#c68615>*Datos obligatorios</i></b></font></p>
+        <p><i><b>
+                    <font size=3 color=#c68615>*Datos obligatorios</i></b></font>
+        </p>
 
         <form action='addexh1.php' enctype="multipart/form-data" method="POST">
+
+            <div class="form-group">
+                <fieldset>
+                    <h3>CONSENTIMIENTO INFORMADO</h3>
+                    <div class="row">
+                        <div class="col-12 col-sm-10">
+                            <label for="" style="font-size: 15px; font-weight: bold;" > Como parte de los procesos necesarios para la gestión del servicio, se podrán realizar fotografías, grabaciones o recolección de firmas relacionadas con el inmueble objeto de este contrato. Estas acciones tienen como propósito exclusivo documentar, verificar o garantizar el cumplimiento de los acuerdos establecidos.
+                                Se asegura al usuario que la información y el material recolectado serán tratados con estricta confidencialidad y utilizados únicamente para los fines antes mencionados, de conformidad con la normativa aplicable en materia de privacidad y protección de datos.
+                                Esta De Acuerdo?
+                            </label>
+                            <select class="form-control" name="consentimiento" id="consentimiento">
+                                <option value=""></option>
+                                <option value="si">Si</option>
+                                <option value="no">No</option>
+                            </select>
+
+                        </div>
+                </fieldset>
+            </div>
             <div class="form-group">
                 <div class="row">
                     <div class="col-12 col-sm-2">
@@ -75,7 +100,7 @@
                     <div class="col-12 col-sm-2">
                         <label for="visita_exh">* ¿CUMPLE CITA?</label>
                         <select class="form-control" name="visita_exh" id="visita_exh" required>
-                            <option value=""></option>   
+                            <option value=""></option>
                             <option value=1>SI</option>
                             <option value=0>NO</option>
                         </select>
@@ -83,7 +108,7 @@
                     <div class="col-12 col-sm-2">
                         <label for="tipo_inm_exh">* TIPO INMUEBLE:</label>
                         <select class="form-control" name="tipo_inm_exh" id="tipo_inm_exh" required disabled>
-                            <option value=""></option>   
+                            <option value=""></option>
                             <option value="Residencial">Residencial</option>
                             <option value="Comercial">Comercial</option>
                         </select>
@@ -91,8 +116,8 @@
                     <div class="col-12 col-sm-4">
                         <label for="nom_vis_exh">* MOTIVO:</label>
                         <select class="form-control" name="nom_vis_exh" id="nom_vis_exh" required disabled>
-                            <option value=""></option>  
-                            <option value="N/A" selected>N/A</option> 
+                            <option value=""></option>
+                            <option value="N/A" selected>N/A</option>
                             <option value="FALTA DE TIEMPO">FALTA DE TIEMPO</option>
                             <option value="CAMBIO DE DECISION">CAMBIO DE DECISION</option>
                             <option value="REPROGRAMAR CITA">REPROGRAMAR CITA</option>
@@ -119,7 +144,7 @@
                     </div>
                     <div class="col-12 col-sm-3">
                         <label for="raz_soc_exh">* RAZON SOCIAL:</label>
-                        <input type='text' name='raz_soc_exh' id="raz_soc_exh" class='form-control' required value="N/A" style="text-transform:uppercase;" disabled/>
+                        <input type='text' name='raz_soc_exh' id="raz_soc_exh" class='form-control' required value="N/A" style="text-transform:uppercase;" disabled />
                     </div>
                 </div>
             </div>
@@ -128,7 +153,7 @@
                 <div class="row">
                     <div class="col-12 col-sm-3">
                         <label for="nit_cc_exh">* NIT y/o CC No.</label>
-                        <input type='number' name='nit_cc_exh' id="nit_cc_exh" class='form-control' required value=0 style="text-transform:uppercase;" disabled/>
+                        <input type='number' name='nit_cc_exh' id="nit_cc_exh" class='form-control' required value=0 style="text-transform:uppercase;" disabled />
                     </div>
                     <div class="col-12 col-sm-2">
                         <label for="cel_inte_exh">CEL:</label>
@@ -146,21 +171,23 @@
             </div>
 
             <hr style="border: 2px solid #F59212; border-radius: 5px;">
-            <p><i><b><font size=3 color=#F59212>Inmuebles comerciales:</i></b></font></p>    
+            <p><i><b>
+                        <font size=3 color=#F59212>Inmuebles comerciales:</i></b></font>
+            </p>
             <div class="form-group">
                 <div class="row">
                     <div class="col-12 col-sm-2">
                         <label for="area_max_exh">AREA MAX:</label>
-                        <input type='number' name='area_max_exh' id="area_max_exh" class='form-control' value=0 disabled/>
+                        <input type='number' name='area_max_exh' id="area_max_exh" class='form-control' value=0 disabled />
                     </div>
                     <div class="col-12 col-sm-2">
                         <label for="area_min_exh">AREA MIN:</label>
-                        <input type='number' name='area_min_exh' id="area_min_exh" class='form-control' value=0 disabled/>
+                        <input type='number' name='area_min_exh' id="area_min_exh" class='form-control' value=0 disabled />
                     </div>
                     <div class="col-12 col-sm-2">
                         <label for="tipo_sis_elec_exh">SIST. ELECTRICO:</label>
                         <select class="form-control" name="tipo_sis_elec_exh" id="tipo_sis_elec_exh" disabled>
-                            <option value=""></option>   
+                            <option value=""></option>
                             <option value="Monofásico">Monofásico</option>
                             <option value="Bifásico">Bifásico</option>
                             <option value="Trifásico">Trifásico</option>
@@ -168,22 +195,24 @@
                     </div>
                     <div class="col-12 col-sm-2">
                         <label for="kVA_exh">kVA:</label>
-                        <input type='number' name='kVA_exh' id="kVA_exh" class='form-control' value=0 disabled/>
+                        <input type='number' name='kVA_exh' id="kVA_exh" class='form-control' value=0 disabled />
                     </div>
                     <div class="col-12 col-sm-2">
                         <label for="presupuesto_max_exh">PRESUP. MAX:</label>
-                        <input type='number' name='presupuesto_max_exh' id="presupuesto_max_exh" class='form-control' value=0 disabled/>
+                        <input type='number' name='presupuesto_max_exh' id="presupuesto_max_exh" class='form-control' value=0 disabled />
                     </div>
                     <div class="col-12 col-sm-2">
                         <label for="presupuesto_min_exh">PRESUP. MIN:</label>
-                        <input type='number' name='presupuesto_min_exh' id="presupuesto_min_exh" class='form-control' value=0 disabled/>
+                        <input type='number' name='presupuesto_min_exh' id="presupuesto_min_exh" class='form-control' value=0 disabled />
                     </div>
                 </div>
             </div>
             <hr style="border: 2px solid #F59212; border-radius: 5px;">
 
             <hr style="border: 2px solid #24E924; border-radius: 5px;">
-            <p><i><b><font size=3 color=#24E924>Inmuebles residenciales:</i></b></font></p>        
+            <p><i><b>
+                        <font size=3 color=#24E924>Inmuebles residenciales:</i></b></font>
+            </p>
             <div class="form-group">
                 <div class="row">
                     <div class="col-12 col-sm-2">
@@ -229,7 +258,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <hr style="border: 2px solid #24E924; border-radius: 5px;">
             <div class="form-group">
                 <div class="row">
@@ -295,7 +324,7 @@
                 $('#obs2_exh, #signature-pad, #clear').prop('disabled', true);
                 $('#signature-pad').addClass('disabled-canvas');
                 $('#tipo_inm_exh, #nom_vis_exh').prop('disabled', true);
-                $('#raz_soc_exh, #nit_cc_exh, #obs1_exh').prop('disabled', true);  // Deshabilitar al inicio
+                $('#raz_soc_exh, #nit_cc_exh, #obs1_exh').prop('disabled', true); // Deshabilitar al inicio
                 $('#area_max_exh, #area_min_exh, #tipo_sis_elec_exh, #kVA_exh, #presupuesto_max_exh, #presupuesto_min_exh').prop('disabled', true);
                 $('#valor_ubicacion_exh, #valor_fachada_exh, #valor_area_exterior_exh, #valor_iluminacion_exh, #valor_altura_exh, #valor_pisos_exh, #valor_paredes_exh, #valor_carpinteria_exh, #valor_banhos_exh').prop('disabled', true).val(0);
 
@@ -304,7 +333,7 @@
                     $('#obs2_exh').prop('disabled', false);
                     $('#signature-pad').removeClass('disabled-canvas');
                     $('#clear').prop('disabled', false);
-                    $('#raz_soc_exh, #nit_cc_exh, #obs1_exh').prop('disabled', false);  // Activar estos campos
+                    $('#raz_soc_exh, #nit_cc_exh, #obs1_exh').prop('disabled', false); // Activar estos campos
                     signaturePad.on();
                 } else if (visitaValue == '0') {
                     $('#nom_vis_exh').prop('disabled', false);
@@ -335,7 +364,7 @@
             var clearButton = document.getElementById('clear');
             var signatureInput = document.getElementById('signature');
 
-            clearButton.addEventListener('click', function () {
+            clearButton.addEventListener('click', function() {
                 signaturePad.clear();
             });
 
@@ -351,4 +380,5 @@
         });
     </script>
 </body>
+
 </html>

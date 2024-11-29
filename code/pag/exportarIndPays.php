@@ -91,8 +91,6 @@ if (mysqli_num_rows($res_pagos_propietarios) > 0) {
                             " - Monto: " . $pagos_propietarios['monto'] . "\n";
     }
 }
-print_r($resultado_pagos);
-die;
 // Aplicar color de fondo a las celdas A1 a AL1
 $sheet->getStyle('A2:O2')->applyFromArray([
     'fill' => [

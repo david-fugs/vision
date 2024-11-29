@@ -107,7 +107,7 @@ while($row = mysqli_fetch_array($result))
                     <td data-label="FECHA">'.$row['cod_cap'].'</td>
                     <td data-label="ASESOR">'.nombreAsesor($row['nit_cc_ase']).'</td>
                     <td data-label="EXPORTAR">
-                        <a href="report2.php?cod_fr_exh='.$row['cod_cap'].'" target="_blank"><img src="../../img/excel.png" width="32" height="32" title="Exportar a excel" /></a>
+                        <a href="exportarFichaTec.php?id_cap='.$row['id_cap'].'" target="_blank"><img src="../../img/excel.png" width="32" height="32" title="Exportar a excel" /></a>
                 </tr>';
     $i++;
 }

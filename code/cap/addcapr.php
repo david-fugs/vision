@@ -683,8 +683,8 @@
                             </select>
                         </div>
                         <div class="col-12 col-sm-2">
-                            <label for="supermercados_capr">* DROGUERIAS:</label>
-                            <select class="form-control" name="supermercados_capr" id="supermercados_capr" >
+                            <label for="droguerias_capr">* DROGUERIAS:</label>
+                            <select class="form-control" name="droguerias_capr" id="droguerias_capr" >
                                 <option value=""></option>
                                 <option value=1>Sí</option>
                                 <option value=0>No</option>

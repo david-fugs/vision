@@ -66,14 +66,14 @@ $entradas_vehic_capr = $_POST['entradas_vehic_capr'] ?? '';
 $puertas_vehic_capr = $_POST['puertas_vehic_capr'] ?? '';
 $puertas_peaton_capr = $_POST['puertas_peaton_capr'] ?? '';
 $frentes_inmu_capr = $_POST['frentes_inmu_capr'] ?? '';
-
-
-
-
-
+$citofonia_capr = $_POST['citofonia_capr'] ?? '';
+$tinas_capr = $_POST['tinas_capr'] ?? '';
+$agua_caliente_capr = $_POST['agua_caliente_capr'] ?? '';
+$aire_acondicionado_capr = $_POST['aire_acondicionado_capr'] ?? '';
 
 $cod_capr                    = $_POST['cod_capr'] ?? '';
 $area_total_cap            = $_POST['area_total_cap'] ?? '';
+$area_lote_capr           = $_POST['area_lote_capr'] ?? '';
 $area_piso1_cap            = $_POST['area_piso1_cap'] ?? '';
 $area_piso2_cap            = $_POST['area_piso2_cap'] ?? '';
 $area_sotano_cap            = $_POST['area_sotano_cap'] ?? '';
@@ -208,7 +208,15 @@ $consentimiento            = $_POST['consentimiento'] ?? '';
 
 // Insertar en la tabla CONTRATOS
 $query_contratos = "INSERT INTO capta_comercial (
-    cod_cap, area_total_cap, area_piso1_cap, area_piso2_cap, area_sotano_cap, malacate_cap, malacate_num_cap, malacate_ton_cap,
+    frente_habi1_capr, fondo_habi1_capr, frente_habi2_capr, fondo_habi2_capr, frente_habi3_capr, fondo_habi3_capr, frente_sala_capr,
+    fondo_sala_capr, vestidores_capr, closets_capr, salas_capr, balcon_capr, terraza_capr, patio_capr, sotanos_capr, pisos_capr,
+    tipo_cocina_capr, isla_cocina_capr, tipo_lavaplatos_capr, espacio_nevecon_capr, restaurantes_capr, supermercados_capr, droguerias_capr,
+    centro_comer_capr, universidades_capr, colegios_capr, jardines_infantiles_capr, otros_capr, jardines_capr, turco_capr, jacuzzi_capr,
+    sauna_capr, cancha_tenis_capr, cancha_futbol_capr, cancha_micro_fut_capr, cancha_basquet_capr, piscina_adultos_capr, piscina_ninos_capr,
+    sendero_ecol_capr, mascotas_capr, zona_mascotas_capr, gym_capr, ascensor_capr, juegos_ninos_capr, lago_pesca_capr, cancha_squash_capr,
+    otros_juegos_capr, acabados_pisos_capr, acabados_muro_capr, parquead_cubi_capr, parquead_descubi_capr, entradas_vehic_capr, puertas_vehic_capr,
+    puertas_peaton_capr, frentes_inmu_capr, citofonia_capr, tinas_capr, agua_caliente_capr, aire_acondicionado_capr,
+    cod_cap, area_total_cap, area_lote_capr,area_piso1_cap, area_piso2_cap, area_sotano_cap, malacate_cap, malacate_num_cap, malacate_ton_cap,
     area_patio_maniobra_cap, otras_areas_cap, forma_bodega_cap, frente_mesanine_cap, fondo_mesanine_cap, frente_lote_cap, fondo_lote_cap,
     frente_nivel1_int_cap, fondo_nivel1_int_cap, frente_sotano_cap, fondo_sotano_cap, altura_min_bodega_cap, altura_max_bodega_cap,
     altura_nivel_1_2_cap, altura_nivel_2_cap, altura_sotano_cap, altura_puerta_veh_cap, ancho_puerta_veh_cap, tipo_puerta_cap, edad_cap,
@@ -229,7 +237,15 @@ $query_contratos = "INSERT INTO capta_comercial (
     dir_repre_legal_cap, remuneracion_vta_cap, remuneracion_renta_cap, obs1_cap, obs2_cap, nit_cc_ase, estado_cap, fecha_alta_cap,
     id_usu_alta_cap, fecha_edit_cap, id_usu,consentimiento)
 VALUES (
-    '$cod_cap', '$area_total_cap', '$area_piso1_cap', '$area_piso2_cap', '$area_sotano_cap', '$malacate_cap', '$malacate_num_cap',
+    '$frente_habi1_capr', '$fondo_habi1_capr', '$frente_habi2_capr', '$fondo_habi2_capr', '$frente_habi3_capr', '$fondo_habi3_capr', '$frente_sala_capr',
+    '$fondo_sala_capr', '$vestidores_capr', '$closets_capr', '$salas_capr', '$balcon_capr', '$terraza_capr', '$patio_capr', '$sotanos_capr', '$pisos_capr',
+    '$tipo_cocina_capr', '$isla_cocina_capr', '$tipo_lavaplatos_capr', '$espacio_nevecon_capr', '$restaurantes_capr', '$supermercados_capr', '$droguerias_capr',
+    '$centro_comer_capr', '$universidades_capr', '$colegios_capr', '$jardines_infantiles_capr', '$otros_capr', '$jardines_capr', '$turco_capr', '$jacuzzi_capr',
+    '$sauna_capr', '$cancha_tenis_capr', '$cancha_futbol_capr', '$cancha_micro_fut_capr', '$cancha_basquet_capr', '$piscina_adultos_capr', '$piscina_ninos_capr',
+    '$sendero_ecol_capr', '$mascotas_capr', '$zona_mascotas_capr', '$gym_capr', '$ascensor_capr', '$juegos_ninos_capr', '$lago_pesca_capr', '$cancha_squash_capr',
+    '$otros_juegos_capr', '$acabados_pisos_capr', '$acabados_muro_capr', '$parquead_cubi_capr', '$parquead_descubi_capr', '$entradas_vehic_capr', '$puertas_vehic_capr',
+    '$puertas_peaton_capr', '$frentes_inmu_capr', '$citofonia_capr', '$tinas_capr', '$agua_caliente_capr', '$aire_acondicionado_capr',
+    '$cod_cap', '$area_total_cap',  '$area_lote_capr', '$area_piso1_cap', '$area_piso2_cap', '$area_sotano_cap', '$malacate_cap', '$malacate_num_cap',
     '$malacate_ton_cap', '$area_patio_maniobra_cap', '$otras_areas_cap', '$forma_bodega_cap', '$frente_mesanine_cap', '$fondo_mesanine_cap',
     '$frente_lote_cap', '$fondo_lote_cap', '$frente_nivel1_int_cap', '$fondo_nivel1_int_cap', '$frente_sotano_cap', '$fondo_sotano_cap',
     '$altura_min_bodega_cap', '$altura_max_bodega_cap', '$altura_nivel_1_2_cap', '$altura_nivel_2_cap', '$altura_sotano_cap', '$altura_puerta_veh_cap',

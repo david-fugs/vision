@@ -1000,8 +1000,8 @@
                         </select>
                     </div>
                     <div class="col-12 col-sm-2">
-                        <label for="entradas_vehic_capr">* ENTRADA VEH. DIRECTA:</label>
-                        <select class="form-control" name="entradas_vehic_capr" id="entradas_vehic_capr" >
+                        <label for="entrada_veh_directo_cap">* ENTRADA VEH. DIRECTA:</label>
+                        <select class="form-control" name="entrada_veh_directo_cap" id="entrada_veh_directo_cap" >
                             <option value=""></option>
                             <option value=1>Sí</option>
                             <option value=0>No</option>

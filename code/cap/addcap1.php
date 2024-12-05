@@ -11,6 +11,9 @@ if (!isset($_SESSION['id_usu'])) {
     exit();
 }
 
+
+
+
 $frente_habi1_capr = $_POST['frente_habi1_capr'] ?? '';
 $fondo_habi1_capr = $_POST['fondo_habi1_capr'] ?? '';
 $frente_habi2_capr = $_POST['frente_habi2_capr'] ?? '';
@@ -128,8 +131,8 @@ $tipo_techo_cap            = $_POST['tipo_techo_capr'] ?? '';
 $material_techo_cap        = $_POST['material_techo_capr'] ?? '';
 $cod_dane_dep              = $_POST['cod_dane_dep'] ?? '';
 $id_mun                     = $_POST['id_mun'] ?? '';
-$sector_cap                = $_POST['sector_cap'] ?? '';
-$ubicacion_gps_cap         = $_POST['ubicacion_gps_cap'] ?? '';
+$sector_capr               = $_POST['sector_capr'] ?? '';
+$ubicacion_gps_capr         = $_POST['ubicacion_gps_capr'] ?? '';
 $estrato_cap               = $_POST['estrato_cap'] ?? '';
 $posición_cap              = $_POST['posición_cap'] ?? '';
 $conjunto_cerrado_cap      = $_POST['conjunto_cerrado_cap'] ?? '';
@@ -137,14 +140,14 @@ $conjunto_vigilado_cap     = $_POST['conjunto_vigilado_cap'] ?? '';
 $porteria_recpecion_cap    = $_POST['porteria_recpecion_cap'] ?? '';
 $energia_precio_kv_cap     = $_POST['energia_precio_kv_cap'] ?? '';
 $agua_precio_m3_cap        = $_POST['agua_precio_m3_cap'] ?? '';
-$empresa_energia_cap       = $_POST['empresa_energia_cap'] ?? '';
-$tipo_energia_cap          = $_POST['tipo_energia_cap'] ?? '';
+$empresa_energia_capr       = $_POST['empresa_energia_capr'] ?? '';
+$tipo_energia_capr          = $_POST['tipo_energia_capr'] ?? '';
 $kva_transformador_cap     = $_POST['kva_transformador_cap'] ?? '';
 $calibre_acometida_cap     = $_POST['calibre_acometida_cap'] ?? '';
 $tomas_220_cap             = $_POST['tomas_220_cap'] ?? '';
 $redes_inde_cap            = $_POST['redes_inde_cap'] ?? '';
 $planta_electrica_cap      = $_POST['planta_electrica_cap'] ?? '';
-$empresa_agua_cap          = $_POST['empresa_agua_cap'] ?? '';
+$empresa_agua_capr          = $_POST['empresa_agua_capr'] ?? '';
 $tanques_agua_reserva_cap   = $_POST['tanques_agua_reserva_cap'] ?? '';
 $tanques_capacidad_cap      = isset($_POST['tanques_capacidad_cap']) ? $_POST['tanques_capacidad_cap'] : '';
 $tanques_capacidad_cap     = $_POST['tanques_capacidad_cap'] ?? '';
@@ -152,7 +155,7 @@ $hidrante_cap              = $_POST['hidrante_cap'] ?? '';
 $gabinete_cont_incendio_cap = $_POST['gabinete_cont_incendio_cap'] ?? '';
 $red_contra_incendios_cap  = $_POST['red_contra_incendios_cap'] ?? '';
 $gas_cap                   = $_POST['gas_cap'] ?? '';
-$internet_telefonia_cap = isset($_POST['internet_telefonia_cap']) ? implode(',', $_POST['internet_telefonia_cap']) : '';
+$internet_telefonia_capr = $_POST['internet_telefonia_capr'] ??'';
 $venta_neta_cap            = $_POST['venta_neta_cap'] ?? '';
 $venta_m2_cap              = $_POST['venta_m2_cap'] ?? '';
 $venta_total = isset($_POST['venta_total_hidden']) ? floatval($_POST['venta_total_hidden']) : 0;
@@ -182,22 +185,21 @@ $uso_suelos_cap            = $_POST['uso_suelos_cap'] ?? '';
 $mapas_cap                 = $_POST['mapas_cap'] ?? '';
 $empresas_vecinas_cap      = $_POST['empresas_vecinas_cap'] ?? '';
 $transporte_publico_cap    = $_POST['transporte_publico_cap'] ?? '';
-$direccion_inm_cap         = $_POST['direccion_inm_cap'] ?? '';
-$num_matricula_inm_cap     = $_POST['num_matricula_inm_cap'] ?? '';
+$direccion_inm_capr         = $_POST['direccion_inm_capr'] ?? '';
+$num_matricula_inm_capr     = $_POST['num_matricula_inm_capr'] ?? '';
 $num_matricula_agua_cap    = $_POST['num_matricula_agua_cap'] ?? '';
 $num_matricula_energia_cap = $_POST['num_matricula_energia_cap'] ?? '';
 $num_matricula_gas_cap     = $_POST['num_matricula_gas_cap'] ?? '';
-$nombre_razon_social_cap   = $_POST['nombre_razon_social_cap'] ?? '';
-$representante_legal_cap   = $_POST['representante_legal_cap'] ?? '';
+$nombre_razon_social_capr   = $_POST['nombre_razon_social_capr'] ?? '';
+$representante_legal_capr   = $_POST['representante_legal_capr'] ?? '';
 $cc_nit_repre_legal_cap    = $_POST['cc_nit_repre_legal_cap'] ?? '';
 $cel_repre_legal_cap       = $_POST['cel_repre_legal_cap'] ?? '';
-$tel_repre_legal_cap       = $_POST['tel_repre_legal_cap'] ?? '';
-$email_repre_legal_cap     = $_POST['email_repre_legal_cap'] ?? '';
-$dir_repre_legal_cap       = $_POST['dir_repre_legal_cap'] ?? '';
+$tel_repre_legal_capr       = $_POST['tel_repre_legal_capr'] ?? '';
+$email_repre_legal_capr     = $_POST['email_repre_legal_capr'] ?? '';
+$dir_repre_legal_capr       = $_POST['dir_repre_legal_capr'] ?? '';
 $remuneracion_vta_cap      = $_POST['remuneracion_vta_cap'] ?? '';
 $remuneracion_renta_cap    = $_POST['remuneracion_renta_cap'] ?? '';
-$obs1_cap                  = $_POST['obs1_cap'] ?? '';
-$obs2_cap                  = $_POST['obs2_cap'] ?? '';
+$obs1_capr1               = $_POST['obs1_capr1'] ?? '';
 $nit_cc_ase                = $_POST['nit_cc_ase'] ?? '';
 $estado_cap                = 1;
 $fecha_alta_cap            = date('Y-m-d h:i:s');
@@ -224,17 +226,17 @@ $query_contratos = "INSERT INTO capta_comercial (
     duchas_cap, lavamanos_cap, sanitarios_cap, poceta_cap, cocineta_cap, desagues_bodega_cap, tipo_piso_cap, capacidad_piso_2_cap,
     capacidad_piso_1_psi_cap, capacidad_piso_1_tone_cap, capacidad_piso_1_mr_cap, capacidad_piso_1_fc_cap, material_piso_2_cap,
     material_piso_1_cap, material_sotano_cap, acabados_muro_bode_cap, material_muros_porc_cap, tipo_techo_cap, material_techo_cap,
-    cod_dane_dep, id_mun, sector_cap, ubicacion_gps_cap, estrato_cap, posición_cap, conjunto_cerrado_cap, conjunto_vigilado_cap,
-    porteria_recpecion_cap, energia_precio_kv_cap, agua_precio_m3_cap, empresa_energia_cap, tipo_energia_cap, kva_transformador_cap,
-    calibre_acometida_cap, tomas_220_cap, redes_inde_cap, planta_electrica_cap, empresa_agua_cap, tanques_agua_reserva_cap,
-    tanques_capacidad_cap, hidrante_cap, gabinete_cont_incendio_cap, red_contra_incendios_cap, gas_cap, internet_telefonia_cap,
+    cod_dane_dep, id_mun, sector_capr, ubicacion_gps_capr, estrato_cap, posición_cap, conjunto_cerrado_cap, conjunto_vigilado_cap,
+    porteria_recpecion_cap, energia_precio_kv_cap, agua_precio_m3_cap, empresa_energia_capr, tipo_energia_capr, kva_transformador_cap,
+    calibre_acometida_cap, tomas_220_cap, redes_inde_cap, planta_electrica_cap, empresa_agua_capr, tanques_agua_reserva_cap,
+    tanques_capacidad_cap, hidrante_cap, gabinete_cont_incendio_cap, red_contra_incendios_cap, gas_cap, internet_telefonia_capr,
     venta_neta_cap, venta_m2_cap, venta_total, canon_neto_cap, canon_m2_cap, porcentaje_iva_cap, valor_iva_cap, admon_cap, renta_total_cap, rte_fte_cap,
     tractomulas_cap, tractomulas_ctd_cap, ctd_muelle_graduable_cap, altura_muelle_graduable_cap, ctd_muelle_tractomula_cap,
     tipo_muelle_tractomula_cap, altura_muelle_tractomula_cap, entrada_veh_directo_cap, entrada_veh_ctd_cap, ampliacion_viable_cap,
     frentes_inmueble_cap, puertas_vehiculares_cap, fotos_cap, videos_cap, planos_cap, uso_suelos_cap, mapas_cap, empresas_vecinas_cap,
-    transporte_publico_cap, direccion_inm_cap, num_matricula_inm_cap, num_matricula_agua_cap, num_matricula_energia_cap, num_matricula_gas_cap,
-    nombre_razon_social_cap, representante_legal_cap, cc_nit_repre_legal_cap, cel_repre_legal_cap, tel_repre_legal_cap, email_repre_legal_cap,
-    dir_repre_legal_cap, remuneracion_vta_cap, remuneracion_renta_cap, obs1_cap, obs2_cap, nit_cc_ase, estado_cap, fecha_alta_cap,
+    transporte_publico_cap, direccion_inm_capr, num_matricula_inm_capr, num_matricula_agua_cap, num_matricula_energia_cap, num_matricula_gas_cap,
+    nombre_razon_social_capr, representante_legal_capr, cc_nit_repre_legal_cap, cel_repre_legal_cap, tel_repre_legal_capr, email_repre_legal_capr,
+    dir_repre_legal_capr, remuneracion_vta_cap, remuneracion_renta_cap, obs1_capr1, nit_cc_ase, estado_cap, fecha_alta_cap,
     id_usu_alta_cap, fecha_edit_cap, id_usu,consentimiento)
 VALUES (
     '$frente_habi1_capr', '$fondo_habi1_capr', '$frente_habi2_capr', '$fondo_habi2_capr', '$frente_habi3_capr', '$fondo_habi3_capr', '$frente_sala_capr',
@@ -245,7 +247,7 @@ VALUES (
     '$sendero_ecol_capr', '$mascotas_capr', '$zona_mascotas_capr', '$gym_capr', '$ascensor_capr', '$juegos_ninos_capr', '$lago_pesca_capr', '$cancha_squash_capr',
     '$otros_juegos_capr', '$acabados_pisos_capr', '$acabados_muro_capr', '$parquead_cubi_capr', '$parquead_descubi_capr', '$entradas_vehic_capr', '$puertas_vehic_capr',
     '$puertas_peaton_capr', '$frentes_inmu_capr', '$citofonia_capr', '$tinas_capr', '$agua_caliente_capr', '$aire_acondicionado_capr',
-    '$cod_cap', '$area_total_cap',  '$area_lote_capr', '$area_piso1_cap', '$area_piso2_cap', '$area_sotano_cap', '$malacate_cap', '$malacate_num_cap',
+    '$cod_capr', '$area_total_cap',  '$area_lote_capr', '$area_piso1_cap', '$area_piso2_cap', '$area_sotano_cap', '$malacate_cap', '$malacate_num_cap',
     '$malacate_ton_cap', '$area_patio_maniobra_cap', '$otras_areas_cap', '$forma_bodega_cap', '$frente_mesanine_cap', '$fondo_mesanine_cap',
     '$frente_lote_cap', '$fondo_lote_cap', '$frente_nivel1_int_cap', '$fondo_nivel1_int_cap', '$frente_sotano_cap', '$fondo_sotano_cap',
     '$altura_min_bodega_cap', '$altura_max_bodega_cap', '$altura_nivel_1_2_cap', '$altura_nivel_2_cap', '$altura_sotano_cap', '$altura_puerta_veh_cap',
@@ -254,22 +256,47 @@ VALUES (
     '$poceta_cap', '$cocineta_cap', '$desagues_bodega_cap', '$tipo_piso_cap', '$capacidad_piso_2_cap', '$capacidad_piso_1_psi_cap',
     '$capacidad_piso_1_tone_cap', '$capacidad_piso_1_mr_cap', '$capacidad_piso_1_fc_cap', '$material_piso_2_cap', '$material_piso_1_cap',
     '$material_sotano_cap', '$acabados_muro_bode_cap', '$material_muros_porc_cap', '$tipo_techo_cap', '$material_techo_cap', '$cod_dane_dep',
-    '$id_mun', '$sector_cap', '$ubicacion_gps_cap', '$estrato_cap', '$posición_cap', '$conjunto_cerrado_cap', '$conjunto_vigilado_cap',
-    '$porteria_recpecion_cap', '$energia_precio_kv_cap', '$agua_precio_m3_cap', '$empresa_energia_cap', '$tipo_energia_cap',
-    '$kva_transformador_cap', '$calibre_acometida_cap', '$tomas_220_cap', '$redes_inde_cap', '$planta_electrica_cap', '$empresa_agua_cap',
+    '$id_mun', '$sector_capr', '$ubicacion_gps_capr', '$estrato_cap', '$posición_cap', '$conjunto_cerrado_cap', '$conjunto_vigilado_cap',
+    '$porteria_recpecion_cap', '$energia_precio_kv_cap', '$agua_precio_m3_cap', '$empresa_energia_capr', '$tipo_energia_capr',
+    '$kva_transformador_cap', '$calibre_acometida_cap', '$tomas_220_cap', '$redes_inde_cap', '$planta_electrica_cap', '$empresa_agua_capr',
     '$tanques_agua_reserva_cap', '$tanques_capacidad_cap', '$hidrante_cap', '$gabinete_cont_incendio_cap', '$red_contra_incendios_cap',
-    '$gas_cap', '$internet_telefonia_cap', '$venta_neta_cap', '$venta_m2_cap', '$venta_total', '$canon_neto_cap', '$canon_m2_cap', '$porcentaje_iva_cap',
+    '$gas_cap', '$internet_telefonia_capr', '$venta_neta_cap', '$venta_m2_cap', '$venta_total', '$canon_neto_cap', '$canon_m2_cap', '$porcentaje_iva_cap',
     '$valor_iva_cap', '$admon_cap', '$renta_total_cap', '$rte_fte_cap', '$tractomulas_cap', '$tractomulas_ctd_cap', '$ctd_muelle_graduable_cap',
     '$altura_muelle_graduable_cap', '$ctd_muelle_tractomula_cap', '$tipo_muelle_tractomula_cap', '$altura_muelle_tractomula_cap',
     '$entrada_veh_directo_cap', '$entrada_veh_ctd_cap', '$ampliacion_viable_cap', '$frentes_inmueble_cap', '$puertas_vehiculares_cap',
     '$fotos_cap', '$videos_cap', '$planos_cap', '$uso_suelos_cap', '$mapas_cap', '$empresas_vecinas_cap', '$transporte_publico_cap',
-    '$direccion_inm_cap', '$num_matricula_inm_cap', '$num_matricula_agua_cap', '$num_matricula_energia_cap', '$num_matricula_gas_cap',
-    '$nombre_razon_social_cap', '$representante_legal_cap', '$cc_nit_repre_legal_cap', '$cel_repre_legal_cap', '$tel_repre_legal_cap',
-    '$email_repre_legal_cap', '$dir_repre_legal_cap', '$remuneracion_vta_cap', '$remuneracion_renta_cap', '$obs1_cap', '$obs2_cap',
+    '$direccion_inm_capr', '$num_matricula_inm_capr', '$num_matricula_agua_cap', '$num_matricula_energia_cap', '$num_matricula_gas_cap',
+    '$nombre_razon_social_capr', '$representante_legal_capr', '$cc_nit_repre_legal_cap', '$cel_repre_legal_cap', '$tel_repre_legal_capr',
+    '$email_repre_legal_capr', '$dir_repre_legal_capr', '$remuneracion_vta_cap', '$remuneracion_renta_cap', '$obs1_capr1',
     '$nit_cc_ase', '$estado_cap', '$fecha_alta_cap', '$id_usu_alta_cap', '$fecha_edit_cap', '$id_usu' ,'$consentimiento')";
 
 if (mysqli_query($mysqli, $query_contratos)) {
     echo "Inserción exitosa.";
+    //guardar los archivos en files
+    if (!empty($_FILES['archivo']['name'][0])) {
+        $folderPath = 'files/' . $cod_capr;
+        // Verifica si la carpeta existe; si no, la crea
+        if (!is_dir($folderPath)) {
+            mkdir($folderPath, 0777, true); // Permisos 0777 y recursivo
+        }
+        foreach ($_FILES['archivo']['name'] as $index => $name) {
+            if ($_FILES['archivo']['error'][$index] === UPLOAD_ERR_OK) {
+                $tmp_name = $_FILES['archivo']['tmp_name'][$index];
+                $destination = $folderPath . '/' . basename($name); // Ruta destino
+
+                // Mover el archivo subido a la carpeta de destino
+                if (move_uploaded_file($tmp_name, $destination)) {
+                    echo "Archivo '$name' subido correctamente.<br>";
+                } else {
+                    echo "Error al mover el archivo '$name'.<br>";
+                }
+            } else {
+                echo "Error al subir el archivo '$name'.<br>";
+            }
+        }
+    } else {
+        echo "No se recibieron archivos.";
+    }
 } else {
     echo "Error al insertar los datos: " . mysqli_error($mysqli);
 }

@@ -3,6 +3,8 @@ require '../../vendor/autoload.php';
 
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+use PhpOffice\PhpSpreadsheet\Style\Border;
+use PhpOffice\PhpSpreadsheet\Style\Color;
 
 session_start();
 include("../../conexion.php");
@@ -42,6 +44,32 @@ function obtenerNombreDelMes($fecha)
 $spreadsheet = new Spreadsheet();
 $sheet = $spreadsheet->getActiveSheet();
 
+
+// Rango de celdas para bordes
+$range = 'B2:C28';
+$range2 = 'E2:F28';
+$range3 = 'H2:I28';
+$range4 = 'K2:L28';
+$range5 = 'N2:O28';
+$range6 = 'Q2:R25';
+
+// Estilo de bordes
+$styleArray = [
+    'borders' => [
+        'allBorders' => [
+            'borderStyle' => Border::BORDER_THIN, // Bordes delgados
+            'color' => ['argb' => Color::COLOR_BLACK], // Color negro
+        ],
+    ],
+];
+// Aplicar el estilo de bordes al rango
+$sheet->getStyle($range)->applyFromArray($styleArray);
+$sheet->getStyle($range2)->applyFromArray($styleArray);
+$sheet->getStyle($range3)->applyFromArray($styleArray);
+$sheet->getStyle($range4)->applyFromArray($styleArray);
+$sheet->getStyle($range5)->applyFromArray($styleArray);
+$sheet->getStyle($range6)->applyFromArray($styleArray);
+
 $sql = "SELECT * FROM capta_comercial WHERE id_cap = '$id_cap'";
 // Ejecutar la consulta
 $res = mysqli_query($mysqli, $sql);
@@ -51,21 +79,57 @@ if ($res === false) {
     echo "Error en la consulta: " . mysqli_error($mysqli);
     exit;
 }
+function asesorCaracteristicas($nit_cc_ase, $campo){
+    include("../../conexion.php");
+    $sql = "SELECT * FROM asesores WHERE nit_cc_ase = '$nit_cc_ase'";
+    $res = mysqli_query($mysqli, $sql);
+    $row = mysqli_fetch_array($res, MYSQLI_ASSOC);
+    if($campo == 'nombre'){
+        return $row['nom_ape_ase'];
+    }
+    if($campo == 'celular'){
+        return $row['tel1_ase'];
+    }
+    if($campo == 'email'){
+        return $row['email_ase'];
+    }
 
-// Aplicar color de fondo a las celdas A1 a AL1
-$sheet->getStyle('A2:O2')->applyFromArray([
+}
+
+// // Aplicar color de fondo a las celdas A1 a AL1
+// $sheet->getStyle('B2')->applyFromArray([
+//     'fill' => [
+//         'fillType' => \PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID,
+//         'startColor' => [
+//             'rgb' => 'ffd880', // Cambia 'CCE5FF' al color deseado en formato RGB
+//         ],
+//     ],
+// ]);
+
+$cellStyle = [
     'fill' => [
-        'fillType' => \PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID,
+        'fillType' =>  \PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID,
         'startColor' => [
-            'rgb' => 'ffd880', // Cambia 'CCE5FF' al color deseado en formato RGB
+            'rgb' => 'FFD880', // Cambia al color deseado
         ],
     ],
-]);
-
+];
 // Aplicar formato en negrita a las celdas con títulos
 $boldFontStyle = [
     'bold' => true,
 ];
+
+// Define las celdas a las que quieres aplicar el estilo
+$cells = ['B2', 'E2', 'H2', 'K2', 'N2', 'Q2','B5','B10','B18','B24','E4','E15','H19','K23','N12','N20','Q19'];
+
+// Aplica el estilo a cada celda
+foreach ($cells as $cell) {
+    $sheet->getStyle($cell)->applyFromArray($cellStyle);
+    $sheet->getStyle($cell)->applyFromArray(['font' => $boldFontStyle]);
+}
+
+
+
 $sheet->getStyle('A2:O2')->applyFromArray(['font' => $boldFontStyle]);
 
 // Establecer estilos para los encabezados
@@ -85,7 +149,7 @@ $styleHeader = [
 ];
 
 // Aplicar el estilo a las celdas de encabezado
-$sheet->getStyle('A2:O2')->applyFromArray(['font' => $styleHeader, 'fill' => $styleHeader, 'alignment' => $styleHeader]);
+$sheet->getStyle('B2:O2')->applyFromArray(['font' => $styleHeader, 'fill' => $styleHeader, 'alignment' => $styleHeader]);
 
 // Definir los encabezados de columna
 // $sheet->setCellValue('A1', 'NUM CONTRATO ' . $num_con);
@@ -115,8 +179,8 @@ $sheet->setCellValue('B25', 'TIPO COCINA INTEGRAL');
 $sheet->setCellValue('B26', 'ISLA AUX DE COCINA');
 $sheet->setCellValue('B27', 'LAVAPLATOS');
 $sheet->setCellValue('B28', 'ESPACIO NEVECON');
-$sheet->setCellValue('B34', 'Yo _____________________________________________, Propietario (  ), Apoderado (  ) doy fe que la información aquí plasmada es verídica y que me comprometo a pagar a la agencia inmobiliaria por su gestión en caso de conseguir arrendatario el __________% de la renta por concepto de ________________, ó ____% sobre el valor en caso de venta.');
-
+$sheet->setCellValue('B34', 'Yo _____________________________________________, Propietario (  ), Apoderado (  ) doy fe que la información  aquí plasmada es verídica y que me comprometo a pagar a la agencia  inmobiliaria por su gestión en caso de conseguir arrendatario el __________% de la renta por concepto  de ________________, ó ____% sobre el valor en caso de venta.');
+$sheet->getStyle('B34')->getAlignment()->setWrapText(true);
 $sheet->setCellValue('E2', 'TIPO INMUEBLE');
 $sheet->setCellValue('E3', 'ESTRATO');
 $sheet->setCellValue('E4', 'UBICACION');
@@ -171,12 +235,9 @@ $sheet->setCellValue('H24', 'UNIVERSIDADES');
 $sheet->setCellValue('H25', 'COLEGIOS');
 $sheet->setCellValue('H26', 'JARDINES INFANTILES');
 $sheet->setCellValue('H27', 'OTROS: ');
-$sheet->setCellValue('H34', 'VISION INMOBILIARIA DE COLOMBIA / COLBODEGAS.COM / RAICES M&M
-    WWW.COLBODEGAS.COM / COLBODEGAS@GMAIL.COM
-    (57/6) 325 2655 / (57) 311 765 6036 / (57) 312 876 5040
-    CL 24 # 7-29 OF 606 EL LAGO
-    PEREIRA COLOMBIA
-');
+$sheet->setCellValue('H34', 'VISION INMOBILIARIA DE COLOMBIA / COLBODEGAS.COM / RAICES M&M  WWW.COLBODEGAS.COM / COLBODEGAS@GMAIL.COM
+    (57/6) 325 2655 / (57) 311 765 6036 / (57) 312 876 5040  CL 24 # 7-29 OF 606 EL LAGO  PEREIRA COLOMBIA');
+$sheet->getStyle('H34')->getAlignment()->setWrapText(true);
 $sheet->setCellValue('K2', 'JUEGOS');
 $sheet->setCellValue('K3', 'AIRE ACONDICIONADO');
 $sheet->setCellValue('K4', 'JARDINES');
@@ -260,8 +321,11 @@ $sheet->setCellValue('Q24', 'INMOBILIARIA');
 $sheet->setCellValue('Q25', 'NOTAS');
 
 
-// $sheet->mergeCells('B1:F1');
-// $sheet->mergeCells('G1:J1');
+ $sheet->mergeCells('B34:E34');
+ $sheet->mergeCells('H34:J34');
+
+ $sheet->getRowDimension(34)->setRowHeight(74);
+
 // $sheet->mergeCells('K1:M1');
 $sheet->getStyle('B1:I1')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
 $sheet->getStyle('K1:O1')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
@@ -269,22 +333,22 @@ $sheet->getStyle('O1:Q1')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadshe
 
 // Ajustar el ancho de las columna
 
-$sheet->getColumnDimension('A')->setWidth(35);
+$sheet->getColumnDimension('A')->setWidth(5);
 $sheet->getColumnDimension('B')->setWidth(25);
 $sheet->getColumnDimension('C')->setWidth(25);
-$sheet->getColumnDimension('D')->setWidth(25);
+$sheet->getColumnDimension('D')->setWidth(5);
 $sheet->getColumnDimension('E')->setWidth(25);
 $sheet->getColumnDimension('F')->setWidth(25);
-$sheet->getColumnDimension('G')->setWidth(25);
+$sheet->getColumnDimension('G')->setWidth(5);
 $sheet->getColumnDimension('H')->setWidth(25);
 $sheet->getColumnDimension('I')->setWidth(25);
-$sheet->getColumnDimension('J')->setWidth(25);
+$sheet->getColumnDimension('J')->setWidth(5);
 $sheet->getColumnDimension('K')->setWidth(25);
 $sheet->getColumnDimension('L')->setWidth(25);
-$sheet->getColumnDimension('M')->setWidth(18);
+$sheet->getColumnDimension('M')->setWidth(5);
 $sheet->getColumnDimension('N')->setWidth(25);
 $sheet->getColumnDimension('O')->setWidth(25);
-$sheet->getColumnDimension('P')->setWidth(25);
+$sheet->getColumnDimension('P')->setWidth(5);
 $sheet->getColumnDimension('Q')->setWidth(25);
 $sheet->getColumnDimension('R')->setWidth(25);
 $sheet->getColumnDimension('S')->setWidth(25);
@@ -292,11 +356,12 @@ $sheet->getColumnDimension('T')->setWidth(25);
 $sheet->getColumnDimension('U')->setWidth(25);
 $sheet->getColumnDimension('V')->setWidth(25);
 
-$sheet->getDefaultRowDimension()->setRowHeight(25);
 $nombreEst = '';
 $rowIndex = 3;
+$codigo = 0;
 while ($row = mysqli_fetch_array($res, MYSQLI_ASSOC)) {
     // print_r($row);
+    $sheet->setCellValue('C2', $row['cod_cap']);
     $sheet->setCellValue('C6', $row['area_total_cap']);
     $sheet->setCellValue('C7', $row['area_lote_capr']);
     $sheet->setCellValue('C8', $row['area_piso1_cap']);
@@ -322,8 +387,8 @@ while ($row = mysqli_fetch_array($res, MYSQLI_ASSOC)) {
     $sheet->setCellValue('F4', '');
     $sheet->setCellValue('F5', $row['cod_dane_dep']);
     $sheet->setCellValue('F6', $row['id_mun']);
-    $sheet->setCellValue('F7', $row['sector_cap']);
-    $sheet->setCellValue('F8', $row['ubicacion_gps_cap']);
+    $sheet->setCellValue('F7', $row['sector_capr']);
+    $sheet->setCellValue('F8', $row['ubicacion_gps_capr']);
     $sheet->setCellValue('F9', $row['estrato_cap']);
     $sheet->setCellValue('F10', $row['posición_cap']);
     $sheet->setCellValue('F11', $row['conjunto_cerrado_cap']);
@@ -346,20 +411,20 @@ while ($row = mysqli_fetch_array($res, MYSQLI_ASSOC)) {
 
     $sheet->setCellValue('I3', $row['energia_precio_kv_cap']);
     $sheet->setCellValue('I4', $row['agua_precio_m3_cap']);
-    $sheet->setCellValue('I5', $row['empresa_energia_cap']);
+    $sheet->setCellValue('I5', $row['empresa_energia_capr']);
     $sheet->setCellValue('I6', $row['kva_transformador_cap']);
     $sheet->setCellValue('I7', $row['calibre_acometida_cap']);
     $sheet->setCellValue('I8', $row['tomas_220_cap']);
     $sheet->setCellValue('I9', $row['redes_inde_cap']);
     $sheet->setCellValue('I10', $row['planta_electrica_cap']);
-    $sheet->setCellValue('I11', $row['empresa_agua_cap']);
+    $sheet->setCellValue('I11', $row['empresa_agua_capr']);
     $sheet->setCellValue('I12', $row['tanques_agua_reserva_cap']);
     $sheet->setCellValue('I13', $row['hidrante_cap']);
     $sheet->setCellValue('I14', $row['gabinete_cont_incendio_cap']);
     $sheet->setCellValue('I15', $row['red_contra_incendios_cap']);
     $sheet->setCellValue('I16', $row['gas_cap']);
-    $sheet->setCellValue('I17', $row['agua_caliente_cap']);
-    $sheet->setCellValue('I18', $row['internet_telefonia_cap']);
+    $sheet->setCellValue('I17', $row['agua_caliente_capr']);
+    $sheet->setCellValue('I18', $row['internet_telefonia_capr']);
     $sheet->setCellValue('I20', $row['restaurantes_capr']);
     $sheet->setCellValue('I21', $row['supermercados_capr']);
     $sheet->setCellValue('I22', $row['droguerias_capr']);
@@ -416,26 +481,33 @@ while ($row = mysqli_fetch_array($res, MYSQLI_ASSOC)) {
     $sheet->setCellValue('O25', $row['mapas_cap']);
     $sheet->setCellValue('O27', $row['empresas_vecinas_cap']);
 
-    $sheet->setCellValue('R3', $row['direccion_inm_cap']);
-    $sheet->setCellValue('R4', $row['num_matricula_inm_cap']);
+    $sheet->setCellValue('R3', $row['direccion_inm_capr']);
+    $sheet->setCellValue('R4', $row['num_matricula_inm_capr']);
     $sheet->setCellValue('R5', $row['num_matricula_agua_cap']);
     $sheet->setCellValue('R6', $row['num_matricula_energia_cap']);
     $sheet->setCellValue('R7', $row['num_matricula_gas_cap']);
-    $sheet->setCellValue('R8', $row['nombre_razon_social_cap']);
-    $sheet->setCellValue('R9', $row['representante_legal_cap']);
+    $sheet->setCellValue('R8', $row['nombre_razon_social_capr']);
+    $sheet->setCellValue('R9', $row['representante_legal_capr']);
     $sheet->setCellValue('R10', $row['cc_nit_repre_legal_cap']);
     $sheet->setCellValue('R11', $row['cel_repre_legal_cap']);
-    $sheet->setCellValue('R12', $row['tel_repre_legal_cap']);
-    $sheet->setCellValue('R13', $row['email_repre_legal_cap']);
-    $sheet->setCellValue('R14', $row['dir_repre_legal_cap']);
+    $sheet->setCellValue('R12', $row['tel_repre_legal_capr']);
+    $sheet->setCellValue('R13', $row['email_repre_legal_capr']);
+    $sheet->setCellValue('R14', $row['dir_repre_legal_capr']);
     $sheet->setCellValue('R15', $row['remuneracion_vta_cap']);
     $sheet->setCellValue('R16', $row['remuneracion_renta_cap']);
-    $sheet->setCellValue('R17', $row['obs1_cap'] . ' ' . $row['obs2_cap'] );
+    $sheet->setCellValue('R17', $row['obs1_capr1']  );
 
+    $sheet->setCellValue('R20', asesorCaracteristicas($row['nit_cc_ase'],"nombre") );
+    $sheet->setCellValue('R21', $row['nit_cc_ase'] );
+    $sheet->setCellValue('R22', asesorCaracteristicas($row['nit_cc_ase'],"celular") );
+    $sheet->setCellValue('R23', asesorCaracteristicas($row['nit_cc_ase'],"email") );
+    $sheet->setCellValue('R24', '');
+    $sheet->setCellValue('R25', $row['obs1_capr1']);
 
     $rowIndex++;
+    $codigo = $row['cod_cap'];
 }
-$filename = 'Pago  Contrato #.xlsx';
+$filename = 'Ficha Tec_residencial '. $codigo . '.xlsx';
 $writer = new Xlsx($spreadsheet);
 
 // Set the headers for file download

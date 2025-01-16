@@ -49,6 +49,9 @@ $internet_telefonia_seleccionados = explode(',', $row['niveles_educativos'] ?? '
     <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.1.7/dist/signature_pad.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
     <style>
         .responsive {
             max-width: 100%;
@@ -142,6 +145,14 @@ $internet_telefonia_seleccionados = explode(',', $row['niveles_educativos'] ?? '
             box-shadow: 0 0 10px rgba(0, 123, 255, 0.3);
             /* Sombreado azul claro */
         }
+
+        /* Aseguramos que el modal se abra al cargar la página */
+        .modal-backdrop {
+            background-color: rgba(0, 0, 0, 0.8) !important; /* Más opaco */
+        }
+        body.modal-open .modal {
+            display: block !important;
+        }
     </style>
     <script>
         $(document).ready(function() {
@@ -186,7 +197,32 @@ $internet_telefonia_seleccionados = explode(',', $row['niveles_educativos'] ?? '
 </head>
 
 <body>
-
+    <!-- Modal -->
+    <div class="modal fade" id="consentModal" tabindex="-1" aria-labelledby="consentModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="consentModalLabel">CONSENTIMIENTO INFORMADO</h3>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <label style="font-size: 15px; font:message-box">
+                                Como parte de los procesos necesarios para la gestión del servicio, se podrán realizar fotografías, grabaciones o recolección de firmas relacionadas con el inmueble objeto de este contrato. <br><br>
+                                Estas acciones tienen como propósito exclusivo documentar, verificar o garantizar el cumplimiento de los acuerdos establecidos.<br><br>
+                                Se asegura al usuario que la información y el material recolectado serán tratados con estricta confidencialidad y utilizados únicamente para los fines antes mencionados, de conformidad con la normativa aplicable en materia de privacidad y protección de datos.
+                                <br><br>¿Está de acuerdo?
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" id="acceptButton">Acepto</button>
+                    <button type="button" class="btn btn-danger" id="declineButton">No acepto</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="container">
         <h1><img src='../../img/logo.png' width="80" height="56" class="responsive"><b><i class="fa-solid fa-building-circle-check"></i> PRE-REGISTRO FICHA TECNICA INMUEBLES COMERCIALES</b></h1>
         <p><i><b>
@@ -196,22 +232,7 @@ $internet_telefonia_seleccionados = explode(',', $row['niveles_educativos'] ?? '
         <form action='addcap1.php' enctype="multipart/form-data" method="POST">
 
             <div class="form-group">
-                <fieldset>
-                    <legend>CONSENTIMIENTO INFORMADO</legend>
-                    <div class="row">
-                        <div class="col-12 col-sm-10">
-                            <label for="" style="font-size: 15px;" > Como parte de los procesos necesarios para la gestión del servicio, se podrán realizar fotografías, grabaciones o recolección de firmas relacionadas con el inmueble objeto de este contrato. Estas acciones tienen como propósito exclusivo documentar, verificar o garantizar el cumplimiento de los acuerdos establecidos.
-                                Se asegura al usuario que la información y el material recolectado serán tratados con estricta confidencialidad y utilizados únicamente para los fines antes mencionados, de conformidad con la normativa aplicable en materia de privacidad y protección de datos.
-                                Esta De Acuerdo?
-                            </label>
-                            <select class="form-control" name="consentimiento" id="consentimiento">
-                                <option value=""></option>
-                                <option value="si">Si</option>
-                                <option value="no">No</option>
-                            </select>
-
-                        </div>
-                </fieldset>
+                <input type="hidden" name="consentimiento" value="si">
             </div>
 
             <div class="form-group">
@@ -1216,6 +1237,25 @@ $internet_telefonia_seleccionados = explode(',', $row['niveles_educativos'] ?? '
     });
 </script>
 <script>
+    // Mostrar el modal al cargar la página
+    window.addEventListener('load', function() {
+        const consentModal = new bootstrap.Modal(document.getElementById('consentModal'));
+        consentModal.show();
+
+        // Botón de "Acepto"
+        document.getElementById('acceptButton').addEventListener('click', function() {
+            consentModal.hide(); // Cierra el modal
+            alert('Gracias por aceptar el consentimiento informado.');
+            // Puedes agregar aquí lógica adicional
+        });
+
+        // Botón de "No acepto"
+        document.getElementById('declineButton').addEventListener('click', function() {
+            window.history.back(); // Regresa a la página anterior
+        });
+    });
+
+
     document.addEventListener('DOMContentLoaded', function() {
         const ctdMuelleGraduable = document.getElementById('ctd_muelle_graduable_cap');
         const ctdMuelleTractomula = document.getElementById('ctd_muelle_tractomula_cap');

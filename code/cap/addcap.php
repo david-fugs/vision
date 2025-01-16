@@ -1,45 +1,46 @@
 <?php
-    session_start();
+session_start();
 
-    if (!isset($_SESSION['id_usu'])) {
-        header("Location: ../../index.php");
-        exit();
-    }
+if (!isset($_SESSION['id_usu'])) {
+    header("Location: ../../index.php");
+    exit();
+}
 
-    // Incluir una función para manejo de errores en base de datos
-    function handleError($message) {
-        die("Error: " . $message);
-    }
+// Incluir una función para manejo de errores en base de datos
+function handleError($message)
+{
+    die("Error: " . $message);
+}
 
-    include("../../conexion.php");
+include("../../conexion.php");
 
-    if ($mysqli->connect_errno) {
-        handleError("No se pudo conectar a la base de datos.");
-    }
+if ($mysqli->connect_errno) {
+    handleError("No se pudo conectar a la base de datos.");
+}
 
-    // Obtener el nit_cc_ase y el nombre del usuario relacionado
-    $stmt = $mysqli->prepare("
-        SELECT a.nit_cc_ase, u.nombre 
+// Obtener el nit_cc_ase y el nombre del usuario relacionado
+$stmt = $mysqli->prepare("
+        SELECT a.nit_cc_ase, u.nombre
         FROM asesores a
         INNER JOIN usuarios u ON a.id_usu = u.id_usu
         WHERE a.id_usu = ?");
 
-    if (!$stmt) {
-        handleError("Error al preparar la consulta: " . $mysqli->error);
-    }
+if (!$stmt) {
+    handleError("Error al preparar la consulta: " . $mysqli->error);
+}
 
-    $stmt->bind_param('i', $_SESSION['id_usu']);
-    $stmt->execute();
-    $stmt->bind_result($nit_cc_ase, $nombre_usu);
-    $stmt->fetch();
-    $stmt->close();
+$stmt->bind_param('i', $_SESSION['id_usu']);
+$stmt->execute();
+$stmt->bind_result($nit_cc_ase, $nombre_usu);
+$stmt->fetch();
+$stmt->close();
 
-    if (!$nombre_usu || !$nit_cc_ase) {
-        handleError("El usuario no está registrado correctamente en las tablas.");
-    }
+if (!$nombre_usu || !$nit_cc_ase) {
+    handleError("El usuario no está registrado correctamente en las tablas.");
+}
 
-    header("Content-Type: text/html;charset=utf-8");
-    date_default_timezone_set("America/Bogota");
+header("Content-Type: text/html;charset=utf-8");
+date_default_timezone_set("America/Bogota");
 ?>
 
 <!DOCTYPE html>
@@ -57,8 +58,9 @@
     <link href="../../fontawesome/css/all.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/fed2435e21.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.1.7/dist/signature_pad.umd.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
     <style>
         .responsive {
             max-width: 100%;
@@ -79,6 +81,14 @@
             color: black;
             box-sizing: border-box;
             height: 32px;
+        }
+
+        .modal-backdrop {
+            background-color: rgba(0, 0, 0, 0.8) !important; /* Más opaco */
+        }
+
+        body.modal-open .modal {
+            display: block !important;
         }
 
         textarea.form-control {
@@ -200,7 +210,10 @@
 
         // Función para formatear en moneda colombiana (COP)
         function formatCOP(value) {
-            return new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP' }).format(value);
+            return new Intl.NumberFormat('es-CO', {
+                style: 'currency',
+                currency: 'COP'
+            }).format(value);
         }
 
         $(document).ready(function() {
@@ -269,9 +282,37 @@
 
 <body>
 
+    <!-- Modal -->
+    <div class="modal fade" id="consentModal" tabindex="-1" aria-labelledby="consentModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="consentModalLabel">CONSENTIMIENTO INFORMADO</h3>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <label style="font-size: 15px; font:message-box;">
+                                Como parte de los procesos necesarios para la gestión del servicio, se podrán realizar fotografías, grabaciones o recolección de firmas relacionadas con el inmueble objeto de este contrato. <br><br>
+                                Estas acciones tienen como propósito exclusivo documentar, verificar o garantizar el cumplimiento de los acuerdos establecidos.<br><br>
+                                Se asegura al usuario que la información y el material recolectado serán tratados con estricta confidencialidad y utilizados únicamente para los fines antes mencionados, de conformidad con la normativa aplicable en materia de privacidad y protección de datos.
+                                <br><br>¿Está de acuerdo?
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" id="acceptButton">Acepto</button>
+                    <button type="button" class="btn btn-danger" id="declineButton">No acepto</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="container">
         <h1><img src='../../img/logo.png' width="80" height="56" class="responsive"><b><i class="fa-solid fa-building-circle-check"></i> FICHA TECNICA INMUEBLES COMERCIALES</b></h1>
-        <p><i><b><font size=3 color=#c68615>*Datos obligatorios</i></b></font></p>
+        <p><i><b>
+                    <font size=3 color=#c68615>*Datos obligatorios</i></b></font>
+        </p>
 
         <form action='addcap1.php' enctype="multipart/form-data" method="POST">
 
@@ -451,7 +492,7 @@
                     <div class="row">
                         <div class="col-12 col-sm-2">
                             <label for="venta_neta_cap">VENTA NETA $</label>
-                            <input type='text' name='venta_neta_cap' class='form-control' id="venta_neta_cap" step='0.1' value="0"/>
+                            <input type='text' name='venta_neta_cap' class='form-control' id="venta_neta_cap" step='0.1' value="0" />
                         </div>
                         <div class="col-12 col-sm-2">
                             <label for="venta_m2_cap">VALOR x m2 $</label>
@@ -467,29 +508,46 @@
             </div>
 
             <button type="submit" class="btn btn-outline-warning">
-                    <span class="spinner-border spinner-border-sm"></span>
-                    INGRESAR REGISTRO
+                <span class="spinner-border spinner-border-sm"></span>
+                INGRESAR REGISTRO
             </button>
             <button type="reset" class="btn btn-outline-dark" role='link' onclick="history.back();" type='reset'><img src='../../img/atras.png' width=27 height=27> REGRESAR
             </button>
         </form>
     </div>
-    <script src = "../../js/jquery-3.1.1.js"></script>
-    <script type = "text/javascript">
-        $(document).ready(function(){
-            $('#cod_dane_dep').on('change', function(){
-                    if($('#cod_dane_dep').val() == ""){
-                        $('#id_mun').empty();
-                        $('<option value = "">Seleccione un municipio</option>').appendTo('#id_mun');
-                        $('#id_mun').attr('disabled', 'disabled');
-                    }else{
-                        $('#id_mun').removeAttr('disabled', 'disabled');
-                        $('#id_mun').load('modules_get.php?cod_dane_dep=' + $('#cod_dane_dep').val());
-                    }
+    <script src="../../js/jquery-3.1.1.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#cod_dane_dep').on('change', function() {
+                if ($('#cod_dane_dep').val() == "") {
+                    $('#id_mun').empty();
+                    $('<option value = "">Seleccione un municipio</option>').appendTo('#id_mun');
+                    $('#id_mun').attr('disabled', 'disabled');
+                } else {
+                    $('#id_mun').removeAttr('disabled', 'disabled');
+                    $('#id_mun').load('modules_get.php?cod_dane_dep=' + $('#cod_dane_dep').val());
+                }
             });
         });
     </script>
     <script>
+        // Mostrar el modal al cargar la página
+        window.addEventListener('load', function() {
+            const consentModal = new bootstrap.Modal(document.getElementById('consentModal'));
+            consentModal.show();
+
+            // Botón de "Acepto"
+            document.getElementById('acceptButton').addEventListener('click', function() {
+                consentModal.hide(); // Cierra el modal
+                alert('Gracias por aceptar el consentimiento informado.');
+                // Puedes agregar aquí lógica adicional
+            });
+
+            // Botón de "No acepto"
+            document.getElementById('declineButton').addEventListener('click', function() {
+                window.history.back(); // Regresa a la página anterior
+            });
+        });
         var operacionActual = "";
         var valorActual = "";
         var resultado = 0;
@@ -561,4 +619,5 @@
         }
     </script>
 </body>
+
 </html>

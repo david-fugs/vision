@@ -1,7 +1,7 @@
 <?php
-   
+
   require "conexion.php";
- 
+
   session_start();
 
   if($_POST)
@@ -27,6 +27,7 @@
           $_SESSION['id_usu'] = $row['id_usu'];
           $_SESSION['nombre'] = $row['nombre'];
           $_SESSION['tipo_usu'] = $row['tipo_usu'];
+          $_SESSION['nit_cc_ase'] = $row['nit_cc_ase'];
 
           if($row['tipo_usu']==1)
           {
@@ -55,7 +56,7 @@
           }
           else
           {
-            
+
             header("Location: index.php");
           }
         }else
@@ -101,7 +102,7 @@
            		   </div>
            		</div>
            		<div class="input-div pass">
-           		   <div class="i"> 
+           		   <div class="i">
            		    	<i class="fas fa-lock"></i>
            		   </div>
            		   <div class="div">

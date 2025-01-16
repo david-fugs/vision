@@ -51,8 +51,9 @@ $pdf->SetFont('helvetica', '', 10);
 $sql = "SELECT exhibiciones.*, asesores.nom_ape_ase
         FROM exhibiciones
         JOIN asesores ON exhibiciones.nit_cc_ase = asesores.nit_cc_ase
-        WHERE exhibiciones.fec_exh BETWEEN ? AND ?
+        WHERE exhibiciones.fec_exh BETWEEN ? AND DATE_ADD(?, INTERVAL 1 DAY) - INTERVAL 1 SECOND
         AND exhibiciones.tipo_inm_exh = ?";
+
 
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("sss", $fecha_inicial, $fecha_final, $tipo_inmueble);

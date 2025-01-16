@@ -39,7 +39,7 @@ $tipo_usu = $_SESSION['tipo_usu'];
             <form action="showexh.php" method="get" class="form">
                 <input name="cod_fr_exh" type="text" placeholder="Código Finca Raíz">
                 <input name="direccion_inm_exh" type="text" placeholder="Dirección">
-                <input name="nit_cc_ase" type="text" placeholder="Asesor">
+                <input name="nit_cc_ase" type="text" placeholder="Nit Asesor">
                 <input value="Realizar Busqueda" type="submit">
             </form>
         </div>
@@ -55,7 +55,9 @@ require_once("../../zebra.php");
 
 @$cod_fr_exh        = ($_GET['cod_fr_exh']);
 @$direccion_inm_exh = ($_GET['direccion_inm_exh']);
-@$nit_cc_ase        = ($_GET['nit_cc_ase']);
+$nit_cc_ase        = $_GET['nit_cc_ase'] ?? '';
+//si no es admin solo puede ver sus exhibiciones
+if($tipo_usu != 1) $nit_cc_ase = $_SESSION['nit_cc_ase'];
 
 $query = "SELECT * FROM exhibiciones WHERE (direccion_inm_exh LIKE '%".$direccion_inm_exh."%') AND (nit_cc_ase LIKE '%".$nit_cc_ase."%') AND (cod_fr_exh LIKE '%".$cod_fr_exh."%') ORDER BY fec_exh DESC";
 $res = $mysqli->query($query);
@@ -73,6 +75,7 @@ echo "<div class='flex'>
                         <th>CODIGO FR</th>
                         <th>DIRECCION</th>
                         <th>INTERESAD@</th>
+                        <th>ASESOR</th>
                         <th>RAZON SOCIAL</th>
                         <th>CEL</th>
                         <th>OBSERVACIONES</th>
@@ -98,6 +101,14 @@ function obtenerNumeroArchivos($cod_fr_exh) {
     } else {
         return 0;
     }
+}
+function nombreAsesor($nit_cc_ase)
+{
+    include("../../conexion.php");
+    $sql = "SELECT nom_ape_ase FROM asesores WHERE nit_cc_ase = '$nit_cc_ase'";
+    $result = $mysqli->query($sql);
+    $row = $result->fetch_assoc();
+    return $row['nom_ape_ase'];
 }
 
 $i = 1;
@@ -127,6 +138,7 @@ while($row = mysqli_fetch_array($result))
                     <td data-label="CODIGO FR">'.$row['cod_fr_exh'].'</td>
                     <td data-label="DIRECCION">'.$row['direccion_inm_exh'].'</td>
                     <td data-label="INTERESAD@">'.$row['nom_ape_inte_exh'].'</td>
+                    <td data-label="ASESOR">'.nombreAsesor($row['nit_cc_ase']).'</td>
                     <td data-label="RAZON SOCIAL">'.$row['raz_soc_exh'].'</td>
                     <td data-label="CEL">'.$row['cel_inte_exh'].'</td>
                     <td data-label="OBSERVACIONES">'.$row['obs2_exh'].'</td>

@@ -84,7 +84,8 @@ date_default_timezone_set("America/Bogota");
         }
 
         .modal-backdrop {
-            background-color: rgba(0, 0, 0, 0.8) !important; /* Más opaco */
+            background-color: rgba(0, 0, 0, 0.8) !important;
+            /* Más opaco */
         }
 
         body.modal-open .modal {
@@ -230,6 +231,7 @@ date_default_timezone_set("America/Bogota");
                 var canon_neto = toFloat($('#canon_neto_cap').val()) || 0;
                 var porcentaje_iva = parseFloat($('#porcentaje_iva_cap').val()) || 0;
                 var admon = toFloat($('#admon_cap').val()) || 0;
+                var totaldescuento = document.getElementById("totaldescuento").value;
 
                 // Cálculo correcto del IVA y la renta total
                 var valor_iva = canon_neto * (porcentaje_iva / 100);
@@ -238,14 +240,13 @@ date_default_timezone_set("America/Bogota");
                 // Aplicar el formato de moneda (COP) al mostrar los resultados
                 $('#valor_iva_cap').val(formatCOP(Math.round(valor_iva)));
                 $('#renta_total_cap').val(formatCOP(Math.round(renta_total)));
-
                 // Actualizar los campos ocultos con los valores numéricos para enviar al servidor
                 $('#valor_iva_cap_hidden').val(Math.round(valor_iva));
                 $('#renta_total_cap_hidden').val(Math.round(renta_total));
             }
 
             // Ejecutar el cálculo cada vez que cambien los valores
-            $('#canon_neto_cap, #porcentaje_iva_cap, #admon_cap').on('input', function() {
+            $('#canon_neto_cap, #porcentaje_iva_cap, #admon_cap ').on('input', function() {
                 calcularValores();
             });
 
@@ -383,7 +384,7 @@ date_default_timezone_set("America/Bogota");
                     <div class="row">
                         <div class="col-12 col-sm-5">
                             <label for="nombre_razon_social_cap">* NOMBRE y/o RAZON SOCIAL:</label>
-                            <input type='text' name='nombre_razon_social_cap' class='form-control' id="nombre_razon_social_cap" required style="text-transform:uppercase;" />
+                            <input type='text' name='nombre_razon_social_capr' class='form-control' id="nombre_razon_social_cap" required style="text-transform:uppercase;" />
                         </div>
                         <div class="col-12 col-sm-2">
                             <label for="cel_repre_legal_cap">* CELULAR:</label>
@@ -391,7 +392,7 @@ date_default_timezone_set("America/Bogota");
                         </div>
                         <div class="col-12 col-sm-2">
                             <label for="tel_repre_legal_cap">TELEFONO:</label>
-                            <input type='number' value=0 name='tel_repre_legal_cap' id="tel_repre_legal_cap" class='form-control' />
+                            <input type='number' value=0 name='tel_repre_legal_capr' id="tel_repre_legal_cap" class='form-control' />
                         </div>
                         <div class="col-12 col-sm-3">
                             <label for="nombre_usu">* ASESOR COMERCIAL:</label>
@@ -503,6 +504,21 @@ date_default_timezone_set("America/Bogota");
                             <input type='text' name='venta_total' class='form-control' id="venta_total" readonly style="font-weight: bold; font-size: 14px;" />
                             <input type='hidden' name='venta_total_hidden' id='venta_total_hidden' />
                         </div>
+                        <div class="col-12 col-sm-2">
+                            <label for="porcenadmin">% ADMIN INMOBILIARIA $</label>
+                            <select class="form-control" name="porcenadmin" id="porcenadmin" onchange="updateTotalDescuento()">
+                                <option value=""></option>
+                                <option value=8>8%</option>
+                                <option value=9>9%</option>
+                                <option value=10>10%</option>
+                                <option value=11>11%</option>
+                                <option value=12>12%</option>
+                            </select>
+                        </div>
+                        <div class="col-12 col-sm-2">
+                            <label for="totaldescuento">VALOR TOTAL DESPUES DE DESCUENTO</label>
+                            <input type='text' name='totaldescuento' class='form-control' id="totaldescuento" readonly style="font-weight: bold; font-size: 14px;" />
+                        </div>
                     </div>
                 </fieldset>
             </div>
@@ -556,6 +572,22 @@ date_default_timezone_set("America/Bogota");
         function agregarValor(valor) {
             valorActual += valor;
             document.getElementById("resultado").value = formatNumber(valorActual);
+        }
+
+        function updateTotalDescuento() {
+            let totalDescuento = 0;
+            let canon = document.getElementById("canon_neto_cap").value;
+            let canonInt = parseInt(canon.replace(/\./g, ''), 10);
+            let admonInmobiliaria = parseInt(document.getElementById("porcenadmin").value);
+
+            if (canon && admonInmobiliaria) {
+                totalDescuento = canonInt - (canonInt * (admonInmobiliaria / 100));
+            }
+            let valorFormateado = `$ ${Number(totalDescuento).toLocaleString('es-CO', {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            })}`;
+            document.getElementById("totaldescuento").value = valorFormateado;
         }
 
         // Función para realizar la operación

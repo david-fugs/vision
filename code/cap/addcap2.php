@@ -31,6 +31,24 @@ date_default_timezone_set("America/Bogota");
 // Convertir la cadena de niveles educativos en un array
 $internet_telefonia_seleccionados = explode(',', $row['niveles_educativos'] ?? '');
 
+//traer los datos de capta_comercial por el id
+$id_cap = $_GET['id_cap'] ?? "";
+$captacion = "";
+if ($id_cap != "") {
+    $sql = "SELECT * FROM capta_comercial WHERE id_cap = $id_cap";
+    $result = $mysqli->query($sql);
+    $captacion = $result->fetch_assoc();
+}
+
+function nombreMunicipio($id_mun)
+{
+    include("../../conexion.php");
+    $sql = "SELECT nom_mun FROM municipios WHERE id_mun = $id_mun";
+    $result = $mysqli->query($sql);
+    $row = $result->fetch_assoc();
+    return $row['nom_mun'];
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -148,8 +166,10 @@ $internet_telefonia_seleccionados = explode(',', $row['niveles_educativos'] ?? '
 
         /* Aseguramos que el modal se abra al cargar la página */
         .modal-backdrop {
-            background-color: rgba(0, 0, 0, 0.8) !important; /* Más opaco */
+            background-color: rgba(0, 0, 0, 0.8) !important;
+            /* Más opaco */
         }
+
         body.modal-open .modal {
             display: block !important;
         }
@@ -627,8 +647,12 @@ $internet_telefonia_seleccionados = explode(',', $row['niveles_educativos'] ?? '
                                     $g_result = $sql->get_result();
                                 }
                                 while ($row = $g_result->fetch_array()) {
+                                    // Verificamos si el valor coincide con $captacion['code_dane_dep']
+                                    $selected = ((int)$row['cod_dane_dep'] === (int)$captacion['cod_dane_dep']) ? 'selected' : '';
                                 ?>
-                                    <option value="<?php echo $row['cod_dane_dep'] ?>"><?php echo $row['nom_dep'] ?></option>
+                                    <option value="<?php echo $row['cod_dane_dep']; ?>" <?php echo $selected; ?>>
+                                        <?php echo $row['nom_dep']; ?>
+                                    </option>
                                 <?php
                                 }
                                 $mysqli->close();
@@ -643,27 +667,26 @@ $internet_telefonia_seleccionados = explode(',', $row['niveles_educativos'] ?? '
                         </div>
                         <div class="col-12 col-sm-2">
                             <label for="sector_cap">SECTOR:</label>
-                            <input type='text' name='sector_cap' class='form-control' id="sector_cap" />
+                            <input type='text' name='sector_cap' class='form-control' id="sector_cap" value="<?php
+                              echo !empty($captacion['sector_capr']) ? $captacion['sector_capr'] : ''; ?>" />
                         </div>
                         <div class="col-12 col-sm-2">
                             <label for="ubicacion_gps_cap">UBICACION GPS:</label>
-                            <input type='text' name='ubicacion_gps_cap' class='form-control' id="ubicacion_gps_cap" readonly />
+                            <input type='text' name='ubicacion_gps_cap' class='form-control' id="ubicacion_gps_cap" value="<?php
+                                                                                                                            echo !empty($captacion['ubicacion_gps_capr']) ? $captacion['ubicacion_gps_capr'] : ''; ?>" readonly />
                             <button type="button" class="btn btn-sm btn-outline-info" id="botonUbicacionActual">Obtener ubicación actual</button>
                         </div>
                         <div class="col-12 col-sm-2">
                             <label for="estrato_cap">ESTRATO:</label>
                             <select class="form-control" name="estrato_cap" id="estrato_cap">
                                 <option value=""></option>
-                                <option value=1>1</option>
-                                <option value=2>2</option>
-                                <option value=3>3</option>
-                                <option value=4>4</option>
-                                <option value=5>5</option>
-                                <option value=6>6</option>
-                                <option value=7>7</option>
-                                <option value=8>8</option>
-                                <option value=9>9</option>
-                                <option value=10>10</option>
+                                <?php
+                                // Generamos las opciones dinámicamente con el valor seleccionado
+                                for ($i = 1; $i <= 10; $i++) {
+                                    $selected = ($captacion['estrato_cap'] == $i) ? 'selected' : '';
+                                    echo "<option value='$i' $selected>$i</option>";
+                                }
+                                ?>
                             </select>
                         </div>
                         <div class="col-12 col-sm-2">
@@ -1104,7 +1127,9 @@ $internet_telefonia_seleccionados = explode(',', $row['niveles_educativos'] ?? '
                         </div>
                         <div class="col-12 col-sm-5">
                             <label for="nombre_razon_social_cap">* NOMBRE y/o RAZON SOCIAL:</label>
-                            <input type='text' name='nombre_razon_social_cap' class='form-control' id="nombre_razon_social_cap" required style="text-transform:uppercase;" />
+                            <input type='text' name='nombre_razon_social_cap' class='form-control' id="nombre_razon_social_cap" required style="text-transform:uppercase;"
+                            value="<?php
+                              echo !empty($captacion['nombre_razon_social_capr']) ? $captacion['nombre_razon_social_capr'] : ''; ?>"  />
                         </div>
                         <div class="col-12 col-sm-3">
                             <label for="representante_legal_cap">REPRESENTANTE LEGAL:</label>
@@ -1119,11 +1144,14 @@ $internet_telefonia_seleccionados = explode(',', $row['niveles_educativos'] ?? '
                     <div class="row">
                         <div class="col-12 col-sm-2">
                             <label for="cel_repre_legal_cap">* CELULAR:</label>
-                            <input type='number' value=0 name='cel_repre_legal_cap' id="cel_repre_legal_cap" class='form-control' required />
+                            <input type='number'  name='cel_repre_legal_cap' id="cel_repre_legal_cap" class='form-control'
+                            value="<?php
+                              echo !empty($captacion['cel_repre_legal_cap']) ? $captacion['cel_repre_legal_cap'] : '0'; ?>" required />
                         </div>
                         <div class="col-12 col-sm-2">
                             <label for="tel_repre_legal_cap">TELEFONO:</label>
-                            <input type='number' value=0 name='tel_repre_legal_cap' id="tel_repre_legal_cap" class='form-control' />
+                            <input type='number' value="<?php
+                              echo !empty($captacion['tel_repre_legal_capr']) ? $captacion['tel_repre_legal_capr'] : '0'; ?>"  name='tel_repre_legal_cap' id="tel_repre_legal_cap" class='form-control' />
                         </div>
                         <div class="col-12 col-sm-4">
                             <label for="email_repre_legal_cap">EMAIL:</label>
@@ -1193,6 +1221,22 @@ $internet_telefonia_seleccionados = explode(',', $row['niveles_educativos'] ?? '
 </body>
 <script src="../../js/jquery-3.1.1.js"></script>
 <script type="text/javascript">
+    // Verificamos si $captacion['id_mun'] no está vacío
+    <?php if (!empty($captacion['id_mun'])): ?>
+        // Llama a la función PHP para obtener el nombre del municipio
+        var municipioNombre = "<?php echo nombreMunicipio($captacion['id_mun']); ?>";
+        var municipioID = "<?php echo $captacion['id_mun']; ?>";
+
+        // Actualizamos el <select> con el municipio correspondiente
+        var selectMunicipio = document.getElementById("id_mun");
+        var option = document.createElement("option");
+        option.value = municipioID;
+        option.textContent = municipioNombre;
+        option.selected = true; // Lo marcamos como seleccionado
+        selectMunicipio.appendChild(option);
+        selectMunicipio.disabled = false; // Habilitamos el <select>
+    <?php endif; ?>
+
     $(document).ready(function() {
         $('#cod_dane_dep').on('change', function() {
             if ($('#cod_dane_dep').val() == "") {

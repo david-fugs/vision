@@ -237,7 +237,7 @@ $query_contratos = "INSERT INTO capta_comercial (
     transporte_publico_cap, direccion_inm_capr, num_matricula_inm_capr, num_matricula_agua_cap, num_matricula_energia_cap, num_matricula_gas_cap,
     nombre_razon_social_capr, representante_legal_capr, cc_nit_repre_legal_cap, cel_repre_legal_cap, tel_repre_legal_capr, email_repre_legal_capr,
     dir_repre_legal_capr, remuneracion_vta_cap, remuneracion_renta_cap, obs1_capr1, nit_cc_ase, estado_cap, fecha_alta_cap,
-    id_usu_alta_cap, fecha_edit_cap, id_usu,consentimiento)
+    id_usu_alta_cap, fecha_edit_cap, id_usu,consentimiento, comercial_completa)
 VALUES (
     '$frente_habi1_capr', '$fondo_habi1_capr', '$frente_habi2_capr', '$fondo_habi2_capr', '$frente_habi3_capr', '$fondo_habi3_capr', '$frente_sala_capr',
     '$fondo_sala_capr', '$vestidores_capr', '$closets_capr', '$salas_capr', '$balcon_capr', '$terraza_capr', '$patio_capr', '$sotanos_capr', '$pisos_capr',
@@ -268,7 +268,7 @@ VALUES (
     '$direccion_inm_capr', '$num_matricula_inm_capr', '$num_matricula_agua_cap', '$num_matricula_energia_cap', '$num_matricula_gas_cap',
     '$nombre_razon_social_capr', '$representante_legal_capr', '$cc_nit_repre_legal_cap', '$cel_repre_legal_cap', '$tel_repre_legal_capr',
     '$email_repre_legal_capr', '$dir_repre_legal_capr', '$remuneracion_vta_cap', '$remuneracion_renta_cap', '$obs1_capr1',
-    '$nit_cc_ase', '$estado_cap', '$fecha_alta_cap', '$id_usu_alta_cap', '$fecha_edit_cap', '$id_usu' ,'$consentimiento')";
+    '$nit_cc_ase', '$estado_cap', '$fecha_alta_cap', '$id_usu_alta_cap', '$fecha_edit_cap', '$id_usu' ,'$consentimiento' , '0')";
 
 if (mysqli_query($mysqli, $query_contratos)) {
     echo "Inserción exitosa.";

@@ -260,7 +260,7 @@
             <ul class="menu_items submenu">
               <a href="code/cap/addcap.php" class="nav_link sublink">Pre-Registro Ficha Comercial</a>
               <a href="code/cap/addcap2.php" class="nav_link sublink">Ficha General Comercial</a>
-              <a href="code/cap/showprecap.php" class="nav_link sublink">Continuar Registro F. Comercial</a>
+              <a href="code/cap/showprecap.php" class="nav_link sublink">Ver Registro F. Comercial</a>
               <a href="code/cap/addcapr.php" class="nav_link sublink">Ficha Téc. Residencial</a>
               <a href="code/cap/showFichaTec.php" class="nav_link sublink">Ver Fichas Téc. Residenciales</a>
 

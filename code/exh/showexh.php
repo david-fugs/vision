@@ -31,7 +31,7 @@ $tipo_usu = $_SESSION['tipo_usu'];
         <img src='../../img/logo.png' width="300" height="212" class="responsive">
     </center>
 
-    <h1 style="color: #412fd1; text-shadow: #FFFFFF 0.1em 0.1em 0.2em; font-size: 40px; text-align: center;"><b><i class="fa-solid fa-store"></i> CONSTANCIA DE EXHIBICIONES </b>
+    <h1 style="color: #412fd1; text-shadow: #FFFFFF 0.1em 0.1em 0.2em; font-size: 40px; text-align: center;"><b><i class="fa-solid fa-store"></i> CONSTANCIA DE CAPTACIÓN RESIDENCIAL </b>
     </h1>
 
     <div class="flex">
@@ -40,6 +40,7 @@ $tipo_usu = $_SESSION['tipo_usu'];
                 <input name="cod_fr_exh" type="text" placeholder="Código Finca Raíz">
                 <input name="direccion_inm_exh" type="text" placeholder="Dirección">
                 <input name="nit_cc_ase" type="text" placeholder="Nit Asesor">
+                <input type="text"  name="nit_cc_exh" placeholder="Nit Cliente" >
                 <input value="Realizar Busqueda" type="submit">
             </form>
         </div>
@@ -55,11 +56,12 @@ require_once("../../zebra.php");
 
 @$cod_fr_exh        = ($_GET['cod_fr_exh']);
 @$direccion_inm_exh = ($_GET['direccion_inm_exh']);
+$nit_cc_exh = $_GET['nit_cc_exh'] ?? '';
 $nit_cc_ase        = $_GET['nit_cc_ase'] ?? '';
 //si no es admin solo puede ver sus exhibiciones
 if($tipo_usu != 1) $nit_cc_ase = $_SESSION['nit_cc_ase'];
 
-$query = "SELECT * FROM exhibiciones WHERE (direccion_inm_exh LIKE '%".$direccion_inm_exh."%') AND (nit_cc_ase LIKE '%".$nit_cc_ase."%') AND (cod_fr_exh LIKE '%".$cod_fr_exh."%') ORDER BY fec_exh DESC";
+$query = "SELECT * FROM exhibiciones WHERE (direccion_inm_exh LIKE '%".$direccion_inm_exh."%') AND (nit_cc_ase LIKE '%".$nit_cc_ase."%') AND (cod_fr_exh LIKE '%".$cod_fr_exh."%') AND (nit_cc_exh LIKE '%".$nit_cc_exh."%') ORDER BY fec_exh DESC";
 $res = $mysqli->query($query);
 $num_registros = mysqli_num_rows($res);
 $resul_x_pagina = 50;
@@ -89,7 +91,7 @@ $paginacion = new Zebra_Pagination();
 $paginacion->records($num_registros);
 $paginacion->records_per_page($resul_x_pagina);
 
-$consulta = "SELECT * FROM exhibiciones WHERE (direccion_inm_exh LIKE '%".$direccion_inm_exh."%') AND (nit_cc_ase LIKE '%".$nit_cc_ase."%') AND (cod_fr_exh LIKE '%".$cod_fr_exh."%') ORDER BY fec_exh DESC LIMIT " .(($paginacion->get_page() - 1) * $resul_x_pagina). "," .$resul_x_pagina;
+$consulta = "SELECT * FROM exhibiciones WHERE (direccion_inm_exh LIKE '%".$direccion_inm_exh."%') AND (nit_cc_ase LIKE '%".$nit_cc_ase."%') AND (cod_fr_exh LIKE '%".$cod_fr_exh."%') AND (nit_cc_exh LIKE '%".$nit_cc_exh."%') ORDER BY fec_exh DESC LIMIT " .(($paginacion->get_page() - 1) * $resul_x_pagina). "," .$resul_x_pagina;
 $result = $mysqli->query($consulta);
 
 function obtenerNumeroArchivos($cod_fr_exh) {

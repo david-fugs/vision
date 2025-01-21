@@ -646,9 +646,13 @@ function nombreMunicipio($id_mun)
                                 if ($sql->execute()) {
                                     $g_result = $sql->get_result();
                                 }
+
+                                // Verificar si $captacion existe y tiene el índice 'cod_dane_dep'
+                                $cod_dane_dep_selected = isset($captacion['cod_dane_dep']) ? (int)$captacion['cod_dane_dep'] : null;
+
                                 while ($row = $g_result->fetch_array()) {
-                                    // Verificamos si el valor coincide con $captacion['code_dane_dep']
-                                    $selected = ((int)$row['cod_dane_dep'] === (int)$captacion['cod_dane_dep']) ? 'selected' : '';
+                                    // Verificar si el valor coincide con $cod_dane_dep_selected
+                                    $selected = ((int)$row['cod_dane_dep'] === $cod_dane_dep_selected) ? 'selected' : '';
                                 ?>
                                     <option value="<?php echo $row['cod_dane_dep']; ?>" <?php echo $selected; ?>>
                                         <?php echo $row['nom_dep']; ?>
@@ -668,7 +672,7 @@ function nombreMunicipio($id_mun)
                         <div class="col-12 col-sm-2">
                             <label for="sector_cap">SECTOR:</label>
                             <input type='text' name='sector_cap' class='form-control' id="sector_cap" value="<?php
-                              echo !empty($captacion['sector_capr']) ? $captacion['sector_capr'] : ''; ?>" />
+                                                                                                                echo !empty($captacion['sector_capr']) ? $captacion['sector_capr'] : ''; ?>" />
                         </div>
                         <div class="col-12 col-sm-2">
                             <label for="ubicacion_gps_cap">UBICACION GPS:</label>
@@ -681,9 +685,12 @@ function nombreMunicipio($id_mun)
                             <select class="form-control" name="estrato_cap" id="estrato_cap">
                                 <option value=""></option>
                                 <?php
-                                // Generamos las opciones dinámicamente con el valor seleccionado
+                                // Verificar si $captacion y el índice 'estrato_cap' están definidos
+                                $estrato_selected = isset($captacion['estrato_cap']) ? (int)$captacion['estrato_cap'] : null;
+
+                                // Generar las opciones dinámicamente con el valor seleccionado
                                 for ($i = 1; $i <= 10; $i++) {
-                                    $selected = ($captacion['estrato_cap'] == $i) ? 'selected' : '';
+                                    $selected = ($estrato_selected === $i) ? 'selected' : '';
                                     echo "<option value='$i' $selected>$i</option>";
                                 }
                                 ?>
@@ -906,15 +913,30 @@ function nombreMunicipio($id_mun)
                     <div class="row">
                         <div class="col-12 col-sm-2">
                             <label for="venta_neta_cap">VENTA NETA $</label>
-                            <input type='number' name='venta_neta_cap' class='form-control' id="venta_neta_cap" step='0.1' />
+                            <input
+                                type="number"
+                                name="venta_neta_cap"
+                                class="form-control"
+                                id="venta_neta_cap"
+                                step="0.1"
+                                value="<?php echo isset($captacion['venta_neta_cap']) && is_numeric($captacion['venta_neta_cap']) ? htmlspecialchars($captacion['venta_neta_cap'], ENT_QUOTES, 'UTF-8') : '0'; ?>" />
                         </div>
                         <div class="col-12 col-sm-2">
                             <label for="venta_m2_cap">VALOR x m2:</label>
-                            <input type='number' name='venta_m2_cap' class='form-control' id="venta_m2_cap" step='0.1' />
+                            <input type='number' name='venta_m2_cap' class='form-control' id="venta_m2_cap" step='0.1' 
+                            value="<?php echo isset($captacion['venta_m2_cap']) && is_numeric($captacion['venta_m2_cap']) ? htmlspecialchars($captacion['venta_m2_cap'], ENT_QUOTES, 'UTF-8') : '0'; ?>" />
+
+                            
                         </div>
                         <div class="col-12 col-sm-2">
                             <label for="canon_neto_cap">CANON NETO $</label>
-                            <input type='number' name='canon_neto_cap' class='form-control' id="canon_neto_cap" step='0.1' />
+                            <input
+                                type="number"
+                                name="canon_neto_cap"
+                                class="form-control"
+                                id="canon_neto_cap"
+                                step="0.1"
+                                value="<?php echo !empty($captacion['canon_neto_cap']) ? htmlspecialchars($captacion['canon_neto_cap']) : ''; ?>" />
                         </div>
                         <div class="col-12 col-sm-2">
                             <label for="canon_m2_cap">CANON x m2:</label>
@@ -922,35 +944,39 @@ function nombreMunicipio($id_mun)
                         </div>
                         <div class="col-12 col-sm-2">
                             <label for="porcentaje_iva_cap">% IVA:</label>
-                            <input type='number' name='porcentaje_iva_cap' class='form-control' id="porcentaje_iva_cap" min='0.0' max='100' step='0.1' value=19.0 />
+                            <input type='number' name='porcentaje_iva_cap' class='form-control' id="porcentaje_iva_cap" min='0.0' max='100' step='0.1' value="<?php echo !empty($captacion['porcentaje_iva_cap']) ? htmlspecialchars($captacion['porcentaje_iva_cap']) : 19.0; ?>" />
+
                         </div>
                         <div class="col-12 col-sm-2">
                             <label for="valor_iva_cap">VALOR IVA $</label>
                             <input type='text' name='valor_iva_cap' class='form-control' id="valor_iva_cap" readonly style="font-weight: bold; font-size: 14px;" />
-                            <input type='hidden' name='valor_iva_cap_hidden' id='valor_iva_cap_hidden' />
-                        </div>
-                    </div>
+                            <input type='hidden' name='valor_iva_cap_hidden' id='valor_iva_cap_hidden' value="<?php echo !empty($captacion['valor_iva_cap']) ? htmlspecialchars($captacion['valor_iva_cap']) : '0'; ?>"
+                                value="<?php echo !empty($captacion['valor_iva_cap']) ? htmlspecialchars($captacion['valor_iva_cap']) : '0'; ?>"
 
-                    <div class="row">
-                        <div class="col-12 col-sm-2">
-                            <label for="admon_cap">ADMINISTRACION $</label>
-                            <input type='number' name='admon_cap' class='form-control' id="admon_cap" step='0.1' />
+
+                                </div>
                         </div>
-                        <div class="col-12 col-sm-2">
-                            <label for="renta_total_cap">* RENTA TOTAL $</label>
-                            <input type='text' name='renta_total_cap' class='form-control' id="renta_total_cap" readonly style="font-weight: bold; font-size: 14px;" required />
-                            <input type='hidden' name='renta_total_cap_hidden' id='renta_total_cap_hidden' />
+
+                        <div class="row">
+                            <div class="col-12 col-sm-2">
+                                <label for="admon_cap">ADMINISTRACION $</label>
+                                <input type='number' name='admon_cap' class='form-control' id="admon_cap" step='0.1' value="<?php echo !empty($captacion['admon_cap']) ? htmlspecialchars($captacion['admon_cap']) : '0'; ?>" />
+                            </div>
+                            <div class="col-12 col-sm-2">
+                                <label for="renta_total_cap">* RENTA TOTAL $</label>
+                                <input type='text' name='renta_total_cap' class='form-control' id="renta_total_cap" readonly style="font-weight: bold; font-size: 14px;" required />
+                                <input type='hidden' name='renta_total_cap_hidden' id='renta_total_cap_hidden' />
+                            </div>
+                            <div class="col-12 col-sm-2">
+                                <label for="rte_fte_cap">RTE FTE $</label>
+                                <select class="form-control" name="rte_fte_cap" id="rte_fte_cap">
+                                    <option value=""></option>
+                                    <option value=2.5>2.5</option>
+                                    <option value=3.5>3.5</option>
+                                    <option value=0>0</option>
+                                </select>
+                            </div>
                         </div>
-                        <div class="col-12 col-sm-2">
-                            <label for="rte_fte_cap">RTE FTE $</label>
-                            <select class="form-control" name="rte_fte_cap" id="rte_fte_cap">
-                                <option value=""></option>
-                                <option value=2.5>2.5</option>
-                                <option value=3.5>3.5</option>
-                                <option value=0>0</option>
-                            </select>
-                        </div>
-                    </div>
                 </fieldset>
             </div>
 
@@ -1128,8 +1154,8 @@ function nombreMunicipio($id_mun)
                         <div class="col-12 col-sm-5">
                             <label for="nombre_razon_social_cap">* NOMBRE y/o RAZON SOCIAL:</label>
                             <input type='text' name='nombre_razon_social_cap' class='form-control' id="nombre_razon_social_cap" required style="text-transform:uppercase;"
-                            value="<?php
-                              echo !empty($captacion['nombre_razon_social_capr']) ? $captacion['nombre_razon_social_capr'] : ''; ?>"  />
+                                value="<?php
+                                        echo !empty($captacion['nombre_razon_social_cap']) ? $captacion['nombre_razon_social_cap'] : ''; ?>" />
                         </div>
                         <div class="col-12 col-sm-3">
                             <label for="representante_legal_cap">REPRESENTANTE LEGAL:</label>
@@ -1144,14 +1170,14 @@ function nombreMunicipio($id_mun)
                     <div class="row">
                         <div class="col-12 col-sm-2">
                             <label for="cel_repre_legal_cap">* CELULAR:</label>
-                            <input type='number'  name='cel_repre_legal_cap' id="cel_repre_legal_cap" class='form-control'
-                            value="<?php
-                              echo !empty($captacion['cel_repre_legal_cap']) ? $captacion['cel_repre_legal_cap'] : '0'; ?>" required />
+                            <input type='number' name='cel_repre_legal_cap' id="cel_repre_legal_cap" class='form-control'
+                                value="<?php
+                                        echo !empty($captacion['cel_repre_legal_cap']) ? $captacion['cel_repre_legal_cap'] : '0'; ?>" required />
                         </div>
                         <div class="col-12 col-sm-2">
                             <label for="tel_repre_legal_cap">TELEFONO:</label>
                             <input type='number' value="<?php
-                              echo !empty($captacion['tel_repre_legal_capr']) ? $captacion['tel_repre_legal_capr'] : '0'; ?>"  name='tel_repre_legal_cap' id="tel_repre_legal_cap" class='form-control' />
+                                                        echo !empty($captacion['tel_repre_legal_cap']) ? $captacion['tel_repre_legal_cap'] : '0'; ?>" name='tel_repre_legal_cap' id="tel_repre_legal_cap" class='form-control' />
                         </div>
                         <div class="col-12 col-sm-4">
                             <label for="email_repre_legal_cap">EMAIL:</label>
@@ -1252,6 +1278,14 @@ function nombreMunicipio($id_mun)
 </script>
 <script>
     $(document).ready(function() {
+        // Obtener el valor inicial de captacion['valor_iva_cap']
+        <?php
+        $captacionValorIvaCap = isset($captacion['valor_iva_cap']) && $captacion['valor_iva_cap'] !== ''
+            ? (float)$captacion['valor_iva_cap']
+            : 0;
+        ?>
+
+        // Formatear valores en COP
         function formatCOP(value) {
             return new Intl.NumberFormat('es-CO', {
                 style: 'currency',
@@ -1259,25 +1293,42 @@ function nombreMunicipio($id_mun)
             }).format(value);
         }
 
+        // Calcular valores
         function calcularValores() {
             var canon_neto = parseFloat($('#canon_neto_cap').val()) || 0;
             var porcentaje_iva = parseFloat($('#porcentaje_iva_cap').val()) || 0;
             var admon = parseFloat($('#admon_cap').val()) || 0;
 
-            var valor_iva = canon_neto * (porcentaje_iva / 100);
+            var valor_iva;
+
+            // Si el valor inicial de captacionValorIvaCap existe y es mayor a 0, úsalo como valor predeterminado
+            if (<?php echo $captacionValorIvaCap; ?> > 0 && canon_neto === 0) {
+                valor_iva = <?php echo $captacionValorIvaCap; ?>;
+            } else {
+                // Calcula valor_iva dinámicamente si canon_neto cambia
+                valor_iva = canon_neto * (porcentaje_iva / 100);
+            }
+
+            console.log("Valor IVA:", valor_iva);
+
             var renta_total = canon_neto + valor_iva + admon;
 
+            // Actualiza los valores formateados en los campos visibles
             $('#valor_iva_cap').val(formatCOP(valor_iva));
             $('#renta_total_cap').val(formatCOP(renta_total));
 
-            // Actualizar los campos ocultos con los valores numéricos para enviar al servidor
+            // Actualiza los valores numéricos en los campos ocultos para envío al servidor
             $('#valor_iva_cap_hidden').val(valor_iva);
             $('#renta_total_cap_hidden').val(renta_total);
         }
 
+        // Detectar cambios en los inputs relevantes y recalcular los valores
         $('#canon_neto_cap, #porcentaje_iva_cap, #admon_cap').on('input', function() {
             calcularValores();
         });
+
+        // Llamar a calcularValores al cargar la página para inicializar los valores
+        calcularValores();
     });
 </script>
 <script>

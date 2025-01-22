@@ -10,10 +10,6 @@ if (!isset($_SESSION['id_usu'])) {
     header("Location: ../../index.php");
     exit();
 }
-
-
-
-
 $frente_habi1_capr = $_POST['frente_habi1_capr'] ?? '';
 $fondo_habi1_capr = $_POST['fondo_habi1_capr'] ?? '';
 $frente_habi2_capr = $_POST['frente_habi2_capr'] ?? '';
@@ -74,7 +70,7 @@ $tinas_capr = $_POST['tinas_capr'] ?? '';
 $agua_caliente_capr = $_POST['agua_caliente_capr'] ?? '';
 $aire_acondicionado_capr = $_POST['aire_acondicionado_capr'] ?? '';
 
-$cod_capr                    = $_POST['cod_capr'] ?? '';
+$cod_capr                    = $_POST['cod_cap'] ?? '';
 $area_total_cap            = $_POST['area_total_cap'] ?? '';
 $area_lote_capr           = $_POST['area_lote_capr'] ?? '';
 $area_piso1_cap            = $_POST['area_piso1_cap'] ?? '';
@@ -127,12 +123,12 @@ $material_piso_1_cap       = $_POST['material_piso_1_cap'] ?? '';
 $material_sotano_cap       = $_POST['material_sotano_cap'] ?? '';
 $acabados_muro_bode_cap    = $_POST['acabados_muro_bode_cap'] ?? '';
 $material_muros_porc_cap   = $_POST['material_muros_por_cap'] ?? '';
-$tipo_techo_cap            = $_POST['tipo_techo_capr'] ?? '';
-$material_techo_cap        = $_POST['material_techo_capr'] ?? '';
+$tipo_techo_cap            = $_POST['tipo_techo_cap'] ?? '';
+$material_techo_cap        = $_POST['material_techo_cap'] ?? '';
 $cod_dane_dep              = $_POST['cod_dane_dep'] ?? '';
 $id_mun                     = $_POST['id_mun'] ?? '';
-$sector_capr               = $_POST['sector_capr'] ?? '';
-$ubicacion_gps_capr         = $_POST['ubicacion_gps_capr'] ?? '';
+$sector_capr               = $_POST['sector_cap'] ?? '';
+$ubicacion_gps_capr         = $_POST['ubicacion_gps_cap'] ?? '';
 $estrato_cap               = $_POST['estrato_cap'] ?? '';
 $posición_cap              = $_POST['posición_cap'] ?? '';
 $conjunto_cerrado_cap      = $_POST['conjunto_cerrado_cap'] ?? '';
@@ -140,14 +136,14 @@ $conjunto_vigilado_cap     = $_POST['conjunto_vigilado_cap'] ?? '';
 $porteria_recpecion_cap    = $_POST['porteria_recpecion_cap'] ?? '';
 $energia_precio_kv_cap     = $_POST['energia_precio_kv_cap'] ?? '';
 $agua_precio_m3_cap        = $_POST['agua_precio_m3_cap'] ?? '';
-$empresa_energia_capr       = $_POST['empresa_energia_capr'] ?? '';
-$tipo_energia_capr          = $_POST['tipo_energia_capr'] ?? '';
+$empresa_energia_capr       = $_POST['empresa_energia_cap'] ?? '';
+$tipo_energia_capr          = $_POST['tipo_energia_cap'] ?? '';
 $kva_transformador_cap     = $_POST['kva_transformador_cap'] ?? '';
 $calibre_acometida_cap     = $_POST['calibre_acometida_cap'] ?? '';
 $tomas_220_cap             = $_POST['tomas_220_cap'] ?? '';
 $redes_inde_cap            = $_POST['redes_inde_cap'] ?? '';
 $planta_electrica_cap      = $_POST['planta_electrica_cap'] ?? '';
-$empresa_agua_capr          = $_POST['empresa_agua_capr'] ?? '';
+$empresa_agua_capr          = $_POST['empresa_agua_cap'] ?? '';
 $tanques_agua_reserva_cap   = $_POST['tanques_agua_reserva_cap'] ?? '';
 $tanques_capacidad_cap      = isset($_POST['tanques_capacidad_cap']) ? $_POST['tanques_capacidad_cap'] : '';
 $tanques_capacidad_cap     = $_POST['tanques_capacidad_cap'] ?? '';
@@ -155,7 +151,11 @@ $hidrante_cap              = $_POST['hidrante_cap'] ?? '';
 $gabinete_cont_incendio_cap = $_POST['gabinete_cont_incendio_cap'] ?? '';
 $red_contra_incendios_cap  = $_POST['red_contra_incendios_cap'] ?? '';
 $gas_cap                   = $_POST['gas_cap'] ?? '';
-$internet_telefonia_capr = $_POST['internet_telefonia_capr'] ??'';
+$internet_telefonia_capr = $_POST['internet_telefonia_cap'] ?? '';
+// Convertir el array en una cadena separada por comas
+$internet_telefonia_capr = is_array($internet_telefonia_capr)
+    ? implode(',', $internet_telefonia_capr)
+    : '';
 $venta_neta_cap            = $_POST['venta_neta_cap'] ?? '';
 $venta_m2_cap              = $_POST['venta_m2_cap'] ?? '';
 $venta_total = isset($_POST['venta_total_hidden']) ? floatval($_POST['venta_total_hidden']) : 0;
@@ -185,21 +185,21 @@ $uso_suelos_cap            = $_POST['uso_suelos_cap'] ?? '';
 $mapas_cap                 = $_POST['mapas_cap'] ?? '';
 $empresas_vecinas_cap      = $_POST['empresas_vecinas_cap'] ?? '';
 $transporte_publico_cap    = $_POST['transporte_publico_cap'] ?? '';
-$direccion_inm_capr         = $_POST['direccion_inm_capr'] ?? '';
-$num_matricula_inm_capr     = $_POST['num_matricula_inm_capr'] ?? '';
+$direccion_inm_capr         = $_POST['direccion_inm_cap'] ?? '';
+$num_matricula_inm_capr     = $_POST['num_matricula_inm_cap'] ?? '';
 $num_matricula_agua_cap    = $_POST['num_matricula_agua_cap'] ?? '';
 $num_matricula_energia_cap = $_POST['num_matricula_energia_cap'] ?? '';
 $num_matricula_gas_cap     = $_POST['num_matricula_gas_cap'] ?? '';
-$nombre_razon_social_capr   = $_POST['nombre_razon_social_capr'] ?? '';
-$representante_legal_capr   = $_POST['representante_legal_capr'] ?? '';
+$nombre_razon_social_capr   = $_POST['nombre_razon_social_cap'] ?? '';
+$representante_legal_capr   = $_POST['representante_legal_cap'] ?? '';
 $cc_nit_repre_legal_cap    = $_POST['cc_nit_repre_legal_cap'] ?? '';
 $cel_repre_legal_cap       = $_POST['cel_repre_legal_cap'] ?? '';
-$tel_repre_legal_capr       = $_POST['tel_repre_legal_capr'] ?? '';
-$email_repre_legal_capr     = $_POST['email_repre_legal_capr'] ?? '';
-$dir_repre_legal_capr       = $_POST['dir_repre_legal_capr'] ?? '';
+$tel_repre_legal_capr       = $_POST['tel_repre_legal_cap'] ?? '';
+$email_repre_legal_capr     = $_POST['email_repre_legal_cap'] ?? '';
+$dir_repre_legal_capr       = $_POST['dir_repre_legal_cap'] ?? '';
 $remuneracion_vta_cap      = $_POST['remuneracion_vta_cap'] ?? '';
 $remuneracion_renta_cap    = $_POST['remuneracion_renta_cap'] ?? '';
-$obs1_capr1               = $_POST['obs1_capr1'] ?? '';
+$obs1_cap                    = $_POST['obs1_cap'] ?? '';
 $nit_cc_ase                = $_POST['nit_cc_ase'] ?? '';
 $estado_cap                = 1;
 $fecha_alta_cap            = date('Y-m-d h:i:s');
@@ -207,9 +207,75 @@ $id_usu_alta_cap           = $_SESSION['id_usu'];
 $fecha_edit_cap            = ('0000-00-00 00:00:00');
 $id_usu                    = $_SESSION['id_usu'];
 $consentimiento            = $_POST['consentimiento'] ?? '';
+$id_cap                    = $_POST['id_cap'] ?? '';
 
-// Insertar en la tabla CONTRATOS
-$query_contratos = "INSERT INTO capta_comercial (
+if ($id_cap != '') {
+    // Actualizar en la tabla CONTRATOS
+    $query_contratos = "UPDATE capta_comercial SET comercial_completa = 1,
+    frente_habi1_capr = '$frente_habi1_capr', fondo_habi1_capr = '$fondo_habi1_capr', frente_habi2_capr = '$frente_habi2_capr', fondo_habi2_capr = '$fondo_habi2_capr', frente_habi3_capr = '$frente_habi3_capr', fondo_habi3_capr = '$fondo_habi3_capr', frente_sala_capr = '$frente_sala_capr',
+    fondo_sala_capr = '$fondo_sala_capr', vestidores_capr = '$vestidores_capr', closets_capr = '$closets_capr', salas_capr = '$salas_capr', balcon_capr = '$balcon_capr', terraza_capr = '$terraza_capr', patio_capr = '$patio_capr', sotanos_capr = '$sotanos_capr', pisos_capr = '$pisos_capr',
+    tipo_cocina_capr = '$tipo_cocina_capr', isla_cocina_capr = '$isla_cocina_capr', tipo_lavaplatos_capr = '$tipo_lavaplatos_capr', espacio_nevecon_capr = '$espacio_nevecon_capr', restaurantes_capr = '$restaurantes_capr', supermercados_capr = '$supermercados_capr', droguerias_capr = '$droguerias_capr',
+    centro_comer_capr = '$centro_comer_capr', universidades_capr = '$universidades_capr', colegios_capr = '$colegios_capr', jardines_infantiles_capr = '$jardines_infantiles_capr', otros_capr = '$otros_capr', jardines_capr = '$jardines_capr', turco_capr = '$turco_capr', jacuzzi_capr = '$jacuzzi_capr',
+    sauna_capr = '$sauna_capr', cancha_tenis_capr = '$cancha_tenis_capr', cancha_futbol_capr = '$cancha_futbol_capr', cancha_micro_fut_capr = '$cancha_micro_fut_capr', cancha_basquet_capr = '$cancha_basquet_capr', piscina_adultos_capr = '$piscina_adultos_capr', piscina_ninos_capr = '$piscina_ninos_capr',
+    sendero_ecol_capr = '$sendero_ecol_capr', mascotas_capr = '$mascotas_capr', zona_mascotas_capr = '$zona_mascotas_capr', gym_capr = '$gym_capr', ascensor_capr = '$ascensor_capr', juegos_ninos_capr = '$juegos_ninos_capr', lago_pesca_capr = '$lago_pesca_capr', cancha_squash_capr = '$cancha_squash_capr',
+    otros_juegos_capr = '$otros_juegos_capr', acabados_pisos_capr = '$acabados_pisos_capr', acabados_muro_capr = '$acabados_muro_capr', parquead_cubi_capr = '$parquead_cubi_capr', parquead_descubi_capr = '$parquead_descubi_capr', entradas_vehic_capr = '$entradas_vehic_capr', puertas_vehic_capr = '$puertas_vehic_capr',
+    puertas_peaton_capr = '$puertas_peaton_capr', frentes_inmu_capr = '$frentes_inmu_capr', citofonia_capr = '$citofonia_capr', tinas_capr = '$tinas_capr', agua_caliente_capr = '$agua_caliente_capr', aire_acondicionado_capr = '$aire_acondicionado_capr',
+    cod_cap = '$cod_capr', area_total_cap = '$area_total_cap',  area_lote_capr = '$area_lote_capr', area_piso1_cap = '$area_piso1_cap', area_piso2_cap = '$area_piso2_cap', area_sotano_cap = '$area_sotano_cap', malacate_cap = '$malacate_cap', malacate_num_cap = '$malacate_num_cap', malacate_ton_cap = '$malacate_ton_cap',
+    area_patio_maniobra_cap = '$area_patio_maniobra_cap', otras_areas_cap = '$otras_areas_cap', forma_bodega_cap = '$forma_bodega_cap', frente_mesanine_cap = '$frente_mesanine_cap', fondo_mesanine_cap = '$fondo_mesanine_cap', frente_lote_cap = '$frente_lote_cap', fondo_lote_cap = '$fondo_lote_cap',
+    frente_nivel1_int_cap = '$frente_nivel1_int_cap', fondo_nivel1_int_cap = '$fondo_nivel1_int_cap', frente_sotano_cap = '$frente_sotano_cap', fondo_sotano_cap = '$fondo_sotano_cap', altura_min_bodega_cap = '$altura_min_bodega_cap', altura_max_bodega_cap = '$altura_max_bodega_cap',
+    altura_nivel_1_2_cap = '$altura_nivel_1_2_cap', altura_nivel_2_cap = '$altura_nivel_2_cap', altura_sotano_cap = '$altura_sotano_cap', altura_puerta_veh_cap = '$altura_puerta_veh_cap', ancho_puerta_veh_cap = '$ancho_puerta_veh_cap', tipo_puerta_cap = '$tipo_puerta_cap', edad_cap = '$edad_cap',
+    estado_bod_cap = '$estado_bod_cap', niveles_internos_cap = '$niveles_internos_cap', tipo_bodega_cap = '$tipo_bodega_cap', esquinera_medianera_cap = '$esquinera_medianera_cap', parqueaderos_cap = '$parqueaderos_cap', oficinas_cap = '$oficinas_cap', oficinas_tama_cap = '$oficinas_tama_cap',
+    duchas_cap = '$duchas_cap', lavamanos_cap = '$lavamanos_cap', sanitarios_cap = '$sanitarios_cap', poceta_cap = '$poceta_cap', cocineta_cap = '$cocineta_cap', desagues_bodega_cap = '$desagues_bodega_cap', tipo_piso_cap = '$tipo_piso_cap', capacidad_piso_2_cap = '$capacidad_piso_2_cap',
+    capacidad_piso_1_psi_cap = '$capacidad_piso_1_psi_cap', capacidad_piso_1_tone_cap = '$capacidad_piso_1_tone_cap', capacidad_piso_1_mr_cap = '$capacidad_piso_1_mr_cap', capacidad_piso_1_fc_cap = '$capacidad_piso_1_fc_cap', material_piso_2_cap = '$material_piso_2_cap', material_piso_1_cap = '$material_piso_1_cap',
+    material_sotano_cap = '$material_sotano_cap', acabados_muro_bode_cap = '$acabados_muro_bode_cap', material_muros_porc_cap = '$material_muros_porc_cap', tipo_techo_cap = '$tipo_techo_cap', material_techo_cap = '$material_techo_cap', cod_dane_dep = '$cod_dane_dep', id_mun = '$id_mun',
+    sector_capr = '$sector_capr', ubicacion_gps_capr = '$ubicacion_gps_capr', estrato_cap = '$estrato_cap', posición_cap = '$posición_cap', conjunto_cerrado_cap = '$conjunto_cerrado_cap', conjunto_vigilado_cap = '$conjunto_vigilado_cap', porteria_recpecion_cap = '$porteria_recpecion_cap',
+    energia_precio_kv_cap = '$energia_precio_kv_cap', agua_precio_m3_cap = '$agua_precio_m3_cap', empresa_energia_capr = '$empresa_energia_capr', tipo_energia_capr = '$tipo_energia_capr', kva_transformador_cap = '$kva_transformador_cap', calibre_acometida_cap = '$calibre_acometida_cap',
+    tomas_220_cap = '$tomas_220_cap', redes_inde_cap = '$redes_inde_cap', planta_electrica_cap = '$planta_electrica_cap', empresa_agua_capr = '$empresa_agua_capr', tanques_agua_reserva_cap = '$tanques_agua_reserva_cap', tanques_capacidad_cap = '$tanques_capacidad_cap', hidrante_cap = '$hidrante_cap',
+    gabinete_cont_incendio_cap = '$gabinete_cont_incendio_cap', red_contra_incendios_cap = '$red_contra_incendios_cap', gas_cap = '$gas_cap', internet_telefonia_capr = '$internet_telefonia_capr', venta_neta_cap = '$venta_neta_cap', venta_m2_cap = '$venta_m2_cap', venta_total = '$venta_total',
+    canon_neto_cap = '$canon_neto_cap', canon_m2_cap = '$canon_m2_cap', porcentaje_iva_cap = '$porcentaje_iva_cap', valor_iva_cap = '$valor_iva_cap', admon_cap = '$admon_cap', renta_total_cap = '$renta_total_cap', rte_fte_cap = '$rte_fte_cap', tractomulas_cap = '$tractomulas_cap',
+    tractomulas_ctd_cap = '$tractomulas_ctd_cap', ctd_muelle_graduable_cap = '$ctd_muelle_graduable_cap', altura_muelle_graduable_cap = '$altura_muelle_graduable_cap', ctd_muelle_tractomula_cap = '$ctd_muelle_tractomula_cap', tipo_muelle_tractomula_cap = '$tipo_muelle_tractomula_cap',
+    altura_muelle_tractomula_cap = '$altura_muelle_tractomula_cap', entrada_veh_directo_cap = '$entrada_veh_directo_cap', entrada_veh_ctd_cap = '$entrada_veh_ctd_cap', ampliacion_viable_cap = '$ampliacion_viable_cap', frentes_inmueble_cap = '$frentes_inmueble_cap', puertas_vehiculares_cap = '$puertas_vehiculares_cap',
+    fotos_cap = '$fotos_cap', videos_cap = '$videos_cap', planos_cap = '$planos_cap', uso_suelos_cap = '$uso_suelos_cap', mapas_cap = '$mapas_cap', empresas_vecinas_cap = '$empresas_vecinas_cap', transporte_publico_cap = '$transporte_publico_cap', direccion_inm_capr = '$direccion_inm_capr',
+    num_matricula_inm_capr = '$num_matricula_inm_capr', num_matricula_agua_cap = '$num_matricula_agua_cap', num_matricula_energia_cap = '$num_matricula_energia_cap', num_matricula_gas_cap = '$num_matricula_gas_cap', nombre_razon_social_capr = '$nombre_razon_social_capr', representante_legal_capr = '$representante_legal_capr',
+    cc_nit_repre_legal_cap = '$cc_nit_repre_legal_cap', cel_repre_legal_cap = '$cel_repre_legal_cap', tel_repre_legal_capr = '$tel_repre_legal_capr', email_repre_legal_capr = '$email_repre_legal_capr', dir_repre_legal_capr = '$dir_repre_legal_capr', remuneracion_vta_cap = '$remuneracion_vta_cap',
+    remuneracion_renta_cap = '$remuneracion_renta_cap', obs1_cap= '$obs1_capr1', nit_cc_ase = '$nit_cc_ase', estado_cap = '$estado_cap', fecha_alta_cap = '$fecha_alta_cap', id_usu_alta_cap = '$id_usu_alta_cap', fecha_edit_cap = '$fecha_edit_cap', id_usu = '$id_usu', consentimiento = '$consentimiento'
+    WHERE id_cap = '$id_cap'";
+    if (mysqli_query($mysqli, $query_contratos)) {
+        echo "Actualizacion exitosa.";
+        //guardar los archivos en files
+        if (!empty($_FILES['archivo']['name'][0])) {
+            $folderPath = 'files/' . $cod_capr;
+            // Verifica si la carpeta existe; si no, la crea
+            if (!is_dir($folderPath)) {
+                mkdir($folderPath, 0777, true); // Permisos 0777 y recursivo
+            }
+            foreach ($_FILES['archivo']['name'] as $index => $name) {
+                if ($_FILES['archivo']['error'][$index] === UPLOAD_ERR_OK) {
+                    $tmp_name = $_FILES['archivo']['tmp_name'][$index];
+                    $destination = $folderPath . '/' . basename($name); // Ruta destino
+
+                    // Mover el archivo subido a la carpeta de destino
+                    if (move_uploaded_file($tmp_name, $destination)) {
+                        echo "Archivo '$name' subido correctamente.<br>";
+                    } else {
+                        echo "Error al mover el archivo '$name'.<br>";
+                    }
+                } else {
+                    echo "Error al subir el archivo '$name'.<br>";
+                }
+            }
+        } else {
+            echo "No se recibieron archivos.";
+        }
+    } else {
+        echo "Error al insertar los datos: " . mysqli_error($mysqli);
+    }
+}
+
+
+if ($id_cap == '') {
+    // Insertar en la tabla CONTRATOS
+    $query_contratos = "INSERT INTO capta_comercial (
     frente_habi1_capr, fondo_habi1_capr, frente_habi2_capr, fondo_habi2_capr, frente_habi3_capr, fondo_habi3_capr, frente_sala_capr,
     fondo_sala_capr, vestidores_capr, closets_capr, salas_capr, balcon_capr, terraza_capr, patio_capr, sotanos_capr, pisos_capr,
     tipo_cocina_capr, isla_cocina_capr, tipo_lavaplatos_capr, espacio_nevecon_capr, restaurantes_capr, supermercados_capr, droguerias_capr,
@@ -270,36 +336,38 @@ VALUES (
     '$email_repre_legal_capr', '$dir_repre_legal_capr', '$remuneracion_vta_cap', '$remuneracion_renta_cap', '$obs1_capr1',
     '$nit_cc_ase', '$estado_cap', '$fecha_alta_cap', '$id_usu_alta_cap', '$fecha_edit_cap', '$id_usu' ,'$consentimiento' , '0')";
 
-if (mysqli_query($mysqli, $query_contratos)) {
-    echo "Inserción exitosa.";
-    //guardar los archivos en files
-    if (!empty($_FILES['archivo']['name'][0])) {
-        $folderPath = 'files/' . $cod_capr;
-        // Verifica si la carpeta existe; si no, la crea
-        if (!is_dir($folderPath)) {
-            mkdir($folderPath, 0777, true); // Permisos 0777 y recursivo
-        }
-        foreach ($_FILES['archivo']['name'] as $index => $name) {
-            if ($_FILES['archivo']['error'][$index] === UPLOAD_ERR_OK) {
-                $tmp_name = $_FILES['archivo']['tmp_name'][$index];
-                $destination = $folderPath . '/' . basename($name); // Ruta destino
-
-                // Mover el archivo subido a la carpeta de destino
-                if (move_uploaded_file($tmp_name, $destination)) {
-                    echo "Archivo '$name' subido correctamente.<br>";
-                } else {
-                    echo "Error al mover el archivo '$name'.<br>";
-                }
-            } else {
-                echo "Error al subir el archivo '$name'.<br>";
+    if (mysqli_query($mysqli, $query_contratos)) {
+        echo "Inserción exitosa.";
+        //guardar los archivos en files
+        if (!empty($_FILES['archivo']['name'][0])) {
+            $folderPath = 'files/' . $cod_capr;
+            // Verifica si la carpeta existe; si no, la crea
+            if (!is_dir($folderPath)) {
+                mkdir($folderPath, 0777, true); // Permisos 0777 y recursivo
             }
+            foreach ($_FILES['archivo']['name'] as $index => $name) {
+                if ($_FILES['archivo']['error'][$index] === UPLOAD_ERR_OK) {
+                    $tmp_name = $_FILES['archivo']['tmp_name'][$index];
+                    $destination = $folderPath . '/' . basename($name); // Ruta destino
+
+                    // Mover el archivo subido a la carpeta de destino
+                    if (move_uploaded_file($tmp_name, $destination)) {
+                        echo "Archivo '$name' subido correctamente.<br>";
+                    } else {
+                        echo "Error al mover el archivo '$name'.<br>";
+                    }
+                } else {
+                    echo "Error al subir el archivo '$name'.<br>";
+                }
+            }
+        } else {
+            echo "No se recibieron archivos.";
         }
     } else {
-        echo "No se recibieron archivos.";
+        echo "Error al insertar los datos: " . mysqli_error($mysqli);
     }
-} else {
-    echo "Error al insertar los datos: " . mysqli_error($mysqli);
 }
+
 echo "
             <!DOCTYPE html>
                 <html lang='es'>

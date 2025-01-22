@@ -102,7 +102,9 @@ $result = $mysqli->query($sql_asesores);
     </div>
 
     <br><br>
-
+<?php
+    if($tipo_usu == 1):
+        ?>
     <div class="container">
         <form method="POST" action="report2.php">
             <div class="form-group">
@@ -139,6 +141,9 @@ $result = $mysqli->query($sql_asesores);
             </button>
         </form>
     </div>
+    <?php
+    endif;
+    ?>
 
     <br><br>
 <!--

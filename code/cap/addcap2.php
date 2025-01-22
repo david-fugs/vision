@@ -923,10 +923,10 @@ function nombreMunicipio($id_mun)
                         </div>
                         <div class="col-12 col-sm-2">
                             <label for="venta_m2_cap">VALOR x m2:</label>
-                            <input type='number' name='venta_m2_cap' class='form-control' id="venta_m2_cap" step='0.1' 
-                            value="<?php echo isset($captacion['venta_m2_cap']) && is_numeric($captacion['venta_m2_cap']) ? htmlspecialchars($captacion['venta_m2_cap'], ENT_QUOTES, 'UTF-8') : '0'; ?>" />
+                            <input type='number' name='venta_m2_cap' class='form-control' id="venta_m2_cap" step='0.1'
+                                value="<?php echo isset($captacion['venta_m2_cap']) && is_numeric($captacion['venta_m2_cap']) ? htmlspecialchars($captacion['venta_m2_cap'], ENT_QUOTES, 'UTF-8') : '0'; ?>" />
 
-                            
+
                         </div>
                         <div class="col-12 col-sm-2">
                             <label for="canon_neto_cap">CANON NETO $</label>
@@ -1155,7 +1155,7 @@ function nombreMunicipio($id_mun)
                             <label for="nombre_razon_social_cap">* NOMBRE y/o RAZON SOCIAL:</label>
                             <input type='text' name='nombre_razon_social_cap' class='form-control' id="nombre_razon_social_cap" required style="text-transform:uppercase;"
                                 value="<?php
-                                        echo !empty($captacion['nombre_razon_social_cap']) ? $captacion['nombre_razon_social_cap'] : ''; ?>" />
+                                        echo !empty($captacion['nombre_razon_social_capr']) ? $captacion['nombre_razon_social_capr'] : ''; ?>" />
                         </div>
                         <div class="col-12 col-sm-3">
                             <label for="representante_legal_cap">REPRESENTANTE LEGAL:</label>
@@ -1177,7 +1177,7 @@ function nombreMunicipio($id_mun)
                         <div class="col-12 col-sm-2">
                             <label for="tel_repre_legal_cap">TELEFONO:</label>
                             <input type='number' value="<?php
-                                                        echo !empty($captacion['tel_repre_legal_cap']) ? $captacion['tel_repre_legal_cap'] : '0'; ?>" name='tel_repre_legal_cap' id="tel_repre_legal_cap" class='form-control' />
+                                                        echo !empty($captacion['tel_repre_legal_capr']) ? $captacion['tel_repre_legal_capr'] : '0'; ?>" name='tel_repre_legal_cap' id="tel_repre_legal_cap" class='form-control' />
                         </div>
                         <div class="col-12 col-sm-4">
                             <label for="email_repre_legal_cap">EMAIL:</label>
@@ -1222,7 +1222,7 @@ function nombreMunicipio($id_mun)
                     </div>
                 </fieldset>
             </div>
-
+            <input type="hidden" name="id_cap" value="<?php echo isset($captacion['id_cap']) ? $captacion['id_cap'] : ''; ?>">
             <div class="form-group">
                 <fieldset>
                     <legend>ARCHIVOS ADJUNTOAS</legend>
@@ -1230,7 +1230,7 @@ function nombreMunicipio($id_mun)
                         <div class="col-12">
                             <label for="archivo"><strong><i class="fa-regular fa-image"></i> ADJUNTAR EVIDENCIAS:</strong></label>
                             <input type="file" id="archivo[]" name="archivo[]" multiple="" accept="image/jpeg,image/gif,image/png,image/jpg,image/bmp,image/webp,application/pdf,image/x-eps">
-                            <p style="font-family: 'Rajdhani', sans-serif; color: #c68615; text-align: justify;">Recuerde que puede adjuntar varios archivos a la vez, simplemente mantenga presionado la tecla "CTRL" y de clic sobre cada archivo a adjuntar, una vez estén seleccionados presione el botón abrir. Utilice archivos de tipo: PDF</p>
+                            <p style="font-family: 'Rajdhani', sans-serif; color: #c68615; text-align: justify;">Recuerde adjuntar 4 FOTOGRAFIAS , simplemente mantenga presionado la tecla "CTRL" y de clic sobre cada archivo a adjuntar, una vez estén seleccionados presione el botón abrir. Utilice archivos de tipo: PDF</p>
                         </div>
                     </div>
                 </fieldset>

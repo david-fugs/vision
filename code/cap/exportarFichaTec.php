@@ -5,12 +5,37 @@ use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use PhpOffice\PhpSpreadsheet\Style\Border;
 use PhpOffice\PhpSpreadsheet\Style\Color;
+use PhpOffice\PhpSpreadsheet\Worksheet\Drawing;
 
 session_start();
 include("../../conexion.php");
 date_default_timezone_set("America/Bogota");
 $mysqli->set_charset('utf8');
 $id_cap = isset($_GET['id_cap']) ? $_GET['id_cap'] : '';
+//sacar el codigo de captacion
+$sql_cod = "SELECT cod_cap FROM capta_comercial WHERE id_cap = '$id_cap'";
+$res = mysqli_query($mysqli, $sql_cod);
+$row_cod = mysqli_fetch_array($res, MYSQLI_ASSOC);
+$cod_cap = $row_cod['cod_cap'];
+
+// Ruta a las imágenes
+$directory = __DIR__ . "/files/$cod_cap/";
+
+// Verificar que el directorio exista
+if (!is_dir($directory)) {
+    $images = [];
+} else {
+    // Obtener las imágenes (ajustar extensiones si es necesario)
+    $images = glob("$directory*.{jpg,jpeg,png}", GLOB_BRACE);
+}
+// Obtener las imágenes (puedes ajustar las extensiones según tus necesidades)
+$images = glob("$directory*.{jpg,jpeg,png}", GLOB_BRACE);
+
+// Verificar que haya al menos 4 imágenes
+if (count($images) < 4) {
+    die("No se encontraron 4 imágenes en el directorio.");
+}
+
 
 function getColumnLetter($index)
 {
@@ -79,21 +104,21 @@ if ($res === false) {
     echo "Error en la consulta: " . mysqli_error($mysqli);
     exit;
 }
-function asesorCaracteristicas($nit_cc_ase, $campo){
+function asesorCaracteristicas($nit_cc_ase, $campo)
+{
     include("../../conexion.php");
     $sql = "SELECT * FROM asesores WHERE nit_cc_ase = '$nit_cc_ase'";
     $res = mysqli_query($mysqli, $sql);
     $row = mysqli_fetch_array($res, MYSQLI_ASSOC);
-    if($campo == 'nombre'){
+    if ($campo == 'nombre') {
         return $row['nom_ape_ase'];
     }
-    if($campo == 'celular'){
+    if ($campo == 'celular') {
         return $row['tel1_ase'];
     }
-    if($campo == 'email'){
+    if ($campo == 'email') {
         return $row['email_ase'];
     }
-
 }
 
 // // Aplicar color de fondo a las celdas A1 a AL1
@@ -120,7 +145,7 @@ $boldFontStyle = [
 ];
 
 // Define las celdas a las que quieres aplicar el estilo
-$cells = ['B2', 'E2', 'H2', 'K2', 'N2', 'Q2','B5','B10','B18','B24','E4','E15','H19','K23','N12','N20','Q19'];
+$cells = ['B2', 'E2', 'H2', 'K2', 'N2', 'Q2', 'B5', 'B10', 'B18', 'B24', 'E4', 'E15', 'H19', 'K23', 'N12', 'N20', 'Q19'];
 
 // Aplica el estilo a cada celda
 foreach ($cells as $cell) {
@@ -275,7 +300,7 @@ $sheet->setCellValue('N7', '% IVA');
 $sheet->setCellValue('N8', '$ IVA');
 $sheet->setCellValue('N9', 'MAS ADMINISTRACION');
 $sheet->setCellValue('N10', 'RENTA TOTAL');
- $sheet->setCellValue('N11', 'RETEFUENTE');
+$sheet->setCellValue('N11', 'RETEFUENTE');
 
 $sheet->setCellValue('N12', 'ACCESO VEHICULAR');
 $sheet->setCellValue('N13', 'PARQUEADEROS CUBIERTOS');
@@ -290,7 +315,7 @@ $sheet->setCellValue('N22', 'VIDEOS');
 $sheet->setCellValue('N23', 'PLANOS');
 $sheet->setCellValue('N24', 'USO SUELOS ');
 $sheet->setCellValue('N25', 'MAPAS');
- $sheet->setCellValue('N26', 'BENEF, TRIBUT Y ARANCEL');
+$sheet->setCellValue('N26', 'BENEF, TRIBUT Y ARANCEL');
 
 $sheet->setCellValue('N27', 'EMPRESAS VECINAS ');
 $sheet->setCellValue('N28', 'OTROS: ');
@@ -321,10 +346,10 @@ $sheet->setCellValue('Q24', 'INMOBILIARIA');
 $sheet->setCellValue('Q25', 'NOTAS');
 
 
- $sheet->mergeCells('B34:E34');
- $sheet->mergeCells('H34:J34');
-
- $sheet->getRowDimension(34)->setRowHeight(74);
+$sheet->mergeCells('B34:E34');
+$sheet->mergeCells('H34:J34');
+$sheet->getRowDimension(32)->setRowHeight(74);
+$sheet->getRowDimension(34)->setRowHeight(74);
 
 // $sheet->mergeCells('K1:M1');
 $sheet->getStyle('B1:I1')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
@@ -495,19 +520,35 @@ while ($row = mysqli_fetch_array($res, MYSQLI_ASSOC)) {
     $sheet->setCellValue('R14', $row['dir_repre_legal_capr']);
     $sheet->setCellValue('R15', $row['remuneracion_vta_cap']);
     $sheet->setCellValue('R16', $row['remuneracion_renta_cap']);
-    $sheet->setCellValue('R17', $row['obs1_capr1']  );
+    $sheet->setCellValue('R17', $row['obs1_capr1']);
 
-    $sheet->setCellValue('R20', asesorCaracteristicas($row['nit_cc_ase'],"nombre") );
-    $sheet->setCellValue('R21', $row['nit_cc_ase'] );
-    $sheet->setCellValue('R22', asesorCaracteristicas($row['nit_cc_ase'],"celular") );
-    $sheet->setCellValue('R23', asesorCaracteristicas($row['nit_cc_ase'],"email") );
+    $sheet->setCellValue('R20', asesorCaracteristicas($row['nit_cc_ase'], "nombre"));
+    $sheet->setCellValue('R21', $row['nit_cc_ase']);
+    $sheet->setCellValue('R22', asesorCaracteristicas($row['nit_cc_ase'], "celular"));
+    $sheet->setCellValue('R23', asesorCaracteristicas($row['nit_cc_ase'], "email"));
     $sheet->setCellValue('R24', '');
     $sheet->setCellValue('R25', $row['obs1_capr1']);
 
     $rowIndex++;
     $codigo = $row['cod_cap'];
 }
-$filename = 'Ficha Tec_residencial '. $codigo . '.xlsx';
+
+// Insertar imágenes en celdas específicas
+$celdas = ['B30', 'E30', 'H30', 'K30']; // Celdas para las imágenes
+foreach (array_slice($images, 0, 4) as $index => $imagePath) {
+    $drawing = new Drawing();
+    $drawing->setName("Image $index");
+    $drawing->setDescription("Descripción de la imagen $index");
+    $drawing->setPath($imagePath); // Ruta de la imagen
+    $drawing->setCoordinates($celdas[$index]); // Celda donde se insertará la imagen
+    $drawing->setHeight(120); // Altura de la imagen (ajustar según sea necesario)
+    $drawing->setWidth(300);  // Anchura
+    $drawing->setWorksheet($sheet);
+}
+
+
+
+$filename = 'Ficha Tec_Comercial ' . $codigo . '.xlsx';
 $writer = new Xlsx($spreadsheet);
 
 // Set the headers for file download

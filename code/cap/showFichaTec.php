@@ -38,12 +38,12 @@ function nombreAsesor($nit_cc_ase)
         <img src='../../img/logo.png' width="300" height="212" class="responsive">
     </center>
 
-    <h1 style="color: #412fd1; text-shadow: #FFFFFF 0.1em 0.1em 0.2em; font-size: 40px; text-align: center;"><b><i class="fa-solid fa-store"></i> CONSTANCIA DE EXHIBICIONES </b>
+    <h1 style="color: #412fd1; text-shadow: #FFFFFF 0.1em 0.1em 0.2em; font-size: 40px; text-align: center;"><b><i class="fa-solid fa-store"></i> FICHA RESIDENCIAL</b>
     </h1>
 
     <div class="flex">
         <div class="box">
-            <form action="showFichaTec.php" method="get" class="form">
+            <form action="showprecap.php" method="get" class="form">
                 <input name="cod_cap" type="text" placeholder="Código ">
                 <input value="Realizar Busqueda" type="submit">
             </form>
@@ -62,7 +62,7 @@ require_once("../../zebra.php");
 @$direccion_inm_exh = ($_GET['direccion_inm_exh']);
 @$nit_cc_ase        = ($_GET['nit_cc_ase']);
 
-$query = "SELECT * FROM capta_comercial ORDER BY fecha_alta_cap DESC";
+$query = "SELECT * FROM capta_residencial ORDER BY fecha_alta_capr DESC";
 $res = $mysqli->query($query);
 $num_registros = mysqli_num_rows($res);
 $resul_x_pagina = 50;
@@ -75,6 +75,8 @@ echo "<div class='flex'>
                         <th>No.</th>
                         <th>CODIGO </th>
                         <th>ASESOR</th>
+                        <th>COMPLETO</th>
+                        <th>COMPLETAR</th>
                         <th>EXPORTAR</th>
                     </tr>
                 </thead>
@@ -84,7 +86,7 @@ $paginacion = new Zebra_Pagination();
 $paginacion->records($num_registros);
 $paginacion->records_per_page($resul_x_pagina);
 
-$consulta = "SELECT * FROM capta_comercial ORDER BY fecha_alta_cap DESC LIMIT " . (($paginacion->get_page() - 1) * $resul_x_pagina) . ", " . $resul_x_pagina;
+$consulta = "SELECT * FROM capta_residencial ORDER BY fecha_alta_capr DESC LIMIT " . (($paginacion->get_page() - 1) * $resul_x_pagina) . ", " . $resul_x_pagina;
 $result = $mysqli->query($consulta);
 
 function obtenerNumeroArchivos($cod_fr_exh) {
@@ -101,13 +103,27 @@ function obtenerNumeroArchivos($cod_fr_exh) {
 $i = 1;
 while($row = mysqli_fetch_array($result))
 {
+    $color = "";
+    $completo = "";
+    $edicion = "";
+    if($row['residencial_completa'] == 0) {
+        $color = 'bisque';
+        $completo = 'NO';
+        $edicion = ' <td ><a href="addcapr.php?id_capr='.$row['id_capr'].'" target="_blank"><img src="../../img/editar.png" width="32" height="32" title="Completar ficha comercial" /></a></td>';
+    } else {
+        $color = 'cadetblue';
+        $completo = 'SI';
+        $edicion = "<td></td>";
+    }
     echo '
-                <tr>
+                <tr style="background-color: '.$color.';">
                     <td data-label="No.">'.($i + (($paginacion->get_page() - 1) * $resul_x_pagina)).'</td>
-                    <td data-label="FECHA">'.$row['cod_cap'].'</td>
+                    <td data-label="FECHA">'.$row['cod_capr'].'</td>
                     <td data-label="ASESOR">'.nombreAsesor($row['nit_cc_ase']).'</td>
+                    <td data-label="COMPLETO">'.$completo.'</td>
+                    '.$edicion.'
                     <td data-label="EXPORTAR">
-                        <a href="exportarFichaTec.php?id_cap='.$row['id_cap'].'" target="_blank"><img src="../../img/excel.png" width="32" height="32" title="Exportar a excel" /></a>
+                        <a href="exportarFichaTec.php?id_capr='.$row['id_capr'].'" target="_blank"><img src="../../img/excel.png" width="32" height="32" title="Exportar a excel" /></a>
                 </tr>';
     $i++;
 }
